@@ -1,0 +1,122 @@
+
+#whenYouBuy {
+    color: white;
+    font-size: 18px;
+    font-stretch: condensed;
+    font-family: "Trade Gothic Condensed";
+}
+
+/* header */
+div#outline > header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    padding: 6px;
+    grid-area: a;
+    font-family: "Clarendon";
+    font-weight:100;
+}
+
+    div#outline > header > span {
+        color: green;
+        font-family: 'Trade Gothic Condensed';
+    }
+#altDescription {
+    font-size: 17px;
+    padding-left: 10px;
+    height: 15px;
+    font-weight: 100;
+    width: 600px;
+    font-family: "Trade Gothic Condensed";
+    font-weight: lighter;
+}
+
+#saleDate {
+    font-size: 15px;
+    padding-left: 10px;
+    padding-top: 30px;
+    height: 15px;
+    font-family: "Trade Gothic Condensed";
+}
+#unitType {
+    font-size: 20px;
+    font-weight: normal;
+    font-family: "Trade Gothic Bold Condensed";
+}
+#youSavePriceMain {
+    color: white;
+    font-size: 60px;
+    text-align: right;
+    margin-top: -6px;
+}
+
+#youSavePriceAlt {
+    color: white;
+    font-size: 36px;
+}
+#youSavePriceLb {
+    color: white;
+    font-size: 15px;
+    position: absolute;
+    font-family: "Trade Gothic Bold Condensed";
+    left: 180px;
+    top: 40px;
+}
+
+#retail {
+    display: inline-block;
+    font-size: 21px;
+    position: absolute;
+    left: 432px;
+    top: -4px;
+    font-family: "Trade Gothic LT";
+    border-bottom: 1px solid black;
+    width:50px;
+}
+
+.retail-price{
+    font-family: "Trade Gothic LT";
+    margin-left: 80px;
+}
+#youSaveBoxDiv {
+    position: relative;
+}
+
+#advCardDiv {
+    display: inline-block;
+    position: relative;
+}
+
+.with-adv{
+   font-family: "Trade Gothic Bold";
+   font-size: larger;
+   position: relative;
+   bottom: 5px;
+}
+
+.with-adv span{
+    font-family: "Clarendon";
+    font-weight: 600;
+}
+.yousave{
+    color:white;
+    font-family: "Trade Gothic Bold";
+    text-align: left;
+    padding-left: 3px;
+    font-size: 27px;
+}
+
+.xforxval {
+    font-size: 180px;
+    vertical-align: top;
+    position: relative;
+    top: 27px;
+}
+#youSaveImg {
+    display: grid;
+    grid-template-columns: 78px 80px 60px 57px;
+    background-color: black;
+    width: 270px;
+    height:65px
+}
