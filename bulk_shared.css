@@ -1,0 +1,97 @@
+@font-face {
+    font-family: "Trade Gothic LT";
+    src: url("fonts/Trade\ Gothic\ LT.ttf");
+}
+
+@font-face {
+    font-family: "Trade Gothic Bold Condensed";
+    src: url("fonts/Trade\ Gothic\ LT\ Bold\ Condensed\ No.\ 20.ttf");
+}
+
+@font-face {
+    font-family: "Trade Gothic Condensed";
+    src: url("fonts/Trade\ Gothic\ LT\ Condensed\ No.\ 18.ttf");
+}
+
+@font-face {
+    font-family: "Trade Gothic Bold";
+    src: url("fonts/Trade\ Gothic\ LT\ Bold.ttf");
+}
+
+@font-face {
+    font-family: "Trade Gothic Bold Extended";
+    src: url("fonts/Trade\ Gothic\ LT\ Bold\ Extended.ttf");
+}
+
+@font-face {
+    font-family: "Clarendon";
+    src: url("fonts/24323.otf");
+}
+
+@font-face {
+    font-family: "ClarendonB";
+    src: url("fonts/24325.otf");
+}
+
+html{
+    background-color: #24180D;
+}
+
+.tool {
+    margin:20px auto;
+    width: fit-content;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.089);
+    
+    border: 1px solid rgba(0, 0, 0, 0.144);
+    margin: 15px auto;
+    background-color: white;
+}
+
+.tool input,
+.tool button {
+    font-size: large;
+}
+
+body{
+    flex-direction: column;
+}
+
+.head-txt{
+    font-family: "Trade Gothic LT";
+    text-align:center;
+}
+
+.head-txt span{
+    font-family: "Clarendon";
+    font-weight: 100;
+}
+.action {
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    font-family: "Trade Gothic LT";
+    text-decoration: none;
+}
+
+#tool-head{
+    display: flex;align-items: center;
+    gap: 12px;
+}
+
+.action:hover{
+    background-color: rgb(82, 82, 82);
+}
+@media print {
+    .print-page{
+        page-break-after: always;
+    } 
+
+    .tool{
+        display: none;
+    }
+}
+

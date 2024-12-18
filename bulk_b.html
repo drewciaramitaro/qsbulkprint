@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://tdzie.github.io/QuickSign/styles/BSize.css"/>
+        <link rel="stylesheet" href="bulk_shared.css"/>
+        <link rel="stylesheet" href="bulk_b.css"/>
+    </head>
+    <div class="desktop tool">
+        <div id="tool-head">
+            <a class="action" href="bulk_c.html">Switch to C</a>
+            <h1 class="head-txt">Bulk Print - <span>B Size</span></h1>
+        </div>
+        <input type="text" id="stor-input">
+        <button class="action" onclick="load()">LOAD JSON</button>
+        <button class="action" onclick="window.print()">Print</button>
+    </div>
+
+    <template id="b-sign">
+        <div class="print-page">
+        <div id="outline">
+            <header class="noPrint">Everyone <span>Loves to Save</span></header>
+            <div id="desBox">
+                <div id="mainDescription">Type main item here. 2 lines maximum. Do not use all caps.</div>
+                <div id="altDescription">
+                    Do NOT change the font size/style. Just re-type your new copy here.
+                    This info should reflect a description of the above - sizes, varieties, etc.
+                </div>
+                <div id="saleDate">ON SALE THRU 12/21/2024</div>
+            </div>
+            <div id="price">
+                <div id="pLeft" width="auto"></div>
+                <div id="priceBeforeDecimal">5</div>
+                <div id="priceAfterDecimal">99</div>
+                <div id="pRight"></div>
+            </div>
+            <footer>
+                <div id="unitBox">
+                    <span style="font-family: 'Trade Gothic Bold Condensed';font-size:25px">UNIT PRICE</span>
+                    <div id="unitPriceBox">19.99</div>
+                    <div id="unitType">PER POUND</div>
+                </div>
+                <div id="rightBox">
+                    <div id="mustBuy" style="height: 25px">
+			<div id="MustBuyInner"></div>
+			<div id="LBOption">lb.</div>
+
+			    
+		    </div>
+                    <div id="advCardDiv">
+                        <span class="with-adv">WITH <span>AdvantEdge</span> CARD</span>
+                        <span class="retail-price">Regular Retail: </span><div id="retail">2</div>
+                    </div>
+                    <div id="youSaveBoxDiv">
+                        <div id="youSaveImg">
+                            <span class="yousave">YOU SAVE</span>
+                            <div id="youSavePriceMain">3</div>
+                            <div id="youSavePriceAlt">99</div>
+                            <div id="youSavePriceLb">lb.</div>
+                            <div id="whenYouBuy" style="display:none">
+                                <p style="margin-top: 2px; margin-bottom: 2px;">WHEN</p> 
+                                <p style="margin-top: -5px; margin-bottom: 1px;">YOU</p>
+                            <div style="margin-top: -4px;" id="spanWhenYouBuy">BUY X</div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mixMatch"></div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    </template>
+    <div class="print">
+        <div id="print-container">
+
+        </div>
+    </div>
+
+    <script>
+        const print_container = document.getElementById("print-container")
+        const sign_template = document.getElementById("b-sign")
+
+        function create_sign(element){
+            const newSign = sign_template.content.cloneNode(true);
+
+            const onSale = element[0] == "onSale";
+            const perLb = element[1] == "on";
+            const itemName = element[2];
+            const altDescription = element[3];
+            const onSaleThru = element[4];
+            const priceType = element[5];
+            const unitType = element[6];
+            const unitAmt = element[7];
+            const retailPrice = element[8];
+            const XforXVal = element[9];
+            const salePrice = element[10];
+
+            let priceDiff = (retailPrice - salePrice).toFixed(2);
+            newSign.querySelector("#mainDescription").innerHTML = itemName
+            newSign.querySelector("#altDescription").innerHTML = altDescription
+            newSign.querySelector("#saleDate").innerHTML = onSaleThru
+            if(!onSale){
+                newSign.querySelector("#saleDate").style.display = "None"
+                newSign.querySelector("#youSaveBoxDiv").style.display = "None"
+                newSign.querySelector("#advCardDiv").style.display = "None"
+            }
+            else{
+                newSign.querySelector("#youSavePriceMain").innerHTML = priceDiff.toString().split('.')[0];
+                newSign.querySelector("#retail").innerHTML = retailPrice;
+                newSign.querySelector("#youSavePriceAlt").innerHTML = priceDiff.toString().split('.')[1];
+            }
+            if(!perLb){
+                newSign.querySelector("#LBOption").style.display = "None"
+                newSign.querySelector("#youSavePriceLb").style.display = "None"
+            }
+
+            // Change the price tag style
+            switch(priceType){
+                case 'cents':
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = salePrice;
+                    newSign.querySelector("#priceBeforeDecimal").style.width = "100%";
+                    newSign.querySelector("#priceAfterDecimal").style.display = "none"
+                    newSign.querySelector("#LBOption").style.top = "-15px"
+                    break;
+                case 'dollarCents':
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = salePrice.split('.')[0]
+                    newSign.querySelector("#priceAfterDecimal").innerHTML = salePrice.split('.')[1]
+                    break;
+                case 'forOne':
+                case 'forTwo': 
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<span class="xforxval">${XforXVal}/</span><span style="font-size:140px;vertical-align:top;position:relative;top:40px">$</span>${salePrice}`;
+                    newSign.querySelector("#priceBeforeDecimal").style.width = "100%";
+                    newSign.querySelector("#priceBeforeDecimal").style.fontSize = "280px"
+                    newSign.querySelector("#priceAfterDecimal").style.display = "none"
+                    newSign.querySelector("#LBOption").style.top = "-15px"
+                    newSign.querySelector("#whenYouBuy").style.display = "block"
+                    newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY ${XforXVal}`
+                    newSign.querySelector("#youSavePriceMain").innerHTML = ((retailPrice - salePrice/XforXVal)*XforXVal).toFixed(2).toString().split('.')[0];
+                    
+                    newSign.querySelector("#youSavePriceAlt").innerHTML = ((retailPrice - salePrice/XforXVal)*XforXVal).toFixed(2).toString().split('.')[1];
+                    break;
+                case 'ten':
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<span class="xforxval">10/</span><span style="font-size:140px;vertical-align:top;position:relative;top:40px">$</span>10`;
+                    newSign.querySelector("#priceBeforeDecimal").style.width = "100%";
+                    newSign.querySelector("#priceBeforeDecimal").style.fontSize = "280px"
+                    newSign.querySelector("#priceAfterDecimal").style.display = "none"
+                    newSign.querySelector("#LBOption").style.top = "-15px"
+                    newSign.querySelector("#whenYouBuy").style.display = "block"
+                    newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY 10`
+                    const priceDiff = (retailPrice*10 - 10).toFixed(2);
+                    newSign.querySelector("#youSavePriceMain").innerHTML = priceDiff.toString().split('.')[0];
+                    
+                    newSign.querySelector("#youSavePriceAlt").innerHTML = priceDiff.toString().split('.')[1];
+                    break;
+                case 'bogo':
+                    newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<img src="https://tdzie.github.io/QuickSign/images/bogo.jpg" height="260" width="540">`
+                    newSign.querySelector("#priceAfterDecimal").style.display = "none"
+                
+                    newSign.querySelector("#whenYouBuy").style.display = "block"
+                    newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY 2`
+                    
+                    newSign.querySelector("#youSavePriceMain").innerHTML = retailPrice.toString().split('.')[0];
+                    
+                    newSign.querySelector("#youSavePriceAlt").innerHTML = retailPrice.toString().split('.')[1];
+                    break;
+                case 'b2g1':
+                    newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<img src="https://tdzie.github.io/QuickSign/images/b2g1.jpg" height="260" width="540">`
+                    newSign.querySelector("#priceAfterDecimal").style.display = "none"
+                
+                    newSign.querySelector("#whenYouBuy").style.display = "block"
+                    newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY 3`
+                    
+                    newSign.querySelector("#youSavePriceMain").innerHTML = retailPrice.toString().split('.')[0];
+                    newSign.querySelector("#youSavePriceAlt").innerHTML = retailPrice.toString().split('.')[1];
+                    break;
+            }
+
+
+            function calcUnitPrice(unitSize){
+                let _salePrice = salePrice;
+                switch(priceType){
+                    case "forOne":
+                    case "forTwo":
+                        _salePrice /= XforXVal;
+                        break;
+                    case "ten":
+                        _salePrice = 1;
+                        break;
+                    case "bogo":
+                        _salePrice =  retailPrice/2;
+                        break;
+                    case "b2g1":
+                        _salePrice =  retailPrice/3;
+                        break;
+                }
+
+                let modifier = 1;
+                switch (unitType) {
+                    case "POUND":
+                        modifier = 16;
+                        break;
+                    case "QUART":
+                        modifier = 32;
+                        break;
+                    case "50 COUNT":
+                        modifier = 50;
+                        break;
+                    case "100 COUNT":
+                        modifier = 100;
+                        break;
+                    case "OUNCE":
+                        modifier = 1;
+                        break;                        
+                    default:
+                        break;
+                }
+                console.log(itemName, _salePrice, unitSize, modifier)
+                return ((_salePrice / unitSize) * modifier).toFixed(2);
+            }
+            // unit price
+            let unitString = "";
+            let suffix = "per lb.";
+            let unitSizeType = 'oz';
+
+            switch(unitType){
+                case "POUND":
+                    suffix = "per lb.";
+                    break;
+                case "QUART":
+                    suffix = "per qt.";
+                    break;
+                case "50 COUNT":
+                    suffix = "per 50 sq ft.";
+                    break;
+                case "100 COUNT":
+                    suffix = "per 100 ct.";
+                    break;
+                case "OUNCE":
+                    suffix = "per oz.";
+                    break;
+            }
+
+            if(unitAmt.includes(',')){
+                const sizes = unitAmt.split(',');
+                sizes.forEach(size => {
+                    unitString += `${size} ${unitSizeType}/${calcUnitPrice(size)} ${suffix}<br/>`
+                });
+                newSign.querySelector("#unitType").style.display = "None";
+                newSign.querySelector("#unitPriceBox").style.fontSize = "19px";
+                newSign.querySelector("#unitPriceBox").style.fontFamily = "Trade Gothic Condensed"
+            }
+            else {
+                unitString = `${calcUnitPrice(unitAmt)}`;
+                newSign.querySelector("#unitType").innerHTML = suffix;
+            }
+
+            newSign.querySelector("#unitPriceBox").innerHTML = unitString;
+            print_container.appendChild(newSign);
+        }
+
+        function load(){
+            //const input_json = localStorage.getItem("userBsignsFromMoblie");
+            const input_json = document.getElementById("stor-input").value;
+            const jsonData = JSON.parse(input_json);
+            
+            jsonData.forEach(element => {
+                create_sign(element);
+            });
+        }
+    </script>
+</html>
