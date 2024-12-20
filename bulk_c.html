@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://tdzie.github.io/QuickSign/styles/BSize.css"/>
+        <link rel="stylesheet" href="https://tdzie.github.io/QuickSign/styles/CSize.css"/>
         <link rel="stylesheet" href="bulk_shared.css"/>
-        <link rel="stylesheet" href="bulk_b.css"/>
+        <link rel="stylesheet" href="bulk_c.css"/>
     </head>
     <div class="desktop tool">
         <div id="tool-head">
-            <a class="action" href="bulk_c.html">Switch to C</a>
-            <h1 class="head-txt">Bulk Print - <span>B Size</span></h1>
+            <a class="action" href="bulk_b.html">Switch to B</a>
+            <h1 class="head-txt">Bulk Print - <span>C Size</span></h1>
         </div>
         <input type="text" id="stor-input">
         <button class="action" onclick="load()">LOAD JSON</button>
         <button class="action" onclick="window.print()">Print</button>
     </div>
 
-    <template id="b-sign">
+    <template id="c-sign">
         <div class="print-page">
         <div id="outline">
             <header class="noPrint">Everyone <span>Loves to Save</span></header>
@@ -35,12 +35,12 @@
             </div>
             <footer>
                 <div id="unitBox">
-                    <span style="font-family: 'Trade Gothic Bold Condensed';font-size:25px">UNIT PRICE</span>
+                    <span style="font-family: 'Trade Gothic Bold Condensed';font-size:16px">UNIT PRICE</span>
                     <div id="unitPriceBox">19.99</div>
                     <div id="unitType">PER POUND</div>
                 </div>
                 <div id="rightBox">
-                    <div id="mustBuy" style="height: 25px">
+                    <div id="mustBuy" style="height: 20px">
 			<div id="MustBuyInner"></div>
 			<div id="LBOption">lb.</div>
 
@@ -77,7 +77,7 @@
 
     <script>
         const print_container = document.getElementById("print-container")
-        const sign_template = document.getElementById("b-sign")
+        const sign_template = document.getElementById("c-sign")
 
         function create_sign(element){
             const newSign = sign_template.content.cloneNode(true);
@@ -111,8 +111,8 @@
             if(!perLb){
                 newSign.querySelector("#LBOption").style.display = "None"
                 newSign.querySelector("#youSavePriceLb").style.display = "None"
-            }         
-               else{
+            }
+            else{
                 newSign.querySelector("#retail").innerHTML = retailPrice + '/lb.';
             }
 
@@ -120,19 +120,20 @@
             switch(priceType){
                 case 'cents':
                     newSign.querySelector("#priceBeforeDecimal").innerHTML = salePrice;
-                    newSign.querySelector("#priceBeforeDecimal").style.width = "100%";
+                    newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
                     newSign.querySelector("#priceAfterDecimal").style.display = "none"
                     newSign.querySelector("#LBOption").style.top = "-15px"
                     break;
                 case 'dollarCents':
                     newSign.querySelector("#priceBeforeDecimal").innerHTML = salePrice.split('.')[0]
+                    newSign.querySelector("#priceBeforeDecimal").style.width = "69%"
                     newSign.querySelector("#priceAfterDecimal").innerHTML = salePrice.split('.')[1]
                     break;
                 case 'forOne':
                 case 'forTwo': 
-                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<span class="xforxval">${XforXVal}/</span><span style="font-size:140px;vertical-align:top;position:relative;top:40px">$</span>${salePrice}`;
-                    newSign.querySelector("#priceBeforeDecimal").style.width = "100%";
-                    newSign.querySelector("#priceBeforeDecimal").style.fontSize = "280px"
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<span class="xforxval">${XforXVal}/</span><span style="font-size:90px;vertical-align:top;position:relative;top:40px">$</span>${salePrice}`;
+                    newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
+                    newSign.querySelector("#priceBeforeDecimal").style.fontSize = "162px"
                     newSign.querySelector("#priceAfterDecimal").style.display = "none"
                     newSign.querySelector("#LBOption").style.top = "-15px"
                     newSign.querySelector("#whenYouBuy").style.display = "block"
@@ -142,9 +143,9 @@
                     newSign.querySelector("#youSavePriceAlt").innerHTML = ((retailPrice - salePrice/XforXVal)*XforXVal).toFixed(2).toString().split('.')[1];
                     break;
                 case 'ten':
-                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<span class="xforxval">10/</span><span style="font-size:140px;vertical-align:top;position:relative;top:40px">$</span>10`;
-                    newSign.querySelector("#priceBeforeDecimal").style.width = "100%";
-                    newSign.querySelector("#priceBeforeDecimal").style.fontSize = "280px"
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<span class="xforxval">10/</span><span style="font-size:80px;vertical-align:top;position:relative;top:40px">$</span>10`;
+                    newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
+                    newSign.querySelector("#priceBeforeDecimal").style.fontSize = "162px"
                     newSign.querySelector("#priceAfterDecimal").style.display = "none"
                     newSign.querySelector("#LBOption").style.top = "-15px"
                     newSign.querySelector("#whenYouBuy").style.display = "block"
@@ -156,7 +157,7 @@
                     break;
                 case 'bogo':
                     newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
-                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<img src="https://tdzie.github.io/QuickSign/images/bogo.jpg" height="260" width="540">`
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<img src="https://tdzie.github.io/QuickSign/images/bogo.jpg" height="140" width="350">`
                     newSign.querySelector("#priceAfterDecimal").style.display = "none"
                 
                     newSign.querySelector("#whenYouBuy").style.display = "block"
@@ -168,7 +169,7 @@
                     break;
                 case 'b2g1':
                     newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
-                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<img src="https://tdzie.github.io/QuickSign/images/b2g1.jpg" height="260" width="540">`
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<img src="https://tdzie.github.io/QuickSign/images/b2g1.jpg" height="140" width="350">`
                     newSign.querySelector("#priceAfterDecimal").style.display = "none"
                 
                     newSign.querySelector("#whenYouBuy").style.display = "block"

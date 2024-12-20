@@ -10,10 +10,7 @@
 div#outline > header {
     background-color: black;
     color: white;
-    text-align: center;
-    font-size: 50px;
     padding: 6px;
-    grid-area: a;
     font-family: "Clarendon";
     font-weight:100;
 }
@@ -23,20 +20,13 @@ div#outline > header {
         font-family: 'Trade Gothic Condensed';
     }
 #altDescription {
-    font-size: 17px;
-    padding-left: 10px;
-    height: 15px;
     font-weight: 100;
-    width: 600px;
     font-family: "Trade Gothic Condensed";
     font-weight: lighter;
 }
 
 #saleDate {
-    font-size: 15px;
-    padding-left: 10px;
-    padding-top: 30px;
-    height: 15px;
+    padding-top: 10px;
     font-family: "Trade Gothic Condensed";
 }
 #unitType {
@@ -44,40 +34,33 @@ div#outline > header {
     font-weight: normal;
     font-family: "Trade Gothic Bold Condensed";
 }
-#youSavePriceMain {
-    color: white;
-    font-size: 60px;
-    text-align: right;
-    margin-top: -6px;
-}
 
-#youSavePriceAlt {
-    color: white;
-    font-size: 36px;
-}
+
 #youSavePriceLb {
     color: white;
     font-size: 15px;
     position: absolute;
     font-family: "Trade Gothic Bold Condensed";
-    left: 180px;
-    top: 40px;
+    left: 110px;
+    top: 20px;
 }
 
 #retail {
     display: inline-block;
-    font-size: 21px;
+    text-align: center;
+    font-size: 16px;
     position: absolute;
-    left: 395px;
-    top: -4px;
+    left: 270px;
+    top: -2px;
     font-family: Ink Free;
     border-bottom: 1px solid black;
-    width:80px;
+    width:70px;
 }
 
 .retail-price{
     font-family: "Trade Gothic Condensed";
-    margin-left: 80px;
+    margin-left: 35px;
+    font-size: 12px;
 }
 #youSaveBoxDiv {
     position: relative;
@@ -90,9 +73,9 @@ div#outline > header {
 
 .with-adv{
    font-family: "Trade Gothic Bold";
-   font-size: larger;
+   font-size: 15px;
    position: relative;
-   bottom: 5px;
+   bottom: 30px;
 }
 
 .with-adv span{
@@ -104,24 +87,39 @@ div#outline > header {
     font-family: "Trade Gothic Bold";
     text-align: left;
     padding-left: 3px;
-    font-size: 27px;
+    font-size: 19px;
 }
 
 .xforxval {
-    font-size: 180px;
+    font-size: 120px;
     vertical-align: top;
     position: relative;
-    top: 27px;
+    top: 17px;
 }
 #youSaveImg {
     display: grid;
-    grid-template-columns: 78px 80px 60px 57px;
     background-color: black;
-    width: 270px;
-    height:65px
+    width: 170px;
+    height:42px;
 }
-#LBOption{
-    top:-60px;
-    font-family: "Trade Gothic Condensed";
-    font-size: 30px;
+
+#rightBox{
+    position: relative;
+    bottom:20px;
+}
+.with-adv{
+    bottom: 0px;
+}
+
+@media print {
+    div#outline{
+        page-break-before: always;
+        padding-top: calc((517px - 337px) / 2);
+        padding-bottom: calc((517px - 337px) / 2);
+        margin-left: -20px;
+    }
+
+    @page{
+        margin-top: -1.1cm;
+    }
 }
