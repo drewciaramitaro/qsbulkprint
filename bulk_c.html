@@ -92,7 +92,13 @@
             const unitAmt = element[7];
             const retailPrice = element[8];
             const XforXVal = element[9];
-            const salePrice = element[10];
+            const salePrice = element[10];       
+            var mustBuy = null;
+            var validForMustBuy = false;
+            if(element.length > 17){
+                mustBuy = element[17];
+                validForMustBuy = element[18];
+            }
 
             let priceDiff = (retailPrice - salePrice).toFixed(2);
             newSign.querySelector("#mainDescription").innerHTML = itemName
@@ -257,6 +263,10 @@
             else {
                 unitString = `${calcUnitPrice(unitAmt)}`;
                 newSign.querySelector("#unitType").innerHTML = suffix;
+            }
+
+            if(validForMustBuy && mustBuy > 1) {
+                newSign.querySelector("#MustBuyInner").innerHTML = `WHEN YOU BUY ${mustBuy}`
             }
 
             newSign.querySelector("#unitPriceBox").innerHTML = unitString;

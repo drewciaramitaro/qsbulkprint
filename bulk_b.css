@@ -125,3 +125,7 @@ div#outline > header {
     font-family: "Trade Gothic Condensed";
     font-size: 30px;
 }
+
+@page{
+    margin-top: 7%;
+}
