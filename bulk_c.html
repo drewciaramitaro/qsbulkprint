@@ -101,7 +101,7 @@
             const perLb = element[1] != "on";
             const itemName = element[2];
             const altDescription = element[3];
-            const onSaleThru = element[4];
+            var onSaleThru = element[4];
             const priceType = element[5];
             const unitType = element[6];
             const unitAmt = element[7];
@@ -113,6 +113,15 @@
             if(element.length > 17){
                 mustBuy = element[17];
                 validForMustBuy = element[18];
+            }
+            if(onSaleThru == "ON SALE THRU 10/1/2023"){
+                const today = new Date();
+                const monday = today.getDate() - today.getDay() + 1;
+                const sixth = monday + 5;
+
+                const saturday = new Date(today.setDate(sixth));
+                const formatSaturday = saturday.toLocaleDateString("en-US");
+                onSaleThru = `ON SALE THRU ${formatSaturday}`
             }
 
             let priceDiff = (retailPrice - salePrice).toFixed(2);
