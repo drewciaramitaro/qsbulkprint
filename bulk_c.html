@@ -14,7 +14,21 @@
         <button class="action" onclick="load()">LOAD JSON</button>
         <button class="action" onclick="window.print()">Print</button>
     </div>
-
+    <template id="c-section">
+        <div class="print-page section-header hidden">
+            <div id="del-section-btn">
+                - Remove Section Label
+            </div>
+            <div id="outline">
+                <div></div>
+                <input type="text" placeholder="Section Label"/>
+                <div></div>
+            </div>
+            <div id="new-section-btn">
+                + Add Section Label
+            </div>
+        </div>
+    </template>
     <template id="c-sign">
         <div class="print-page">
         <div id="outline">
@@ -83,7 +97,8 @@
             const newSign = sign_template.content.cloneNode(true);
 
             const onSale = element[0] == "onSale";
-            const perLb = element[1] == "on";
+            // mobile sign load seems to invert this?
+            const perLb = element[1] != "on";
             const itemName = element[2];
             const altDescription = element[3];
             const onSaleThru = element[4];
@@ -92,7 +107,7 @@
             const unitAmt = element[7];
             const retailPrice = element[8];
             const XforXVal = element[9];
-            const salePrice = element[10];       
+            const salePrice = element[10].toString();       
             var mustBuy = null;
             var validForMustBuy = false;
             if(element.length > 17){
@@ -125,7 +140,12 @@
             // Change the price tag style
             switch(priceType){
                 case 'cents':
-                    newSign.querySelector("#priceBeforeDecimal").innerHTML = salePrice;
+                if (salePrice.startsWith('0.')){
+                        newSign.querySelector("#priceBeforeDecimal").innerHTML = salePrice.replace('0.', '.');
+                    }
+                    else{
+                        newSign.querySelector("#priceBeforeDecimal").innerHTML = salePrice;
+                    }
                     newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
                     newSign.querySelector("#priceAfterDecimal").style.display = "none"
                     newSign.querySelector("#LBOption").style.top = "-15px"
@@ -257,7 +277,7 @@
                     unitString += `${size} ${unitSizeType}/${calcUnitPrice(size)} ${suffix}<br/>`
                 });
                 newSign.querySelector("#unitType").style.display = "None";
-                newSign.querySelector("#unitPriceBox").style.fontSize = "19px";
+                newSign.querySelector("#unitPriceBox").style.fontSize = "13px";
                 newSign.querySelector("#unitPriceBox").style.fontFamily = "Trade Gothic Condensed"
             }
             else {
@@ -270,6 +290,15 @@
             }
 
             newSign.querySelector("#unitPriceBox").innerHTML = unitString;
+            sectionHeader = document.getElementById('c-section').content.cloneNode(true);
+
+            sectionHeader.querySelector("#new-section-btn").addEventListener('click', function(){
+                this.parentElement.classList.remove('hidden')
+            })
+            sectionHeader.querySelector("#del-section-btn").addEventListener('click', function(){
+                this.parentElement.classList.add('hidden')
+            })
+            print_container.appendChild(sectionHeader)
             print_container.appendChild(newSign);
         }
 

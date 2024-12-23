@@ -19,6 +19,11 @@ div#outline > header {
         color: green;
         font-family: 'Trade Gothic Condensed';
     }
+
+div#outline > footer{
+    grid-template-columns: 160px auto;
+}
+
 #altDescription {
     font-weight: 100;
     font-family: "Trade Gothic Condensed";
@@ -30,7 +35,7 @@ div#outline > header {
     font-family: "Trade Gothic Condensed";
 }
 #unitType {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: normal;
     font-family: "Trade Gothic Bold Condensed";
 }
@@ -52,7 +57,7 @@ div#outline > header {
     position: absolute;
     left: 270px;
     top: -2px;
-    font-family: Ink Free;
+    font-family: "Trade Gothic Condensed";
     border-bottom: 1px solid black;
     width:70px;
 }
@@ -87,7 +92,7 @@ div#outline > header {
     font-family: "Trade Gothic Bold";
     text-align: left;
     padding-left: 3px;
-    font-size: 19px;
+    font-size: 18px;
 }
 
 .xforxval {
@@ -111,6 +116,19 @@ div#outline > header {
     bottom: 0px;
 }
 
+.section-header #outline input{
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Clarendon';
+    font-size: 3rem;
+    height: 100%;
+    width: 98%;
+    scale: 0.9;
+}
+
+.section-header.hidden #new-section-btn{
+    margin-bottom: -10px;
+}
 @media print {
     div#outline{
         page-break-before: always;
