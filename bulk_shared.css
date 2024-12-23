@@ -108,6 +108,10 @@ body{
     display: none;
 }
 @media screen {
+    #unitBox{    
+        background-color: orange;
+    }
+
     #outline{
         margin-bottom: 15px;
     }
