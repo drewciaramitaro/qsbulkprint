@@ -129,6 +129,13 @@ div#outline > footer{
 .section-header.hidden #new-section-btn{
     margin-bottom: -10px;
 }
+
+@media screen {
+    #outline{
+        margin-left: 0px;
+    }
+}
+
 @media print {
     div#outline{
         page-break-before: always;
