@@ -70,7 +70,7 @@ div#outline > header {
     position: absolute;
     left: 395px;
     top: -4px;
-    font-family: Ink Free;
+    font-family: "Trade Gothic Condensed";
     border-bottom: 1px solid black;
     width:80px;
 }
@@ -124,6 +124,19 @@ div#outline > header {
     top:-60px;
     font-family: "Trade Gothic Condensed";
     font-size: 30px;
+}
+#unitPriceBox{
+    font-size: 60px;
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+
+#mustBuy{
+    margin-bottom: 14px;
+}
+
+#rightBox{
+    margin-top: -12px;
 }
 
 @page{

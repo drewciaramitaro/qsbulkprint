@@ -85,12 +85,81 @@ body{
 .action:hover{
     background-color: rgb(82, 82, 82);
 }
+
+.section-header #outline input{
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Clarendon';
+    font-size: 3rem;
+    height: 100%;
+    scale: 0.9;
+}
+
+.section-header #outline{
+    grid-template-rows: 10% 80% 10%;
+}
+
+
+.section-header.hidden #outline{
+    display: none; 
+}
+
+.section-header:not(.section-header.hidden) #new-section-btn{
+    display: none;
+}
+@media screen {
+    #outline{
+        margin-bottom: 15px;
+    }
+
+    .section-header.hidden #new-section-btn{
+        opacity: 0;
+        cursor: pointer;
+        text-align: center;
+        color:rgb(255, 255, 255);
+        margin:5px;
+        background-color: rgba(255, 255, 255, 0.219);
+        font-family: 'Trade Gothic Condensed';
+    }
+    .section-header.hidden #new-section-btn:hover{
+        opacity: 1;
+    }
+
+    .section-header.hidden #del-section-btn{
+        display: none;
+    }
+
+    .section-header:not(.section-header.hidden) #del-section-btn{
+        cursor: pointer;
+        text-align: center;
+        color:rgb(255, 255, 255);
+        margin:5px;
+        background-color: rgba(255, 255, 255, 0.094);
+        font-family: 'Trade Gothic Condensed';
+    }
+    .section-header:not(.section-header.hidden) #del-section-btn:hover{
+
+        background-color: rgba(255, 255, 255, 0.219);
+    }
+}
+
+
 @media print {
     .print-page{
         page-break-after: always;
     } 
 
     .tool{
+        display: none;
+    }
+
+    #new-section-btn{
+        display: none;
+    }
+    #del-section-btn{
+        display: none;
+    }
+    .section-header.hidden{
         display: none;
     }
 }
