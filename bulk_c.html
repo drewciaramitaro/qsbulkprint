@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://tdzie.github.io/QuickSign/styles/CSize.css"/>
-        <link rel="stylesheet" href="bulk_shared.css"/>
-        <link rel="stylesheet" href="bulk_c.css"/>
+        <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
+        <link rel="stylesheet" href="https://tdzie.github.io/QuickSign/styles/CSize.css?v=1001"/>
+        <link rel="stylesheet" href="bulk_shared.css?v=1001"/>
+        <link rel="stylesheet" href="bulk_c.css?v=1001"/>
     </head>
     <div class="desktop tool">
         <div id="tool-head">
@@ -11,7 +12,11 @@
             <h1 class="head-txt">Bulk Print - <span>C Size</span></h1>
         </div>
         <input type="text" id="stor-input">
-        <button class="action" onclick="load()">LOAD JSON</button>
+        <!--         
+        <button class="action" onclick="load(true)">Import Mobile / Section Scan</button>
+        <button class="action" onclick="load(false)">Import from Favorites</button> 
+        -->
+        <button class="action" onclick="load(true)">Load Signs</button>
         <button class="action" onclick="window.print()">Print</button>
     </div>
     <template id="c-section">
@@ -95,33 +100,20 @@
 
         function create_sign(element){
             const newSign = sign_template.content.cloneNode(true);
+            const [_onSale, _perLb, itemName, altDescription, rawOnSaleThru, priceType, unitType, unitAmt, retailPrice, XforXVal, salePriceRaw, ...mobileLoadData] = element;
 
-            const onSale = element[0] == "onSale";
-            // mobile sign load seems to invert this?
-            const perLb = element[1] != "on";
-            const itemName = element[2];
-            const altDescription = element[3];
-            var onSaleThru = element[4];
-            const priceType = element[5];
-            const unitType = element[6];
-            const unitAmt = element[7];
-            const retailPrice = element[8];
-            const XforXVal = element[9];
-            const salePrice = element[10].toString();       
-            var mustBuy = null;
-            var validForMustBuy = false;
-            if(element.length > 17){
-                mustBuy = element[17];
-                validForMustBuy = element[18];
-            }
+            const onSale = _onSale === "onSale";
+            const perLb = _perLb !== "off";
+            let onSaleThru = rawOnSaleThru;
+            const salePrice = parseFloat(salePriceRaw);
+            let mustBuy = mobileLoadData[0] || null;
+            let validForMustBuy = mobileLoadData[1] || false;
+
+            // Mobile load always sets it to 10/1/2023, so let's update it here
             if(onSaleThru == "ON SALE THRU 10/1/2023"){
                 const today = new Date();
-                const monday = today.getDate() - today.getDay() + 1;
-                const sixth = monday + 5;
-
-                const saturday = new Date(today.setDate(sixth));
-                const formatSaturday = saturday.toLocaleDateString("en-US");
-                onSaleThru = `ON SALE THRU ${formatSaturday}`
+                const saturday = new Date(today.setDate(today.getDate() - today.getDay() + 6));
+                onSaleThru = `ON SALE THRU ${saturday.toLocaleDateString("en-US")}`;
             }
 
             let priceDiff = (retailPrice - salePrice).toFixed(2);
@@ -134,9 +126,10 @@
                 newSign.querySelector("#advCardDiv").style.display = "None"
             }
             else{
-                newSign.querySelector("#youSavePriceMain").innerHTML = priceDiff.toString().split('.')[0];
+                const [saveDol, saveCent] = priceDiff.toString().split('.')
+                newSign.querySelector("#youSavePriceMain").innerHTML = saveDol;
                 newSign.querySelector("#retail").innerHTML = retailPrice;
-                newSign.querySelector("#youSavePriceAlt").innerHTML = priceDiff.toString().split('.')[1];
+                newSign.querySelector("#youSavePriceAlt").innerHTML = saveCent;
             }
             if(!perLb){
                 newSign.querySelector("#LBOption").style.display = "None"
@@ -149,24 +142,20 @@
             // Change the price tag style
             switch(priceType){
                 case 'cents':
-                if (salePrice.startsWith('0.')){
-                        newSign.querySelector("#priceBeforeDecimal").innerHTML = salePrice.replace('0.', '.');
-                    }
-                    else{
-                        newSign.querySelector("#priceBeforeDecimal").innerHTML = salePrice;
-                    }
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = salePrice < 1 ? salePrice.toString().replace("0.", ".") : salePrice;
                     newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
                     newSign.querySelector("#priceAfterDecimal").style.display = "none"
                     newSign.querySelector("#LBOption").style.top = "-15px"
                     break;
                 case 'dollarCents':
-                    newSign.querySelector("#priceBeforeDecimal").innerHTML = salePrice.split('.')[0]
+                    const [dollars, cents] = salePrice.split('.')
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = dollars
                     newSign.querySelector("#priceBeforeDecimal").style.width = "69%"
-                    newSign.querySelector("#priceAfterDecimal").innerHTML = salePrice.split('.')[1]
+                    newSign.querySelector("#priceAfterDecimal").innerHTML = cents
                     break;
                 case 'forOne':
                 case 'forTwo': 
-                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<span class="xforxval">${XforXVal}/</span><span style="font-size:90px;vertical-align:top;position:relative;top:40px">$</span>${salePrice}`;
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<span class="xforxval">${XforXVal}/</span><span style="font-size:90px;vertical-align:top;position:relative;top:23px">$</span>${salePrice}`;
                     newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
                     newSign.querySelector("#priceBeforeDecimal").style.fontSize = "162px"
                     newSign.querySelector("#priceAfterDecimal").style.display = "none"
@@ -178,7 +167,7 @@
                     newSign.querySelector("#youSavePriceAlt").innerHTML = ((retailPrice - salePrice/XforXVal)*XforXVal).toFixed(2).toString().split('.')[1];
                     break;
                 case 'ten':
-                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<span class="xforxval">10/</span><span style="font-size:80px;vertical-align:top;position:relative;top:40px">$</span>10`;
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<span class="xforxval">10/</span><span style="font-size:80px;vertical-align:top;position:relative;top:23px">$</span>10`;
                     newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
                     newSign.querySelector("#priceBeforeDecimal").style.fontSize = "162px"
                     newSign.querySelector("#priceAfterDecimal").style.display = "none"
@@ -199,7 +188,6 @@
                     newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY 2`
                     
                     newSign.querySelector("#youSavePriceMain").innerHTML = retailPrice.toString().split('.')[0];
-                    
                     newSign.querySelector("#youSavePriceAlt").innerHTML = retailPrice.toString().split('.')[1];
                     break;
                 case 'b2g1':
@@ -311,12 +299,27 @@
             print_container.appendChild(newSign);
         }
 
-        function load(){
-            //const input_json = localStorage.getItem("userBsignsFromMoblie");
+        function load(mobile){
+            /*if(mobile){
+                const input_json = localStorage.getItem("userCSignsFromMobile");
+            }
+            else{
+                const input_json = localStorage.getItem("userFavorites");
+            }*/
+
             const input_json = document.getElementById("stor-input").value;
             const jsonData = JSON.parse(input_json);
             
             jsonData.forEach(element => {
+                // mobile load switches these
+                if(mobile){
+                    if (element[1] == 'on'){
+                        element[1] = 'off'
+                    }
+                    else{
+                        element[1] = 'on'
+                    }
+                }
                 create_sign(element);
             });
         }

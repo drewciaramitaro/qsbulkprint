@@ -107,6 +107,7 @@ body{
 .section-header:not(.section-header.hidden) #new-section-btn{
     display: none;
 }
+
 @media screen {
     #unitBox{    
         background-color: orange;
