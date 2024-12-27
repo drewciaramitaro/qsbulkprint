@@ -4,24 +4,34 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://tdzie.github.io/QuickSign/styles/CSize.css?v=1001" />
-    <link rel="stylesheet" href="bulk_shared.css?v=1003" />
+    <link rel="stylesheet" href="bulk_shared.css?v=1004" />
     <link rel="stylesheet" href="bulk_c.css?v=1001" />
 </head>
 
 <body>
-    <div class="desktop tool">
-        <div id="tool-head">
+    <fieldset class="desktop tool">
+        <legend>
+            <div id="tool-head">
+                <h1 class="head-txt" style="margin: 0;">Bulk Print - <span>C Size</span></h1>
+            </div>
+        </legend>
+        <div style="margin:auto;margin-top: -15px;margin-bottom:12px; width: fit-content;">
             <a class="action" href="bulk_b.html">Switch to B</a>
-            <h1 class="head-txt">Bulk Print - <span>C Size</span></h1>
         </div>
-        <input type="text" id="stor-input">
-        <!--         
-        <button class="action" onclick="load(true)">Import Mobile / Section Scan</button>
-        <button class="action" onclick="load(false)">Import from Favorites</button> 
-        -->
-        <button class="action" onclick="load(true)">Load Signs</button>
-        <button class="action" onclick="window.print()">Print</button>
-    </div>
+
+        <div style="display: flex;flex-direction: row;align-items: center;gap:8px">
+            <input type="text" id="stor-input" placeholder="Paste Sign Information Here">
+
+            <!--         
+            <button class="action" onclick="load(true)">Import Mobile / Section Scan</button>
+            <button class="action" onclick="load(false)">Import from Favorites</button> 
+            -->
+            <button class="action" onclick="load(true)">Load Signs</button>
+            <button class="action" onclick="window.print()">Print</button>
+        </div>
+
+    </fieldset>
+
     <template id="c-section">
         <div class="print-page section-header hidden">
             <div id="del-section-btn">
