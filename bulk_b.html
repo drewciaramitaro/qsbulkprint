@@ -299,12 +299,12 @@
 
             newSign.querySelector("#unitPriceBox").innerHTML = unitString;
 
-            newSign.querySelector("#del-sign-btn").addEventListener('click', function(){
+            newSign.querySelector("#del-sign-btn").addEventListener('click', function () {
                 // it may be crazy, but this works to remove the sign and the header attachment
-                if(confirm("Are you sure you want to delete this sign? This is not reversable! You will have to re-import the signs to get this one back.")){
+                if (confirm("Are you sure you want to delete this sign? This is not reversable! You will have to re-import the signs to get this one back.")) {
                     thisSignIndex = Array.prototype.indexOf.call(this.parentElement.parentElement.parentElement.parentElement.children, this.parentElement.parentElement.parentElement)
-                    console.log(this.parentElement.parentElement.parentElement.parentElement.children[thisSignIndex-1])
-                    this.parentElement.parentElement.parentElement.parentElement.children[thisSignIndex-1].remove()
+                    console.log(this.parentElement.parentElement.parentElement.parentElement.children[thisSignIndex - 1])
+                    this.parentElement.parentElement.parentElement.parentElement.children[thisSignIndex - 1].remove()
                     this.parentElement.parentElement.parentElement.remove();
                 }
             })
@@ -324,33 +324,33 @@
         }
 
         function load(mobile) {
-            try{
-            /*if(mobile){
-                const input_json = localStorage.getItem("userBSignsFromMobile");
-            }
-            else{
-                const input_json = localStorage.getItem("userFavorites");
-            }*/
-            const input_json = document.getElementById("stor-input").value;
-            const jsonData = JSON.parse(input_json);
-
-            jsonData.forEach(element => {
-                // mobile load switches these
-                if (mobile) {
-                    if (element[1] == 'on') {
-                        element[1] = 'off'
-                    }
-                    else {
-                        element[1] = 'on'
-                    }
+            try {
+                /*if(mobile){
+                    const input_json = localStorage.getItem("userBSignsFromMobile");
                 }
-                create_sign(element);
-            });
+                else{
+                    const input_json = localStorage.getItem("userFavorites");
+                }*/
+                const input_json = document.getElementById("stor-input").value;
+                const jsonData = JSON.parse(input_json);
+
+                jsonData.forEach(element => {
+                    // mobile load switches these
+                    if (mobile) {
+                        if (element[1] == 'on') {
+                            element[1] = 'off'
+                        }
+                        else {
+                            element[1] = 'on'
+                        }
+                    }
+                    create_sign(element);
+                });
+            }
+            catch (error) {
+                show_error_popup(error)
+            }
         }
-        catch (error){
-            show_error_popup(error)
-        }
-        }        
         function show_error_popup(msg) {
             document.getElementById("error-popup-wrap").classList.add("showing")
             document.getElementById("error-msg").innerHTML = msg
@@ -363,7 +363,7 @@
         <div class="error-popup">
             <h3>Error</h3>
             <p id="error-msg">Error Message.</p>
-            
+
             <button onclick="hide_error_popup()" class="action" id="close-error">OK</button>
         </div>
     </div>
