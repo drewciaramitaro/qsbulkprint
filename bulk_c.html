@@ -21,7 +21,7 @@
         </div>
 
         <div style="display: flex;flex-direction: row;align-items: center;gap:8px">
-            <input type="text" id="stor-input" autocomplete="off" placeholder="Paste Sign Information Here">
+            <input type="text" id="stor-input" autocomplete="off" placeholder="Click Load or Paste Sign Information Here">
 
             <!--         
             <button class="action" onclick="load(true)">Import Mobile / Section Scan</button>
@@ -326,34 +326,51 @@
             print_container.appendChild(newSign);
         }
 
-        function load(mobile) {
-            try {
+async function load(mobile) {
+    try {
                 /*if(mobile){
-                    const input_json = localStorage.getItem("userCSignsFromMobile");
+                    const input_json = localStorage.getItem("userBSignsFromMobile");
                 }
                 else{
                     const input_json = localStorage.getItem("userFavorites");
                 }*/
-                const input_json = document.getElementById("stor-input").value;
-                const jsonData = JSON.parse(input_json);
 
-                jsonData.forEach(element => {
-                    // mobile load switches these
-                    if (mobile) {
-                        if (element[1] == 'on') {
-                            element[1] = 'off'
-                        }
-                        else {
-                            element[1] = 'on'
-                        }
-                    }
-                    create_sign(element);
-                });
-            }
-            catch (error) {
-                show_error_popup(error)
+
+        let input_json = document.getElementById("stor-input").value;
+
+    
+        if (!input_json.trim()) {
+    
+            try {
+                input_json = await navigator.clipboard.readText();
+                if (!input_json.trim()) {
+                    throw new Error("Clipboard is empty or contains invalid data.");
+                }
+            } catch (clipboardError) {
+                throw new Error("Failed to read from clipboard: " + clipboardError.message);
             }
         }
+
+        // Parse the JSON input
+        const jsonData = JSON.parse(input_json);
+
+        jsonData.forEach(element => {
+            // Mobile load switches these
+            if (mobile) {
+                if (element[1] === 'on') {
+                    element[1] = 'off';
+                } else {
+                    element[1] = 'on';
+                }
+            }
+            create_sign(element);
+        });
+    } catch (error) {
+        show_error_popup(error);
+    }
+} 
+
+
         function show_error_popup(msg) {
             document.getElementById("error-popup-wrap").classList.add("showing")
             document.getElementById("error-msg").innerHTML = msg
