@@ -134,7 +134,7 @@
             }
 
             function setSavings(priceDifference) {
-                priceDifference = priceDifference.toFixed(2)
+                priceDifference = parseFloat(priceDifference).toFixed(2)
                 if(priceDifference >= 1.0){
                     newSign.querySelector("#youSavePriceMain").innerHTML = priceDifference.toString().split('.')[0];
                     newSign.querySelector("#youSavePriceAlt").innerHTML = priceDifference.toString().split('.')[1];
