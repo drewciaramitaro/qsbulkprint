@@ -222,6 +222,28 @@
                     newSign.querySelector("#youSavePriceMain").innerHTML = retailPrice.toString().split('.')[0];
                     newSign.querySelector("#youSavePriceAlt").innerHTML = retailPrice.toString().split('.')[1];
                     break;
+                case 'b2g2':
+                    newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<img src="images/b2g2.svg" height="140" width="350">`
+                    newSign.querySelector("#priceAfterDecimal").style.display = "none"
+
+                    newSign.querySelector("#whenYouBuy").style.display = "block"
+                    newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY 4`
+
+                    newSign.querySelector("#youSavePriceMain").innerHTML = (retailPrice*2).toString().split('.')[0];
+                    newSign.querySelector("#youSavePriceAlt").innerHTML = (retailPrice*2).toString().split('.')[1];
+                    break;
+                case 'b1g2':
+                    newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = `<img src="images/b1g2.svg" height="140" width="350">`
+                    newSign.querySelector("#priceAfterDecimal").style.display = "none"
+
+                    newSign.querySelector("#whenYouBuy").style.display = "block"
+                    newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY 3`
+
+                    newSign.querySelector("#youSavePriceMain").innerHTML = (retailPrice*2).toString().split('.')[0];
+                    newSign.querySelector("#youSavePriceAlt").innerHTML = (retailPrice*2).toString().split('.')[1];
+                    break;
             }
 
 
@@ -239,7 +261,13 @@
                         _salePrice = retailPrice / 2;
                         break;
                     case "b2g1":
-                        _salePrice = retailPrice / 3;
+                        _salePrice = retailPrice * 0.75;
+                        break;
+                    case "b2g2":
+                        _salePrice = retailPrice / 2;
+                        break;
+                    case "b1g2":
+                        _salePrice = retailPrice /3;
                         break;
                 }
 
@@ -268,7 +296,7 @@
             }
             // unit price
             let unitString = "";
-            let suffix = "per lb.";
+            let suffix = "each";
             let unitSizeType = 'oz';
 
             switch (unitType) {
