@@ -137,7 +137,19 @@
                 onSaleThru = `ON SALE THRU ${saturday.toLocaleDateString("en-US")}`;
             }
 
-            let priceDiff = (retailPrice - salePrice).toFixed(2);
+            function setSavings(priceDifference) {
+                priceDifference = priceDifference.toFixed(2)
+                if(priceDifference >= 1.0){
+                    newSign.querySelector("#youSavePriceMain").innerHTML = priceDifference.toString().split('.')[0];
+                    newSign.querySelector("#youSavePriceAlt").innerHTML = priceDifference.toString().split('.')[1];
+                }
+                else{
+                    
+                    newSign.querySelector("#youSavePriceMain").innerHTML = '.'+priceDifference.toString().split('.')[1];
+                    newSign.querySelector("#youSavePriceAlt").innerHTML = '';
+                }
+            }
+            let priceDiff = (retailPrice - salePrice);
             newSign.querySelector("#mainDescription").innerHTML = itemName
             newSign.querySelector("#altDescription").innerHTML = altDescription
             newSign.querySelector("#saleDate").innerHTML = onSaleThru
@@ -147,10 +159,8 @@
                 newSign.querySelector("#advCardDiv").style.display = "None"
             }
             else {
-                const [saveDol, saveCent] = priceDiff.toString().split('.')
-                newSign.querySelector("#youSavePriceMain").innerHTML = saveDol;
+                setSavings(priceDiff);
                 newSign.querySelector("#retail").innerHTML = retailPrice;
-                newSign.querySelector("#youSavePriceAlt").innerHTML = saveCent;
             }
             if (!perLb) {
                 newSign.querySelector("#LBOption").style.display = "None"
@@ -182,9 +192,7 @@
                     newSign.querySelector("#LBOption").style.top = "-15px"
                     newSign.querySelector("#whenYouBuy").style.display = "block"
                     newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY ${XforXVal}`
-                    newSign.querySelector("#youSavePriceMain").innerHTML = ((retailPrice - salePrice / XforXVal) * XforXVal).toFixed(2).toString().split('.')[0];
-
-                    newSign.querySelector("#youSavePriceAlt").innerHTML = ((retailPrice - salePrice / XforXVal) * XforXVal).toFixed(2).toString().split('.')[1];
+                    setSavings((retailPrice - salePrice / XforXVal) * XforXVal);
                     break;
                 case 'ten':
                     newSign.querySelector("#priceBeforeDecimal").innerHTML = `<span class="xforxval">10/</span><span style="font-size:140px;vertical-align:top;position:relative;top:40px">$</span>10`;
@@ -194,10 +202,7 @@
                     newSign.querySelector("#LBOption").style.top = "-15px"
                     newSign.querySelector("#whenYouBuy").style.display = "block"
                     newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY 10`
-                    const priceDiff = (retailPrice * 10 - 10).toFixed(2);
-                    newSign.querySelector("#youSavePriceMain").innerHTML = priceDiff.toString().split('.')[0];
-
-                    newSign.querySelector("#youSavePriceAlt").innerHTML = priceDiff.toString().split('.')[1];
+                    setSavings(retailPrice * 10 - 10);
                     break;
                 case 'bogo':
                     newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
@@ -206,10 +211,7 @@
 
                     newSign.querySelector("#whenYouBuy").style.display = "block"
                     newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY 2`
-
-                    newSign.querySelector("#youSavePriceMain").innerHTML = retailPrice.toString().split('.')[0];
-
-                    newSign.querySelector("#youSavePriceAlt").innerHTML = retailPrice.toString().split('.')[1];
+                    setSavings(retailPrice)
                     break;
                 case 'b2g1':
                     newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
@@ -218,9 +220,7 @@
 
                     newSign.querySelector("#whenYouBuy").style.display = "block"
                     newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY 3`
-
-                    newSign.querySelector("#youSavePriceMain").innerHTML = retailPrice.toString().split('.')[0];
-                    newSign.querySelector("#youSavePriceAlt").innerHTML = retailPrice.toString().split('.')[1];
+                    setSavings(retailPrice)
                     break;
                 case 'b2g2':
                     newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
@@ -229,9 +229,7 @@
 
                     newSign.querySelector("#whenYouBuy").style.display = "block"
                     newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY 4`
-
-                    newSign.querySelector("#youSavePriceMain").innerHTML = (retailPrice*2).toString().split('.')[0];
-                    newSign.querySelector("#youSavePriceAlt").innerHTML = (retailPrice*2).toString().split('.')[1];
+                    setSavings(retailPrice*2)
                     break;
                 case 'b1g2':
                     newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
@@ -240,9 +238,7 @@
 
                     newSign.querySelector("#whenYouBuy").style.display = "block"
                     newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY 3`
-
-                    newSign.querySelector("#youSavePriceMain").innerHTML = (retailPrice*2).toString().split('.')[0];
-                    newSign.querySelector("#youSavePriceAlt").innerHTML = (retailPrice*2).toString().split('.')[1];
+                    setSavings(retailPrice*2)
                     break;
             }
 
