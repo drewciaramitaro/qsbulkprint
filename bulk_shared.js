@@ -12,7 +12,6 @@ async function load(mobile) {
 
 
         if (!input_json.trim()) {
-
             try {
                 input_json = await navigator.clipboard.readText();
                 if (!input_json.trim()) {
@@ -25,8 +24,15 @@ async function load(mobile) {
 
         // Parse the JSON input
         const jsonData = JSON.parse(input_json);
-
+        let add_section_header = null;
         jsonData.forEach(element => {
+            // Check if we've defined a section header in the QuickSign screen
+            if(element[0] === 'bulk_header')
+            {
+                // Save this to be added with the next sign
+                add_section_header = element[1];
+                return;
+            }
             // Mobile load switches these
             if (mobile) {
                 if (element[1] === 'on') {
@@ -35,10 +41,15 @@ async function load(mobile) {
                     element[1] = 'on';
                 }
             }
-            create_sign(element);
+            // call the create_sign function from bulk_X.html
+            create_sign(element, add_section_header);
+            // reset this to null now that we've used the header already
+            add_section_header = null;
+        
         });
     } catch (error) {
         show_error_popup(error);
+        throw(error);
     }
 }
 

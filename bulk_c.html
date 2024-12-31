@@ -21,7 +21,8 @@
         </div>
 
         <div style="display: flex;flex-direction: row;align-items: center;gap:8px">
-            <input type="text" id="stor-input" autocomplete="off" placeholder="Click Load or Paste Sign Information Here">
+            <input type="text" id="stor-input" autocomplete="off"
+                placeholder="Click Load or Paste Sign Information Here">
 
             <!--         
             <button class="action" onclick="load(true)">Import Mobile / Section Scan</button>
@@ -40,7 +41,7 @@
             </div>
             <div id="outline">
                 <div></div>
-                <input type="text" placeholder="Section Label" />
+                <input id="sectionLabel" type="text" placeholder="Section Label" />
                 <div></div>
             </div>
             <div id="new-section-btn">
@@ -111,11 +112,64 @@
         </div>
     </div>
 
+    <div id="error-popup-wrap" class="error-popup-wrapper">
+        <div class="error-popup">
+            <h3>Error</h3>
+            <p id="error-msg">Error Message.</p>
+
+            <button onclick="hide_error_popup()" class="action" id="close-error">OK</button>
+        </div>
+    </div>
+
+    <div id="print-dialog">
+        <div class="error-popup">
+            <h3>Confirm Print</h3>
+            <p>You are about to print <span id="print-count"></span> signs.</p>
+            <p>Make sure you load at least <span id="print-count"></span> signs before confirming.</p>
+
+            <h3>Important!</h3>
+            <h4>The following options MUST be set or your signs will not print correctly.</h4>
+            <div>
+                <div>
+                    <ul>
+                        <li>
+                            <p>Layout: <span>Portrait</span></p>
+                        </li>
+                        <p style="text-align: left;"><span>More Settings <svg width="20" height="20" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg" class="c0183">
+                                    <path
+                                        d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 01-.78 0L4.15 8.35a.5.5 0 01.7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0z">
+                                    </path>
+                                </svg></span></p>
+                        <li>
+                            <p>Paper Size: <span>Letter</span></p>
+                        </li>
+                        <li>
+                            <p>Scale (%): <span>Actual size</span></p>
+                        </li>
+                        <li>
+                            <p>Margins: <span>Default</span></p>
+                        </li>
+                        <li>
+                            <p>Options: Headers and Footers: <span>UNCHECKED</span></p>
+                        </li>
+                        <li>
+                            <p>Options: Background Graphics: <span>UNCHECKED</span></p>
+                        </li>
+                    </ul>
+                </div>
+                <img id="printer-instructions-img" src="images/c.svg">
+            </div>
+            <button onclick="cancel_print()" class="action">Cancel</button>
+            <button onclick="confirm_print()" class="action">Confirm</button>
+        </div>
+    </div>
+
     <script>
         const print_container = document.getElementById("print-container")
         const sign_template = document.getElementById("c-sign")
 
-        function create_sign(element) {
+        function create_sign(element, addSectionHeader = null) {
             const newSign = sign_template.content.cloneNode(true);
             const [_onSale, _perLb, itemName, altDescription, rawOnSaleThru, priceType, unitType, unitAmt, retailPrice, XforXVal, salePriceRaw, ...mobileLoadData] = element;
 
@@ -135,13 +189,13 @@
 
             function setSavings(priceDifference) {
                 priceDifference = parseFloat(priceDifference).toFixed(2)
-                if(priceDifference >= 1.0){
+                if (priceDifference >= 1.0) {
                     newSign.querySelector("#youSavePriceMain").innerHTML = priceDifference.toString().split('.')[0];
                     newSign.querySelector("#youSavePriceAlt").innerHTML = priceDifference.toString().split('.')[1];
                 }
-                else{
-                    
-                    newSign.querySelector("#youSavePriceMain").innerHTML = '.'+priceDifference.toString().split('.')[1];
+                else {
+
+                    newSign.querySelector("#youSavePriceMain").innerHTML = '.' + priceDifference.toString().split('.')[1];
                     newSign.querySelector("#youSavePriceAlt").innerHTML = '';
                 }
             }
@@ -227,7 +281,7 @@
 
                     newSign.querySelector("#whenYouBuy").style.display = "block"
                     newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY 4`
-                    setSavings(retailPrice*2)
+                    setSavings(retailPrice * 2)
                     break;
                 case 'b1g2':
                     newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
@@ -235,93 +289,28 @@
                     newSign.querySelector("#priceAfterDecimal").style.display = "none"
 
                     newSign.querySelector("#whenYouBuy").style.display = "block"
-                    newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY 3`;             
-                    setSavings(retailPrice*2);
+                    newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY 3`;
+                    setSavings(retailPrice * 2);
                     break;
             }
 
-
-            function calcUnitPrice(unitSize) {
-                let _salePrice = salePrice;
-                switch (priceType) {
-                    case "forOne":
-                    case "forTwo":
-                        _salePrice /= XforXVal;
-                        break;
-                    case "ten":
-                        _salePrice = 1;
-                        break;
-                    case "bogo":
-                        _salePrice = retailPrice / 2;
-                        break;
-                    case "b2g1":
-                        _salePrice = retailPrice * 0.75;
-                        break;
-                    case "b2g2":
-                        _salePrice = retailPrice / 2;
-                        break;
-                    case "b1g2":
-                        _salePrice = retailPrice /3;
-                        break;
-                }
-
-                let modifier = 1;
-                switch (unitType) {
-                    case "POUND":
-                        modifier = 16;
-                        break;
-                    case "QUART":
-                        modifier = 32;
-                        break;
-                    case "50 COUNT":
-                        modifier = 50;
-                        break;
-                    case "100 COUNT":
-                        modifier = 100;
-                        break;
-                    case "OUNCE":
-                        modifier = 1;
-                        break;
-                    default:
-                        break;
-                }
-                console.log(itemName, _salePrice, unitSize, modifier)
-                return ((_salePrice / unitSize) * modifier).toFixed(2);
-            }
             // unit price
             let unitString = "";
-            let suffix = "each";
-            let unitSizeType = 'oz';
+            const suffix = getUnitSuffix(unitType);
+            const unit = getUnit(unitType);
 
-            switch (unitType) {
-                case "POUND":
-                    suffix = "per lb.";
-                    break;
-                case "QUART":
-                    suffix = "per qt.";
-                    break;
-                case "50 COUNT":
-                    suffix = "per 50 sq ft.";
-                    break;
-                case "100 COUNT":
-                    suffix = "per 100 ct.";
-                    break;
-                case "OUNCE":
-                    suffix = "per oz.";
-                    break;
-            }
-
+            // If we have multiple unit sizes
             if (unitAmt.includes(',')) {
                 const sizes = unitAmt.split(',');
                 sizes.forEach(size => {
-                    unitString += `${size} ${unitSizeType}/${calcUnitPrice(size)} ${suffix}<br/>`
+                    unitString += `${size} ${unit}/${calcUnitPrice(size, unitType, salePrice, retailPrice, priceType, XforXVal)} ${suffix}<br/>`
                 });
                 newSign.querySelector("#unitType").style.display = "None";
                 newSign.querySelector("#unitPriceBox").style.fontSize = "13px";
                 newSign.querySelector("#unitPriceBox").style.fontFamily = "Trade Gothic Condensed"
             }
             else {
-                unitString = `${calcUnitPrice(unitAmt)}`;
+                unitString = `${calcUnitPrice(unitAmt, unitType, salePrice, retailPrice, priceType, XforXVal)}`;
                 newSign.querySelector("#unitType").innerHTML = suffix;
             }
 
@@ -340,6 +329,7 @@
                 }
             })
 
+            // Bind our Add and Remove events for the section header buttons so the user can show and hide it
             sectionHeader = document.getElementById('c-section').content.cloneNode(true);
 
             sectionHeader.querySelector("#new-section-btn").addEventListener('click', function () {
@@ -348,47 +338,25 @@
             sectionHeader.querySelector("#del-section-btn").addEventListener('click', function () {
                 this.parentElement.classList.add('hidden')
             })
-            print_container.appendChild(sectionHeader)
+
+
+            // If we've defined a header text already from QuickSign's section scan page, add it
+            if (addSectionHeader !== null) {
+                sectionHeader.querySelector("#sectionLabel").value = addSectionHeader;
+                print_container.appendChild(sectionHeader);
+                // We can't directly access the classList of sectionHeader since that's not a "real" element on the DOM
+                // this works perfectly for that to get the section header element
+                print_container.lastElementChild.classList.remove('hidden')
+            }
+            else
+                print_container.appendChild(sectionHeader);
+
             print_container.appendChild(newSign);
         }
     </script>
 
     <script src="bulk_shared.js"></script>
-    <div id="error-popup-wrap" class="error-popup-wrapper">
-        <div class="error-popup">
-            <h3>Error</h3>
-            <p id="error-msg">Error Message.</p>
-
-            <button onclick="hide_error_popup()" class="action" id="close-error">OK</button>
-        </div>
-    </div>
-    
-    <div id="print-dialog">
-        <div class="error-popup">
-            <h3>Confirm Print</h3>
-            <p>You are about to print <span id="print-count"></span> signs.</p>
-            <p>Make sure you load at least <span id="print-count"></span> signs before confirming.</p>
-            
-            <h3>Important!</h3>
-            <h4>The following options MUST be set or your signs will not print correctly.</h4>
-            <div>
-                <div>
-                    <ul>
-                    <li><p>Layout: <span>Portrait</span></p></li>
-                        <p style="text-align: left;"><span>More Settings ∨</span></p>
-                        <li><p>Paper Size: <span>Letter</span></p></li>
-                        <li><p>Scale (%): <span>Actual size</span></p></li>
-                        <li><p>Margins: <span>Default</span></p></li>
-                        <li><p>Options: Headers and Footers: <span>UNCHECKED</span></p></li>
-                        <li><p>Options: Background Graphics: <span>UNCHECKED</span></p></li>
-                    </ul>
-                </div>
-                <img id="printer-instructions-img" src="images/c.svg">
-            </div>
-            <button onclick="cancel_print()" class="action">Cancel</button>
-            <button onclick="confirm_print()" class="action">Confirm</button>
-        </div>
-    </div>
+    <script src="sign_builder.js"></script>
 </body>
 
 </html>

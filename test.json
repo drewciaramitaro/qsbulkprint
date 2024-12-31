@@ -22,6 +22,10 @@
         3
     ],
     [
+        "bulk_header",
+        "This is text"
+    ],
+    [
         "onSale",
         "on",
         "Archway Cashew Noughts",
