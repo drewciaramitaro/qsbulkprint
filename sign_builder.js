@@ -31,7 +31,7 @@ function getUnit(unitType){
         case "100 COUNT":
             return "ct.";
         case "OUNCE":
-            return "oz";
+            return "oz.";
     }
 }
 
