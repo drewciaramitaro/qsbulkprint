@@ -23,6 +23,10 @@
     ],
     [
         "bulk_header",
+        "This header has no signs, itll be ignored"
+    ],
+    [
+        "bulk_header",
         "This is text"
     ],
     [
