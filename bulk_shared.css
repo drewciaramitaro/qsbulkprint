@@ -259,7 +259,6 @@ body {
         bottom: 0;
         display: none;
         z-index: 999;
-        backdrop-filter: blur(2px);
     }
 
     #print-dialog .error-popup{
