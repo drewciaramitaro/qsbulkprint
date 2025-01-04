@@ -96,6 +96,12 @@ body {
     box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
+.action:active {
+    
+    background-color: rgb(42, 42, 42);
+    box-shadow: none;
+}
+
 .action.size-btn{
     display: flex;
     flex-direction: column;
@@ -151,10 +157,22 @@ body {
 }
 
 #stor-input {
+    appearance: none;
+    all: unset;
     font-size: 12px;
-    width: 230px;
+    width: 250px;
     height: 100%;
     padding: 5px;
+    font-family: 'Trade Gothic LT';
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-bottom: 1px #7BBA2F solid;
+    color:white;
+    border-radius: .2rem .2rem 0 0;
+}
+
+#stor-input:focus{
+    background-color: rgba(0, 0, 0, 0.15);
 }
 
 @media screen {
@@ -306,7 +324,6 @@ body {
     #printer-instructions-img{
         width: 300px;
     }
-
 }
 
 
