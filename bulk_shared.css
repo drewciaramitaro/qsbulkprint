@@ -175,6 +175,27 @@ body {
     background-color: rgba(0, 0, 0, 0.15);
 }
 
+#MustBuyInner input{
+    text-align: right;
+    font-family: 'Trade Gothic Condensed';
+    font-weight: lighter;
+    border: none;
+    background: none;
+    width: 100%;
+}
+
+#MustBuyInner input::placeholder{
+    color: transparent;
+}
+
+#MustBuyInner input:hover{
+    outline: 1px solid black;
+}
+
+#MustBuyInner input:hover::placeholder{
+    color: rgba(0, 0, 0, 0.2);
+}
+
 @media screen {
     #unitBox {
         background-color: orange;
@@ -354,5 +375,9 @@ body {
 
     #print-dialog {
         display: none;
+    }
+
+    ::placeholder {
+        color: transparent;
     }
 }

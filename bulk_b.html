@@ -4,8 +4,8 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://tdzie.github.io/QuickSign/styles/BSize.css?v=1001" />
-    <link rel="stylesheet" href="bulk_shared.css?v=1008" />
-    <link rel="stylesheet" href="bulk_b.css?v=1002" />
+    <link rel="stylesheet" href="bulk_shared.css?v=1009" />
+    <link rel="stylesheet" href="bulk_b.css?v=1003" />
     <title>Bulk Sign Print - B Size</title>
     <link rel="icon" type="image/png" href="images/icon.png?v=01">
 </head>
@@ -81,7 +81,9 @@
                     </div>
                     <div id="rightBox">
                         <div id="mustBuy" style="height: 25px">
-                            <div id="MustBuyInner"></div>
+                            <div id="MustBuyInner">
+                                <input placeholder="CLICK TO ENTER MUST BUY / OTHER INFO"/>
+                            </div>
                             <div id="LBOption">lb.</div>
 
 
@@ -182,8 +184,9 @@
             const perLb = _perLb !== "off";
             let onSaleThru = rawOnSaleThru;
             const salePrice = salePriceRaw.toString();
-            let mustBuy = mobileLoadData[0] || null;
-            let validForMustBuy = mobileLoadData[1] || false;
+            console.log(mobileLoadData)
+            let mustBuy = mobileLoadData[mobileLoadData.length - 1] || null;
+            let validForMustBuy = mobileLoadData[mobileLoadData.length - 2] || false;
 
             // Mobile load always sets it to 10/1/2023, so let's update it here
             if (onSaleThru == "ON SALE THRU 10/1/2023") {
@@ -318,7 +321,7 @@
             }
 
             if (validForMustBuy && mustBuy > 1) {
-                newSign.querySelector("#MustBuyInner").innerHTML = `WHEN YOU BUY ${mustBuy}`
+                newSign.querySelector("#MustBuyInner input").value = `WHEN YOU BUY ${mustBuy}`
             }
 
             newSign.querySelector("#unitPriceBox").innerHTML = unitString;

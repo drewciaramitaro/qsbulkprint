@@ -132,11 +132,15 @@ div#outline > header {
 }
 
 #mustBuy{
-    margin-bottom: 14px;
+    margin-bottom: 30px;
+}
+
+#MustBuyInner input{
+    font-size: 1em;
 }
 
 #rightBox{
-    margin-top: -12px;
+    margin-top: -22px;
 }
 
 @page{

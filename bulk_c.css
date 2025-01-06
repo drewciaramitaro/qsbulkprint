@@ -113,7 +113,7 @@ div#outline>footer>#rightBox {
 
 #rightBox {
     position: relative;
-    bottom: 20px;
+    bottom: 25px;
 }
 
 .with-adv {
@@ -133,7 +133,13 @@ div#outline>footer>#rightBox {
 .section-header.hidden #new-section-btn {
     margin-bottom: -10px;
 }
+#mustBuy{
+    margin-bottom: 8px;
+}
 
+#MustBuyInner input{
+    font-size: 1em;
+}
 @media screen {
     #outline {
         margin-left: 0px;
