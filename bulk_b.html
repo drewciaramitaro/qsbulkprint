@@ -4,8 +4,8 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://tdzie.github.io/QuickSign/styles/BSize.css?v=1001" />
-    <link rel="stylesheet" href="bulk_shared.css?v=1009" />
-    <link rel="stylesheet" href="bulk_b.css?v=1003" />
+    <link rel="stylesheet" href="bulk_shared.css?v=1010" />
+    <link rel="stylesheet" href="bulk_b.css?v=1004" />
     <title>Bulk Sign Print - B Size</title>
     <link rel="icon" type="image/png" href="images/icon.png?v=01">
 </head>
@@ -62,8 +62,7 @@
                 <div id="desBox">
                     <div id="mainDescription">Type main item here. 2 lines maximum. Do not use all caps.</div>
                     <div id="altDescription">
-                        Do NOT change the font size/style. Just re-type your new copy here.
-                        This info should reflect a description of the above - sizes, varieties, etc.
+                        <input class="editable-input" placeholder="CLICK TO ENTER DESCRIPTION"/>
                     </div>
                     <div id="saleDate">ON SALE THRU 12/21/2024</div>
                 </div>
@@ -82,7 +81,7 @@
                     <div id="rightBox">
                         <div id="mustBuy" style="height: 25px">
                             <div id="MustBuyInner">
-                                <input placeholder="CLICK TO ENTER MUST BUY / OTHER INFO"/>
+                                <input class="editable-input" placeholder="CLICK TO ENTER MUST BUY / OTHER INFO"/>
                             </div>
                             <div id="LBOption">lb.</div>
 
@@ -209,7 +208,7 @@
             }
             let priceDiff = (retailPrice - salePrice);
             newSign.querySelector("#mainDescription").innerHTML = itemName
-            newSign.querySelector("#altDescription").innerHTML = altDescription
+            newSign.querySelector("#altDescription input").value = altDescription
             newSign.querySelector("#saleDate").innerHTML = onSaleThru
             if (!onSale) {
                 newSign.querySelector("#saleDate").style.display = "None"

@@ -179,22 +179,50 @@ body {
     text-align: right;
     font-family: 'Trade Gothic Condensed';
     font-weight: lighter;
-    border: none;
-    background: none;
     width: 100%;
 }
 
-#MustBuyInner input::placeholder{
+#altDescription input{
+    font-family: 'Trade Gothic Condensed';
+    font-weight: lighter;
+    width: 100%;
+}
+
+.editable-input{
+    border: none;
+    background: none;
+    appearance: none;
+    all: unset;
+    cursor: text;
+}
+.editable-input::placeholder{
     color: transparent;
 }
-
-#MustBuyInner input:hover{
-    outline: 1px solid black;
+.editable-input:hover {
+    background-color: rgba(0, 0, 0, 0.15);
 }
 
-#MustBuyInner input:hover::placeholder{
+.editable-input:focus{
+    border-bottom: 2px #7BBA2F solid;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.editable-input:hover::placeholder{
     color: rgba(0, 0, 0, 0.2);
 }
+
+#priceBeforeDecimal{
+    pointer-events: none;
+}
+
+.print-page{
+    cursor: default;
+}
+
+input{
+    cursor: text;
+}
+
 
 @media screen {
     #unitBox {
