@@ -1,4 +1,4 @@
-async function load(mobile) {
+async function load(mobile = true) {
     try {
         /*if(mobile){
             const input_json = localStorage.getItem("userBSignsFromMobile");
@@ -27,10 +27,10 @@ async function load(mobile) {
         let add_section_header = null;
         jsonData.forEach(element => {
             // Check if we've defined a section header in the QuickSign screen
-            if(element[0] === 'bulk_header')
+            if(element[20])
             {
                 // Save this to be added with the next sign
-                add_section_header = element[1];
+                add_section_header = element[2];
                 return;
             }
             // Mobile load switches these
@@ -52,6 +52,13 @@ async function load(mobile) {
         throw(error);
     }
 }
+
+// Check if ?load=true -- if it is then we'll automatically grab it from the clipboard
+window.addEventListener('load', async () => {
+    if ((new URLSearchParams(window.location.search)).get('load')){
+        await load();
+    }
+})
 
 function show_error_popup(msg) {
     document.getElementById("error-popup-wrap").classList.add("showing");
