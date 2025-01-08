@@ -168,6 +168,21 @@ body {
     font-size: .7rem;
 }
 
+@media only screen and (max-width: 600px){
+    body, fieldset{
+        margin: 0;
+    }
+    .mbarcode{
+        width: 80vw;
+    }
+    .barcode{
+        width:50vw;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+
 @media print {
 
     .upcs{
@@ -182,10 +197,10 @@ body {
         margin-bottom: -40px;
     }
     body{
-        margin:none;
+        margin:0;
     }
 
     .action{
-        display: none;
+        display: 0;
     }
 }
