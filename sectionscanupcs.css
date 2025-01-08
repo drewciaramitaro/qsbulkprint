@@ -168,7 +168,50 @@ body {
     font-size: .7rem;
 }
 
+.mobile-nav{
+    display: none;
+}
+
+.mnav-btn {
+    text-align: center;
+    line-height: 67px;
+    font-size: 20px;
+    text-decoration: none;
+    font-family: 'Clarendon';
+    background-color: #7BBA2F;
+    box-shadow: 0px -2px 0px 0px rgba(0, 0, 0, 0.5) inset;
+    border-radius: 0.25rem;
+    color:white;
+    height:67px;
+    width:97px;
+}
+
+.mnav-btn.active{
+    box-shadow: none;
+}
+    .mnav-btn span {
+        font-size: 8px;
+        white-space:pre-wrap
+    }
+
 @media only screen and (max-width: 600px){
+    .mobile-nav{
+        display: flex;
+        position: fixed;
+        bottom: 0px;
+        height: 80px;
+        width: 100vw;
+        background-color: rgb(50, 50, 50);
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .tool{
+        height: calc(100dvh - 80px);
+        max-height: calc(100dvh - 80px);
+        padding: 0;
+        overflow:scroll;
+    }
     body, fieldset{
         margin: 0;
     }

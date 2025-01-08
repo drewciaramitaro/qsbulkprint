@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="sectionscanupcs.css?v=1002" />
+    <link rel="stylesheet" href="sectionscanupcs.css?v=1003" />
     <title>Section Scan UPC List</title>
     <link rel="icon" type="image/png" href="images/icon.png?v=01">
     
@@ -20,7 +20,7 @@
             
                 <button onclick="window.print()" class="action">Print</button>
             </fieldset>
-            <fieldset class="upcs">
+            <fieldset class="upcs" id="gen">
                 <legend>Generic</legend>
                 <div class="mbarcode">
                     <svg class="barcode"
@@ -34,7 +34,7 @@
 
             </fieldset>
         </div>
-        <fieldset class="upcs">
+        <fieldset class="upcs" id="aisles">
             <legend>Aisles • 2 + 2 digit aisle number</legend>
             <div class="mbarcode">
                 <svg class="barcode"
@@ -187,7 +187,7 @@
             </div>
         </fieldset>
 
-        <fieldset class="upcs">
+        <fieldset class="upcs" id="depts">
             <legend>Departments • 3 + 2 digit Department Number</legend>
             
 
@@ -280,6 +280,12 @@
                 <span id="sc" style="text-align: center;" class="lbl">Beer/wine</span>
             </div>
         </fieldset>
+    </div>
+    
+    <div class="mobile-nav">
+        <a class="mnav-btn" href="#gen">Generic</a>
+        <a class="mnav-btn" href="#aisles">Aisles</a>
+        <a class="mnav-btn" href="#depts">Depts</a>
     </div>
     <script>
         JsBarcode(".barcode").init();
