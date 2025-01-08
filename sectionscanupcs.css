@@ -207,11 +207,11 @@ body {
     }
 
     .tool{
-        height: calc(100dvh - 80px);
-        max-height: calc(100dvh - 80px);
+        margin-bottom: 80px;
         padding: 0;
         overflow:scroll;
     }
+    
     body, fieldset{
         margin: 0;
     }
