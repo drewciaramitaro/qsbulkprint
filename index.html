@@ -14,11 +14,16 @@
         <fieldset style="display: flex;justify-content: space-around;gap:10px;width: fit-content;color: #7BBA2F;">
             <legend>Choose a size</legend>
 
-            <a class="action size-btn" href="bulk_b.html"><span></span><img width="200"
+            <a id="go-to-b" class="action size-btn" href="bulk_b.html"><span></span><img width="200"
                     src="images/b_size_preview.jpg" />B Size</a>
-            <a class="action size-btn" href="bulk_c.html"><span></span><img width="150"
+            <a id="go-to-c" class="action size-btn" href="bulk_c.html"><span></span><img width="150"
                     src="images/c_size_preview.jpg" />C Size</a>
         </fieldset>
+        <fieldset id="success" style="display: none ;flex-direction: column;justify-content: space-around;gap:10px;width: fit-content;color: #7BBA2F;">
+            <legend>Successfully loaded</legend>
+            <h1 style="font-family: Clarendon;font-weight: 100;" id="b-count">x B Size Signs</h1>
+            <h1 style="font-family: Clarendon;font-weight: 100;" id="c-count">x C Size Signs</h1>
+        </fieldset> 
         <fieldset style="max-width: 800px;color: #7BBA2F;font-family: Trade Gothic LT;text-align: justify;">
             <legend style="font-size: 35px;">New!</legend>
             <h1 class="head-txt" style="font-family: Clarendon;font-weight: 100;">Organize your signs during your section scan!</h1>
@@ -26,6 +31,7 @@
             <p>While you're doing your section scan, just enter or scan one of the UPCs found <a href="sectionscanupcs.html" class="action">here</a>.</p>
             <p>For example, you can add a label saying "Aisle 1" by entering 201 into the UPC box.</p>
         </fieldset>
+
         <div style="display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -63,6 +69,13 @@
             </div>
         </div>
     </div>
+    <div id="print-dialog">
+        <div class="error-popup">
+            <h3>Loading Signs...</h3>
+            <h4>Please press 'Allow' on the popup to allow this site to see text and images copied to the clipboard!</h4>
+        </div>
+    </div>
+    <script src="home.js"></script>
 </body>
 
 </html>

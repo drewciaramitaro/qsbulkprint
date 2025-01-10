@@ -17,9 +17,9 @@
                 <h1 class="head-txt" style="margin: 0;">Bulk Print - <span>B Size</span></h1>
             </div>
         </legend>
-        <div style="margin:auto;margin-top: -15px;margin-bottom:12px; width: fit-content;">
-            <a class="action" href="https://tdzie.github.io/QuickSign/">Back to QuickSign</a>
-            <a class="action" href="index.html">Help & Instructions</a>
+        <div style="margin:auto;margin-top: -15px;margin-bottom:12px; width: fit-content;display: flex;gap:4px">
+            <a id="switch-size" class="action more-tool-btn" href="bulk_c.html"><span></span><img width="100" src="images/c_size_preview.jpg" />Switch to C Size</a>
+            <a id="go-home" class="action more-tool-btn" href="index.html"><span></span><img width="100" src="images/home-icon.jpg" />Home</a>
         </div>
 
         <div style="display: flex;flex-direction: row;align-items: center;gap:8px">
@@ -30,17 +30,10 @@
             <button class="action" onclick="load(true)">Import Mobile / Section Scan</button>
             <button class="action" onclick="load(false)">Import from Favorites</button> 
             -->
-            <button class="action" onclick="load(true)">Load Signs</button>
+            <button id="load-btn" class="action" onclick="load(true)">Load Signs</button>
             <button class="action" onclick="show_print_dialog()">Print</button>
         </div>
 
-    </fieldset>
-    <fieldset class="desktop tool" style="font-family: 'Trade Gothic Condensed';">
-        <legend style="font-size: 35px;">New!</legend>
-        <h1 class="head-txt" style="font-family: Clarendon;font-weight: 100;">Organize your signs during your section scan!</h1>
-        <p>During your section scan, you can now add headers to neatly organize signs directly from your dolphin!</p>
-        <p>While you're doing your section scan, just enter or scan one of the UPCs found <a href="sectionscanupcs.html" class="action" style="font-size: 12pt;">here</a>.</p>
-        <p>For example, you can add a label saying "Aisle 1" by entering 201 into the UPC box.</p>
     </fieldset>
 
     <template id="b-section">

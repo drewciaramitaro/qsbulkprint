@@ -17,11 +17,33 @@ async function load(mobile = true) {
                 if (!input_json.trim()) {
                     throw new Error("Clipboard is empty or contains invalid data.");
                 }
+                loadSigns(input_json);
             } catch (clipboardError) {
                 throw new Error("Failed to read from clipboard: " + clipboardError.message);
             }
         }
 
+
+    } catch (error) {
+        show_error_popup(error);
+        throw(error);
+    }
+}
+
+function loadFromSectionScan(){
+    if(window.location.pathname.endsWith("bulk_b.html")){
+        loadSigns(localStorage.getItem('qsb_bSigns'))
+    }
+    else{
+        loadSigns(localStorage.getItem('qsb_cSigns'))
+    }
+
+    document.querySelector('#switch-size').href += '?loadFromSectScan=true'
+    document.querySelector('#go-home').href += '?loadFromSectScan=true'
+
+}
+
+function loadSigns(input_json){
         // Parse the JSON input
         const jsonData = JSON.parse(input_json);
         let add_section_header = null;
@@ -33,13 +55,10 @@ async function load(mobile = true) {
                 add_section_header = element[2];
                 return;
             }
-            // Mobile load switches these
-            if (mobile) {
-                if (element[1] === 'on') {
-                    element[1] = 'off';
-                } else {
-                    element[1] = 'on';
-                }
+            if (element[1] === 'on') {
+                element[1] = 'off';
+            } else {
+                element[1] = 'on';
             }
             // call the create_sign function from bulk_X.html
             create_sign(element, add_section_header);
@@ -47,16 +66,18 @@ async function load(mobile = true) {
             add_section_header = null;
         
         });
-    } catch (error) {
-        show_error_popup(error);
-        throw(error);
-    }
 }
 
 // Check if ?load=true -- if it is then we'll automatically grab it from the clipboard
 window.addEventListener('load', async () => {
-    if ((new URLSearchParams(window.location.search)).get('load')){
+    const queryParams = new URLSearchParams(window.location.search)
+
+    if (queryParams.get('load')){
         await load();
+    }
+
+    if(queryParams.get('loadFromSectScan')){
+        loadFromSectionScan();
     }
 })
 

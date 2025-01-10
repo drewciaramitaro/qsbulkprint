@@ -194,6 +194,10 @@ body {
         white-space:pre-wrap
     }
 
+    
+    #qr > div > img{
+        width: 200px;
+    }
 @media only screen and (max-width: 600px){
     .mobile-nav{
         display: flex;
@@ -223,10 +227,29 @@ body {
         margin-top: 0;
         margin-bottom: 0;
     }
+    
+    #qr{
+        display: none;
+    }
 }
 
 
 @media print {
+    @page {
+        margin: 0;
+    }
+
+    #qr{
+        width: 140px;
+    }
+
+    #qr > div{
+        width: 100%
+    }
+
+    #qr > div > img{
+        width: 100%
+    }
 
     .upcs{
         max-width: 100%;
