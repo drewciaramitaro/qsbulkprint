@@ -5,7 +5,7 @@
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://tdzie.github.io/QuickSign/styles/BSize.css?v=1001" />
     <link rel="stylesheet" href="bulk_shared.css?v=1010" />
-    <link rel="stylesheet" href="bulk_b.css?v=1004" />
+    <link rel="stylesheet" href="bulk_b.css?v=1005" />
     <title>Bulk Sign Print - B Size</title>
     <link rel="icon" type="image/png" href="images/icon.png?v=01">
 </head>
@@ -206,8 +206,11 @@
                     }
                 }
                 else {
-                    newSign.querySelector("#youSavePriceMain").innerHTML = '.' + priceDifference.toString().split('.')[1];
-                    newSign.querySelector("#youSavePriceAlt").innerHTML = '';
+                    newSign.querySelector("#youSavePriceMain").innerHTML = '.'+ priceDifference.toString().split('.')[1];
+                    newSign.querySelector("#youSavePriceAlt").innerHTML = ''
+                    //newSign.querySelector("#youSavePriceAlt").innerHTML = '¢';
+                    //newSign.querySelector("#youSavePriceAlt").style.fontWeight = "200";
+                    //newSign.querySelector("#youSavePriceAlt").style.transform = 'scaleX(0.8)'
                 }
             }
             let priceDiff = (retailPrice - salePrice);
