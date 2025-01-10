@@ -17,12 +17,12 @@ async function load(mobile = true) {
                 if (!input_json.trim()) {
                     throw new Error("Clipboard is empty or contains invalid data.");
                 }
-                loadSigns(input_json);
             } catch (clipboardError) {
                 throw new Error("Failed to read from clipboard: " + clipboardError.message);
             }
         }
-
+        
+        loadSigns(input_json);
 
     } catch (error) {
         show_error_popup(error);

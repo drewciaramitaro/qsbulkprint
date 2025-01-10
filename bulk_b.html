@@ -199,9 +199,13 @@
                 if (priceDifference >= 1.0) {
                     newSign.querySelector("#youSavePriceMain").innerHTML = priceDifference.toString().split('.')[0];
                     newSign.querySelector("#youSavePriceAlt").innerHTML = priceDifference.toString().split('.')[1];
+
+                    if(priceDifference.toString().split('.')[1] == '00'){
+                        newSign.querySelector("#youSavePriceMain").innerHTML = `<span style='font-size: 36px;line-height: 55px;vertical-align: text-top;'>$</span>${ priceDifference.toString().split('.')[0]}`
+                        newSign.querySelector("#youSavePriceAlt").innerHTML = '';
+                    }
                 }
                 else {
-
                     newSign.querySelector("#youSavePriceMain").innerHTML = '.' + priceDifference.toString().split('.')[1];
                     newSign.querySelector("#youSavePriceAlt").innerHTML = '';
                 }
@@ -361,7 +365,7 @@
         }
     </script>
 
-    <script src="bulk_shared.js?v=1001"></script>
+    <script src="bulk_shared.js?v=1002"></script>
     <script src="sign_builder.js?v=1000"></script>
 </body>
 
