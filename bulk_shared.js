@@ -32,14 +32,18 @@ async function load(mobile = true) {
 
 function loadFromSectionScan(){
     if(window.location.pathname.endsWith("bulk_b.html")){
-        loadSigns(localStorage.getItem('qsb_bSigns'))
+        loadSigns(localStorage.getItem('qsb_bSigns'));
     }
     else{
-        loadSigns(localStorage.getItem('qsb_cSigns'))
+        loadSigns(localStorage.getItem('qsb_cSigns'));
     }
 
-    document.querySelector('#switch-size').href += '?loadFromSectScan=true'
-    document.querySelector('#go-home').href += '?loadFromSectScan=true'
+    document.querySelector('#switch-size').href += '?loadFromSectScan=true';
+    document.querySelector('#go-home').href += '?loadFromSectScan=true';
+
+    // hide these, dont want to confuse the user
+    document.querySelector('#stor-input').style.display = 'none';
+    document.querySelector('#load-btn').style.display = 'none'
 
 }
 
