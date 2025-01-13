@@ -184,8 +184,8 @@
             let onSaleThru = rawOnSaleThru;
             const salePrice = salePriceRaw.toString();
             console.log(mobileLoadData)
-            let mustBuy = mobileLoadData[mobileLoadData.length - 1] || null;
-            let validForMustBuy = mobileLoadData[mobileLoadData.length - 2] || false;
+            let mustBuy = mobileLoadData[mobileLoadData.length - 2] || null;
+            let validForMustBuy = mobileLoadData[mobileLoadData.length - 3] || false;
 
             // Mobile load always sets it to 10/1/2023, so let's update it here
             if (onSaleThru == "ON SALE THRU 10/1/2023") {
