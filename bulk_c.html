@@ -212,9 +212,9 @@
                     }
                 }
                 else {
-
-                    newSign.querySelector("#youSavePriceMain").innerHTML = '.' + priceDifference.toString().split('.')[1];
-                    newSign.querySelector("#youSavePriceAlt").innerHTML = '';
+                    newSign.querySelector("#youSavePriceMain").innerHTML = priceDifference.toString().split('.')[1];
+                    newSign.querySelector("#youSavePriceAlt").innerHTML = ''
+                    newSign.querySelector("#youSavePriceAlt").innerHTML = '¢';
                 }
             }
 
@@ -242,7 +242,7 @@
             // Change the price tag style
             switch (priceType) {
                 case 'cents':
-                    newSign.querySelector("#priceBeforeDecimal").innerHTML = salePrice < 1 ? salePrice.toString().replace("0.", ".") : salePrice;
+                    newSign.querySelector("#priceBeforeDecimal").innerHTML = salePrice < 1 ? salePrice.toString().replace("0.", "") + '<span style="font-size:90px;vertical-align:top;position:relative;top:23px">¢</span>' : salePrice;
                     newSign.querySelector("#priceBeforeDecimal").style.width = "95%";
                     newSign.querySelector("#priceAfterDecimal").style.display = "none"
                     newSign.querySelector("#LBOption").style.top = "-15px"
