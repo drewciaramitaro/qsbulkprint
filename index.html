@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="bulk_shared.css?v=1009" />
     <title>Bulk Sign Print - Home</title>
     <link rel="icon" type="image/png" href="images/icon.png?v=01">
+
 </head>
 
 <body>
@@ -61,11 +62,26 @@
                     <legend>Other Useful Tools</legend>
                     <a class="action more-tool-btn" href="https://tdzie.github.io/QuickSign/"><span></span><img width="120px" src="images/quicksign_preview.jpg">QuickSign</a>
                     <a class="action more-tool-btn" href="https://drewciaramitaro.github.io/barcodesheets/"><span></span><img width="120px" src="images/barcodesheet_preview.jpg">Barcodes Printout</a>
+                    
+                    <!-- <a class="action more-tool-btn" href="/custom/customsigns.html"><span></span><img width="120px" src="images/barcodesheet_preview.jpg">Barcodes Printout</a> -->
                 </fieldset>
 
 
             </div>
+            
+
         </div>
+    <template id="adv-edit-item">
+        <p id="name"></p>
+    </template>
+    <fieldset style="display: none;">
+        <details>
+            <summary>Advanced</summary>
+            <div id="adv-edit">
+
+            </div>
+        </details>
+    </fieldset>
     </div>
     <div id="print-dialog">
         <div class="error-popup">
@@ -73,7 +89,7 @@
             <h4>Please press 'Allow' on the popup to allow this site to see text and images copied to the clipboard!</h4>
         </div>
     </div>
-    <script src="home.js?v=1001"></script>
+    <script src="home.js?v=1002"></script>
 </body>
 
 </html>

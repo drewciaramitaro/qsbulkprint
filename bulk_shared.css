@@ -1,6 +1,13 @@
+/* I should ideally change all these to be one font-family but with different weights */
+
 @font-face {
     font-family: "Trade Gothic LT";
     src: url("fonts/Trade\ Gothic\ LT.ttf");
+}
+@font-face {
+    font-family: "Trade Gothic LT";
+    font-weight: bold;
+    src: url("fonts/Trade\ Gothic\ LT\ Bold.ttf");
 }
 
 @font-face {
@@ -25,11 +32,13 @@
 
 @font-face {
     font-family: "Clarendon";
+    font-weight: normal;
     src: url("fonts/24323.otf");
 }
 
 @font-face {
-    font-family: "ClarendonB";
+    font-family: "Clarendon";
+    font-weight: bold;
     src: url("fonts/24325.otf");
 }
 
@@ -156,7 +165,7 @@ body {
     display: none;
 }
 
-#stor-input {
+#stor-input, .tool-input {
     appearance: none;
     all: unset;
     font-size: 12px;
@@ -171,7 +180,7 @@ body {
     border-radius: .2rem .2rem 0 0;
 }
 
-#stor-input:focus{
+#stor-input:focus, .tool-input:focus{
     background-color: rgba(0, 0, 0, 0.15);
 }
 
@@ -223,7 +232,56 @@ input{
     cursor: text;
 }
 
+.toggleSwitch {
+    position: relative;
+    display: inline-block;
+    width: 64px;
+    height:34px;
+    margin: 4px;
+}
 
+.toggleSwitch input{
+    display: none;
+}
+
+.switchThumb {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #363636;
+    transition: .2s ease-out;
+    border-radius: 1rem;
+}
+
+.switchThumb:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #24180D;
+    border-radius: 1rem;
+    transition: .2s ease-out;
+  }
+
+
+  input:checked + .switchThumb {
+    background-color: #7BBA2F;
+  }
+
+  input:checked + .switchThumb:before {
+    transform: translateX(29px);
+  }
+
+  #date-txt{
+    text-align: center;
+    font-family: 'Trade Gothic Condensed';
+    font-weight: lighter;
+  }
 @media screen {
     #unitBox {
         background-color: orange;

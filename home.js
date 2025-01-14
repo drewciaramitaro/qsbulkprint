@@ -20,7 +20,7 @@ window.addEventListener('load', async () => {
 
 async function loadQSData(){
     try{
-        document.querySelector('#print-dialog').style.display = 'block';
+        document.querySelector('#print-dialog').classList.add('showing');
         try {
             input_json = await navigator.clipboard.readText();
             if (!input_json.trim()) {
@@ -33,8 +33,13 @@ async function loadQSData(){
         const jsonData = JSON.parse(input_json);
         let b_signs = [];
         let c_signs = [];
-
+        const edit_template = document.querySelector("#adv-edit-item")
         jsonData.forEach(element => {
+            const newItem = edit_template.content.cloneNode(true);
+            
+            newItem.querySelector("#name").innerHTML = element[2];
+            document.querySelector("#adv-edit").appendChild(newItem);
+
             if(element[20] === true){
                 b_signs.push(element);
                 c_signs.push(element);
@@ -63,7 +68,7 @@ async function loadQSData(){
         document.querySelector('#b-count').innerHTML = `${b_signs.length} B-Size Signs`
         document.querySelector('#c-count').innerHTML = `${c_signs.length} C-Size Signs`
 
-        document.querySelector('#print-dialog').style.display = 'none';
+        document.querySelector('#print-dialog').classList.remove('showing');
     }
     catch (error){
         document.querySelector('.error-popup h3').innerHTML = "Error loading signs.";

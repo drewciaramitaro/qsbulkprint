@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
+    <link rel="stylesheet" href="https://tdzie.github.io/QuickSign/styles/BSize.css?v=1001" />
+    <link rel="stylesheet" href="/bulk_shared.css?v=1010" />
+    <link rel="stylesheet" href="/bulk_b.css?v=1005" />
+    <link rel="stylesheet" href="/custom/b/blank_b.css?v=1000"/>
+    <title>Custom B Sign</title>
+    <link rel="icon" type="image/png" href="/images/icon.png?v=01">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+</head>
+
+<body>
+    <fieldset class="desktop tool">
+        <legend>
+            <div id="tool-head">
+                <h1 class="head-txt" style="margin: 0;">Bulk Print - <span>B Size</span></h1>
+            </div>
+        </legend>
+        <div style="margin:auto;margin-top: -15px;margin-bottom:12px; width: fit-content;display: flex;gap:4px">
+            <a id="go-home" class="action more-tool-btn" href="/index.html"><span></span><img width="100" src="/images/home-icon.jpg" />Home</a>
+        </div>
+
+        <div style="display: flex;flex-direction: row;align-items: center;gap:8px">
+            <button class="action" onclick="show_print_dialog()">Print</button>
+        </div>
+
+    </fieldset>
+
+    <fieldset class="desktop tool">
+        <legend>
+            Edit
+        </legend>
+
+        <textarea></textarea>
+    </fieldset>
+    
+    <div class="print">
+        <div id="print-container">
+            <div id="b-sign">
+                <div class="print-page">
+                    <div id="outline">
+                        <header class="noPrint">
+                            Everyone <span>Loves to Save</span>
+                        </header>
+                        <div id="innerContent">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="error-popup-wrap" class="error-popup-wrapper">
+        <div class="error-popup">
+            <h3>Error</h3>
+            <p id="error-msg">Error Message.</p>
+
+            <button onclick="hide_error_popup()" class="action" id="close-error">OK</button>
+        </div>
+    </div>
+
+    <div id="print-dialog">
+        <div class="error-popup">
+            <h3>Confirm Print</h3>
+            <p>You are about to print <span id="print-count"></span> signs.</p>
+            <p>Make sure you load at least <span id="print-count"></span> signs before confirming.</p>
+
+            <h3>Important!</h3>
+            <h4>The following options MUST be set or your signs will not print correctly.</h4>
+            <div>
+                <div>
+                    <ul>
+                        <li>
+                            <p>Layout: <span>Portrait</span></p>
+                        </li>
+                        <p style="text-align: left;"><span>More Settings <svg width="20" height="20" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg" class="c0183">
+                                    <path
+                                        d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 01-.78 0L4.15 8.35a.5.5 0 01.7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0z">
+                                    </path>
+                                </svg></span></p>
+                        <li>
+                            <p>Paper Size: <span>Letter</span></p>
+                        </li>
+                        <li>
+                            <p>Scale (%): <span>Actual size</span></p>
+                        </li>
+                        <li>
+                            <p>Margins: <span>Default</span></p>
+                        </li>
+                        <li>
+                            <p>Options: Headers and Footers: <span>UNCHECKED</span></p>
+                        </li>
+                        <li>
+                            <p>Options: Background Graphics: <span>UNCHECKED</span></p>
+                        </li>
+                    </ul>
+                </div>
+                <img id="printer-instructions-img" src="images/b.svg">
+            </div>
+            <button onclick="cancel_print()" class="action">Cancel</button>
+            <button onclick="confirm_print()" class="action">Confirm</button>
+        </div>
+    </div>
+    <script>
+        // var simplemde = new SimpleMDE({
+        //     toolbar: ["bold", "italic", "heading-1", "horizontal-rule"],
+        // });
+
+        var simplemde = new SimpleMDE({
+            toolbar: [
+                {
+                    name: "bold",
+                    action: SimpleMDE.toggleBold,
+                    className: "fa fa-bold",
+                    title: "Bold",
+                },
+                {
+                    name: "italic",
+                    action: SimpleMDE.toggleItalic,
+                    className: "fa fa-italic",
+                    title: "Italic",
+                },
+                {
+                    name: "heading-1",
+                    action: SimpleMDE.toggleHeading1,
+                    className: "fa fa-header",
+                    title: "Heading 1",
+                },
+                {
+                    name: "horizontal-rule",
+                    action: SimpleMDE.drawHorizontalRule,
+                    className: "fa fa-minus",
+                    title: "Horizontal Line",
+                }
+            ]
+        })
+
+
+        simplemde.codemirror.on("change", function(){
+            document.querySelector("#innerContent").innerHTML = simplemde.markdown(simplemde.value())
+        });
+    </script>
+    <script src="/bulk_shared.js?v=1002"></script>
+    <script src="/sign_builder.js?v=1000"></script>
+</body>
+
+</html>

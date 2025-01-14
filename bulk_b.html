@@ -4,8 +4,8 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://tdzie.github.io/QuickSign/styles/BSize.css?v=1001" />
-    <link rel="stylesheet" href="bulk_shared.css?v=1010" />
-    <link rel="stylesheet" href="bulk_b.css?v=1005" />
+    <link rel="stylesheet" href="bulk_shared.css?v=1012" />
+    <link rel="stylesheet" href="bulk_b.css?v=1006" />
     <title>Bulk Sign Print - B Size</title>
     <link rel="icon" type="image/png" href="images/icon.png?v=01">
 </head>
@@ -35,7 +35,15 @@
         </div>
 
     </fieldset>
-
+    <fieldset class="desktop tool" style="max-width: 400px;">
+        <legend>Sale Dates</legend>
+        <div style="display: flex;flex-direction: column;align-items: center;">
+            <span style="font-family: Trade Gothic Bold;text-align: center;">You can change the ON SALE THRU text for ALL on-sale signs by editing this box.</span>
+            <input class="tool-input" id="date-txt" value="ON SALE NOW" autocomplete="off"/>
+            <br/>
+            <span style="font-family: Trade Gothic LT;text-align: center;">Tip: You can edit the ON SALE THRU text on a per-sign basis simply by clicking on it on the sign below.</span>
+        </div>
+    </fieldset>
     <template id="b-section">
         <div class="print-page section-header hidden">
             <div id="del-section-btn">
@@ -64,7 +72,7 @@
                     <div id="altDescription">
                         <input class="editable-input" placeholder="CLICK TO ENTER DESCRIPTION"/>
                     </div>
-                    <div id="saleDate">ON SALE THRU 12/21/2024</div>
+                    <input id="saleDate" class="editable-input" autocomplete="off" value="ON SALE THRU 12/21/2024"/>
                 </div>
                 <div id="price">
                     <div id="pLeft" width="auto"></div>
@@ -216,7 +224,7 @@
             let priceDiff = (retailPrice - salePrice);
             newSign.querySelector("#mainDescription").innerHTML = itemName
             newSign.querySelector("#altDescription input").value = altDescription
-            newSign.querySelector("#saleDate").innerHTML = onSaleThru
+            newSign.querySelector("#saleDate").value = onSaleThru
             if (!onSale) {
                 newSign.querySelector("#saleDate").style.display = "None"
                 newSign.querySelector("#youSaveBoxDiv").style.display = "None"
@@ -368,7 +376,7 @@
         }
     </script>
 
-    <script src="bulk_shared.js?v=1002"></script>
+    <script src="bulk_shared.js?v=1003"></script>
     <script src="sign_builder.js?v=1000"></script>
 </body>
 

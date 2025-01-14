@@ -83,6 +83,18 @@ window.addEventListener('load', async () => {
     if(queryParams.get('loadFromSectScan')){
         loadFromSectionScan();
     }
+
+    const today = new Date();
+    const saturday = new Date(today.setDate(today.getDate() - today.getDay() + 6));
+    onSaleThru = `ON SALE THRU ${saturday.toLocaleDateString("en-US")}`;
+    document.querySelector('#date-txt').value = onSaleThru;
+
+    document.querySelector('#date-txt').addEventListener('input', function(e){
+        const dateString = e.target.value;
+        document.querySelectorAll("#saleDate").forEach(element =>
+            element.value = dateString
+        );
+    })
 })
 
 function show_error_popup(msg) {

@@ -30,7 +30,10 @@ div#outline>footer>#rightBox {
 }
 
 #saleDate {
+    width: 200px;
     padding-left: 2px;
+    padding-top: 0;
+    margin-top:14px;
     font-family: "Trade Gothic Condensed";
 }
 
