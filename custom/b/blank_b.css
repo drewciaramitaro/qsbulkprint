@@ -35,3 +35,12 @@
     border: 1px solid black;
     width: 70%;
 }
+
+@media print{
+    #outline{
+        grid-template-areas:
+        "a"
+        "b";
+        grid-template-rows: 100%;
+    }
+}
