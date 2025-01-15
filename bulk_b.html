@@ -185,15 +185,21 @@
         function create_sign(element, addSectionHeader = null) {
             const newSign = sign_template.content.cloneNode(true);
 
-            const [_onSale, _perLb, itemName, altDescription, rawOnSaleThru, priceType, unitType, unitAmt, retailPrice, XforXVal, salePriceRaw, ...mobileLoadData] = element;
+            const [_onSale, _perLb, itemName, altDescription, rawOnSaleThru, priceType, unitType, unitAmt, retailPrice, _XforXVal, salePriceRaw, ...mobileLoadData] = element;
 
             const onSale = _onSale === "onSale";
             const perLb = _perLb !== "off";
             let onSaleThru = rawOnSaleThru;
-            const salePrice = salePriceRaw.toString();
+            let XforXVal = _XforXVal;
+            let salePrice = salePriceRaw.toString();
             console.log(mobileLoadData)
             let mustBuy = mobileLoadData[mobileLoadData.length - 4] || 0;
-            let validForMustBuy = mustBuy !== "0" || false;
+            let validForMustBuy = mustBuy !== "0" && mobileLoadData[mobileLoadData.length-3] || false;
+
+            if(validForMustBuy){
+                XforXVal=mustBuy;
+                salePrice = ((salePriceRaw/_XforXVal) * mustBuy).toString();
+            }
 
             // Mobile load always sets it to 10/1/2023, so let's update it here
             if (onSaleThru == "ON SALE THRU 10/1/2023") {
