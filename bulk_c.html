@@ -5,7 +5,7 @@
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://tdzie.github.io/QuickSign/styles/CSize.css?v=1001" />
     <link rel="stylesheet" href="bulk_shared.css?v=1012" />
-    <link rel="stylesheet" href="bulk_c.css?v=1006" />
+    <link rel="stylesheet" href="bulk_c.css?v=1007" />
     <title>Bulk Sign Print - C Size</title>
     <link rel="icon" type="image/png" href="images/icon.png?v=01">
 </head>
@@ -191,8 +191,8 @@
             const perLb = _perLb !== "off";
             let onSaleThru = rawOnSaleThru;
             const salePrice = salePriceRaw.toString();
-            let mustBuy = mobileLoadData[mobileLoadData.length - 2] || null;
-            let validForMustBuy = mobileLoadData[mobileLoadData.length - 3] || false;
+            let mustBuy = mobileLoadData[mobileLoadData.length - 4] || 0;
+            let validForMustBuy = mustBuy !== "0" || false;
 
             // Mobile load always sets it to 10/1/2023, so let's update it here
             if (onSaleThru == "ON SALE THRU 10/1/2023") {

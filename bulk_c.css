@@ -139,7 +139,10 @@ div#outline>footer>#rightBox {
     margin-bottom: -10px;
 }
 #mustBuy{
-    margin-bottom: 8px;
+    margin-bottom: 8px;   
+    display: block;   
+    text-align: right;
+    margin-right: 20px;
 }
 
 #MustBuyInner input{

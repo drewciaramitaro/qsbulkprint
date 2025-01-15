@@ -138,10 +138,13 @@ div#outline > header {
 
 #mustBuy{
     margin-bottom: 30px;
+    display: block;   
+     text-align: right;
+    margin-right: 20px;
 }
 
 #MustBuyInner input{
-    font-size: 1em;
+    font-size: 1.1em;
 }
 
 #rightBox{

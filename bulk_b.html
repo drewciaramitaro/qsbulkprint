@@ -5,7 +5,7 @@
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://tdzie.github.io/QuickSign/styles/BSize.css?v=1001" />
     <link rel="stylesheet" href="bulk_shared.css?v=1012" />
-    <link rel="stylesheet" href="bulk_b.css?v=1006" />
+    <link rel="stylesheet" href="bulk_b.css?v=1007" />
     <title>Bulk Sign Print - B Size</title>
     <link rel="icon" type="image/png" href="images/icon.png?v=01">
 </head>
@@ -192,8 +192,8 @@
             let onSaleThru = rawOnSaleThru;
             const salePrice = salePriceRaw.toString();
             console.log(mobileLoadData)
-            let mustBuy = mobileLoadData[mobileLoadData.length - 2] || null;
-            let validForMustBuy = mobileLoadData[mobileLoadData.length - 3] || false;
+            let mustBuy = mobileLoadData[mobileLoadData.length - 4] || 0;
+            let validForMustBuy = mustBuy !== "0" || false;
 
             // Mobile load always sets it to 10/1/2023, so let's update it here
             if (onSaleThru == "ON SALE THRU 10/1/2023") {
@@ -203,8 +203,10 @@
             }
 
             function setSavings(priceDifference) {
+                console.log(priceDifference);
                 priceDifference = parseFloat(priceDifference).toFixed(2)
-                if (priceDifference >= 1.0) {
+
+                if (priceDifference >= 1.0) { 
                     newSign.querySelector("#youSavePriceMain").innerHTML = priceDifference.toString().split('.')[0];
                     newSign.querySelector("#youSavePriceAlt").innerHTML = priceDifference.toString().split('.')[1];
 
@@ -263,7 +265,10 @@
                     newSign.querySelector("#LBOption").style.top = "-15px"
                     newSign.querySelector("#whenYouBuy").style.display = "block"
                     newSign.querySelector("#spanWhenYouBuy").innerHTML = `BUY ${XforXVal}`
-                    setSavings((retailPrice - salePrice / XforXVal) * XforXVal);
+                    
+                    console.log(`${retailPrice}  ${XforXVal}/${salePrice}`)
+                    console.log(`${retailPrice - (salePrice / XforXVal)}`)
+                    setSavings((retailPrice - (salePrice / XforXVal)) * XforXVal);
                     break;
                 case 'ten':
                     newSign.querySelector("#priceBeforeDecimal").innerHTML = `<span class="xforxval">10/</span><span style="font-size:140px;vertical-align:top;position:relative;top:40px">$</span>10`;
