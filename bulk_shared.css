@@ -282,6 +282,14 @@ input{
     font-family: 'Trade Gothic Condensed';
     font-weight: lighter;
   }
+
+  #unitType{
+    text-transform: uppercase;
+  }
+
+  #retail{
+    text-align: center;
+  }
 @media screen {
     #unitBox {
         background-color: orange;
