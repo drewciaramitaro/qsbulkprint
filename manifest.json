@@ -15,12 +15,28 @@
             "type": "image/png"
         }
     ],
+    "screenshots": [
+        {
+            "src": "images/pwa_m.png",
+            "sizes": "1440x3012",
+            "type":"image/png",
+            "form_factor":"narrow",
+            "label": "Section Scan UPC"
+        },        
+        {
+            "src": "images/pwa_d.jpeg",
+            "sizes": "3642x1895",
+            "type":"image/jpeg",
+            "form_factor":"wide",
+            "label": "Home Page"
+        }
+    ],
     "orientation": "portrait",
     "display": "standalone",
     "dir": "auto",
     "lang": "en-US",
     "start_url": "https://drewciaramitaro.github.io/qsbulkprint",
     "scope": "https://drewciaramitaro.github.io/qsbulkprint/",
-    "name": "QS Bulk",
-    "short_name": "qs_bulk_print"
+    "name": "QuickSign Bulk Print",
+    "short_name": "PC Sign App"
 }
