@@ -47,18 +47,15 @@ html {
 }
 
 .tool {
-    margin: 20px auto;
     width: fit-content;
-    border-radius: 1rem;
     padding: 20px;
-
     margin: 15px auto;
     color: #7BBA2F;
 }
 
 fieldset {
     border: #7BBA2F 2px solid;
-    border-radius: .5rem;
+    border-radius: .4rem;
     margin: 15px auto;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
