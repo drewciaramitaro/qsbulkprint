@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bulk_shared.css?v=1014" />
+    <link rel="stylesheet" href="bulk_shared.css?v=1015" />
     <title>Bulk Sign Print - Home</title>
     <link rel="icon" type="image/png" href="images/icon.png?v=01">
     <link rel="manifest" href="manifest.json">
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="tool">
+    <div class="no-mobile tool">
         <h1 class="head-txt" style="color: #7BBA2F;">QuickSign Bulk Sign Print</h1>
         <fieldset style="display: flex;justify-content: space-around;gap:10px;width: fit-content;color: #7BBA2F;">
             <legend>Choose a size</legend>
@@ -86,6 +86,13 @@
             </div>
         </details>
     </fieldset>
+    </div>
+
+    <div class="mobile-flex">
+        
+        <a class="action more-tool-btn" href="sectionscanupcs.html"><span></span><img width="120px" src="images/section_scan_header_qr.png">Section Scan UPC</a>
+        <a class="action more-tool-btn" href="https://tdzie.github.io/QuickSign/"><span></span><img width="120px" src="images/quicksign_preview.jpg">QuickSign</a>
+        <a class="action more-tool-btn" href="https://tdzie.github.io/QuickSign/mobilecreate.html"><span></span><img width="120px" src="images/quicksign_preview.jpg">Mobile Create</a>
     </div>
     <div id="print-dialog">
         <div class="error-popup">

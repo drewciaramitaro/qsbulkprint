@@ -287,6 +287,20 @@ input{
   #retail{
     text-align: center;
   }
+
+
+  @media only screen and (max-width: 600px){
+    .no-mobile{
+        display: none;
+    }
+    .mobile-flex{
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+  }
+
 @media screen {
     #unitBox {
         background-color: orange;
