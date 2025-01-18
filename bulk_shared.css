@@ -288,7 +288,9 @@ input{
     text-align: center;
   }
 
-
+.mobile-flex{
+    display: none;
+}
   @media only screen and (max-width: 600px){
     .no-mobile{
         display: none;
