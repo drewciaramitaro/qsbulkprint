@@ -154,3 +154,9 @@ div#outline > header {
 @page{
     margin-top: 7%;
 }
+
+@media print{
+    #saleDate{
+        padding-left: 10px
+    }
+}
