@@ -53,6 +53,10 @@ div#outline>footer>#rightBox {
     top: 20px;
 }
 
+#LBOption{
+    font-family: "Trade Gothic Bold Condensed";
+}
+
 #retail {
     display: inline-block;
     text-align: center;
@@ -148,6 +152,10 @@ div#outline>footer>#rightBox {
 #MustBuyInner input{
     font-size: 1em;
 }
+#price{
+    letter-spacing: -2px;
+}
+
 @media screen {
     #outline {
         margin-left: 0px;

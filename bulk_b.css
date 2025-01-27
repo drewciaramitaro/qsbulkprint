@@ -151,6 +151,10 @@ div#outline > header {
     margin-top: -22px;
 }
 
+#price{
+    letter-spacing: -10px;
+}
+
 @page{
     margin-top: 7%;
 }

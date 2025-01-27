@@ -220,6 +220,9 @@ body {
 #priceBeforeDecimal{
     pointer-events: none;
 }
+#price{
+    pointer-events: none;
+}
 
 .print-page{
     cursor: default;
