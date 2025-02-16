@@ -1,0 +1,435 @@
+
+#priceInputOuterDiv{
+    display: flex;
+    justify-content: space-between;
+}
+#priceInputOuterDiv > div > p{
+    color:#4c4;
+     margin-top: 5px;
+    margin-bottom: 0px;
+
+}
+#realHeader > span {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#addToFavories{
+    height: 36px;
+}
+#overideButtons{
+    display: flex;
+    justify-content: space-between;
+}
+#recentSigns > p:hover, #FavoritesSigns > p:hover{
+    background-color: #bfb;
+}
+#recentSigns > p, #FavoritesSigns > p {
+ border: 1px black solid;
+ margin-top: 10px;
+ margin-bottom: 10px;
+ font-size: 1.3rem;
+ text-align: center;
+ cursor: pointer;
+ background-color:  yellow;
+ border-radius: 5px;
+ color: black;
+ min-height: 50px;
+
+}
+#recentSigns {
+    margin-left: 10px;
+    margin-right: 25px;
+    width: 250px;
+    height: 505px;
+    overflow-y: scroll;
+}
+#FavoritesSigns {
+    margin-left: 10px;
+    margin-right: 25px;
+    width: 250px;
+    height: 495px;
+    overflow-y: scroll;
+}
+
+#recentOutDiv, #FavoritesOutDiv {
+    display: flex;
+    color: #4c4;
+    flex-direction: column;
+    align-items: center;
+}
+#buttonToSwitchSignSizeToC, #buttonToSwitchSignSizeToD{
+    width: 100%;
+}
+#realHeader {
+    width: 100%;
+    padding: 5px;
+    background-color: #444;
+    border: solid whitesmoke 2px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+#versionName{
+    font-size: 1.2em;
+    color: #4c4;
+
+}
+#versionName > p {
+        margin: 5px;
+}
+#CurrentSignSize{
+    font-size: 1.8em;
+    color: #4c4;
+    margin: 5px;
+}
+#realHeader > img {
+       margin: 5px;
+       cursor: pointer;
+}
+
+fieldset > legend {
+    color: #7BBA2F;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#mustBuy {
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+#LBOption {
+    position: relative;
+    top: -2px;
+}
+
+fieldset {
+    background-color: #483828;
+}
+
+h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+input[type="text"]:focus, input[type="button"]:focus {
+    border: 2px solid #B8B6B6;
+    box-shadow: 0 0 25px 4px #bbffbb;
+}
+
+input[type="button"] {
+    background-color: #7BBA2F;
+    border: 1px solid black;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+    input[type="button"]:hover {
+        background-color: #bfb;
+        color: black;
+    }
+
+input[type="text"] {
+    height: 20px;
+}
+
+div#choosePriceType input[type="radio"], div#onOff input[type="radio"], div#chooseUnitType input[type="radio"], div#overideButtons input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+
+div#choosePriceType label, div#onOff label, div#chooseUnitType label, div#overideButtons label {
+    display: inline-block;
+    background-color: #ddd;
+    padding: 8px 8px;
+    font-family: sans-serif, Arial;
+    font-size: 14px;
+    border: 2px solid #444;
+    border-radius: 4px;
+}
+
+div#choosePriceType input[type="radio"]:checked + label, div#onOff input[type="radio"]:checked + label, div#chooseUnitType input[type="radio"]:checked + label, div#overideButtons input[type="radio"]:checked + label {
+    background-color: #bfb;
+    border-color: #4c4;
+}
+
+div#choosePriceType input[type="radio"]:focus + label, div#onOff input[type="radio"]:focus + label, div#chooseUnitType input[type="radio"]:focus + label, div#overideButtons input[type="radio"]:focus + label {
+    border: 2px solid black;
+    box-shadow: 0 0 25px 4px #bbffbb;
+}
+
+div#choosePriceType label:hover, div#onOff label:hover, div#chooseUnitType label:hover, div#overideButtons label:hover {
+    background-color: #dfd;
+    cursor: pointer;
+}
+
+#whenYouBuy {
+    color: white;
+    font-size: 18px;
+    font-stretch: condensed;
+}
+
+#youSaveImg > a {
+    overflow: visible;
+}
+
+#youSaveImg {
+    display: grid;
+    grid-template-columns: 78px 80px 60px 57px;
+}
+
+#youSaveR {
+    height: 60px;
+}
+
+html {
+    background-color: #24180D;
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 1250px;
+
+    align-content: space-around;
+}
+
+
+#outline {
+    background-color: yellow;
+    height: 650px;
+    width: 750px;
+    display: grid;
+    grid-template-areas:
+        "a"
+        "b"
+        "c"
+        "d";
+    grid-template-rows: 17% 23% 39% 21%;
+}
+/* header */
+div#outline > header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    padding: 6px;
+    font-weight: bold;
+    grid-area: a;
+}
+
+    div#outline > header > span {
+        color: green;
+    }
+/* Descriptions */
+#desBox {
+    grid-area: b;
+    height: 0px;
+}
+
+#mainDescription {
+    font-size: 35px;
+    padding-left: 10px;
+    padding-top: 30px;
+    font-family: Clarendon, serif;
+    width: 600px;
+    font-weight: lighter;
+}
+
+#altDescription {
+    font-size: 17px;
+    padding-left: 10px;
+    height: 15px;
+    font-weight: 100;
+    width: 600px;
+    font-family: Trade Gothic, serif;
+    font-weight: lighter;
+}
+
+#saleDate {
+    font-size: 15px;
+    padding-left: 10px;
+    padding-top: 30px;
+    height: 15px;
+}
+/* Price box */
+#price {
+    grid-area: c;
+    font-family: Rockwell, serif;
+    font-weight: bold;
+}
+
+#mustBuy {
+    font-size: 1.5em;
+}
+
+#priceBeforeDecimal {
+    font-size: 320px;
+    margin-top: -73px;
+    padding-top: 0px;
+    float: left;
+    text-align: right;
+    width: 75%;
+    height: 200px;
+    font-weight: bold;
+}
+
+#priceAfterDecimal {
+    font-size: 170px;
+    float: right;
+    width: 25%;
+    margin-top: -29px;
+    font-weight: bold;
+}
+/* footer */
+div#outline > footer {
+    grid-area: d;
+    display: grid;
+    grid-template-columns: 220px auto;
+    grid-template-rows: auto;
+    font-family: Rockwell, serif;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+#unitBox {
+    text-align: center;
+    margin-top: 12px;
+}
+
+#unitPriceBox {
+    font-size: 60px;
+}
+
+#unitType {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+#unitBox > a {
+    margin-top: 44px;
+}
+
+#rightBox {
+    padding-left: 12px;
+    position: relative;
+    margin-top: -4px;
+}
+
+#youSavePriceMain {
+    color: white;
+    font-size: 60px;
+    text-align: right;
+    margin-top: -6px;
+}
+
+#youSavePriceAlt {
+    color: white;
+    font-size: 36px;
+}
+
+#retail {
+    display: inline-block;
+    font-size: 21px;
+    position: absolute;
+    left: 452px;
+    top: -4px;
+    font-family: Rockwell, serif;
+}
+
+#youSaveBoxDiv {
+    position: relative;
+}
+
+#advCardDiv {
+    display: inline-block;
+    position: relative;
+}
+
+@media print {
+    #realHeader, #recentSigns, #formHeader, #mainFormBoxes, #recentOutDiv, #FavoritesOutDiv {
+        display: none;
+    }
+    body {
+        margin-top: -4px;
+    }
+
+    #rightBox {
+        margin-left: 12px;
+    }
+
+    #priceBeforeDecimal {
+        margin-left: -5px;
+    }
+
+    #mainDescription {
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+
+    #altDescription {
+        margin-left: 10px;
+    }
+
+    #saleDate {
+        margin-left: 10px;
+    }
+
+    body > header {
+        display: none;
+    }
+
+    div#outline > header {
+        display: none;
+    }
+
+    #youSaveBoxDiv {
+        -webkit-print-color-adjust: exact;
+        color: #ffffff;
+    }
+
+}
+
+.noSale {
+    visibility: hidden;
+}
+
+.sale {
+    visibility: visible;
+}
+
+.dNone {
+    display: none;
+}
+
+.centFloat {
+    float: right;
+}
+
+#priceInputOuterDiv > input, select {
+height: 25px;
+font-size: 17px;
+}
+
+
+#formHeader{
+    display: flex;
+    width: auto;
+    margin-right: 10px;
+
+}
+#printButton{
+    width: 100%;
+    height: 75px;
+    font-size: 1.5rem;
+}
