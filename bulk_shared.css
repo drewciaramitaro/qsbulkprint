@@ -202,7 +202,8 @@ body {
     cursor: text;
 }
 .editable-input::placeholder{
-    color: transparent;
+    font-style:italic;
+    color: rgba(0, 0, 0, 0.4);
 }
 .editable-input:hover {
     background-color: rgba(0, 0, 0, 0.15);
@@ -487,7 +488,7 @@ input{
         display: none;
     }
 
-    ::placeholder {
+    ::placeholder, .editable-input::placeholder {
         color: transparent;
     }
 }

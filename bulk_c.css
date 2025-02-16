@@ -153,8 +153,13 @@ div#outline>footer>#rightBox {
     font-size: 1em;
 }
 #price{
-    letter-spacing: -2px;
+    letter-spacing: -7px;
     scale: 1.05 1
+}
+
+#priceAfterDecimal{
+    
+    letter-spacing: -2px;
 }
 
 @media screen {

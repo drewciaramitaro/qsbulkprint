@@ -89,12 +89,6 @@
        cursor: pointer;
 }
 
-fieldset > legend {
-    color: #7BBA2F;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
 #mustBuy {
     display: grid;
     grid-template-columns: 80% 20%;
@@ -103,10 +97,6 @@ fieldset > legend {
 #LBOption {
     position: relative;
     top: -2px;
-}
-
-fieldset {
-    background-color: #483828;
 }
 
 h3 {

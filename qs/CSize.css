@@ -1,13 +1,3 @@
-@font-face{
-    font-family: PCCLARENDON;
-    src: url(/fonts/Clarendon.ttf);
-}
-
-@font-face {
-    font-family: PCTRADEGOTHIC;
-    src: url(/fonts/Trade\ Gothic\ LT.ttf);
-}
-
 #priceInputOuterDiv{
     display: flex;
     justify-content: space-between;
@@ -98,16 +88,6 @@
 #realHeader > img {
        margin: 5px;
        cursor: pointer;
-}
-
-fieldset > legend {
-    color: #7BBA2F;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-fieldset {
-    background-color: #483828;
 }
 
 h3 {
@@ -244,7 +224,7 @@ body {
     font-size: 19px;
     padding-left: 2px;
     padding-top: 10px;
-    font-family: PCCLARENDON, serif;
+    font-family: Clarendon;
     width: 414px;
     font-weight: lighter;
 }
@@ -254,13 +234,10 @@ body {
     padding-left: 2px;
     height: 8px;
     width: 414px;
-    font-family: PCTRADEGOTHIC, serif;
-    font-weight: lighter;
     padding-top: 5px;
 }
 
 #saleDate {
-    font-family: PCTRADEGOTHIC;
     font-size: 10px;
     padding-left: 3px;
     padding-top: 14px;
@@ -292,7 +269,7 @@ body {
 div#outline > footer {
     grid-area: d;
     display: grid;
-    grid-template-columns: 125px auto;
+    grid-template-columns: 150px auto;
     grid-template-rows: auto;
     font-family: Rockwell, serif;
     font-weight: bold;
