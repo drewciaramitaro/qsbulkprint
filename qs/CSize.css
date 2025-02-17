@@ -12,8 +12,10 @@
 
 
 @media print{
-    #c-sign{margin-top: 15px;
-    margin-left: -15px;}
+    #c-sign{
+        margin-top: 13px;
+        margin-left: -23px;
+    }
 }
 #addToFavories{
     height: 36px;

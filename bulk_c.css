@@ -154,11 +154,10 @@ div#outline>footer>#rightBox {
 }
 #price{
     letter-spacing: -7px;
-    scale: 1.05 1
+    /* scale: 1.05 1 */
 }
 
 #priceAfterDecimal{
-    
     letter-spacing: -2px;
 }
 
