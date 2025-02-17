@@ -218,6 +218,9 @@ body {
     color: rgba(0, 0, 0, 0.2);
 }
 
+.editable-input:focus::placeholder{
+    color: rgba(0, 0, 0, 0.05);
+}
 #priceBeforeDecimal{
     pointer-events: none;
 }
