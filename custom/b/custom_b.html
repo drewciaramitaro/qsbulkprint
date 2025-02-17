@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../../qs/BSize.css?v=1002" />
     <link rel="stylesheet" href="../../bulk_shared.css?v=1017" />
     <link rel="stylesheet" href="../../bulk_b.css?v=1009" />
-    <title>Custom Signs - C Size</title>
+    <title>Custom Signs - B Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
     <style>
         @media print{
@@ -39,7 +39,7 @@
                     <input type="checkbox" id="on-sale-sel" checked style="cursor:pointer" onchange="refresh()">
                     <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">On Sale?</span>
                 </div>
-                <div style="display: none;">
+                <div>
                     <input type="checkbox" id="per-lb-sel" style="cursor:pointer" onchange="refresh()">
                     <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Per LB?</span>
                 </div>
@@ -118,6 +118,7 @@
                             <div id="priceBeforeDecimal" style="width: 74%;">2</div>
                             <div id="priceAfterDecimal" style="width: 25%">99</div>
                             <div id="pRight"></div>
+                            <div id="lb-lbl" style="font-family: 'Trade Gothic Condensed';letter-spacing: normal;top: 50px;left: 90%;position: relative;font-size: 25px;">lb.</div>
                         </div>
                         <div id="price" xforx style="display: none;">
                             <div id="pLeft" width="auto"></div>
@@ -365,6 +366,18 @@
             const [dollars, cents] = salePrice.toString().split('.')
             document.querySelector("#priceBeforeDecimal").innerHTML = dollars
             document.querySelector("#priceAfterDecimal").innerHTML = cents
+
+            if (parseFloat(salePrice) < 1){  
+                document.querySelector("#priceBeforeDecimal").innerHTML = cents;
+                document.querySelector("#priceAfterDecimal").innerHTML = "¢";
+
+                document.querySelector("#priceBeforeDecimal").style.width = "80%";
+                document.querySelector("#priceAfterDecimal").style.width = "20%";
+            }
+            else{
+                document.querySelector("#priceBeforeDecimal").style.width = "74%";
+                document.querySelector("#priceAfterDecimal").style.width = "25%";
+            }
 
                         // unit price
             let unitType = document.querySelector('#unit-type-sel').value;

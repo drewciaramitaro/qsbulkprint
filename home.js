@@ -65,6 +65,7 @@ async function loadQSData(){
         document.querySelector('#go-to-c').href = 'bulk_c.html?loadFromSectScan=true'
 
         document.querySelector('#success').style.display = 'block';
+        document.querySelector('#bulk-size').style.display = 'flex';
         document.querySelector('#b-count').innerHTML = `${b_signs.length} B-Size Signs`
         document.querySelector('#c-count').innerHTML = `${c_signs.length} C-Size Signs`
 

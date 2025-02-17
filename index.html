@@ -13,7 +13,7 @@
 <body>
     <div class="no-mobile tool">
         <h1 class="head-txt" style="color: #7BBA2F;">QuickSign Bulk Sign Print</h1>
-        <fieldset style="display: flex;justify-content: space-around;gap:10px;width: fit-content;color: #7BBA2F;">
+        <fieldset id="bulk-size" style="display: none;justify-content: space-around;gap:10px;width: fit-content;color: #7BBA2F;">
             <legend>Choose a size</legend>
 
             <a id="go-to-b" class="action size-btn" href="bulk_b.html"><span></span><img width="200"
@@ -26,6 +26,12 @@
             <h1 style="font-family: Clarendon;font-weight: 100;" id="b-count">x B Size Signs</h1>
             <h1 style="font-family: Clarendon;font-weight: 100;" id="c-count">x C Size Signs</h1>
         </fieldset> 
+        <fieldset
+            style="display: flex;justify-content: space-around;gap:10px;color: #7BBA2F;width: 400px;">
+            <legend>More Signs</legend>
+            <a class="action more-tool-btn" href="custom/customsigns.html"><span></span><img width="120px" src="images/spec_sign_icon.jpg">Custom Signs</a>
+            <a class="action more-tool-btn" href="gallery/gallery.html"><span></span><img width="120px" src="images/gallery_icon.jpeg">Signage Gallery</a>
+        </fieldset>
         <fieldset style="max-width: 800px;color: #7BBA2F;font-family: Trade Gothic LT;text-align: justify;">
             <legend style="font-size: 35px;">New!</legend>
             <h1 class="head-txt" style="font-family: Clarendon;font-weight: 100;">Organize your signs during your section scan!</h1>
@@ -33,6 +39,7 @@
             <p>While you're doing your section scan, just enter or scan one of the UPCs found <a href="sectionscanupcs.html" class="action">here</a>.</p>
             <p>For example, you can add a label saying "Aisle 1" by entering 201 into the UPC box.</p>
         </fieldset>
+        
 
         <div style="display: flex;
             flex-wrap: wrap;
@@ -61,12 +68,7 @@
 
                     <a class="action" href="usage_guide.pdf">Click here to view the Usage Guide</a>
                 </fieldset>
-                <fieldset
-                    style="display: flex;justify-content: space-around;gap:10px;color: #7BBA2F;">
-                    <legend>More Signs</legend>
-                    <a class="action more-tool-btn" href="custom/customsigns.html"><span></span><img width="120px" src="images/spec_sign_icon.jpg">Custom Signs</a>
-                    <a class="action more-tool-btn" href="gallery/gallery.html"><span></span><img width="120px" src="images/gallery_icon.jpeg">Signage Gallery</a>
-                </fieldset>
+
                 <fieldset
                     style="display: flex;justify-content: space-around;gap:10px;color: #7BBA2F;">
                     <legend>Other Useful Tools</legend>
