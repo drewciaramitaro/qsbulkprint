@@ -288,6 +288,7 @@
                 document.querySelector("#price[bogo]").style.display = 'block'
                 document.querySelector('#priceBeforeDecimal img').src = "../../images/bogo.svg"
                 document.querySelector("#MustBuyInner").style.display = 'none'
+                salePrice = retailPrice
                 setSavings(retailPrice, 2)
             }            
             else if (priceType == "B2G1"){
@@ -298,6 +299,7 @@
                 document.querySelector("#price[bogo]").style.display = 'block'
                 document.querySelector('#priceBeforeDecimal img').src = "../../images/b2g1.svg"
                 document.querySelector("#MustBuyInner").style.display = 'none'
+                salePrice = retailPrice
                 setSavings(retailPrice, 3)
             }            
             else if (priceType == "B2G2"){
@@ -308,6 +310,7 @@
                 document.querySelector("#price[bogo]").style.display = 'block'
                 document.querySelector('#priceBeforeDecimal img').src = "../../images/b2g2.svg"
                 document.querySelector("#MustBuyInner").style.display = 'none'
+                salePrice = retailPrice
                 setSavings(retailPrice*2, 4)
             }
             else if (priceType == "B1G2"){
@@ -318,6 +321,7 @@
                 document.querySelector("#price[bogo]").style.display = 'block'
                 document.querySelector('#priceBeforeDecimal img').src = "../../images/b1g2.svg"
                 document.querySelector("#MustBuyInner").style.display = 'none'
+                salePrice = retailPrice
                 setSavings(retailPrice*2, 3)
             }
             else{
