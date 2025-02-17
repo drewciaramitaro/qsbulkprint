@@ -142,7 +142,7 @@
                         </div>
                         <footer style="overflow: visible;">
                             <div id="unitBox">
-                                <span style="font-family: 'Trade Gothic Bold Condensed';font-size:16px">UNIT PRICE</span>
+                                <span style="font-family: 'Trade Gothic Bold Condensed';font-size:22px">UNIT PRICE</span>
                                 <div id="unitPriceBox">19.99</div>
                                 <div id="unitType">PER LB</div>
                             </div>
@@ -426,7 +426,7 @@
                     unitString += `${size} ${unit}/${calcUnitPrice(size, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)} ${suffix}<br/>`
                 });
                 document.querySelector("#unitType").style.display = "None";
-                document.querySelector("#unitPriceBox").style.fontSize = "13px";
+                document.querySelector("#unitPriceBox").style.fontSize = "19px";
                 document.querySelector("#unitPriceBox").style.fontFamily = "Trade Gothic Condensed"
             }
             else {
