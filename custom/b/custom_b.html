@@ -39,7 +39,7 @@
                     <input type="checkbox" id="on-sale-sel" checked style="cursor:pointer" onchange="refresh()">
                     <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">On Sale?</span>
                 </div>
-                <div>
+                <div style="display: none;">
                     <input type="checkbox" id="per-lb-sel" style="cursor:pointer" onchange="refresh()">
                     <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Per LB?</span>
                 </div>
@@ -95,6 +95,7 @@
                 </div>
             </div>
         </div>
+        <span style="font-family: Trade Gothic Condensed;">Hint: Hold ALT and press 7 on the number pad to add the '•' symbol in the text boxes</span>
     </fieldset>
 
 
@@ -118,7 +119,7 @@
                             <div id="priceBeforeDecimal" style="width: 74%;">2</div>
                             <div id="priceAfterDecimal" style="width: 25%">99</div>
                             <div id="pRight"></div>
-                            <div id="lb-lbl" style="font-family: 'Trade Gothic Condensed';letter-spacing: normal;top: 50px;left: 90%;position: relative;font-size: 25px;">lb.</div>
+                            <!-- <div id="lb-lbl" style="font-family: 'Trade Gothic Condensed';letter-spacing: normal;top: 50px;left: 90%;position: relative;font-size: 25px;">lb.</div> -->
                         </div>
                         <div id="price" xforx style="display: none;">
                             <div id="pLeft" width="auto"></div>
