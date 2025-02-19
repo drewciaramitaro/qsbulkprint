@@ -4,7 +4,7 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="../../qs/BSize.css?v=1002" />
-    <link rel="stylesheet" href="../../bulk_shared.css?v=1018" />
+    <link rel="stylesheet" href="../../bulk_shared.css?v=1019" />
     <link rel="stylesheet" href="../../bulk_b.css?v=1009" />
     <title>Custom Signs - B Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
@@ -31,13 +31,32 @@
         </div>
     </fieldset>
 
-    <fieldset class="desktop tool">
+    <div class="desktop tool">
         <legend>Edit Sign</legend>
-        <div style="display: flex;">
-            <div style="display: flex;flex-direction: column;gap:10px;width:200px">
+        <div style="display: flex;gap:10px;">
+            <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
+                <legend>Choose your Sign Type</legend>
                 <div>
-                    <input type="checkbox" id="on-sale-sel" checked style="cursor:pointer" onchange="refresh()">
-                    <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">On Sale?</span>
+                    <input type="checkbox" id="on-sale-sel" checked style="display: none;" onchange="refresh()">
+                    <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Sign Type</span>
+                        <div>
+                        <button id="_onSale" class="action" style="background-color: green;"
+                            onclick="{
+                                document.querySelector('#_onSale').style.backgroundColor ='green';
+                                document.querySelector('#_offSale').style.backgroundColor ='';
+                                document.querySelector('#on-sale-sel').checked = true;
+                                refresh();
+                            }"
+                        >On Sale</button>
+                        <button id="_offSale" class="action"
+                        onclick="{
+                            document.querySelector('#_onSale').style.backgroundColor ='';
+                            document.querySelector('#_offSale').style.backgroundColor ='green';
+                            document.querySelector('#on-sale-sel').checked = false;
+                            refresh();
+                        }"
+                        >Off Sale</button>
+                    </div>
                 </div>
                 <div style="display: none;">
                     <input type="checkbox" id="per-lb-sel" style="cursor:pointer" onchange="refresh()">
@@ -52,12 +71,13 @@
                             <option value="BOGO">Buy One, Get One</option>
                             <option value="B1G2">Buy One, Get Two</option>
                             <option value="B2G1">Buy Two, Get One</option>
-                            <option value="B2G2">Buy Two, Get Two</option>
+                            <option value="B2G2">Buy Two, Get Two</option>>
                         </optgroup>
                     </select>
                 </div>
-            </div>
-            <div style="display: flex;flex-direction: column;gap:10px;width:200px">
+            </fieldset>
+            <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
+                <legend>Item Pricing</legend>
                 <div id="sale-price-box">
                     <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Sale Price</span>
                     <input id="sale-price-input" inputmode="decimal" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="2.99"/>
@@ -73,6 +93,9 @@
                     <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Regular Retail</span>
                     <input id="retail-price-input" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5.99"/>
                 </div>
+            </fieldset>
+            <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
+                <legend>Unit Pricing</legend>
                 <div id="unit-option-box">
                     <div>
                         <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Unit Price Type</span>
@@ -93,10 +116,10 @@
                     </div>
 
                 </div>
-            </div>
+            </fieldset>
         </div>
         <span style="font-family: Trade Gothic Condensed;">Hint: Hold ALT and press 7 on the number pad to add the '•' symbol in the text boxes</span>
-    </fieldset>
+    </div>
 
 
     <div class="print">
@@ -356,11 +379,17 @@
                 document.querySelector('#advCardDiv').style.display='none';
                 document.querySelector('#youSaveBoxDiv').style.display='none';
                 document.querySelector('#saleDate').value = '';
+                document.querySelector("#retail-price-box").style.display = 'none';
+                document.querySelector("#sale-price-box span").innerHTML = "Item Price";
+                document.querySelector("#sale-price-box-xforx span").innerHTML = "Item Price";
             }
             else{
                 document.querySelector('#advCardDiv').style.display='inline-block';
                 document.querySelector('#youSaveBoxDiv').style.display='flex';
                 document.querySelector('#saleDate').value = '';
+                document.querySelector("#retail-price-box").style.display = 'block';
+                document.querySelector("#sale-price-box span").innerHTML = "Sale Price";
+                document.querySelector("#sale-price-box-xforx span").innerHTML = "Sale Price";
             }
             
 

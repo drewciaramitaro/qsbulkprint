@@ -4,7 +4,7 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="../../qs/CSize.css?v=1004" />
-    <link rel="stylesheet" href="../../bulk_shared.css?v=1018" />
+    <link rel="stylesheet" href="../../bulk_shared.css?v=1019" />
     <link rel="stylesheet" href="../../bulk_c.css?v=1010" />
     <title>Custom Signs - C Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
@@ -31,8 +31,17 @@
         <div style="display: flex;">
             <div style="display: flex;flex-direction: column;gap:10px;width:200px">
                 <div>
-                    <input type="checkbox" id="on-sale-sel" checked style="cursor:pointer" onchange="refresh()">
-                    <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">On Sale?</span>
+                    <input type="checkbox" id="on-sale-sel" checked style="display: none;" onchange="refresh()">
+                    <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Sign Type</span>
+                        <div>
+                        <button id="_onSale" class="action" style="background-color: green;"
+                            onclick="{
+                                document.querySelector('#_onSale').style.backgroundColor ='green';
+                                document.querySelector('#on-sale-sel').checked = true;
+                                refresh();
+                            }"
+                        >On Sale</button>
+                    </div>
                 </div>
                 <div style="display: none;">
                     <input type="checkbox" id="per-lb-sel" style="cursor:pointer" onchange="refresh()">
@@ -366,12 +375,17 @@
                 document.querySelector('#advCardDiv').style.display='none';
                 document.querySelector('#youSaveBoxDiv').style.display='none';
                 document.querySelector('#saleDate').value = '';
+                document.querySelector("#retail-price-box").style.display = 'none';
+                document.querySelector("#sale-price-box span").innerHTML = "Item Price";
+                document.querySelector("#sale-price-box-xforx span").innerHTML = "Item Price";
             }
             else{
-                
                 document.querySelector('#advCardDiv').style.display='inline-block';
                 document.querySelector('#youSaveBoxDiv').style.display='flex';
                 document.querySelector('#saleDate').value = '';
+                document.querySelector("#retail-price-box").style.display = 'block';
+                document.querySelector("#sale-price-box span").innerHTML = "Sale Price";
+                document.querySelector("#sale-price-box-xforx span").innerHTML = "Sale Price";
             }
             
 
@@ -435,6 +449,7 @@
             document.querySelector("#unitPriceBox").innerHTML = unitString;
 
             document.querySelector('#unit-size-suf').innerHTML = unit || '';
+
 
         }
 

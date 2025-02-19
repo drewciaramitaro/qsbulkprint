@@ -492,6 +492,7 @@ input{
     }
 
     ::placeholder, .editable-input::placeholder {
-        color: transparent;
+        display: none !important;
+        color: transparent !important;
     }
 }
