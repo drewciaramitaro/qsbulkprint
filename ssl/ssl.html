@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bulk_shared.css?v=1009" />
+    <title>Offline SSL</title>
+    <link rel="icon" type="image/png" href="../images/icon.png?v=01">
+
+    <style>
+        td{            
+            border:#2f490f 2px solid;
+
+            padding: .2rem;
+        }
+        table{
+            border-collapse: collapse;
+            font-size: 12pt;
+        }
+
+        td input{
+            appearance: none;
+            background-color: rgb(43, 43, 43);
+            
+            border: none;
+            border-bottom: 1px solid #7BBA2F;
+            margin: 4px 4px;
+            color:white;
+            font-size: 10pt !important;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tool">
+        <div style="display: flex;gap:10px;">
+            <fieldset style="display: flex;justify-content: space-around;gap:10px;width: fit-content;color: #7BBA2F;">
+                <legend><h1 class="head-txt" style="color: #7BBA2F;">Offline SSL</h1></legend>
+    
+                <a id="go-home" class="action more-tool-btn" href="../index.html"><span></span><img width="100" src="../images/home-icon.jpg" />Home</a>
+            </fieldset>
+            <fieldset style="justify-content: space-around;gap:10px;width: 600px;color: #7BBA2F;font-family: Trade Gothic LT">
+                <legend><h1 class="head-txt" style="color: #7BBA2F;">Information</h1></legend>
+                <p>This tool was created by Drew Ciaramitaro - Store #240 Webster, MA</p>
+
+                <p>This tool is built upon the QuickSign templates by the lovely Timothy Dziedec with some of my own modifications.</p>
+                <p>This wouldn't be possible without his hard work!</p>
+
+                <p>If you encounter any issues, email me at <a href="mailto:drewciaramitaro@pricechopper.com" style="color:#7BBA2F">drewciaramitaro@pricechopper.com</a>. I try to respond as quick as possible.</p>
+    
+            </fieldset>
+        </div>
+
+
+        <fieldset style="max-width: 800px;color: #7BBA2F;font-family: Trade Gothic LT;display: flex;gap:5px;flex-direction: column;">
+            <legend style="font-size: 35px;">Paste your section scan below</legend>
+            <textarea style="margin:auto;width:95%;resize:vertical;height:300px" id="ss-input">
+000000000209			0.01			•	•	
+007910052836	PUPPRONI89500	2	0.01	3.99	3.50		•	
+002120000004	SCOTCH M82601	5	0.01	3.29	2.99		•	
+001122513621	SD PAPER CUPS	2	0.01	4.99			•	
+007910068951	MLK BNE TNDR HEART	2	0.01	2.39			•	
+000000000210			0.01			•	•	
+004173500806	PC COCON87312	1	0.01	3.79	0.75		•	
+001090000531	REY LARGE OV	2	0.01	4.29			•	
+005833615323	DR OETKER MU	1	1.99	1.99				
+005833615323	DR OETKER MU	1	1.99	1.25				
+004173506291	PICS CH 89446	1	25.03	2.99	1.25		•	
+004173506291	PICS CH 89446	1	1.00	2.99	1.75		•	
+004173506291	PICS CH 89446	1	0.01	2.99	1.00		•	
+000000000302			0.01			•	•	
+078372490620	TRU/TRAIL BL	5	0.01	27.99			•	
+004173505884	PICS CHR89870	2	0.02	2.99	2.49		•	•
+004173505329	PICS R&W89870	2	0.02	2.99	2.49		•	</textarea>
+<!--upc // item name // dept // dolphin price // norm price // sale price // diff // bogo-->
+
+            <button class="action" onclick="parseLoad()">Load</button>
+        </fieldset>
+
+        <h3 style="font-family: Trade Gothic LT;text-align: center">Tip: Press the 🔍 button next to a product to look up the UPC on PriceChopper.com!</h3>
+        <h3 style="font-family: Trade Gothic LT;text-align: center;">This will typically give you the item name and unit size.</h3>
+        <p style="font-family: Trade Gothic LT;text-align: center;font-style: italic;">The prices listed on PriceChopper.com do not reflect in-store prices, do not refer to them.</p>
+
+
+        <fieldset style="max-width: 1900px;color: #7BBA2F;font-family: Trade Gothic LT;display: flex;gap:5px;flex-direction: column;">
+            <legend style="font-size: 35px;">Fill out the sign Information</legend>
+            <table>
+                <thead>
+                    <tr>
+                        <td>UPC</td>
+                        <td>Item Name</td>
+                        <td>Description</td>
+                        <td>Unit</td>
+                        <td>Dolphin Price</td>
+                        <td>Retail Price</td>
+                        <td>Sale Price</td>
+                        <td>Displayed Price</td>
+                        <td>Sign Type</td>
+                        <td>Advanced Edit</td>
+                    </tr>
+                </thead>
+                <tbody id="sign-table">
+
+                </tbody>
+            </table>
+        </fieldset>
+
+
+    </div>
+</body>
+
+<!-- #region Templates-->
+ <template id="item-table-row">
+    <tr>
+        <td>
+            <span id="upc"></span>
+        </td>
+        <td>
+            <a class="action" id="search-btn" target="none" style="font-size: 12px;">🔍</a>
+            <input id="item-name" style="width: 300px;" autocomplete="off" oninput="{
+                this.parentElement.parentElement.setAttribute('sd_name', this.value)
+            }">
+        </td>
+        <td>
+            <input id="item-desc" style="width: 300px;" autocomplete="off" oninput="{
+                this.parentElement.parentElement.setAttribute('sd_description', this.value)
+            }">
+        </td>
+        <td>
+            <select id="unit-type">
+                <optgroup label="Unit Price Type">
+                    <option value="EACH">EACH</option>
+                    <option value="POUND" selected>PER LB.</option>
+                    <option value="QUART">PER QT.</option>
+                    <option value="50 COUNT">PER 50 SQ. FT.</option>
+                    <option value="100 COUNT">PER 100 CT.</option>
+                </optgroup>
+            </select>
+            <input id="unit-size" style="width: 4rem;" autocomplete="off">
+            <span id="unit-suffix">oz.</span>
+        </td>
+        <td>
+            <span id="dolphin-price"></span>
+        </td>
+        <td>
+            <span id="retail-price"></span>
+        </td>        
+        <td>
+            <span id="sale-price"></span>
+        </td>
+        <td id="sale-info"></td>
+        <td>
+            <button id="sign-size-b" class="action"
+                onclick="{
+                    this.parentElement.querySelector('#sign-size-b').style.backgroundColor ='green';
+                    this.parentElement.querySelector('#sign-size-c').style.backgroundColor ='';
+                    this.parentElement.querySelector('#sign-size-skip').style.backgroundColor ='';
+                    this.parentElement.parentElement.setAttribute('sd_signsize', 'b')
+                }"
+            >B</button>
+            <button id="sign-size-c" class="action"
+                onclick="{
+                    this.parentElement.querySelector('#sign-size-b').style.backgroundColor ='';
+                    this.parentElement.querySelector('#sign-size-c').style.backgroundColor ='green';
+                    this.parentElement.querySelector('#sign-size-skip').style.backgroundColor ='';
+                    this.parentElement.parentElement.setAttribute('sd_signsize', 'c')
+                }"
+            >C</button>
+            <button id="sign-size-skip" class="action"
+                onclick="{
+                    this.parentElement.querySelector('#sign-size-b').style.backgroundColor ='';
+                    this.parentElement.querySelector('#sign-size-c').style.backgroundColor ='';
+                    this.parentElement.querySelector('#sign-size-skip').style.backgroundColor ='green';
+                    this.parentElement.parentElement.setAttribute('sd_signsize', 'skip')
+                }"
+            >Skip</button>
+        </td>
+        <td>
+            <button class="action" style="width: 100%;" onclick="{
+                if(!this.parentElement.parentElement.getAttribute('sd_signsize') || this.parentElement.parentElement.getAttribute('sd_signsize') == 'skip'){
+                        alert('Please select a sign type before going to Advanced Edit.')
+                        return;
+                    }
+
+                alert('This will open a new tab with the sign so you can individually print it after making changes.\n\nThe sign will be set to SKIP in this view.');
+                
+                const r = this.parentElement.parentElement;
+
+                const query_params = new URLSearchParams({
+                    name: r.getAttribute('sd_name'),
+                    description: r.getAttribute('sd_description'),
+                    retail: r.getAttribute('sd_retailprice'),
+                    sale: r.getAttribute('sd_saleprice'),
+                    onsale: r.getAttribute('sd_onsale'),
+                    xforx0: r.getAttribute('sd_xforx_0'),
+                    xforx1: r.getAttribute('sd_xforx_1')
+                })
+
+                console.log(query_params.toString())
+                window.open(`../custom/c/custom_c.html?${query_params.toString()}`)
+
+            }">✏️</button>
+        </td>
+ </template>
+
+ <template id="header-table-row">
+    <tr>
+        <td>
+            <span>New Header</span>
+        </td>
+        <td>
+            <input id="header-desc" style="width: 340px;" autocomplete="off">
+        </td>
+    </tr>
+ </template>
+ <!-- #endregion -->
+
+<script>
+    function parseLoad() {
+        const section_scan_array = document.querySelector('#ss-input').innerHTML.split('\n');
+        const item_template = document.querySelector("#item-table-row");
+        const header_template = document.querySelector("#header-table-row")
+        const item_table = document.querySelector("#sign-table")
+        section_scan_array.forEach(element => {
+            [upc, name, dept, dolphin_price, retail_price, sale_price, _, hasdiff, bogo] = element.split('\t')
+
+            if(sale_price == ''){
+                sale_price = retail_price;
+            }
+
+            if(parseInt(upc) < 500){
+                const new_row = header_template.content.cloneNode(true);
+                
+                new_row.querySelector('tr').setAttribute('sd_isheader','')
+                item_table.appendChild(new_row);
+            }
+            else if(dolphin_price == sale_price){}
+            else{
+
+                const new_row = item_template.content.cloneNode(true);
+                const find_url = `https://shop.pricechopper.com/search?search_term=${parseInt(upc)}&search_is_autocomplete=false`
+
+                const _r = new_row.querySelector('tr')
+                _r.setAttribute('sd_upc', parseInt(upc))
+                _r.setAttribute('sd_name', name)
+                _r.setAttribute('sd_description', '')
+                _r.setAttribute('sd_retailprice', retail_price)
+                _r.setAttribute('sd_saleprice', sale_price)
+                _r.setAttribute('sd_onsale', sale_price !== '')
+
+
+                new_row.querySelector("#search-btn").href = find_url;
+                
+                new_row.querySelector("#upc").innerHTML = parseInt(upc);
+
+                new_row.querySelector("#item-name").value = name;
+                
+                new_row.querySelector("#dolphin-price").innerHTML = dolphin_price;
+
+                new_row.querySelector("#retail-price").innerHTML = retail_price;
+                
+                if(sale_price != retail_price)
+                    new_row.querySelector("#sale-price").innerHTML = sale_price;
+                
+                if(bogo == '•'){
+                    var bogo_selector = document.createElement('select');
+
+                    ['BOGO', 'B2G1', 'B1G2', 'B2G2'].forEach((e) => {
+                        var option = document.createElement('option');
+                        option.value = e;
+                        option.text = e;
+                        bogo_selector.append(option);
+                    })
+
+                    new_row.querySelector('#sale-info').appendChild(bogo_selector);
+                }
+
+                // Check if this should be a X/$X price -- any time its a multiple of 25 cents we can do this.
+                if(parseFloat(sale_price) % 0.25 == 0) {
+                    var xforx_selector = document.createElement('select');
+                    for (let i = 2; i <= 10; i++) {
+                        var option = document.createElement('option');
+                        // Only show the option if it would equal a whole number
+                        // e.g. if we have a price of 3.50, we don't want to have 3 as an option, that would appear as 3/$10.50 -- we don't want that
+                        if((sale_price * i) % 1.00 == 0){
+                            option.value = i;
+                            option.text = i;
+
+                            if(sale_price == 1.00)
+                                option.selected = true;
+                            xforx_selector.append(option);
+                        }
+                    }
+                    new_row.querySelector('#sale-info').appendChild(xforx_selector);
+
+                    var xforx_right = document.createElement('span');
+                    xforx_right.innerHTML = ' / $5'
+                    new_row.querySelector('#sale-info').appendChild(xforx_right);
+                    xforx_selector.addEventListener('change', (e) => {
+                        console.log(parseFloat(sale_price))
+                        xforx_right.innerHTML = ` / $${e.target.parentElement.parentElement.getAttribute('sd_saleprice') * e.target.value}`
+                        e.target.parentElement.parentElement.setAttribute('sd_xforx_0', e.target.value)
+                        e.target.parentElement.parentElement.setAttribute('sd_xforx_1', e.target.parentElement.parentElement.getAttribute('sd_saleprice') * e.target.value)
+                    })
+                    xforx_right.innerHTML = ` / $${sale_price * xforx_selector.value}`
+                    
+                    _r.setAttribute('sd_xforx_0', xforx_selector.value)
+                    _r.setAttribute('sd_xforx_1', sale_price * xforx_selector.value)
+                }
+                
+                item_table.appendChild(new_row);
+            }
+            
+        });
+    }
+
+    // parseLoad();
+</script>
+
+</html>
