@@ -194,11 +194,12 @@
                     sale: r.getAttribute('sd_saleprice'),
                     onsale: r.getAttribute('sd_onsale'),
                     xforx0: r.getAttribute('sd_xforx_0'),
-                    xforx1: r.getAttribute('sd_xforx_1')
+                    xforx1: r.getAttribute('sd_xforx_1'),
+                    bogo: r.getAttribute('sd_bogo')
                 })
 
                 console.log(query_params.toString())
-                window.open(`../custom/c/custom_c.html?${query_params.toString()}`)
+                window.open(`../custom/${this.parentElement.parentElement.getAttribute('sd_signsize')}/custom_${this.parentElement.parentElement.getAttribute('sd_signsize')}.html?${query_params.toString()}`)
 
             }">✏️</button>
         </td>
@@ -247,7 +248,7 @@
                 _r.setAttribute('sd_description', '')
                 _r.setAttribute('sd_retailprice', retail_price)
                 _r.setAttribute('sd_saleprice', sale_price)
-                _r.setAttribute('sd_onsale', sale_price !== '')
+                _r.setAttribute('sd_onsale', sale_price !== retail_price)
 
 
                 new_row.querySelector("#search-btn").href = find_url;
@@ -259,6 +260,10 @@
                 new_row.querySelector("#dolphin-price").innerHTML = dolphin_price;
 
                 new_row.querySelector("#retail-price").innerHTML = retail_price;
+                /* 
+                if(dolphin_price == 0.01){
+                    new_row.querySelector('#sign-size-b').click()
+                } */
                 
                 if(sale_price != retail_price)
                     new_row.querySelector("#sale-price").innerHTML = sale_price;
@@ -273,7 +278,12 @@
                         bogo_selector.append(option);
                     })
 
+                    bogo_selector.addEventListener('change', (e) => {
+                        e.target.parentElement.parentElement.setAttribute('sd_bogo', e.target.value)
+                    });
+
                     new_row.querySelector('#sale-info').appendChild(bogo_selector);
+                    _r.setAttribute('sd_bogo', 'BOGO');
                 }
 
                 // Check if this should be a X/$X price -- any time its a multiple of 25 cents we can do this.
@@ -297,8 +307,9 @@
                     var xforx_right = document.createElement('span');
                     xforx_right.innerHTML = ' / $5'
                     new_row.querySelector('#sale-info').appendChild(xforx_right);
+
+                    // on change event
                     xforx_selector.addEventListener('change', (e) => {
-                        console.log(parseFloat(sale_price))
                         xforx_right.innerHTML = ` / $${e.target.parentElement.parentElement.getAttribute('sd_saleprice') * e.target.value}`
                         e.target.parentElement.parentElement.setAttribute('sd_xforx_0', e.target.value)
                         e.target.parentElement.parentElement.setAttribute('sd_xforx_1', e.target.parentElement.parentElement.getAttribute('sd_saleprice') * e.target.value)
