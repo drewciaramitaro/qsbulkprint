@@ -83,31 +83,32 @@
         <p style="font-family: Trade Gothic LT;text-align: center;font-style: italic;">The prices listed on PriceChopper.com do not reflect in-store prices, do not refer to them.</p>
 
 
-        <fieldset style="max-width: 1900px;color: #7BBA2F;font-family: Trade Gothic LT;display: flex;gap:5px;flex-direction: column;">
-            <legend style="font-size: 35px;">Fill out the sign Information</legend>
-            <table>
-                <thead>
-                    <tr>
-                        <td>UPC</td>
-                        <td>Item Name</td>
-                        <td>Description</td>
-                        <td>Unit</td>
-                        <td>Dolphin Price</td>
-                        <td>Retail Price</td>
-                        <td>Sale Price</td>
-                        <td>Displayed Price</td>
-                        <td>Sign Type</td>
-                        <td>Advanced Edit</td>
-                    </tr>
-                </thead>
-                <tbody id="sign-table">
-
-                </tbody>
-            </table>
-        </fieldset>
-
 
     </div>
+    
+    <fieldset style="max-width: 1900px;color: #7BBA2F;font-family: Trade Gothic LT;display: flex;gap:5px;flex-direction: column;">
+        <legend style="font-size: 35px;">Fill out the sign Information</legend>
+        <table>
+            <thead>
+                <tr>
+                    <td>UPC</td>
+                    <td>Item Name</td>
+                    <td>Description</td>
+                    <td>Unit</td>
+                    <td>Dolphin Price</td>
+                    <td>Retail Price</td>
+                    <td>Sale Price</td>
+                    <td>Displayed</td>
+                    <td>Sign Type</td>
+                    <td>Print Individually</td>
+                </tr>
+            </thead>
+            <tbody id="sign-table">
+
+            </tbody>
+        </table>
+    </fieldset>
+
 </body>
 
 <!-- #region Templates-->
@@ -128,7 +129,7 @@
             }">
         </td>
         <td>
-            <select id="unit-type">
+            <select id="unit-type" style="width: 80px;">
                 <optgroup label="Unit Price Type">
                     <option value="EACH">EACH</option>
                     <option value="POUND" selected>PER LB.</option>
@@ -151,7 +152,7 @@
         </td>
         <td id="sale-info"></td>
         <td>
-            <button id="sign-size-b" class="action"
+            <button id="sign-size-b" class="action" style="font-size:14px"
                 onclick="{
                     this.parentElement.querySelector('#sign-size-b').style.backgroundColor ='green';
                     this.parentElement.querySelector('#sign-size-c').style.backgroundColor ='';
@@ -159,7 +160,7 @@
                     this.parentElement.parentElement.setAttribute('sd_signsize', 'b')
                 }"
             >B</button>
-            <button id="sign-size-c" class="action"
+            <button id="sign-size-c" class="action" style="font-size:14px"
                 onclick="{
                     this.parentElement.querySelector('#sign-size-b').style.backgroundColor ='';
                     this.parentElement.querySelector('#sign-size-c').style.backgroundColor ='green';
@@ -167,7 +168,7 @@
                     this.parentElement.parentElement.setAttribute('sd_signsize', 'c')
                 }"
             >C</button>
-            <button id="sign-size-skip" class="action"
+            <button id="sign-size-skip" class="action" style="font-size:14px"
                 onclick="{
                     this.parentElement.querySelector('#sign-size-b').style.backgroundColor ='';
                     this.parentElement.querySelector('#sign-size-c').style.backgroundColor ='';
@@ -177,7 +178,7 @@
             >Skip</button>
         </td>
         <td>
-            <button class="action" style="width: 100%;" onclick="{
+            <button class="action" style="width: 100%;font-size:14px" onclick="{
                 if(!this.parentElement.parentElement.getAttribute('sd_signsize') || this.parentElement.parentElement.getAttribute('sd_signsize') == 'skip'){
                         alert('Please select a sign type before going to Advanced Edit.')
                         return;
