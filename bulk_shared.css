@@ -415,6 +415,18 @@ input{
         z-index: 999;
     }
 
+    dialog:open{
+        border:none;
+        background-color: rgb(255, 255, 255);
+        border-left: 3px #7BBA2F solid;
+        border-right: 3px #7BBA2F solid;
+        padding: 10px;
+    }
+
+    dialog:open::backdrop{
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 53%, rgba(11, 44, 3, 0.4) 100%);
+    }
+
     #print-dialog .error-popup{
         width:800px;
     }

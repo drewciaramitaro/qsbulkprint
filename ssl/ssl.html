@@ -100,7 +100,7 @@
                     <td>Sale Price</td>
                     <td>Displayed</td>
                     <td>Sign Type</td>
-                    <td>Print Individually</td>
+                    <td></td>
                 </tr>
             </thead>
             <tbody id="sign-table">
@@ -123,10 +123,27 @@
                 this.parentElement.parentElement.setAttribute('sd_name', this.value)
             }">
         </td>
-        <td>
+        <td style="display: flex;">
             <input id="item-desc" style="width: 300px;" autocomplete="off" oninput="{
                 this.parentElement.parentElement.setAttribute('sd_description', this.value)
             }">
+            <button class="action" style="font-size:14px" onclick="this.parentElement.querySelector('dialog').showModal()">➕</button>
+            <dialog>
+                <h1>Edit Additional Text</h1>
+                <div>
+                    <span>WHEN YOU BUY X Text (Under Price)</span>
+                    <input id="item-wyb" style="width: 300px;" autocomplete="off" oninput="{
+                        this.parentElement.parentElement.setAttribute('sd_wyb', this.value)
+                    }">
+                </div>
+                <div>
+                    <span>MIX & MATCH / OTHER INFO Text (Under YOU SAVE box)</span>
+                    <input id="item-wyb" style="width: 300px;" autocomplete="off" oninput="{
+                        this.parentElement.parentElement.setAttribute('sd_wyb', this.value)
+                    }">
+                </div>
+                <button class="action" onclick="this.parentElement.close()">Done</button>
+            </dialog>
         </td>
         <td>
             <select id="unit-type" style="width: 80px;">

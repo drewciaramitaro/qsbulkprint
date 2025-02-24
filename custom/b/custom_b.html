@@ -458,29 +458,30 @@
 
         // Load from query string
         const queryParams = new URLSearchParams(window.location.search)
-        if(queryParams.get('name'))
-            document.querySelector('#mainDescription').value = queryParams.get('name')
-        if(queryParams.get('retail'))
-            document.querySelector('#retail-price-input').value = queryParams.get('retail')
-        if(queryParams.get('sale'))
-            document.querySelector('#sale-price-input').value = queryParams.get('sale')
-        if(queryParams.get('description'))
-            document.querySelector('#altDescription input').value = queryParams.get('description')
+        if(queryParams.size > 0){
+            if(queryParams.get('name'))
+                document.querySelector('#mainDescription').value = queryParams.get('name')
+            if(queryParams.get('retail'))
+                document.querySelector('#retail-price-input').value = queryParams.get('retail')
+            if(queryParams.get('sale'))
+                document.querySelector('#sale-price-input').value = queryParams.get('sale')
+            if(queryParams.get('description'))
+                document.querySelector('#altDescription input').value = queryParams.get('description')
 
-        if(queryParams.get('onsale') == 'true')
-            document.querySelector('#_onSale').click()
-        else
-            document.querySelector('#_offSale').click()
+            if(queryParams.get('onsale') == 'true')
+                document.querySelector('#_onSale').click()
+            else
+                document.querySelector('#_offSale').click()
 
-        if(queryParams.get('xforx0') != 'null'){
-            document.querySelector('option[value=XFORX]').selected = true
-            document.querySelector('#sale-price-input-xforx1').value = queryParams.get('xforx0')
-            document.querySelector('#sale-price-input-xforx2').value = queryParams.get('xforx1')
+            if(queryParams.get('xforx0') != 'null'){
+                document.querySelector('option[value=XFORX]').selected = true
+                document.querySelector('#sale-price-input-xforx1').value = queryParams.get('xforx0')
+                document.querySelector('#sale-price-input-xforx2').value = queryParams.get('xforx1')
+            }
+
+            if(queryParams.get('bogo') != 'null')
+                document.querySelector(`option[value=${queryParams.get('bogo').toUpperCase()}]`).selected = true
         }
-
-        if(queryParams.get('bogo') != 'null')
-            document.querySelector(`option[value=${queryParams.get('bogo').toUpperCase()}]`).selected = true
-        
         /* END LOAD FROM SSL */
 
         refresh();
