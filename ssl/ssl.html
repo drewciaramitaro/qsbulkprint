@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../bulk_shared.css?v=1009" />
+    <link rel="stylesheet" href="../bulk_shared.css?v=1010" />
     <title>Offline SSL</title>
     <link rel="icon" type="image/png" href="../images/icon.png?v=01">
 
@@ -86,7 +86,7 @@
 
     </div>
     
-    <fieldset style="max-width: 1900px;color: #7BBA2F;font-family: Trade Gothic LT;display: flex;gap:5px;flex-direction: column;">
+    <fieldset style="max-width: 1900px;color: #7BBA2F;font-family: Trade Gothic LT;font-weight: bold;display: flex;gap:5px;flex-direction: column;">
         <legend style="font-size: 35px;">Fill out the sign Information</legend>
         <table>
             <thead>
@@ -118,7 +118,7 @@
             <span id="upc"></span>
         </td>
         <td>
-            <a class="action" id="search-btn" target="none" style="font-size: 12px;">🔍</a>
+            <a class="action" id="search-btn" target="none" style="font-size: 12px;" tooltip="Look up item info on PriceChopper.com">🔍</a>
             <input id="item-name" style="width: 300px;" autocomplete="off" oninput="{
                 this.parentElement.parentElement.setAttribute('sd_name', this.value)
             }">
@@ -127,7 +127,7 @@
             <input id="item-desc" style="width: 300px;" autocomplete="off" oninput="{
                 this.parentElement.parentElement.setAttribute('sd_description', this.value)
             }">
-            <button class="action" style="font-size:14px" onclick="this.parentElement.querySelector('dialog').showModal()">➕</button>
+            <button class="action" style="font-size:14px" onclick="this.parentElement.querySelector('dialog').showModal()" tooltip="Edit Additional Texts">➕</button>
             <dialog>
                 <h1>Edit Additional Text</h1>
                 <div>
@@ -139,7 +139,7 @@
                 <div>
                     <span>MIX & MATCH / OTHER INFO Text (Under YOU SAVE box)</span>
                     <input id="item-wyb" style="width: 300px;" autocomplete="off" oninput="{
-                        this.parentElement.parentElement.setAttribute('sd_wyb', this.value)
+                        this.parentElement.parentElement.setAttribute('sd_mam', this.value)
                     }">
                 </div>
                 <button class="action" onclick="this.parentElement.close()">Done</button>
@@ -195,7 +195,7 @@
             >Skip</button>
         </td>
         <td>
-            <button class="action" style="width: 100%;font-size:14px" onclick="{
+            <button class="action" style="width: 100%;font-size:14px" tooltip="Edit and print this sign individually" onclick="{
                 if(!this.parentElement.parentElement.getAttribute('sd_signsize') || this.parentElement.parentElement.getAttribute('sd_signsize') == 'skip'){
                         alert('Please select a sign type before going to Advanced Edit.')
                         return;
@@ -213,7 +213,11 @@
                     onsale: r.getAttribute('sd_onsale'),
                     xforx0: r.getAttribute('sd_xforx_0'),
                     xforx1: r.getAttribute('sd_xforx_1'),
-                    bogo: r.getAttribute('sd_bogo')
+                    bogo: r.getAttribute('sd_bogo'),
+                    unit: r.getAttribute('sd_unit'),
+                    unitsizes: r.getAttribute('sd_unitsizes'),
+                    wyb: r.getAttribute('sd_wyb'),
+                    mam: r.getAttribute('sd_mam')
                 })
 
                 console.log(query_params.toString())

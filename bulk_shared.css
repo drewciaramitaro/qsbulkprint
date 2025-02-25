@@ -472,6 +472,32 @@ input{
     #printer-instructions-img{
         width: 300px;
     }
+
+    [tooltip]{
+        position: relative;
+    }
+    [tooltip]::after {
+        content: attr(tooltip);
+        position: absolute;
+        left:50%;
+        top:-6px;
+        transform: translateX(-50%) translateY(-100%);
+        background: #24180D;
+        border: 1px solid #7BBA2F;
+        text-align: center;
+        color: #7BBA2F;
+        padding:5px;
+        font-size: 14px;
+        font-family: Trade Gothic Condensed;
+        font-weight: bold;
+        min-width: 80px;
+        border-radius: .4rem;
+        pointer-events: none;
+        display: none;
+    }
+    [tooltip]:hover::after {
+        display: block
+     }
 }
 
 
