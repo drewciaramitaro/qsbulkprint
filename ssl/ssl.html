@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../bulk_shared.css?v=1010" />
+    <link rel="stylesheet" href="../bulk_shared.css?v=1020" />
     <title>Offline SSL</title>
     <link rel="icon" type="image/png" href="../images/icon.png?v=01">
 
@@ -51,62 +51,82 @@
     
             </fieldset>
         </div>
+        <fieldset style="font-family: Trade Gothic LT;text-align: center;">
+            <legend><h1 class="head-txt" style="color: #7BBA2F;">Notice</h1></legend>
+            <h3>Offline SSL is intended as an alternative to QuickSign's section scan load while it is offline.</h3>
+            <h3>The 'Offline' in the name means that this tool requires no connection to any external database.</h3>
+            <h3>This means that it won't ever be able to go down, but it also will not auto-fill anything.</h3>
+        </fieldset>
 
 
         <fieldset style="max-width: 800px;color: #7BBA2F;font-family: Trade Gothic LT;display: flex;gap:5px;flex-direction: column;">
             <legend style="font-size: 35px;">Paste your section scan below</legend>
-            <textarea style="margin:auto;width:95%;resize:vertical;height:300px" id="ss-input">
-000000000209			0.01			•	•	
-007910052836	PUPPRONI89500	2	0.01	3.99	3.50		•	
-002120000004	SCOTCH M82601	5	0.01	3.29	2.99		•	
-001122513621	SD PAPER CUPS	2	0.01	4.99			•	
-007910068951	MLK BNE TNDR HEART	2	0.01	2.39			•	
-000000000210			0.01			•	•	
-004173500806	PC COCON87312	1	0.01	3.79	0.75		•	
-001090000531	REY LARGE OV	2	0.01	4.29			•	
-005833615323	DR OETKER MU	1	1.99	1.99				
-005833615323	DR OETKER MU	1	1.99	1.25				
-004173506291	PICS CH 89446	1	25.03	2.99	1.25		•	
-004173506291	PICS CH 89446	1	1.00	2.99	1.75		•	
-004173506291	PICS CH 89446	1	0.01	2.99	1.00		•	
-000000000302			0.01			•	•	
-078372490620	TRU/TRAIL BL	5	0.01	27.99			•	
-004173505884	PICS CHR89870	2	2.49	2.99	2.49		•	•
-004173505329	PICS R&W89870	2	0.02	2.99	2.49		•	</textarea>
+            <textarea style="margin:auto;width:95%;resize:vertical;height:300px" id="ss-input"></textarea>
 <!--upc // item name // dept // dolphin price // norm price // sale price // diff // bogo-->
 
             <button class="action" onclick="parseLoad()">Load</button>
         </fieldset>
 
-        <h3 style="font-family: Trade Gothic LT;text-align: center">Tip: Press the 🔍 button next to a product to look up the UPC on PriceChopper.com!</h3>
-        <h3 style="font-family: Trade Gothic LT;text-align: center;">This will typically give you the item name and unit size.</h3>
-        <p style="font-family: Trade Gothic LT;text-align: center;font-style: italic;">The prices listed on PriceChopper.com do not reflect in-store prices, do not refer to them.</p>
+        <fieldset>
+            <legend style="font-size: 35px;">Tips</legend>
+            <h3 style="font-family: Trade Gothic LT;text-align: left;margin-bottom: 2px;">• Press the 🔍 button next to a product to look up the UPC on PriceChopper.com - This will typically give you the item name and unit size</h3>
+            <p style="font-family: Trade Gothic LT;text-align: left;font-style: italic;margin: 0px;">The prices listed on PriceChopper.com do not reflect in-store prices, do not refer to them</p>
+            <p style="font-family: Trade Gothic LT;text-align: left;margin-top: 0px;font-weight: 900;">If you cannot find the item on PriceChopper.com, you can print the table to walk the store and fill out the fields</p>
+            
+            <h3 style="font-family: Trade Gothic LT;text-align: left;">• Press ➕ to edit the WHEN YOU BUY (under price) and MIX & MATCH (under YOU SAVE box) text areas</h3>
+        </fieldset>
 
-
-
+        <h2 style="font-family: Trade Gothic LT;text-align: center;">Bulk Printing is coming soon! For now, press ✏️ on each sign to print them one-by-one</h2>
     </div>
     
     <fieldset style="max-width: 1900px;color: #7BBA2F;font-family: Trade Gothic LT;font-weight: bold;display: flex;gap:5px;flex-direction: column;">
-        <legend style="font-size: 35px;">Fill out the sign Information</legend>
+        <legend style="font-size: 35px;">Fill out the sign Information 
+            <button class="action hide-on-print" onclick="window.print()">Print</button></legend>
         <table>
             <thead>
                 <tr>
                     <td>UPC</td>
                     <td>Item Name</td>
                     <td>Description</td>
-                    <td>Unit</td>
+                    <td class="hide-on-print">Unit</td>
                     <td>Dolphin Price</td>
                     <td>Retail Price</td>
                     <td>Sale Price</td>
-                    <td>Displayed</td>
-                    <td>Sign Type</td>
-                    <td></td>
+                    <td class="hide-on-print">Displayed</td>
+                    <td class="hide-on-print">Sign Type</td>
+                    <td class="hide-on-print"></td>
                 </tr>
             </thead>
             <tbody id="sign-table">
 
             </tbody>
         </table>
+    </fieldset>
+
+    <fieldset style="max-width: 1900px;color: #7BBA2F;font-family: Trade Gothic LT;display: flex;gap:5px;flex-direction: column;display: none;">
+        <legend style="font-size: 35px;">Finish Up</legend>
+        <button class="action size-btn" style="margin: auto;" onclick="saveSigns()">
+            <span style="font-size:120px">💾</span>
+            Save Signs</button>
+        <fieldset id="success" style="display:none;flex-direction: column;justify-content: space-around;gap:10px;width: fit-content;color: #7BBA2F;">
+            <legend>Successfully loaded</legend>
+            <h1 style="font-family: Clarendon;font-weight: 100;" id="b-count">x B Size Signs</h1>
+            <h1 style="font-family: Clarendon;font-weight: 100;" id="c-count">x C Size Signs</h1>
+        </fieldset> 
+        <fieldset id="fail" style="flex-direction: column;justify-content: space-around;gap:10px;width: fit-content;color: #7BBA2F;">
+            <legend>Please resolve the following errors</legend>
+            <div id="fail-errors">
+                <p>• UPC xxx: Missing Unit Sizes</p>
+            </div>
+        </fieldset> 
+        <fieldset id="bulk-size" style="justify-content: space-around;gap:10px;display: none;color: #7BBA2F;">
+            <legend>Choose a size</legend>
+
+            <a id="go-to-b" class="action size-btn" href="../bulk_b.html?ssl=true" target="_blank"><span></span><img width="200"
+                    src="../images/b_size_preview.jpg" />B Size</a>
+            <a id="go-to-c" class="action size-btn" href="../bulk_c.html?ssl=true" target="_blank"><span></span><img width="150"
+                    src="../images/c_size_preview.jpg" />C Size</a>
+        </fieldset>
     </fieldset>
 
 </body>
@@ -118,35 +138,62 @@
             <span id="upc"></span>
         </td>
         <td>
-            <a class="action" id="search-btn" target="none" style="font-size: 12px;" tooltip="Look up item info on PriceChopper.com">🔍</a>
+            <a class="action hide-on-print" id="search-btn" target="none" style="font-size: 12px;" tooltip="Look up item info on PriceChopper.com">🔍</a>
             <input id="item-name" style="width: 300px;" autocomplete="off" oninput="{
                 this.parentElement.parentElement.setAttribute('sd_name', this.value)
             }">
         </td>
-        <td style="display: flex;">
+        <td>
             <input id="item-desc" style="width: 300px;" autocomplete="off" oninput="{
                 this.parentElement.parentElement.setAttribute('sd_description', this.value)
             }">
-            <button class="action" style="font-size:14px" onclick="this.parentElement.querySelector('dialog').showModal()" tooltip="Edit Additional Texts">➕</button>
+            <button class="action hide-on-print" style="font-size:14px" onclick="this.parentElement.querySelector('dialog').showModal()" tooltip="Edit WHEN YOU BUY x / MIX & MATCH texts">➕</button>
             <dialog>
                 <h1>Edit Additional Text</h1>
                 <div>
                     <span>WHEN YOU BUY X Text (Under Price)</span>
                     <input id="item-wyb" style="width: 300px;" autocomplete="off" oninput="{
-                        this.parentElement.parentElement.setAttribute('sd_wyb', this.value)
+                        this.parentElement.parentElement.parentElement.parentElement.setAttribute('sd_wyb', this.value)
                     }">
                 </div>
                 <div>
                     <span>MIX & MATCH / OTHER INFO Text (Under YOU SAVE box)</span>
                     <input id="item-wyb" style="width: 300px;" autocomplete="off" oninput="{
-                        this.parentElement.parentElement.setAttribute('sd_mam', this.value)
+                        this.parentElement.parentElement.parentElement.parentElement.setAttribute('sd_mam', this.value)
                     }">
                 </div>
                 <button class="action" onclick="this.parentElement.close()">Done</button>
             </dialog>
         </td>
-        <td>
-            <select id="unit-type" style="width: 80px;">
+        <td class="hide-on-print">
+            <select id="unit-type" style="width: 80px;" onchange="{
+                const sel = this.value;
+                unitSuffix = this.parentElement.querySelector('#unit-suffix')
+                this.parentElement.querySelector('#unit-size').style.display = '';
+                switch (sel) {
+                    case 'EACH':
+                        unitSuffix.innerHTML = '';
+                        this.parentElement.querySelector('#unit-size').style.display = 'none';
+                        break;
+                    case 'POUND':
+                        unitSuffix.innerHTML = 'oz.';
+                        break;
+                    case 'QUART':
+                        unitSuffix.innerHTML = 'fl. oz.';
+                        break;
+                    case '50 COUNT':
+                        unitSuffix.innerHTML = 'sq. ft.';
+                        break;
+                    case '100 COUNT':
+                        unitSuffix.innerHTML = 'ct.'
+                        break;                
+                    default:
+                        break;
+                }
+                
+                this.parentElement.parentElement.setAttribute('sd_unit', sel)
+                
+            }">
                 <optgroup label="Unit Price Type">
                     <option value="EACH">EACH</option>
                     <option value="POUND" selected>PER LB.</option>
@@ -155,7 +202,7 @@
                     <option value="100 COUNT">PER 100 CT.</option>
                 </optgroup>
             </select>
-            <input id="unit-size" style="width: 4rem;" autocomplete="off">
+            <input id="unit-size" style="width: 4rem;" autocomplete="off", oninput="this.parentElement.parentElement.setAttribute('sd_unitsizes', this.value)">
             <span id="unit-suffix">oz.</span>
         </td>
         <td>
@@ -167,8 +214,8 @@
         <td>
             <span id="sale-price"></span>
         </td>
-        <td id="sale-info"></td>
-        <td>
+        <td id="sale-info" class="hide-on-print"></td>
+        <td class="hide-on-print">
             <button id="sign-size-b" class="action" style="font-size:14px"
                 onclick="{
                     this.parentElement.querySelector('#sign-size-b').style.backgroundColor ='green';
@@ -194,16 +241,21 @@
                 }"
             >Skip</button>
         </td>
-        <td>
+        <td class="hide-on-print">
             <button class="action" style="width: 100%;font-size:14px" tooltip="Edit and print this sign individually" onclick="{
                 if(!this.parentElement.parentElement.getAttribute('sd_signsize') || this.parentElement.parentElement.getAttribute('sd_signsize') == 'skip'){
                         alert('Please select a sign type before going to Advanced Edit.')
                         return;
                     }
-
-                alert('This will open a new tab with the sign so you can individually print it after making changes.\n\nThe sign will be set to SKIP in this view.');
-                
                 const r = this.parentElement.parentElement;
+
+                // validate
+                if(r.getAttribute('sd_unitsizes') == '' && r.getAttribute('sd_unit') != 'EACH'){
+                    alert('Please enter unit sizes for this item.')
+                    return;
+                }
+
+                // alert('This will open a new tab with the sign so you can individually print it after making changes.\n\nThe sign will be set to SKIP in this view.');
 
                 const query_params = new URLSearchParams({
                     name: r.getAttribute('sd_name'),
@@ -222,6 +274,8 @@
 
                 console.log(query_params.toString())
                 window.open(`../custom/${this.parentElement.parentElement.getAttribute('sd_signsize')}/custom_${this.parentElement.parentElement.getAttribute('sd_signsize')}.html?${query_params.toString()}`)
+                
+                r.querySelector('#sign-size-skip').click();
 
             }">✏️</button>
         </td>
@@ -252,11 +306,41 @@
                 sale_price = retail_price;
             }
 
-            if(parseInt(upc) < 500){
+            if(upc < 500){
                 const new_row = header_template.content.cloneNode(true);
-                
+                const header_name = new_row.querySelector('input');
                 new_row.querySelector('tr').setAttribute('sd_isheader','')
                 item_table.appendChild(new_row);
+
+                if(upc > 200 && upc < 300){
+                    header_name.value = `Aisle ${upc - 200}`
+                }
+                else if(upc > 300 && upc < 400){
+                    let dept_name = '';
+                    switch (parseInt(upc)) {
+                        case 301:
+                            dept_name = 'Grocery'
+                            break;
+                        case 302:
+                            dept_name = 'Front End'
+                            break;
+                        case 303:
+                            dept_name = 'Floral'
+                            break;
+                        case 304:
+                            dept_name = 'Produce'
+                            break;
+                        case 308:
+                            dept_name = 'Seafood';
+                            break;
+                        case 309:
+                            dept_name = 'Meat';
+                            break;
+                        default:
+                            break;
+                    }
+                    header_name.value = dept_name;
+                }
             }
             else if(dolphin_price == sale_price && bogo != '•'){}
             else{
@@ -271,6 +355,8 @@
                 _r.setAttribute('sd_retailprice', retail_price)
                 _r.setAttribute('sd_saleprice', sale_price)
                 _r.setAttribute('sd_onsale', sale_price !== retail_price)
+                _r.setAttribute('sd_unit', 'POUND')
+                _r.setAttribute('sd_unitsizes', '')
 
 
                 new_row.querySelector("#search-btn").href = find_url;
@@ -282,11 +368,21 @@
                 new_row.querySelector("#dolphin-price").innerHTML = dolphin_price;
 
                 new_row.querySelector("#retail-price").innerHTML = retail_price;
-                /* 
+
                 if(dolphin_price == 0.01){
-                    new_row.querySelector('#sign-size-b').click()
-                } */
+                    new_row.querySelector('#sign-size-b').style.backgroundColor ='green';
+                    new_row.querySelector('#sign-size-c').style.backgroundColor ='';
+                    new_row.querySelector('#sign-size-skip').style.backgroundColor ='';
+                    _r.setAttribute('sd_signsize', 'b')
+                } 
+                else if(dolphin_price == 0.02){
+                    new_row.querySelector('#sign-size-b').style.backgroundColor ='';
+                    new_row.querySelector('#sign-size-c').style.backgroundColor ='green';
+                    new_row.querySelector('#sign-size-skip').style.backgroundColor ='';
+                    _r.setAttribute('sd_signsize', 'c')
+                }
                 
+
                 if(sale_price != retail_price)
                     new_row.querySelector("#sale-price").innerHTML = sale_price;
                 
@@ -348,7 +444,34 @@
         });
     }
 
-    // parseLoad();
+    function saveSigns(){
+        let errors = [];
+
+        let signArr = [];
+
+
+        document.querySelector('#sign-table').querySelectorAll('tr').forEach(row => {
+            console.log(row);
+            if(!row.hasAttribute('sd_isheader')){
+                
+                if(row.getAttribute('sd_name') == ''){
+                    
+                    errors.push(`• ${row.getAttribute('sd_upc')}: Missing Item Name`)
+                }
+
+                if(row.getAttribute('sd_unitsizes') == ''){
+                    errors.push(`• ${row.getAttribute('sd_name')}: Missing Unit Size(s)`)
+                }
+
+                if(!row.hasAttribute('sd_signsize')){
+                    errors.push(`• ${row.getAttribute('sd_name')}: Select a sign type`)
+                }
+            }
+        });
+        console.log(errors);
+    }
+
+    //parseLoad();
 </script>
 
 </html>

@@ -3,9 +3,9 @@
 
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
-    <link rel="stylesheet" href="../../qs/BSize.css?v=1003" />
-    <link rel="stylesheet" href="../../bulk_shared.css?v=1019" />
-    <link rel="stylesheet" href="../../bulk_b.css?v=1009" />
+    <link rel="stylesheet" href="../../qs/BSize.css?v=1005" />
+    <link rel="stylesheet" href="../../bulk_shared.css?v=1020" />
+    <link rel="stylesheet" href="../../bulk_b.css?v=1011" />
     <title>Custom Signs - B Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
     <style>
@@ -481,6 +481,16 @@
 
             if(queryParams.get('bogo') != 'null')
                 document.querySelector(`option[value=${queryParams.get('bogo').toUpperCase()}]`).selected = true
+
+            if(queryParams.get('unit'))
+                document.querySelector('#unit-type-sel').value = queryParams.get('unit')
+            if(queryParams.get('unitsizes') != 'null')
+                document.querySelector('#unit-sizes').value = queryParams.get('unitsizes')
+            if(queryParams.get('wyb') != 'null')
+                document.querySelector('#MustBuyInner input').value = queryParams.get('wyb')
+            
+            if(queryParams.get('mam') != 'null')
+                document.querySelector('#mixMatch').value = queryParams.get('mam')
         }
         /* END LOAD FROM SSL */
 

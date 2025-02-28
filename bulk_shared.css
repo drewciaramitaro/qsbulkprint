@@ -498,6 +498,23 @@ input{
     [tooltip]:hover::after {
         display: block
      }
+
+     select{
+        color:white;
+        background-color: rgb(50, 50, 50);
+        border-radius: .2rem;
+        cursor: pointer;
+        transition: background-color .2s;
+     }
+     select:hover{
+        background-color: rgb(82, 82, 82);
+        border:#7BBA2F solid 1px;
+        box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.2);
+     }
+     
+     optgroup, option{
+        background-color: rgb(50, 50, 50);
+     }
 }
 
 
@@ -527,6 +544,10 @@ input{
     }
 
     #print-dialog {
+        display: none;
+    }
+
+    .hide-on-print {
         display: none;
     }
 
