@@ -4,7 +4,7 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="../../qs/CSize.css?v=1004" />
-    <link rel="stylesheet" href="../../bulk_shared.css?v=1019" />
+    <link rel="stylesheet" href="../../bulk_shared.css?v=1021" />
     <link rel="stylesheet" href="../../bulk_c.css?v=1010" />
     <title>Custom Signs - C Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
@@ -26,10 +26,11 @@
         </div>
     </fieldset>
 
-    <fieldset class="desktop tool">
+    <div class="desktop tool">
         <legend>Edit Sign</legend>
-        <div style="display: flex;">
-            <div style="display: flex;flex-direction: column;gap:10px;width:200px">
+        <div style="display: flex;gap:10px;">
+            <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
+                <legend>Choose your Sign Type</legend>
                 <div>
                     <input type="checkbox" id="on-sale-sel" checked style="display: none;" onchange="refresh()">
                     <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Sign Type</span>
@@ -60,8 +61,9 @@
                         </optgroup>
                     </select>
                 </div>
-            </div>
-            <div style="display: flex;flex-direction: column;gap:10px;width:200px">
+            </fieldset>
+            <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
+                <legend>Item Pricing</legend>
                 <div id="sale-price-box">
                     <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Sale Price</span>
                     <input id="sale-price-input" inputmode="decimal" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="2.99"/>
@@ -77,6 +79,9 @@
                     <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Regular Retail</span>
                     <input id="retail-price-input" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5.99"/>
                 </div>
+            </fieldset>
+            <fieldset>
+                <legend>Unit Pricing</legend>
                 <div id="unit-option-box">
                     <div>
                         <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Unit Price Type</span>
@@ -97,8 +102,9 @@
                     </div>
 
                 </div>
-            </div>
-            <div style="display: flex;flex-direction: column;gap:10px;width:200px">
+            </fieldset>
+            <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
+                <legend>Bonus Points</legend>
                 <div>
                     <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Bonus Points</span>
                     <input id="bonus-point-input" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="1000"/>
@@ -107,10 +113,10 @@
                     <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Must Buy For Bonus Pts</span>
                     <input id="bonus-point-buy-input" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="1"/>
                 </div>
-            </div>
+            </fieldset>
         </div>
         <span style="font-family: Trade Gothic Condensed;">Hint: Hold ALT and press 7 on the number pad to add the '•' symbol in the text boxes</span>
-    </fieldset>
+    </div>
 
 
     <div class="print">

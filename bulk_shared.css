@@ -312,6 +312,10 @@ input{
   }
 
 @media screen {
+    .print{
+        margin:auto;
+    }
+    
     #unitBox {
         background-color: orange;
     }
