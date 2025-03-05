@@ -4,8 +4,9 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../bulk_shared.css?v=1020" />
-    <title>Offline SSL</title>
+    <title>Sign Builder - Offline SSL</title>
     <link rel="icon" type="image/png" href="../images/icon.png?v=01">
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/barcodes/JsBarcode.ean-upc.min.js"></script>
 
     <style>
         td{            
@@ -81,7 +82,9 @@
     
     <fieldset style="max-width: 1900px;color: #7BBA2F;font-family: Trade Gothic LT;font-weight: bold;display: flex;gap:5px;flex-direction: column;">
         <legend style="font-size: 35px;">Fill out the sign Information 
-            <button class="action hide-on-print" onclick="window.print()">Print</button></legend>
+            <button class="action hide-on-print" onclick="window.print()">Print Table</button>
+            <button class="action hide-on-print" onclick="generateReviewBarcodes()">Generate Barcodes for Review</button>
+        </legend>
         <table>
             <thead>
                 <tr>
@@ -129,6 +132,11 @@
         </fieldset>
     </fieldset>
 
+    <div id="barcode-list-container">
+        <div id="barcode-list" style="gap: 10px;display: flex;align-items: center;justify-content: center;flex-wrap: wrap;">
+
+        </div>
+    </div>
 </body>
 
 <!-- #region Templates-->
@@ -200,6 +208,7 @@
                     <option value="QUART">PER QT.</option>
                     <option value="50 COUNT">PER 50 SQ. FT.</option>
                     <option value="100 COUNT">PER 100 CT.</option>
+                    <option value="OUNCE">PER OZ.</option>
                 </optgroup>
             </select>
             <input id="unit-size" style="width: 4rem;" autocomplete="off", oninput="this.parentElement.parentElement.setAttribute('sd_unitsizes', this.value)">
@@ -273,7 +282,7 @@
                 })
 
                 console.log(query_params.toString())
-                window.open(`../custom/${this.parentElement.parentElement.getAttribute('sd_signsize')}/custom_${this.parentElement.parentElement.getAttribute('sd_signsize')}.html?${query_params.toString()}`)
+                window.open(`../custom/${this.parentElement.parentElement.getAttribute('sd_signsize')}/custom_${this.parentElement.parentElement.getAttribute('sd_signsize')}.html?${query_params.toString()}`, '', 'toolbar=0,scrollbars=0,status=0')
                 
                 r.querySelector('#sign-size-skip').click();
 
@@ -291,6 +300,18 @@
         </td>
     </tr>
  </template>
+
+ <template id="upc-template">
+    <div class="mbarcode" style="width: 220px;
+    display: flex;
+    flex-direction: column;
+    border: 1px rgba(0, 0, 0, 0.21) solid;
+    align-items: center;
+    margin-top: 10px;">
+        <span id="label" style="text-align: center; font-size:12px;padding-bottom: 0px;font-weight: 600;transform: translateY(10px);font-family: CONDENSED;"></span>
+        <svg class="barcode" jsbarcode-format="upc" style="    width: 200px;"></svg>
+    </div>
+</template>
  <!-- #endregion -->
 
 <script>
@@ -470,6 +491,49 @@
         });
         console.log(errors);
     }
+    
+    function generateReviewBarcodes(){
+        let upcs = []
+        const template = document.querySelector("#upc-template")
+        const barcodeList = document.querySelector("#barcode-list")
+        document.querySelector('#sign-table').querySelectorAll('tr').forEach(row => {
+            console.log(row);
+
+            if(!row.hasAttribute('sd_isheader')){
+                if(!upcs.includes(row.getAttribute('sd_upc'))){
+                    if(row.hasAttribute('sd_xforx_0')){
+                    const bcode = template.content.cloneNode(true);
+                    const svg = bcode.querySelectorAll("svg")[0];
+                    upcs.push(row.getAttribute('sd_upc'));
+                    svg.setAttribute("jsbarcode-value", row.getAttribute('sd_upc').padStart(11, 0));
+                    barcodeList.append(bcode);
+                }
+
+                if(row.hasAttribute('sd_bogo')){
+                    const bcode = template.content.cloneNode(true);
+                    const svg = bcode.querySelectorAll("svg")[0];
+                    upcs.push(row.getAttribute('sd_upc'));
+                    svg.setAttribute("jsbarcode-value", row.getAttribute('sd_upc').padStart(11, 0));
+                    barcodeList.append(bcode);
+                }
+                }
+ 
+
+            }
+        });
+
+        JsBarcode(".barcode").init();
+
+        var printWindow = window.open('', '', 'toolbar=0,scrollbars=0,status=0');
+        printWindow.document.write(document.querySelector("#barcode-list-container").innerHTML)
+        printWindow.document.close();
+        printWindow.focus();
+        printWindow.print();
+        document.querySelector('#barcode-list').innerHTML = '';
+    }
+    window.addEventListener('beforeunload', e => {
+      e.preventDefault()
+    });
 
     //parseLoad();
 </script>
