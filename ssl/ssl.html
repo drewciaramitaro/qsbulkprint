@@ -106,17 +106,17 @@
         </table>
     </fieldset>
 
-    <fieldset style="max-width: 1900px;color: #7BBA2F;font-family: Trade Gothic LT;display: flex;gap:5px;flex-direction: column;display: none;">
+    <fieldset style="max-width: 1900px;color: #7BBA2F;font-family: Trade Gothic LT;display: flex;gap:5px;flex-direction: column;">
         <legend style="font-size: 35px;">Finish Up</legend>
         <button class="action size-btn" style="margin: auto;" onclick="saveSigns()">
             <span style="font-size:120px">💾</span>
             Save Signs</button>
         <fieldset id="success" style="display:none;flex-direction: column;justify-content: space-around;gap:10px;width: fit-content;color: #7BBA2F;">
             <legend>Successfully loaded</legend>
-            <h1 style="font-family: Clarendon;font-weight: 100;" id="b-count">x B Size Signs</h1>
-            <h1 style="font-family: Clarendon;font-weight: 100;" id="c-count">x C Size Signs</h1>
+            <!-- <h1 style="font-family: Clarendon;font-weight: 100;" id="b-count">x B Size Signs</h1>
+            <h1 style="font-family: Clarendon;font-weight: 100;" id="c-count">x C Size Signs</h1> -->
         </fieldset> 
-        <fieldset id="fail" style="flex-direction: column;justify-content: space-around;gap:10px;width: fit-content;color: #7BBA2F;">
+        <fieldset id="fail" style="flex-direction: column;justify-content: space-around;gap:10px;width: fit-content;color: #7BBA2F;display: none;">
             <legend>Please resolve the following errors</legend>
             <div id="fail-errors">
                 <p>• UPC xxx: Missing Unit Sizes</p>
@@ -125,9 +125,9 @@
         <fieldset id="bulk-size" style="justify-content: space-around;gap:10px;display: none;color: #7BBA2F;">
             <legend>Choose a size</legend>
 
-            <a id="go-to-b" class="action size-btn" href="../bulk_b.html?ssl=true" target="_blank"><span></span><img width="200"
+            <a id="go-to-b" class="action size-btn" href="bulk_b.html" target="_blank"><span></span><img width="200"
                     src="../images/b_size_preview.jpg" />B Size</a>
-            <a id="go-to-c" class="action size-btn" href="../bulk_c.html?ssl=true" target="_blank"><span></span><img width="150"
+            <a id="go-to-c" class="action size-btn" href="bulk_c.html" target="_blank"><span></span><img width="150"
                     src="../images/c_size_preview.jpg" />C Size</a>
         </fieldset>
     </fieldset>
@@ -316,6 +316,9 @@
 
 <script>
     function parseLoad() {
+        window.addEventListener('beforeunload', e => {
+            e.preventDefault();
+        });
         const section_scan_array = document.querySelector('#ss-input').value.split('\n');
         const item_template = document.querySelector("#item-table-row");
         const header_template = document.querySelector("#header-table-row")
@@ -480,7 +483,7 @@
                     errors.push(`• ${row.getAttribute('sd_upc')}: Missing Item Name`)
                 }
 
-                if(row.getAttribute('sd_unitsizes') == ''){
+                if(row.getAttribute('sd_unitsizes') == '' && row.getAttribute('sd_unit') != 'EACH'){
                     errors.push(`• ${row.getAttribute('sd_name')}: Missing Unit Size(s)`)
                 }
 
@@ -488,8 +491,56 @@
                     errors.push(`• ${row.getAttribute('sd_name')}: Select a sign type`)
                 }
             }
+
+            if(row.hasAttribute('sd_isheader')){
+                signArr.push( {
+                    type: 'header',
+                    text: row.querySelector('#header-desc').value
+                })
+            }
+            else{
+                signArr.push({
+                    type: row.getAttribute('sd_signsize'),
+                    name: row.getAttribute('sd_name'),
+                    description: row.getAttribute('sd_description'),
+                    retail: row.getAttribute('sd_retailprice'),
+                    sale: row.getAttribute('sd_saleprice'),
+                    onsale: row.getAttribute('sd_onsale'),
+                    xforx0: row.getAttribute('sd_xforx_0'),
+                    xforx1: row.getAttribute('sd_xforx_1'),
+                    bogo: row.getAttribute('sd_bogo'),
+                    unit: row.getAttribute('sd_unit'),
+                    unitsizes: row.getAttribute('sd_unitsizes'),
+                    wyb: row.getAttribute('sd_wyb'),
+                    mam: row.getAttribute('sd_mam')
+                })
+            }
+            console.log(signArr);
+
         });
         console.log(errors);
+        
+        document.querySelector('#fail').style.display = 'none';
+        document.querySelector('#fail-errors').innerHTML = '';
+
+        if(errors.length>0){
+            document.querySelector('#fail').style.display = '';
+            document.querySelector('#fail-errors').innerHTML = '';
+
+            errors.forEach(err => {
+                let p = document.createElement('p');
+                p.innerHTML = err;
+                document.querySelector('#fail-errors').appendChild(p);
+            });
+
+        }
+        else{
+            document.querySelector('#success').style.display = '';
+            document.querySelector('#bulk-size').style.display = '';
+            localStorage.setItem('ssl_signs', JSON.stringify(signArr));
+
+        }
+
     }
     
     function generateReviewBarcodes(){
@@ -502,23 +553,21 @@
             if(!row.hasAttribute('sd_isheader')){
                 if(!upcs.includes(row.getAttribute('sd_upc'))){
                     if(row.hasAttribute('sd_xforx_0')){
-                    const bcode = template.content.cloneNode(true);
-                    const svg = bcode.querySelectorAll("svg")[0];
-                    upcs.push(row.getAttribute('sd_upc'));
-                    svg.setAttribute("jsbarcode-value", row.getAttribute('sd_upc').padStart(11, 0));
-                    barcodeList.append(bcode);
-                }
+                        const bcode = template.content.cloneNode(true);
+                        const svg = bcode.querySelectorAll("svg")[0];
+                        upcs.push(row.getAttribute('sd_upc'));
+                        svg.setAttribute("jsbarcode-value", row.getAttribute('sd_upc').padStart(11, 0));
+                        barcodeList.append(bcode);
+                    }
 
-                if(row.hasAttribute('sd_bogo')){
-                    const bcode = template.content.cloneNode(true);
-                    const svg = bcode.querySelectorAll("svg")[0];
-                    upcs.push(row.getAttribute('sd_upc'));
-                    svg.setAttribute("jsbarcode-value", row.getAttribute('sd_upc').padStart(11, 0));
-                    barcodeList.append(bcode);
-                }
-                }
- 
-
+                    if(row.hasAttribute('sd_bogo')){
+                        const bcode = template.content.cloneNode(true);
+                        const svg = bcode.querySelectorAll("svg")[0];
+                        upcs.push(row.getAttribute('sd_upc'));
+                        svg.setAttribute("jsbarcode-value", row.getAttribute('sd_upc').padStart(11, 0));
+                        barcodeList.append(bcode);
+                    }
+                }   
             }
         });
 
@@ -531,9 +580,6 @@
         printWindow.print();
         document.querySelector('#barcode-list').innerHTML = '';
     }
-    window.addEventListener('beforeunload', e => {
-      e.preventDefault()
-    });
 
     //parseLoad();
 </script>
