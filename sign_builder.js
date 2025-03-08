@@ -80,3 +80,9 @@ function calcUnitPrice(unitSize, unitType, salePrice, retailPrice, priceType, xF
     }
     return ((salePrice / unitSize) * modifier).toFixed(2);
 }
+
+document.querySelectorAll('input').forEach(e=>{
+    e.addEventListener('input', function(t) {
+        t.target.value = t.target.value.replace('*', '•');
+    })
+});

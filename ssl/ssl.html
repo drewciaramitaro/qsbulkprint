@@ -75,9 +75,8 @@
             <p style="font-family: Trade Gothic LT;text-align: left;margin-top: 0px;font-weight: 900;">If you cannot find the item on PriceChopper.com, you can print the table to walk the store and fill out the fields</p>
             
             <h3 style="font-family: Trade Gothic LT;text-align: left;">• Press ➕ to edit the WHEN YOU BUY (under price) and MIX & MATCH (under YOU SAVE box) text areas</h3>
+            <h3 style="font-family: Trade Gothic LT;text-align: left;">• Press the * key to add the '•' symbol in the text boxes</h3>
         </fieldset>
-
-        <h2 style="font-family: Trade Gothic LT;text-align: center;">Bulk Printing is coming soon! For now, press ✏️ on each sign to print them one-by-one</h2>
     </div>
     
     <fieldset style="max-width: 1900px;color: #7BBA2F;font-family: Trade Gothic LT;font-weight: bold;display: flex;gap:5px;flex-direction: column;">
@@ -466,6 +465,13 @@
             }
             
         });
+        
+
+    document.querySelectorAll('input').forEach(e=>{
+        e.addEventListener('input', function(t) {
+            t.target.value = t.target.value.replace('*', '•');
+        })
+    });
     }
 
     function saveSigns(){
@@ -479,12 +485,17 @@
             if(!row.hasAttribute('sd_isheader')){
                 
                 if(row.getAttribute('sd_name') == ''){
-                    
                     errors.push(`• ${row.getAttribute('sd_upc')}: Missing Item Name`)
                 }
 
                 if(row.getAttribute('sd_unitsizes') == '' && row.getAttribute('sd_unit') != 'EACH'){
                     errors.push(`• ${row.getAttribute('sd_name')}: Missing Unit Size(s)`)
+                }
+                else if(row.getAttribute('sd_unitsizes') != '' && row.getAttribute('sd_unit') != 'EACH'){
+                    let unitSizesRegex = /^\d*\.?\d+(?:\s*,\s*\d*\.?\d+)*$/;
+                    if (!unitSizesRegex.test(row.getAttribute('sd_unitsizes'))) {
+                        errors.push(`• ${row.getAttribute('sd_name')}: Unit sizes must be either a single number, or a list of numbers separated by commas (e.g. "16, 18.5, 101.4")`)
+                    }
                 }
 
                 if(!row.hasAttribute('sd_signsize')){
@@ -580,7 +591,6 @@
         printWindow.print();
         document.querySelector('#barcode-list').innerHTML = '';
     }
-
     //parseLoad();
 </script>
 
