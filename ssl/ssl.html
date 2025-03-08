@@ -3,7 +3,8 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../bulk_shared.css?v=1020" />
+    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
+    <link rel="stylesheet" href="../bulk_shared.css?v=3825" />
     <title>Sign Builder - Offline SSL</title>
     <link rel="icon" type="image/png" href="../images/icon.png?v=01">
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/barcodes/JsBarcode.ean-upc.min.js"></script>
@@ -41,7 +42,7 @@
     
                 <a id="go-home" class="action more-tool-btn" href="../index.html"><span></span><img width="100" src="../images/home-icon.jpg" />Home</a>
             </fieldset>
-            <fieldset style="justify-content: space-around;gap:10px;width: 600px;color: #7BBA2F;font-family: Trade Gothic LT">
+            <fieldset style="justify-content: space-around;gap:10px;width: 600px;color: #7BBA2F;font-family: trade-gothic-next">
                 <legend><h1 class="head-txt" style="color: #7BBA2F;">Information</h1></legend>
                 <p>This tool was created by Drew Ciaramitaro - Store #240 Webster, MA</p>
 
@@ -52,7 +53,7 @@
     
             </fieldset>
         </div>
-        <fieldset style="font-family: Trade Gothic LT;text-align: center;">
+        <fieldset style="font-family: trade-gothic-next;text-align: center;">
             <legend><h1 class="head-txt" style="color: #7BBA2F;">Notice</h1></legend>
             <h3>Offline SSL is intended as an alternative to QuickSign's section scan load while it is offline.</h3>
             <h3>The 'Offline' in the name means that this tool requires no connection to any external database.</h3>
@@ -60,7 +61,7 @@
         </fieldset>
 
 
-        <fieldset style="max-width: 800px;color: #7BBA2F;font-family: Trade Gothic LT;display: flex;gap:5px;flex-direction: column;">
+        <fieldset style="max-width: 800px;color: #7BBA2F;font-family: trade-gothic-next;display: flex;gap:5px;flex-direction: column;">
             <legend style="font-size: 35px;">Paste your section scan below</legend>
             <textarea style="margin:auto;width:95%;resize:vertical;height:300px" id="ss-input"></textarea>
 <!--upc // item name // dept // dolphin price // norm price // sale price // diff // bogo-->
@@ -70,16 +71,16 @@
 
         <fieldset>
             <legend style="font-size: 35px;">Tips</legend>
-            <h3 style="font-family: Trade Gothic LT;text-align: left;margin-bottom: 2px;">• Press the 🔍 button next to a product to look up the UPC on PriceChopper.com - This will typically give you the item name and unit size</h3>
-            <p style="font-family: Trade Gothic LT;text-align: left;font-style: italic;margin: 0px;">The prices listed on PriceChopper.com do not reflect in-store prices, do not refer to them</p>
-            <p style="font-family: Trade Gothic LT;text-align: left;margin-top: 0px;font-weight: 900;">If you cannot find the item on PriceChopper.com, you can print the table to walk the store and fill out the fields</p>
+            <h3 style="font-family: trade-gothic-next;text-align: left;margin-bottom: 2px;">• Press the 🔍 button next to a product to look up the UPC on PriceChopper.com - This will typically give you the item name and unit size</h3>
+            <p style="font-family: trade-gothic-next;text-align: left;font-style: italic;margin: 0px;">The prices listed on PriceChopper.com do not reflect in-store prices, do not refer to them</p>
+            <p style="font-family: trade-gothic-next;text-align: left;margin-top: 0px;font-weight: 900;">If you cannot find the item on PriceChopper.com, you can print the table to walk the store and fill out the fields</p>
             
-            <h3 style="font-family: Trade Gothic LT;text-align: left;">• Press ➕ to edit the WHEN YOU BUY (under price) and MIX & MATCH (under YOU SAVE box) text areas</h3>
-            <h3 style="font-family: Trade Gothic LT;text-align: left;">• Press the * key to add the '•' symbol in the text boxes</h3>
+            <h3 style="font-family: trade-gothic-next;text-align: left;">• Press ➕ to edit the WHEN YOU BUY (under price) and MIX & MATCH (under YOU SAVE box) text areas</h3>
+            <h3 style="font-family: trade-gothic-next;text-align: left;">• Press the * key to add the '•' symbol in the text boxes</h3>
         </fieldset>
     </div>
     
-    <fieldset style="max-width: 1900px;color: #7BBA2F;font-family: Trade Gothic LT;font-weight: bold;display: flex;gap:5px;flex-direction: column;">
+    <fieldset style="max-width: 1900px;color: #7BBA2F;font-family: trade-gothic-next;font-weight: bold;display: flex;gap:5px;flex-direction: column;">
         <legend style="font-size: 35px;">Fill out the sign Information 
             <button class="action hide-on-print" onclick="window.print()">Print Table</button>
             <button class="action hide-on-print" onclick="generateReviewBarcodes()">Generate Barcodes for Review</button>
@@ -105,7 +106,7 @@
         </table>
     </fieldset>
 
-    <fieldset style="max-width: 1900px;color: #7BBA2F;font-family: Trade Gothic LT;display: flex;gap:5px;flex-direction: column;">
+    <fieldset style="max-width: 1900px;color: #7BBA2F;font-family: trade-gothic-next;gap:5px;flex-direction: column;" class="hide-on-print">
         <legend style="font-size: 35px;">Finish Up</legend>
         <button class="action size-btn" style="margin: auto;" onclick="saveSigns()">
             <span style="font-size:120px">💾</span>
@@ -121,7 +122,7 @@
                 <p>• UPC xxx: Missing Unit Sizes</p>
             </div>
         </fieldset> 
-        <fieldset id="bulk-size" style="justify-content: space-around;gap:10px;display: none;color: #7BBA2F;">
+        <fieldset id="bulk-size" style="display: none;justify-content: center;gap: 10px;color: rgb(123, 186, 47);">
             <legend>Choose a size</legend>
 
             <a id="go-to-b" class="action size-btn" href="bulk_b.html" target="_blank"><span></span><img width="200"
@@ -492,10 +493,7 @@
                     errors.push(`• ${row.getAttribute('sd_name')}: Missing Unit Size(s)`)
                 }
                 else if(row.getAttribute('sd_unitsizes') != '' && row.getAttribute('sd_unit') != 'EACH'){
-                    let unitSizesRegex = /^\d*\.?\d+(?:\s*,\s*\d*\.?\d+)*$/;
-                    if (!unitSizesRegex.test(row.getAttribute('sd_unitsizes'))) {
-                        errors.push(`• ${row.getAttribute('sd_name')}: Unit sizes must be either a single number, or a list of numbers separated by commas (e.g. "16, 18.5, 101.4")`)
-                    }
+                    
                 }
 
                 if(!row.hasAttribute('sd_signsize')){
@@ -547,7 +545,7 @@
         }
         else{
             document.querySelector('#success').style.display = '';
-            document.querySelector('#bulk-size').style.display = '';
+            document.querySelector('#bulk-size').style.display = 'flex';
             localStorage.setItem('ssl_signs', JSON.stringify(signArr));
 
         }

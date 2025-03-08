@@ -3,7 +3,7 @@
     color: white;
     font-size: 18px;
     font-stretch: condensed;
-    font-family: "Trade Gothic Condensed";
+    font-family: "trade-gothic-next-condensed";
 }
 
 /* header */
@@ -20,7 +20,7 @@ div#outline > header {
 
     div#outline > header > span {
         color: green;
-        font-family: 'Trade Gothic Condensed';
+        font-family: 'trade-gothic-next-condensed';
     }
 #altDescription {
     font-size: 17px;
@@ -28,7 +28,7 @@ div#outline > header {
     height: 15px;
     font-weight: 100;
     width: 600px;
-    font-family: "Trade Gothic Condensed";
+    font-family: "trade-gothic-next-condensed";
     font-weight: lighter;
 }
 
@@ -40,12 +40,12 @@ div#outline > header {
     margin-top: 30px;
     width: 400px;
     height: 15px;
-    font-family: "Trade Gothic Condensed";
+    font-family: "trade-gothic-next-condensed";
 }
 #unitType {
     font-size: 20px;
-    font-weight: normal;
-    font-family: "Trade Gothic Bold Condensed";
+    font-weight: bold;
+    font-family: "trade-gothic-next-condensed";
 }
 #youSavePriceMain {
     color: white;
@@ -62,7 +62,7 @@ div#outline > header {
     color: white;
     font-size: 15px;
     position: absolute;
-    font-family: "Trade Gothic Bold Condensed";
+    font-family: "trade-gothic-next-condensed";
     left: 180px;
     top: 40px;
 }
@@ -73,13 +73,13 @@ div#outline > header {
     position: absolute;
     left: 395px;
     top: -4px;
-    font-family: "Trade Gothic Condensed";
+    font-family: "trade-gothic-next-condensed";
     border-bottom: 1px solid black;
     width:80px;
 }
 
 .retail-price{
-    font-family: "Trade Gothic Condensed";
+    font-family: "trade-gothic-next-condensed";
     margin-left: 80px;
 }
 #youSaveBoxDiv {
@@ -92,7 +92,8 @@ div#outline > header {
 }
 
 .with-adv{
-   font-family: "Trade Gothic Bold";
+   font-family: "trade-gothic-next-condensed";
+   font-weight: bold;
    font-size: larger;
    position: relative;
    bottom: 5px;
@@ -104,7 +105,7 @@ div#outline > header {
 }
 .yousave{
     color: white;
-    font-family: "Trade Gothic Bold";
+    font-family: "trade-gothic-next-condensed";
     text-align: right;
     padding-right: 12px;
     font-size: 27px;
@@ -127,7 +128,7 @@ div#outline > header {
 }
 #LBOption{
     top:-60px;
-    font-family: "Trade Gothic Condensed";
+    font-family: "trade-gothic-next-condensed";
     font-size: 30px;
 }
 #unitPriceBox{

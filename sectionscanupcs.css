@@ -1,25 +1,25 @@
 @font-face {
-    font-family: "Trade Gothic LT";
+    font-family: "trade-gothic-next";
     src: url("fonts/Trade\ Gothic\ LT.ttf");
 }
 
 @font-face {
-    font-family: "Trade Gothic Bold Condensed";
+    font-family: "trade-gothic-next-condensed";
     src: url("fonts/Trade\ Gothic\ LT\ Bold\ Condensed\ No.\ 20.ttf");
 }
 
 @font-face {
-    font-family: "Trade Gothic Condensed";
+    font-family: "trade-gothic-next-condensed";
     src: url("fonts/Trade\ Gothic\ LT\ Condensed\ No.\ 18.ttf");
 }
 
 @font-face {
-    font-family: "Trade Gothic Bold";
+    font-family: "trade-gothic-next";
     src: url("fonts/Trade\ Gothic\ LT\ Bold.ttf");
 }
 
 @font-face {
-    font-family: "Trade Gothic Bold Extended";
+    font-family: "trade-gothic-next Extended";
     src: url("fonts/Trade\ Gothic\ LT\ Bold\ Extended.ttf");
 }
 
@@ -54,7 +54,7 @@ fieldset {
 }
 
 legend {
-    font-family: "Trade Gothic LT";
+    font-family: "trade-gothic-next";
     font-weight: 800;
 }
 
@@ -68,7 +68,7 @@ body {
 }
 
 .head-txt {
-    font-family: "Trade Gothic LT";
+    font-family: "trade-gothic-next";
     text-align: center;
 }
 
@@ -83,7 +83,7 @@ body {
     cursor: pointer;
     background-color: rgb(50, 50, 50);
     color: white;
-    font-family: "Trade Gothic LT";
+    font-family: "trade-gothic-next";
     text-decoration: none;
     font-size: 24px;
     border-radius: .2rem;
@@ -146,7 +146,7 @@ body {
     text-align: center;
     padding-bottom: 0px;
     font-weight: 600;
-    font-family: 'Trade Gothic Bold'
+    font-family: 'trade-gothic-next'
 }
 
 .barcode {
@@ -156,7 +156,7 @@ body {
 .upcs {
     max-width: 1000px;
     color: #7BBA2F;
-    font-family: Trade Gothic LT;
+    font-family: trade-gothic-next;
     text-align: justify;
     display: flex;
     gap: 5px;

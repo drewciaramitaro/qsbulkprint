@@ -1,34 +1,5 @@
 /* I should ideally change all these to be one font-family but with different weights */
 
-@font-face {
-    font-family: "Trade Gothic LT";
-    src: url("fonts/Trade\ Gothic\ LT.ttf");
-}
-@font-face {
-    font-family: "Trade Gothic LT";
-    font-weight: bold;
-    src: url("fonts/Trade\ Gothic\ LT\ Bold.ttf");
-}
-
-@font-face {
-    font-family: "Trade Gothic Bold Condensed";
-    src: url("fonts/Trade\ Gothic\ LT\ Bold\ Condensed\ No.\ 20.ttf");
-}
-
-@font-face {
-    font-family: "Trade Gothic Condensed";
-    src: url("fonts/Trade\ Gothic\ LT\ Condensed\ No.\ 18.ttf");
-}
-
-@font-face {
-    font-family: "Trade Gothic Bold";
-    src: url("fonts/Trade\ Gothic\ LT\ Bold.ttf");
-}
-
-@font-face {
-    font-family: "Trade Gothic Bold Extended";
-    src: url("fonts/Trade\ Gothic\ LT\ Bold\ Extended.ttf");
-}
 
 @font-face {
     font-family: "Clarendon";
@@ -61,7 +32,7 @@ fieldset {
 }
 
 legend {
-    font-family: "Trade Gothic LT";
+    font-family: "trade-gothic-next";
     font-weight: 800;
 }
 
@@ -76,7 +47,7 @@ body {
 }
 
 .head-txt {
-    font-family: "Trade Gothic LT";
+    font-family: "trade-gothic-next";
     text-align: center;
 }
 
@@ -91,7 +62,7 @@ body {
     cursor: pointer;
     background-color: rgb(50, 50, 50);
     color: white;
-    font-family: "Trade Gothic LT";
+    font-family: "trade-gothic-next";
     text-decoration: none;
     font-size: 24px;
     border-radius: .2rem;
@@ -170,7 +141,7 @@ body {
     width: 250px;
     height: 100%;
     padding: 5px;
-    font-family: 'Trade Gothic LT';
+    font-family: 'trade-gothic-next';
     font-weight: bold;
     background-color: rgba(0, 0, 0, 0.05);
     border-bottom: 1px #7BBA2F solid;
@@ -184,13 +155,13 @@ body {
 
 #MustBuyInner input{
     text-align: right;
-    font-family: 'Trade Gothic Condensed';
+    font-family: 'trade-gothic-next-condensed';
     font-weight: lighter;
     width: 100%;
 }
 
 #altDescription input{
-    font-family: 'Trade Gothic Condensed';
+    font-family: 'trade-gothic-next-condensed';
     font-weight: lighter;
     width: 100%;
 }
@@ -284,7 +255,7 @@ input{
 
   #date-txt{
     text-align: center;
-    font-family: 'Trade Gothic Condensed';
+    font-family: 'trade-gothic-next-condensed';
     font-weight: lighter;
   }
 
@@ -331,7 +302,7 @@ input{
         color: rgb(255, 255, 255);
         margin: 5px;
         background-color: rgba(255, 255, 255, 0.219);
-        font-family: 'Trade Gothic Condensed';
+        font-family: 'trade-gothic-next-condensed';
     }
 
     .section-header.hidden #new-section-btn:hover {
@@ -348,7 +319,7 @@ input{
         color: rgb(255, 255, 255);
         margin: 5px;
         background-color: rgba(255, 255, 255, 0.094);
-        font-family: 'Trade Gothic Condensed';
+        font-family: 'trade-gothic-next-condensed';
     }
 
     .section-header:not(.section-header.hidden) #del-section-btn:hover {
@@ -397,7 +368,7 @@ input{
         color: rgb(58, 58, 58);
         font-size: 20px;
         margin-bottom: 10px;
-        font-family: 'Trade Gothic Condensed';
+        font-family: 'trade-gothic-next-condensed';
     }
 
     .error-popup #close-error {
@@ -453,7 +424,7 @@ input{
     }
 
     #print-dialog .error-popup p{
-        font-family: 'Trade Gothic LT';
+        font-family: 'trade-gothic-next';
         font-size: 1.2rem;
         text-align: center;
     }
@@ -492,7 +463,7 @@ input{
         color: #7BBA2F;
         padding:5px;
         font-size: 14px;
-        font-family: Trade Gothic Condensed;
+        font-family: trade-gothic-next-condensed;
         font-weight: bold;
         min-width: 80px;
         border-radius: .4rem;

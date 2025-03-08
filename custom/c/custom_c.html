@@ -3,9 +3,10 @@
 
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
-    <link rel="stylesheet" href="../../qs/CSize.css?v=1005" />
-    <link rel="stylesheet" href="../../bulk_shared.css?v=1021" />
-    <link rel="stylesheet" href="../../bulk_c.css?v=1011" />
+    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
+    <link rel="stylesheet" href="../../qs/CSize.css?v=3825" />
+    <link rel="stylesheet" href="../../bulk_shared.css?v=3825" />
+    <link rel="stylesheet" href="../../bulk_c.css?v=3825" />
     <title>Custom Signs - C Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
 </head>
@@ -33,7 +34,7 @@
                 <legend>Choose your Sign Type</legend>
                 <div>
                     <input type="checkbox" id="on-sale-sel" checked style="display: none;" onchange="refresh()">
-                    <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Sign Type</span>
+                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sign Type</span>
                         <div>
                         <button id="_onSale" class="action" style="background-color: green;"
                             onclick="{
@@ -55,10 +56,10 @@
                 </div>
                 <div style="display: none;">
                     <input type="checkbox" id="per-lb-sel" style="cursor:pointer" onchange="refresh()">
-                    <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Per LB?</span>
+                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Per LB?</span>
                 </div>
                 <div>
-                    <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Price Type</span>
+                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Price Type</span>
                     <select id="price-type-sel" onchange="refresh()">
                         <optgroup label="Price Type">
                             <option value="NORMAL" selected>Dollars or Cents</option>
@@ -74,18 +75,18 @@
             <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
                 <legend>Item Pricing</legend>
                 <div id="sale-price-box">
-                    <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Sale Price</span>
+                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
                     <input id="sale-price-input" inputmode="decimal" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="2.99"/>
                 </div>
                 <div id="sale-price-box-xforx">
-                    <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Sale Price</span>
+                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
                     <input id="sale-price-input-xforx1" style="width: 50px;" class="tool-input" autocomplete="off" value="2"/>
-                    <span style="font-family: Trade Gothic LT;font-weight: bold;">/$</span>
+                    <span style="font-family: trade-gothic-next;font-weight: bold;">/$</span>
                     <input id="sale-price-input-xforx2" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5"/>
                 </div>
                 
                 <div id="retail-price-box">
-                    <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Regular Retail</span>
+                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Regular Retail</span>
                     <input id="retail-price-input" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5.99"/>
                 </div>
             </fieldset>
@@ -93,7 +94,7 @@
                 <legend>Unit Pricing</legend>
                 <div id="unit-option-box">
                     <div>
-                        <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Unit Price Type</span>
+                        <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Unit Price Type</span>
                         <select id="unit-type-sel" onchange="refresh()">
                             <optgroup label="Unit Price Type">
                                 <option value="EACH">EACH</option>
@@ -106,15 +107,15 @@
                         </select>
                     </div>
                     <div id="unit-size-box">
-                        <span style="line-height: 35px;font-family: 'Trade Gothic Condensed';">Unit Size(s)</span>
+                        <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Unit Size(s)</span>
                         <input id="unit-sizes" style="width: 50px;" class="tool-input" autocomplete="off" value="16"/>
-                        <span id="unit-size-suf" style="line-height: 35px;font-family: 'Trade Gothic Condensed'">ea</span>
+                        <span id="unit-size-suf" style="line-height: 35px;font-family: 'trade-gothic-next-condensed'">ea</span>
                     </div>
 
                 </div>
             </fieldset>
         </div>
-        <span style="font-family: Trade Gothic Condensed;">Hint: Press the * key to add the '•' symbol in the text boxes</span>
+        <span style="font-family: trade-gothic-next-condensed;">Hint: Press the * key to add the '•' symbol in the text boxes</span>
     </div>
 
 
@@ -151,7 +152,7 @@
                         </div>
                         <footer>
                             <div id="unitBox">
-                                <span style="font-family: 'Trade Gothic Bold Condensed';font-size:16px">UNIT PRICE</span>
+                                <span style="font-family: 'trade-gothic-next-condensed';font-size:16px">UNIT PRICE</span>
                                 <div id="unitPriceBox">19.99</div>
                                 <div id="unitType">PER LB</div>
                             </div>
@@ -182,7 +183,7 @@
                                         </div>
                                     </div>   
                                 </div>
-                                <input class="editable-input" id="mixMatch" autocomplete="off" style="font-family: Trade Gothic Condensed;width: 100%;" placeholder="Click here to enter MIX & MATCH / other info">
+                                <input class="editable-input" id="mixMatch" autocomplete="off" style="font-family: trade-gothic-next-condensed;width: 100%;" placeholder="Click here to enter MIX & MATCH / other info">
                             </div>
                         </footer>
                     </div>
@@ -422,7 +423,7 @@
                 });
                 document.querySelector("#unitType").style.display = "None";
                 document.querySelector("#unitPriceBox").style.fontSize = "13px";
-                document.querySelector("#unitPriceBox").style.fontFamily = "Trade Gothic Condensed"
+                document.querySelector("#unitPriceBox").style.fontFamily = "trade-gothic-next-condensed"
             }
             else {
                 unitString = `${calcUnitPrice(unitAmt, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)}`;

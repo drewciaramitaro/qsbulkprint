@@ -3,9 +3,10 @@
 
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
-    <link rel="stylesheet" href="../qs/CSize.css?v=1001" />
-    <link rel="stylesheet" href="../bulk_shared.css?v=1017" />
-    <link rel="stylesheet" href="../bulk_c.css?v=1001" />
+    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
+    <link rel="stylesheet" href="../qs/CSize.css?v=3825" />
+    <link rel="stylesheet" href="../bulk_shared.css?v=3825" />
+    <link rel="stylesheet" href="../bulk_c.css?v=3825" />
     <title>Bulk Sign Print - C Size</title>
     <link rel="icon" type="image/png" href="../images/icon.png?v=01">
     <style>
@@ -38,10 +39,10 @@
     <fieldset class="desktop tool" style="max-width: 400px;">
         <legend>Sale Dates</legend>
         <div style="display: flex;flex-direction: column;align-items: center;">
-            <span style="font-family: Trade Gothic Bold;text-align: center;">You can change the ON SALE THRU text for ALL on-sale signs by editing this box.</span>
+            <span style="font-family: trade-gothic-next;text-align: center;">You can change the ON SALE THRU text for ALL on-sale signs by editing this box.</span>
             <input class="tool-input" id="date-txt" value="ON SALE NOW" autocomplete="off"/>
             <br/>
-            <span style="font-family: Trade Gothic LT;text-align: center;">Tip: You can edit the ON SALE THRU text on a per-sign basis simply by clicking on it on the sign below.</span>
+            <span style="font-family: trade-gothic-next;text-align: center;">Tip: You can edit the ON SALE THRU text on a per-sign basis simply by clicking on it on the sign below.</span>
         </div>
     </fieldset>
     <template id="b-section">
@@ -93,7 +94,7 @@
                 </div>
                 <footer>
                     <div id="unitBox">
-                        <span style="font-family: 'Trade Gothic Bold Condensed';font-size:16px">UNIT PRICE</span>
+                        <span style="font-family: 'trade-gothic-next-condensed';font-size:16px">UNIT PRICE</span>
                         <div id="unitPriceBox">19.99</div>
                         <div id="unitType">PER LB</div>
                     </div>
@@ -124,7 +125,7 @@
                                 </div>
                             </div>   
                         </div>
-                        <input class="editable-input" id="mixMatch" autocomplete="off" style="font-family: Trade Gothic Condensed;width: 100%;" placeholder="Click here to enter MIX & MATCH / other info">
+                        <input class="editable-input" id="mixMatch" autocomplete="off" style="font-family: trade-gothic-next-condensed;width: 100%;" placeholder="Click here to enter MIX & MATCH / other info">
                     </div>
                 </footer>
             </div>
@@ -352,7 +353,7 @@
                 });
                 newSign.querySelector("#unitType").style.display = "None";
                 newSign.querySelector("#unitPriceBox").style.fontSize = "13px";
-                newSign.querySelector("#unitPriceBox").style.fontFamily = "Trade Gothic Condensed"
+                newSign.querySelector("#unitPriceBox").style.fontFamily = "trade-gothic-next-condensed"
             }
             else {
                 unitString = `${calcUnitPrice(unitAmt, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)}`;

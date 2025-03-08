@@ -2,7 +2,7 @@
     color: white;
     font-size: 18px;
     font-stretch: condensed;
-    font-family: "Trade Gothic Condensed";
+    font-family: "trade-gothic-next-condensed";
 }
 
 /* header */
@@ -16,7 +16,7 @@ div#outline>header {
 
 div#outline>header>span {
     color: green;
-    font-family: 'Trade Gothic Condensed';
+    font-family: 'trade-gothic-next-condensed';
 }
 
 div#outline>footer>#rightBox {
@@ -25,7 +25,7 @@ div#outline>footer>#rightBox {
 
 #altDescription {
     font-weight: 100;
-    font-family: "Trade Gothic Condensed";
+    font-family: "trade-gothic-next-condensed";
     font-weight: lighter;
 }
 
@@ -33,13 +33,13 @@ div#outline>footer>#rightBox {
     width: 200px;
     padding-top: 0;
     margin-top:14px;
-    font-family: "Trade Gothic Condensed";
+    font-family: "trade-gothic-next-condensed";
 }
 
 #unitType {
     font-size: 16px;
-    font-weight: normal;
-    font-family: "Trade Gothic Bold Condensed";
+    font-weight: bold;
+    font-family: "trade-gothic-next-condensed";
 }
 
 
@@ -47,13 +47,13 @@ div#outline>footer>#rightBox {
     color: white;
     font-size: 15px;
     position: absolute;
-    font-family: "Trade Gothic Bold Condensed";
+    font-family: "trade-gothic-next-condensed";
     left: 110px;
     top: 20px;
 }
 
 #LBOption{
-    font-family: "Trade Gothic Bold Condensed";
+    font-family: "trade-gothic-next-condensed";
 }
 
 #retail {
@@ -63,13 +63,13 @@ div#outline>footer>#rightBox {
     position: absolute;
     left: 281px;
     top: -2px;
-    font-family: "Trade Gothic Condensed";
+    font-family: "trade-gothic-next-condensed";
     border-bottom: 1px solid black;
     width: 55px;
 }
 
 .retail-price {
-    font-family: "Trade Gothic Condensed";
+    font-family: "trade-gothic-next-condensed";
     margin-left: 35px;
     font-size: 12px;
 }
@@ -84,7 +84,7 @@ div#outline>footer>#rightBox {
 }
 
 .with-adv {
-    font-family: "Trade Gothic Bold";
+    font-family: "trade-gothic-next-condensed";
     font-size: 15px;
     position: relative;
     bottom: 30px;
@@ -97,7 +97,7 @@ div#outline>footer>#rightBox {
 
 .yousave {
     color: white;
-    font-family: "Trade Gothic Bold";
+    font-family: "trade-gothic-next-condensed";
     text-align: right;
     padding-right: 6px;
     font-size: 18px;
