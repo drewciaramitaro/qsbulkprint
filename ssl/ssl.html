@@ -425,7 +425,10 @@
                     });
 
                     new_row.querySelector('#sale-info').appendChild(bogo_selector);
+                    sale_price = retail_price;
+                    _r.setAttribute('sd_saleprice', retail_price)
                     _r.setAttribute('sd_bogo', 'BOGO');
+                    _r.setAttribute('sd_onsale', true)
                 }
 
                 // Check if this should be a X/$X price -- any time its a multiple of 25 cents we can do this.
