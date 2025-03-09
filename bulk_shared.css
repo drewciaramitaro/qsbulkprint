@@ -130,6 +130,10 @@ body {
     display: none;
 }
 
+.top-row{
+    display:none;
+}
+
 .section-header:not(.section-header.hidden) #new-section-btn {
     display: none;
 }
@@ -490,6 +494,26 @@ input{
      optgroup, option{
         background-color: rgb(50, 50, 50);
      }
+
+     .navbar{
+        background-color: #363636;
+        height: 58px;
+        padding: 4px;
+        gap: 10px;
+        display: grid;
+        grid-template-columns: 800px 250px 150px;
+        grid-template-rows: 100%;
+        border-radius: .2rem;
+        position: sticky;
+        justify-content: center;
+        width: fit-content;
+        margin: 0 auto;
+        top: 10px;
+     }
+     .navbar h1{   
+         margin: auto 10px;
+        }
+
 }
 
 
@@ -529,5 +553,9 @@ input{
     ::placeholder, .editable-input::placeholder {
         display: none !important;
         color: transparent !important;
+    }
+
+    .navbar{
+        display:none;
     }
 }
