@@ -60,11 +60,9 @@ div#outline > header {
 }
 #youSavePriceLb {
     color: white;
-    font-size: 15px;
-    position: absolute;
+    margin-top:28px;
+    font-size: 20px;
     font-family: "trade-gothic-next-condensed";
-    left: 180px;
-    top: 40px;
 }
 
 #retail {

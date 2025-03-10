@@ -46,10 +46,8 @@ div#outline>footer>#rightBox {
 #youSavePriceLb {
     color: white;
     font-size: 15px;
-    position: absolute;
+    margin-top:18px;
     font-family: "trade-gothic-next-condensed";
-    left: 110px;
-    top: 20px;
 }
 
 #LBOption{

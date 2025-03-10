@@ -157,6 +157,10 @@ body {
     background-color: rgba(0, 0, 0, 0.15);
 }
 
+.tool-input:disabled{
+    color:rgba(255, 255, 255, 0.5)
+}
+
 #MustBuyInner input{
     text-align: right;
     font-family: 'trade-gothic-next-condensed';
