@@ -77,7 +77,7 @@
                 <legend>eCoupon Pricing</legend>
                 <div>
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Price Type</span>
-                    <select id="price-type-sel" onchange="refresh()">
+                    <select id="eprice-type-sel" onchange="refresh()">
                         <optgroup label="Price Type">
                             <option value="NORMAL" selected>Dollars or Cents</option>
                             <option value="XFORX" >X/$XX</option>
@@ -117,17 +117,6 @@
                         <span id="unit-size-suf" style="line-height: 35px;font-family: 'trade-gothic-next-condensed'">ea</span>
                     </div>
 
-                </div>
-            </fieldset>
-            <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
-                <legend>Bonus Points</legend>
-                <div>
-                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Bonus Points</span>
-                    <input id="bonus-point-input" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="1000"/>
-                </div>
-                <div>
-                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Must Buy For Bonus Pts</span>
-                    <input id="bonus-point-buy-input" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="1"/>
                 </div>
             </fieldset>
         </div>
@@ -185,23 +174,16 @@
                                     <span class="retail-price">Regular Retail: </span>
                                     <div id="retail">5.99</div>
                                 </div>
-                                <div id="youSaveBoxDiv" style="display: flex;">           
-                                    <div style="display: grid;grid-template-columns:50px 91px 40px;background-color: black;">             
-                                        <span style="padding-left:6px" class="yousave">YOU SAVE</span>
-                                        <div style="display: flex;">
-                                            <div id="youSavePriceMain" style="padding-left: 10px;">3</div>
-                                            <div id="youSavePriceAlt">99</div>
-                                        </div>
-                                        <div id="whenYouBuy" style="color: white;display: none">
-                                            <p style="margin-top: 1px; margin-bottom: 2px;">WHEN</p>
-                                            <p style="margin-top: -5px; margin-bottom: 1px;">YOU</p>
-                                            <div style="margin-top: -4px;" id="spanWhenYouBuy">BUY 3</div>
-                                        </div>
+                                <div id="youSaveBoxDiv" style="display: flex;font-family: trade-gothic-next-compressed;font-weight: 100;">           
+                                    <div style="background-color: black;text-align: center;">             
+                                        <span style="padding-left:6px;color:white;display: block;margin:0 25px">SAVE $2 MORE on 2</span>    
+                                        <span style="padding-left:6px;color:white">with eCoupon</span>
+                                        
                                     </div>
-                                    <div id="youSaveImg" style="grid-template-columns: 87px 42px 58px;background: none;border: 1px solid black;">
-                                        <span id="bonus-pt" style="color:black;font-size: 38px;margin-right: 4px;margin-top: -2px;text-align: right;">1000</span>
-                                        <span style="color:black;font-family: 'trade-gothic-next-condensed';margin-top: 3px;font-size:15px">BONUS POINTS</span>
-                                        <div id="whenYouBuyPt" style="color: black;font-family: trade-gothic-next-condensed;font-size: 14px;">
+                                    <div id="youSaveImg" style="grid-template-columns: 42px 72px 68px;background: none;border: 1px solid black;font-family: trade-gothic-next-compressed;">
+                                        <span style="color:black;font-family: 'trade-gothic-next-condensed';margin-top: 3px;font-size:15px;font-weight: 600;">FINAL PRICE</span>
+                                        <span id="bonus-pt" style="color:black;font-size: 38px;margin-right: 4px;margin-top: -2px;text-align: right;">$2</span>
+                                        <div id="whenYouBuyPt" style="color: black;font-family: trade-gothic-next-condensed;font-size: 12px;margin-left: 15px;">
                                             <p style="margin-top: 1px;margin-bottom: 2px;">WHEN</p>
                                             <p style="margin-top: -5px; margin-bottom: 1px;">YOU</p>
                                             <div style="margin-top: -4px;" id="spanWhenYouBuyPt">BUY 3</div>
