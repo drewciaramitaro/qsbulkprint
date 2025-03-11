@@ -12,20 +12,11 @@
 </head>
 
 <body>
-    <fieldset class="desktop tool">
-        <legend>
-            <div id="tool-head">
-                <h1 class="head-txt" style="margin: 0;">Custom Sign - <span>C Size</span></h1>
-            </div>
-        </legend>
-        <div style="margin:auto;margin-top: -15px;margin-bottom:12px; width: fit-content;display: flex;gap:4px">
-            <a id="go-home" class="action more-tool-btn" href="../customsigns.html"><span></span><img width="100" src="../../images/spec_sign_icon.jpg" />Back to Sign List</a>
-        </div>
-
-        <div style="display: flex;flex-direction: row;align-items: center;gap:8px">
-            <button class="action" onclick="show_print_dialog()">Print</button>
-        </div>
-    </fieldset>
+    <header class="navbar">
+        <h1 style="color: #7BBA2F;font-family: trade-gothic-next-condensed;">C-Size: Free w/ Points</h1>
+        <a class="action" href="../customsigns.html" style="display: flex;gap: 10px;align-items: center;"><img width="45" src="../../images/spec_sign_icon.jpg" />Back to Sign List</a>
+        <button class="action"  onclick="show_print_dialog()" style="display: flex;gap: 10px;align-items: center;"><img width="45" src="../../images/c.svg" />Print</button>
+    </header>
 
     <div class="desktop tool">
         <legend>Edit Sign</legend>
@@ -44,14 +35,7 @@
                                 refresh();
                             }"
                         >On Sale</button>
-                        <button id="_offSale" class="action"
-                        onclick="{
-                            document.querySelector('#_onSale').style.backgroundColor ='';
-                            document.querySelector('#_offSale').style.backgroundColor ='green';
-                            document.querySelector('#on-sale-sel').checked = false;
-                            refresh();
-                        }"
-                        >Off Sale</button>
+
                     </div>
                 </div>
                 <div style="display: none;">
@@ -71,7 +55,7 @@
                 <legend>Item Pricing</legend>
                 <div id="sale-price-box">
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
-                    <input id="sale-price-input" inputmode="decimal" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="2.99"/>
+                    <input id="sale-price-input" inputmode="decimal" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="300"/>
                 </div>
                 <div id="sale-price-box-xforx">
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
@@ -154,7 +138,7 @@
                             <div id="rightBox" style="bottom: 40px;height: 50px;">
                                 <div id="mustBuy" style="height: 20px;margin-left: -141px;">
                                     <div id="MustBuyInner">
-                                        <input class="editable-input" placeholder="CLICK TO ENTER MUST BUY / OTHER INFO" value="300 REWARDS POINTS" style="font-size: 1.3em;font-weight: 900;text-align: center;"/>
+                                        <input class="editable-input" placeholder="xxx REWARDS POINTS" style="font-size: 1.3em;font-weight: 900;text-align: center;"/>
                                     </div>
         
         
@@ -178,7 +162,7 @@
                                         </div>
                                     </div>   
                                 </div>
-                                <input class="editable-input" id="mixMatch" autocomplete="off" style="font-family: trade-gothic-next-condensed;width: 100%;" placeholder="Click here to enter MIX & MATCH / other info">
+                                <input class="editable-input" id="mixMatch" autocomplete="off" style="font-family: trade-gothic-next-compressed;width: 100%;font-weight: 100;" placeholder="Click here to enter MIX & MATCH / other info" value="LIMIT 1 OFFER PER CUSTOMER">
                             </div>
                         </footer>
                     </div>
@@ -277,7 +261,9 @@
 
             
             let retailPrice = document.querySelector('#retail-price-input').value;
-            let salePrice = document.querySelector('#sale-price-input').value;
+            let salePrice = document.querySelector('#sale-price-input').value / 100;
+            
+                document.querySelector("#MustBuyInner input").value = `${salePrice*100} REWARDS POINTS`
             
             // PRICE TYPE
             const priceType = document.querySelector("#price-type-sel").value;
@@ -389,7 +375,7 @@
                 document.querySelector('#youSaveBoxDiv').style.display='flex';
                 document.querySelector('#saleDate').value = 'ON SALE NOW';
                 document.querySelector("#retail-price-box").style.display = 'block';
-                document.querySelector("#sale-price-box span").innerHTML = "Sale Price";
+                document.querySelector("#sale-price-box span").innerHTML = "Points";
                 document.querySelector("#sale-price-box-xforx span").innerHTML = "Sale Price";
             }
             
