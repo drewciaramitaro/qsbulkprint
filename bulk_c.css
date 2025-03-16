@@ -163,7 +163,13 @@ div#outline>footer>#rightBox {
         margin-left: 0px;
     }
 }
-
+.price-d-dollar{
+    font-size: 100px;
+    font-weight: bold;
+    vertical-align: top;
+    line-height: 160px;
+    letter-spacing: -5px;
+}
 @media print {
     div#outline {
         page-break-before: always;

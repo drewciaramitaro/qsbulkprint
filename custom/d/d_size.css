@@ -1,0 +1,205 @@
+.d-grid{
+    display: grid;
+    grid-template-areas: 
+    "1 2"
+    "3 4"
+    "5 6";
+    gap: 10px;
+}
+
+.d-sign{
+    background-color: yellow;
+    height:400px;
+    width:550px;
+    display: grid;
+    grid-template-rows: 70px 15% 45% 1fr;
+    padding:5px;
+}
+    .d-sign header{
+        background-color: black;
+        height: 60px;
+        color:white;
+        font-family: Clarendon;
+        text-align: center;
+        font-size: 30px;
+        padding: 2px;
+        font-weight: 100;
+    }
+
+    .d-grid header span{
+        color: green;
+        font-family: 'trade-gothic-next-condensed';
+    }
+
+    .d-grid .d-sign:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+        z-index: 999;
+        border-radius: .25em;
+        outline: 4px #7BBA2F solid;
+        outline-offset: 4px;
+    }
+
+     .d-grid:has(.d-sign:hover)  .d-sign:not(:hover){
+        opacity: 0.3;
+        filter:blur(5px)
+    }
+    
+
+.item-name{
+    font-family: Clarendon;
+    font-weight: 100;
+    font-size: 18px;
+}
+.item-desc, .sale-date{
+    font-family: trade-gothic-next-condensed;
+    font-weight: 100;
+    font-size: 14px;
+}
+
+.desc-area{
+    display: flex;
+    flex-direction: column;
+    gap:6px
+}
+
+.price-area{
+    text-align: right;
+    font-family: Rockwell;
+    display:grid;
+    grid-template-rows: 150px 20px;
+}
+
+.price-d-0{
+    font-size: 180px;
+    font-weight: bold;
+    line-height: 170px;
+    letter-spacing: -12px;
+}
+.price-d-1{
+    font-size: 100px;
+    font-weight: bold;
+    vertical-align: top;
+    letter-spacing: -5px;
+    
+}
+.price-d-dollar{
+    font-size: 80px;
+    font-weight: bold;
+    vertical-align: top;
+    line-height: 110px;
+    letter-spacing: -5px;
+}
+
+.when-you-buy{
+    font-family: trade-gothic-next-compressed;
+    font-weight: 100;
+}
+
+.lb{
+    font-family: trade-gothic-next-compressed;
+    position: relative;
+    font-size: 20px;
+    line-height: 0px;
+    top: -50px;
+    left:40px;
+}
+
+.sign-bottom{
+    display: grid;
+    grid-template-columns: 150px 1fr;
+}
+
+.unit-box{
+    background-color: orange;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 20px 1fr 23px;
+    font-family: trade-gothic-next-compressed;
+    text-align: center;
+}
+
+.up-title{
+    font-size: 20px;
+}
+
+.up-single{
+    font-size:40px;
+    font-weight: bold;
+}
+
+.unit{
+    font-size:20px;
+}
+
+.savings-label{
+    display: grid;
+    grid-template-columns: 240px 1fr;
+}
+
+.savings{
+    margin-left: 30px;
+    display: grid;
+    grid-template-rows: 20px 1fr 20px;
+}
+
+.savings .inner{
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact; 
+    background-color: black !important;
+    
+    color:white;
+    display: grid;
+    grid-template-columns: 55px 1fr;
+    gap: 10px;
+    width: fit-content;
+    min-width: 190px
+}
+
+.savings .inner .ys-text{
+    font-family: trade-gothic-next-compressed;
+    font-weight: bold;
+    font-size: 22px;
+    text-align: right;
+    padding-right: 10px;
+    
+}
+
+.save-price{
+    font-family: Rockwell;
+    font-size: 46px;
+    font-weight: bold;
+    display: flex;
+}
+.ys-dollar-symbol{
+    font-size: 30px;
+    margin-left: 0;
+    vertical-align: top;
+}
+.ys-small{
+    font-size: 30px;
+    margin-left: 0;
+    vertical-align: top;
+    line-height: 42px;
+}
+.reg-retail{
+    font-family: trade-gothic-next-compressed;
+}
+
+.reg-retail-line{
+    display: inline-block;
+    width: 50px;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+dialog:open{
+    padding: 70px;
+    background-color: #24180ded;
+    /* backdrop-filter: blur(10px); */
+    width:80vw
+}
+
+#sign-editor{
+    margin: auto;
+}

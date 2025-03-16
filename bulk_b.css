@@ -157,7 +157,13 @@ div#outline > header {
 @page{
     margin-top: 7%;
 }
-
+.price-d-dollar{
+    font-size: 200px;
+    font-weight: bold;
+    vertical-align: top;
+    line-height: 300px;
+    letter-spacing: -5px;
+}
 @media print{
     #saleDate{
         padding-left: 10px

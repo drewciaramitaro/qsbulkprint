@@ -4,202 +4,235 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/CSize.css?v=3825" />
+    <link rel="stylesheet" href="../../qs/DSize.css?v=3825" />
     <link rel="stylesheet" href="../../bulk_shared.css?v=20250310" />
-    <link rel="stylesheet" href="../../bulk_c.css?v=20250310" />
-    <title>Custom Signs - C Size</title>
+    <link rel="stylesheet" href="../../bulk_d.css?v=20250310" />
+    <link rel="stylesheet" href="d_size.css">
+    <title>Custom Signs - D Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
 </head>
 
 <body>
-    <fieldset class="desktop tool">
-        <legend>
-            <div id="tool-head">
-                <h1 class="head-txt" style="margin: 0;">Custom Sign - <span>C Size</span></h1>
-            </div>
-        </legend>
-        <div style="margin:auto;margin-top: -15px;margin-bottom:12px; width: fit-content;display: flex;gap:4px">
-            <a id="go-home" class="action more-tool-btn" href="../customsigns.html"><span></span><img width="100" src="../../images/spec_sign_icon.jpg" />Back to Sign List</a>
-        </div>
-
-        <div style="display: flex;flex-direction: row;align-items: center;gap:8px">
-            <button class="action" onclick="show_print_dialog()">Print</button>
-        </div>
-    </fieldset>
-
+    <header class="navbar">
+        <h1 style="color: #7BBA2F;font-family: trade-gothic-next-condensed;">D-Size: Regular</h1>
+        <a class="action" href="../customsigns.html" style="display: flex;gap: 10px;align-items: center;"><img width="45" src="../../images/spec_sign_icon.jpg" />Back to Sign List</a>
+        <button class="action"  onclick="show_print_dialog()" style="display: flex;gap: 10px;align-items: center;"><img width="45" src="../../images/d.svg" />Print</button>
+    </header>
     <div class="desktop tool">
-        <legend>Edit Sign</legend>
-        <div style="display: flex;gap:10px;">
-            <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
-                <legend>Choose your Sign Type</legend>
-                <div>
-                    <input type="checkbox" id="on-sale-sel" checked style="display: none;" onchange="refresh()">
-                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sign Type</span>
-                        <div>
-                        <button id="_onSale" class="action" style="background-color: green;"
-                            onclick="{
-                                document.querySelector('#_onSale').style.backgroundColor ='green';
-                                document.querySelector('#_offSale').style.backgroundColor ='';
-                                document.querySelector('#on-sale-sel').checked = true;
-                                refresh();
-                            }"
-                        >On Sale</button>
-                        <button id="_offSale" class="action"
-                        onclick="{
-                            document.querySelector('#_onSale').style.backgroundColor ='';
-                            document.querySelector('#_offSale').style.backgroundColor ='green';
-                            document.querySelector('#on-sale-sel').checked = false;
-                            refresh();
-                        }"
-                        >Off Sale</button>
-                    </div>
-                </div>
-                <div style="display: none;">
-                    <input type="checkbox" id="per-lb-sel" style="cursor:pointer" onchange="refresh()">
-                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Per LB?</span>
-                </div>
-                <div>
-                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Price Type</span>
-                    <select id="price-type-sel" onchange="refresh()">
-                        <optgroup label="Price Type">
-                            <option value="NORMAL" selected>Dollars or Cents</option>
-                            <option value="XFORX" >X/$XX</option>
-                            <option value="BOGO">Buy One, Get One</option>
-                            <option value="B1G2">Buy One, Get Two</option>
-                            <option value="B2G1">Buy Two, Get One</option>
-                            <option value="B2G2">Buy Two, Get Two</option>>
-                        </optgroup>
-                    </select>
-                </div>
-            </fieldset>
-            <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
-                <legend>Item Pricing</legend>
-                <div id="sale-price-box">
-                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
-                    <input id="sale-price-input" inputmode="decimal" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="2.99"/>
-                </div>
-                <div id="sale-price-box-xforx">
-                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
-                    <input id="sale-price-input-xforx1" style="width: 50px;" class="tool-input" autocomplete="off" value="2"/>
-                    <span style="font-family: trade-gothic-next;font-weight: bold;">/$</span>
-                    <input id="sale-price-input-xforx2" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5"/>
-                </div>
-                
-                <div id="retail-price-box">
-                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Regular Retail</span>
-                    <input id="retail-price-input" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5.99"/>
-                </div>
-            </fieldset>
-            <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
-                <legend>Unit Pricing</legend>
-                <div id="unit-option-box">
-                    <div>
-                        <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Unit Price Type</span>
-                        <select id="unit-type-sel" onchange="refresh()">
-                            <optgroup label="Unit Price Type">
-                                <option value="EACH">EACH</option>
-                                <option value="POUND" selected>PER LB.</option>
-                                <option value="QUART">PER QT.</option>
-                                <option value="50 COUNT">PER 50 SQ. FT.</option>
-                                <option value="100 COUNT">PER 100 CT.</option>
-                                <option value="OUNCE">PER OZ.</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                    <div id="unit-size-box">
-                        <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Unit Size(s)</span>
-                        <input id="unit-sizes" style="width: 50px;" class="tool-input" autocomplete="off" value="16"/>
-                        <span id="unit-size-suf" style="line-height: 35px;font-family: 'trade-gothic-next-condensed'">ea</span>
-                    </div>
-
-                </div>
-            </fieldset>
-            <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
-                <legend>Choose Sign</legend>
-                <div style="display: grid;grid-template-rows: 30px 30px 30px;grid-template-columns: 1fr 1fr;gap:4px">
-                        <button class="action" style="background-color: green;"></button>
-                        <button class="action"></button>
-                        <button class="action"></button>
-                        <button class="action"></button>
-                        <button class="action"></button>
-                        <button class="action"></button>
-                </div>
-            </fieldset>
-        </div>
-        <span style="font-family: trade-gothic-next-condensed;">Hint: Press the * key to add the '•' symbol in the text boxes</span>
+        <h1>Click on a sign to edit it</h1>
     </div>
 
 
+    <dialog>
+        <div class="desktop tool">
+            <legend>Edit Sign</legend>
+            <div style="display: flex;gap:10px;">
+                <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
+                    <legend>Choose your Sign Type</legend>
+                    <div>
+                        <input type="checkbox" id="on-sale-sel" checked style="display: none;" onchange="refresh()">
+                        <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sign Type</span>
+                            <div>
+                            <button id="_onSale" class="action" style="background-color: green;"
+                                onclick="{
+                                    document.querySelector('#_onSale').style.backgroundColor ='green';
+                                    document.querySelector('#_offSale').style.backgroundColor ='';
+                                    document.querySelector('#on-sale-sel').checked = true;
+                                    refresh();
+                                }"
+                            >On Sale</button>
+                            <button id="_offSale" class="action"
+                            onclick="{
+                                document.querySelector('#_onSale').style.backgroundColor ='';
+                                document.querySelector('#_offSale').style.backgroundColor ='green';
+                                document.querySelector('#on-sale-sel').checked = false;
+                                refresh();
+                            }"
+                            >Off Sale</button>
+                        </div>
+                    </div>
+                    <div style="display: none;">
+                        <input type="checkbox" id="per-lb-sel" style="cursor:pointer" onchange="refresh()">
+                        <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Per LB?</span>
+                    </div>
+                    <div>
+                        <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Price Type</span>
+                        <select id="price-type-sel" onchange="refresh()">
+                            <optgroup label="Price Type">
+                                <option value="NORMAL" selected>Dollars or Cents</option>
+                                <option value="XFORX" >X/$XX</option>
+                                <option value="BOGO">Buy One, Get One</option>
+                                <option value="B1G2">Buy One, Get Two</option>
+                                <option value="B2G1">Buy Two, Get One</option>
+                                <option value="B2G2">Buy Two, Get Two</option>>
+                            </optgroup>
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
+                    <legend>Item Pricing</legend>
+                    <div id="sale-price-box">
+                        <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
+                        <input id="sale-price-input" inputmode="decimal" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="2.99"/>
+                    </div>
+                    <div id="sale-price-box-xforx">
+                        <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
+                        <input id="sale-price-input-xforx1" style="width: 50px;" class="tool-input" autocomplete="off" value="2"/>
+                        <span style="font-family: trade-gothic-next;font-weight: bold;">/$</span>
+                        <input id="sale-price-input-xforx2" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5"/>
+                    </div>
+                    
+                    <div id="retail-price-box">
+                        <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Regular Retail</span>
+                        <input id="retail-price-input" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5.99"/>
+                    </div>
+                </fieldset>
+                <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
+                    <legend>Unit Pricing</legend>
+                    <div id="unit-option-box">
+                        <div>
+                            <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Unit Price Type</span>
+                            <select id="unit-type-sel" onchange="refresh()">
+                                <optgroup label="Unit Price Type">
+                                    <option value="EACH">EACH</option>
+                                    <option value="POUND" selected>PER LB.</option>
+                                    <option value="QUART">PER QT.</option>
+                                    <option value="50 COUNT">PER 50 SQ. FT.</option>
+                                    <option value="100 COUNT">PER 100 CT.</option>
+                                    <option value="OUNCE">PER OZ.</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div id="unit-size-box">
+                            <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Unit Size(s)</span>
+                            <input id="unit-sizes" style="width: 50px;" class="tool-input" autocomplete="off" value="16"/>
+                            <span id="unit-size-suf" style="line-height: 35px;font-family: 'trade-gothic-next-condensed'">ea</span>
+                        </div>
+
+                    </div>
+                </fieldset>
+            </div>
+            <span style="font-family: trade-gothic-next-condensed;">Hint: Press the * key to add the '•' symbol in the text boxes</span>
+        </div>
+        <div class="d-sign" id="sign-editor">
+            <div>
+                <header class="hide-on-print">
+                Everyone <span>Loves to Save</span>
+            </header></div>
+
+            <div class="desc-area">
+                <span class="item-name">Market 32 example item</span>
+                <span class="item-desc">14 oz. • all varieties</span>
+                <span class="sale-date">ON SALE thru 3/19</span>
+            </div>
+            <div class="price-area">
+                <div class="price-dollar">
+                    <span class="price-d-0">12</span>
+                    <span class="price-d-1">49</span>
+                    
+                </div>
+                <div>
+                    <span class="lb" style="display: none;">lb.</span>
+                    <span class="when-you-buy">WHEN YOU BUY 3</span>
+                </div>
+            </div>
+            <div class="sign-bottom">
+                <div class="unit-box">
+                    <span class="up-title">UNIT PRICE</span>
+                    <span class="up-single">12.49</span>
+                    <span class="unit">PER LB.</span>
+                </div>
+                <div class="savings">
+                    <div class="savings-label">
+                        <div>
+                            <span style="font-family: trade-gothic-next-compressed;">WITH</span>
+                            <span style="font-family: Clarendon;font-weight: 500;">AdvantEdge</span>
+                            <span style="font-family: trade-gothic-next-compressed;">CARD</span>
+                        </div>
+                        <div class="reg-retail">
+                            <span>Regular Retail: </span>
+                            <div class="reg-retail-line">
+                                <span>15.99</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inner">
+                        <span class="ys-text">YOU SAVE</span>
+                        <div class="save-price">
+                            <span class="ys-dollar-symbol" style="display: none;">$</span>
+                            <span>1</span>
+                            <span class="ys-small">50</span>
+                        </div>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <button class="action" style="margin: 10px auto;display: block;" onclick="document.querySelector('dialog').close()">Save & Close</button>
+    </dialog>
+
     <div class="print">
-        <div id="print-container">
-            <div id="c-sign">
-                <div class="print-page">
-                    <div id="outline">
-                        <header class="noPrint">
-                            Everyone <span>Loves to Save</span>
-                        </header>
-                        <div id="desBox">
-                            <input id="mainDescription" class="editable-input" autocomplete="off" placeholder="Click here to enter item name.">
-                            <div id="altDescription">
-                                <input class="editable-input" autocomplete="off" placeholder="CLICK TO ENTER DESCRIPTION"/>
+        <div class="d-grid">
+            <div class="d-sign" id="sign1" tooltip="Click to edit" s_name="item 1" s_desc="" s_sale="ON SALE thru 3/19" s_pricetype="NORMAL" s_price="12.49" s_retail="14.99" s_wyb="" s_onsale=true s_mam="" s_u="lb" s_up="12.49" s_isLb=false
+             onclick="edit('sign1')">
+                <div>
+                    <header class="hide-on-print">
+                    Everyone <span>Loves to Save</span>
+                </header></div>
+
+                <div class="desc-area">
+                    <span class="item-name">Market 32 example item</span>
+                    <span class="item-desc">14 oz. • all varieties</span>
+                    <span class="sale-date">ON SALE thru 3/19</span>
+                </div>
+                <div class="price-area">
+                    <div class="price-dollar">
+                        <span class="price-d-0">12</span>
+                        <span class="price-d-1">49</span>
+                        
+                    </div>
+                    <div>
+                        <span class="lb" style="display: none;">lb.</span>
+                        <span class="when-you-buy">WHEN YOU BUY 3</span>
+                    </div>
+                </div>
+                <div class="sign-bottom">
+                    <div class="unit-box">
+                        <span class="up-title">UNIT PRICE</span>
+                        <span class="up-single">12.49</span>
+                        <span class="unit">PER LB.</span>
+                    </div>
+                    <div class="savings">
+                        <div class="savings-label">
+                            <div>
+                                <span style="font-family: trade-gothic-next-compressed;">WITH</span>
+                                <span style="font-family: Clarendon;font-weight: 500;">AdvantEdge</span>
+                                <span style="font-family: trade-gothic-next-compressed;">CARD</span>
                             </div>
-                            <input id="saleDate" class="editable-input" autocomplete="off" value="ON SALE NOW" placeholder="Click to enter a sale date"/>
-                        </div>
-                        <div id="price" dollar>
-                            <div id="pLeft" width="auto"></div>
-                            <div id="priceBeforeDecimal" style="width: 74%;">2</div>
-                            <div id="priceAfterDecimal" style="width: 25%">99</div>
-                            <div id="pRight"></div>
-                        </div>
-                        <div id="price" xforx style="display: none;">
-                            <div id="pLeft" width="auto"></div>
-                            <div id="priceBeforeDecimal" style="width:95%">
-                                <span style="font-size:90px;vertical-align: super;position:relative;top: 8px;" id="xforxval">2/$</span><span id="xforxprice" style="letter-spacing: -8px;">4</span>
-                            </div>
-                            <div id="pRight"></div>
-                        </div>
-                        <div id="price" bogo style="display: none;">
-                            <div id="priceBeforeDecimal" style="width: 95%;"><img src="../../images/bogo.svg" height="160" style="margin-top: 15px;"></div>
-                        </div>
-                        <footer>
-                            <div id="unitBox">
-                                <span style="font-family: 'trade-gothic-next-condensed';font-size:16px">UNIT PRICE</span>
-                                <div id="unitPriceBox">19.99</div>
-                                <div id="unitType">PER LB</div>
-                            </div>
-                            <div id="rightBox" style="bottom: 40px;height: 50px;">
-                                <div id="mustBuy" style="height: 20px">
-                                    <div id="MustBuyInner">
-                                        <input class="editable-input" placeholder="CLICK TO ENTER MUST BUY / OTHER INFO"/>
-                                    </div>
-        
-        
+                            <div class="reg-retail">
+                                <span>Regular Retail: </span>
+                                <div class="reg-retail-line">
+                                    <span>15.99</span>
                                 </div>
-                                <div id="advCardDiv">
-                                    <span class="with-adv">WITH <span>AdvantEdge</span> CARD</span>
-                                    <span class="retail-price">Regular Retail: </span>
-                                    <div id="retail">5.99</div>
-                                </div>
-                                <div id="youSaveBoxDiv" style="display: flex;">           
-                                    <div style="display: grid;grid-template-columns:50px 91px 40px;background-color: black;">             
-                                        <span style="padding-left:6px" class="yousave">YOU SAVE</span>
-                                        <div style="display: flex;">
-                                            <div id="youSavePriceMain" style="padding-left: 10px;">3</div>
-                                            <div id="youSavePriceAlt">99</div>
-                                        </div>
-                                        <div id="whenYouBuy" style="color: white;display: none">
-                                            <p style="margin-top: 1px; margin-bottom: 2px;">WHEN</p>
-                                            <p style="margin-top: -5px; margin-bottom: 1px;">YOU</p>
-                                            <div style="margin-top: -4px;" id="spanWhenYouBuy">BUY 3</div>
-                                        </div>
-                                    </div>   
-                                </div>
-                                <input class="editable-input" id="mixMatch" autocomplete="off" style="font-family: trade-gothic-next-condensed;width: 100%;" placeholder="Click here to enter MIX & MATCH / other info">
                             </div>
-                        </footer>
+                        </div>
+                        <div class="inner">
+                            <span class="ys-text">YOU SAVE</span>
+                            <div class="save-price">
+                                <span class="ys-dollar-symbol" style="display: none;">$</span>
+                                <span>1</span>
+                                <span class="ys-small">50</span>
+                            </div>
+                        </div>
+                        <div></div>
                     </div>
                 </div>
             </div>
+            <div class="d-sign" id="sign2" tooltip="Click to edit"></div>
+            <div class="d-sign" id="sign3" tooltip="Click to edit"></div>
+            <div class="d-sign" id="sign4" tooltip="Click to edit"></div>
+            <div class="d-sign" id="sign5" tooltip="Click to edit"></div>
+            <div class="d-sign" id="sign6" tooltip="Click to edit"></div>
         </div>
     </div>
 
@@ -261,200 +294,103 @@
         const print_container = document.getElementById("print-container")
         const sign_template = document.getElementById("c-sign")
 
-        function refresh(){
-            function setSavings(priceDifference, _mustBuy = 0) {
-                priceDifference = parseFloat(priceDifference).toFixed(2)
-                if (priceDifference >= 1.0) {
-                    document.querySelector("#youSavePriceMain").innerHTML = priceDifference.toString().split('.')[0];
-                    document.querySelector("#youSavePriceAlt").innerHTML = priceDifference.toString().split('.')[1];
-                    if(priceDifference.toString().split('.')[1] == '00'){
-                        document.querySelector("#youSavePriceMain").innerHTML = `<span style='font-size: 20px;line-height: 35px;vertical-align: text-top;'>$</span>${ priceDifference.toString().split('.')[0]}`
-                        document.querySelector("#youSavePriceAlt").innerHTML = '';
+        let active_sign = null;
+
+        function refresh(sign){
+            let sale_price_input = document.querySelector('#sale-price-input');
+            let sale_price_input_xforx1 = document.querySelector('#sale-price-input-xforx1');
+            let sale_price_input_xforx2 = document.querySelector('#sale-price-input-xforx1');
+            let retail_price_input = document.querySelector('#retail-price-input');
+
+            let price_type = document.querySelector('#price-type-sel').value;
+            let sale_price = parseFloat(sale_price_input.value).toFixed(2);
+            if(sale_price == "NaN"){
+                sale_price = "1.99";
+            }
+            
+            switch (price_type) {
+                case 'NORMAL':
+                    document.querySelector('#sale-price-box').style.display = '';
+                    document.querySelector('#sale-price-box-xforx').style.display = 'none';
+                    if(parseFloat(sale_price) % 1 === 0){
+                        document.querySelector('.price-d-0').innerHTML = '<span class="price-d-dollar">$</span>'+parseFloat(sale_price)
+                        document.querySelector('.price-d-1').innerHTML = ''
                     }
-                }
-                else {
-                    document.querySelector("#youSavePriceMain").innerHTML = priceDifference.toString().split('.')[1];
-                    document.querySelector("#youSavePriceAlt").innerHTML = ''
-                    document.querySelector("#youSavePriceAlt").innerHTML = '¢';
-                }
-
-                if(_mustBuy){
-                    document.querySelector('#whenYouBuy').style.display = 'block';
-                    document.querySelector('#spanWhenYouBuy').innerHTML = 'BUY '+_mustBuy
-                }else{
-                    document.querySelector('#whenYouBuy').style.display = 'none';
-                }
-            }
-            if(document.querySelector('#unit-type-sel').value === "EACH"){
-                document.querySelector('#unit-size-box').style.display = 'none'
-            }
-            else{
-                document.querySelector('#unit-size-box').style.display = 'block'
-            }
-
+                    else if(parseFloat(sale_price) >= 1.00){
+                        document.querySelector('.price-d-0').innerHTML = sale_price.split('.')[0]
+                        document.querySelector('.price-d-1').innerHTML = sale_price.split('.')[1]
+                    }
+                    else{
+                        document.querySelector('.price-d-0').innerHTML = sale_price.split('.')[1]
+                        document.querySelector('.price-d-1').innerHTML = '¢'
+                    }
+                    break;
+                case 'XFORX':
+                    document.querySelector('#sale-price-box').style.display = 'none';
+                    document.querySelector('#sale-price-box-xforx').style.display = '';
+                    break;
+                case 'BOGO':
+                case 'B1G2':
+                case 'B2G1':
+                case 'B2G2':
+                    document.querySelector('#sale-price-box').style.display = 'none'
+                    document.querySelector('#sale-price-box-xforx').style.display = 'none'
+                    break;
             
-            let retailPrice = document.querySelector('#retail-price-input').value;
-            let salePrice = document.querySelector('#sale-price-input').value;
             
-            // PRICE TYPE
-            const priceType = document.querySelector("#price-type-sel").value;
-            if(priceType === "XFORX"){
-                document.querySelector('#sale-price-box').style.display = 'none'
-                document.querySelector('#sale-price-box-xforx').style.display = 'block'
-                document.querySelector("#price[dollar]").style.display = 'none'
-                document.querySelector("#price[xforx]").style.display = 'unset'
-                document.querySelector("#price[bogo]").style.display = 'none'
-                document.querySelector("#MustBuyInner").style.display = 'block'
+                default:
+                    break;
+            }
+        }
 
-                document.querySelector("#price[xforx] #xforxval").innerHTML = document.querySelector("#sale-price-input-xforx1").value + '/$'
-                document.querySelector("#price[xforx] #xforxprice").innerHTML = document.querySelector("#sale-price-input-xforx2").value
-                
-                const buyAmt = parseInt(document.querySelector("#sale-price-input-xforx1").value)
-                const buyForAmt = parseInt(document.querySelector("#sale-price-input-xforx2").value)
+        function edit(sign){
+            // Open the editor for a sign
+            document.querySelector('dialog').showModal()
+            active_sign = document.querySelector('#'+sign);
 
-                salePrice = buyForAmt / buyAmt
+            let sale_price_input = document.querySelector('#sale-price-input');
+            let sale_price_input_xforx1 = document.querySelector('#sale-price-input-xforx1');
+            let sale_price_input_xforx2 = document.querySelector('#sale-price-input-xforx1');
+            let retail_price_input = document.querySelector('#retail-price-input');
 
-                setSavings((parseFloat(retailPrice)*buyAmt) - (parseFloat(salePrice)*buyAmt), buyAmt);
-            }
-            else if (priceType == "BOGO"){
-                document.querySelector('#sale-price-box').style.display = 'none'
-                document.querySelector('#sale-price-box-xforx').style.display = 'none'
-                document.querySelector("#price[dollar]").style.display = 'none'
-                document.querySelector("#price[xforx]").style.display = 'none'
-                document.querySelector("#price[bogo]").style.display = 'block'
-                document.querySelector('#priceBeforeDecimal img').src = "../../images/bogo.svg"
-                document.querySelector("#MustBuyInner").style.display = 'none'
-                salePrice = retailPrice
-                setSavings(retailPrice, 2)
-            }            
-            else if (priceType == "B2G1"){
-                document.querySelector('#sale-price-box').style.display = 'none'
-                document.querySelector('#sale-price-box-xforx').style.display = 'none'
-                document.querySelector("#price[dollar]").style.display = 'none'
-                document.querySelector("#price[xforx]").style.display = 'none'
-                document.querySelector("#price[bogo]").style.display = 'block'
-                document.querySelector('#priceBeforeDecimal img').src = "../../images/b2g1.svg"
-                document.querySelector("#MustBuyInner").style.display = 'none'
-                salePrice = retailPrice
-                setSavings(retailPrice, 3)
-            }            
-            else if (priceType == "B2G2"){
-                document.querySelector('#sale-price-box').style.display = 'none'
-                document.querySelector('#sale-price-box-xforx').style.display = 'none'
-                document.querySelector("#price[dollar]").style.display = 'none'
-                document.querySelector("#price[xforx]").style.display = 'none'
-                document.querySelector("#price[bogo]").style.display = 'block'
-                document.querySelector('#priceBeforeDecimal img').src = "../../images/b2g2.svg"
-                document.querySelector("#MustBuyInner").style.display = 'none'
-                salePrice = retailPrice
-                setSavings(retailPrice*2, 4)
-            }
-            else if (priceType == "B1G2"){
-                document.querySelector('#sale-price-box').style.display = 'none'
-                document.querySelector('#sale-price-box-xforx').style.display = 'none'
-                document.querySelector("#price[dollar]").style.display = 'none'
-                document.querySelector("#price[xforx]").style.display = 'none'
-                document.querySelector("#price[bogo]").style.display = 'block'
-                document.querySelector('#priceBeforeDecimal img').src = "../../images/b1g2.svg"
-                document.querySelector("#MustBuyInner").style.display = 'none'
-                salePrice = retailPrice
-                setSavings(retailPrice*2, 3)
-            }
-            else{
-                document.querySelector('#sale-price-box').style.display = 'block'
-                document.querySelector('#sale-price-box-xforx').style.display = 'none'
-                
-                document.querySelector("#price[dollar]").style.display = 'unset'
-                document.querySelector("#price[xforx]").style.display = 'none'
-                document.querySelector("#price[bogo]").style.display = 'none'
-                document.querySelector("#MustBuyInner").style.display = 'block'
-                
-                setSavings(parseFloat(retailPrice) - parseFloat(salePrice));
-            }
+            sale_price_input.value = active_sign.getAttribute('s_price')
+            retail_price_input.value = active_sign.getAttribute('s_retail')
 
-
-            if(document.querySelector("#per-lb-sel").checked){
-                document.querySelector("#unit-option-box").style.display = 'none'
-                document.querySelector("#unit-size-box").value = '16'
-                
-                document.querySelector("#unit-type-sel").value = 'POUND'
-            }
-            else{
-                document.querySelector("#unit-option-box").style.display = 'block'
-            }
-
-            if(!document.querySelector("#on-sale-sel").checked){
-                document.querySelector('#advCardDiv').style.display='none';
-                document.querySelector('#youSaveBoxDiv').style.display='none';
-                document.querySelector('#saleDate').value = '';
-                document.querySelector("#retail-price-box").style.display = 'none';
-                document.querySelector("#sale-price-box span").innerHTML = "Item Price";
-                document.querySelector("#sale-price-box-xforx span").innerHTML = "Item Price";
-            }
-            else{
-                document.querySelector('#advCardDiv').style.display='inline-block';
-                document.querySelector('#youSaveBoxDiv').style.display='flex';
-                document.querySelector('#saleDate').value = 'ON SALE NOW';
-                document.querySelector("#retail-price-box").style.display = 'block';
-                document.querySelector("#sale-price-box span").innerHTML = "Sale Price";
-                document.querySelector("#sale-price-box-xforx span").innerHTML = "Sale Price";
-            }
+            let price_type = active_sign.getAttribute('s_pricetype');
             
-
-            document.querySelector('#retail').innerHTML = retailPrice;
-
-            const [dollars, cents] = salePrice.toString().split('.')
-            document.querySelector("#priceBeforeDecimal").innerHTML = dollars
-            document.querySelector("#priceAfterDecimal").innerHTML = cents
-            if (parseFloat(salePrice) < 1){  
-                document.querySelector("#priceBeforeDecimal").innerHTML = cents;
-                document.querySelector("#priceAfterDecimal").innerHTML = "¢";
-
-                document.querySelector("#priceBeforeDecimal").style.width = "80%";
-                document.querySelector("#priceAfterDecimal").style.width = "20%";
-            }
-            else{
-                document.querySelector("#priceBeforeDecimal").style.width = "74%";
-                document.querySelector("#priceAfterDecimal").style.width = "25%";
-            }
-                        // unit price
-            let unitType = document.querySelector('#unit-type-sel').value;
-            let unitString = "";
-            const suffix = getUnitSuffix(unitType);
-            const unit = getUnit(unitType);
-            unitAmt = document.querySelector('#unit-sizes').value
-            if(unitType == "EACH"){
-                unitAmt = "1"
-            }
-            // If we have multiple unit sizes
-            if (unitAmt.includes(',')) {
-                const sizes = unitAmt.split(',');
-                sizes.forEach(size => {
-                    unitString += `${size} ${unit}/${calcUnitPrice(size, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)} ${suffix}<br/>`
-                });
-                document.querySelector("#unitType").style.display = "None";
-                document.querySelector("#unitPriceBox").style.fontSize = "13px";
-                document.querySelector("#unitPriceBox").style.fontFamily = "trade-gothic-next-condensed"
-            }
-            else {
-                unitString = `${calcUnitPrice(unitAmt, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)}`;
-                document.querySelector("#unitType").style.display = "block";
-                document.querySelector("#unitType").innerHTML = suffix;
-                document.querySelector("#unitPriceBox").style.fontSize = "30px";
-                document.querySelector("#unitPriceBox").style.fontFamily = "Rockwell";
+            switch (price_type) {
+                case 'NORMAL':
+                    document.querySelector('#sale-price-box').style.display = '';
+                    document.querySelector('#sale-price-box-xforx').style.display = 'none';
+                    break;
+                case 'XFORX':
+                    document.querySelector('#sale-price-box').style.display = 'none';
+                    document.querySelector('#sale-price-box-xforx').style.display = '';
+                    break;
+                case 'BOGO':
+                case 'B1G2':
+                case 'B2G1':
+                case 'B2G2':
+                    document.querySelector('#sale-price-box').style.display = 'none'
+                    document.querySelector('#sale-price-box-xforx').style.display = 'none'
+                    break;
+            
+            
+                default:
+                    break;
             }
 
-            document.querySelector("#unitPriceBox").innerHTML = unitString;
-
-            document.querySelector('#unit-size-suf').innerHTML = unit || '';
-
+            refresh();
         }
 
         document.querySelectorAll('.tool-input').forEach(e=>{
-            e.addEventListener('input', function() {
-                refresh();
-            })
-        });
+                e.addEventListener('input', function() {
+                    console.log(active_sign);
+                    refresh(document.querySelector('sign-editor'))
+                    refresh(active_sign);
+                })
+            });
+
    </script>
 
     <script src="../../bulk_shared.js?v=1003"></script>
@@ -462,43 +398,6 @@
     <script>
         /* LOAD FROM SSL */
 
-        // Load from query string
-        const queryParams = new URLSearchParams(window.location.search)
-        if(queryParams.size > 0){
-            if(queryParams.get('name'))
-                document.querySelector('#mainDescription').value = queryParams.get('name')
-            if(queryParams.get('retail'))
-                document.querySelector('#retail-price-input').value = queryParams.get('retail')
-            if(queryParams.get('sale'))
-                document.querySelector('#sale-price-input').value = queryParams.get('sale')
-            if(queryParams.get('description'))
-                document.querySelector('#altDescription input').value = queryParams.get('description')
-
-            if(queryParams.get('onsale') == 'true')
-                document.querySelector('#_onSale').click()
-            else
-                document.querySelector('#_offSale').click()
-
-            if(queryParams.get('xforx0') != 'null'){
-                document.querySelector('option[value=XFORX]').selected = true
-                document.querySelector('#sale-price-input-xforx1').value = queryParams.get('xforx0')
-                document.querySelector('#sale-price-input-xforx2').value = queryParams.get('xforx1')
-            }
-
-            if(queryParams.get('bogo') != 'null')
-                document.querySelector(`option[value=${queryParams.get('bogo').toUpperCase()}]`).selected = true
-
-            if(queryParams.get('unit'))
-                document.querySelector('#unit-type-sel').value = queryParams.get('unit')
-            if(queryParams.get('unitsizes') != 'null')
-                document.querySelector('#unit-sizes').value = queryParams.get('unitsizes')
-            if(queryParams.get('wyb') != 'null')
-                document.querySelector('#MustBuyInner input').value = queryParams.get('wyb')
-            
-            if(queryParams.get('mam') != 'null')
-                document.querySelector('#mixMatch').value = queryParams.get('mam')
-        }
-        /* END LOAD FROM SSL */
 
         refresh();
     </script>

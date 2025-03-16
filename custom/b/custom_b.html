@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
     <link rel="stylesheet" href="../../qs/BSize.css?v=3825" />
     <link rel="stylesheet" href="../../bulk_shared.css?v=20250310" />
-    <link rel="stylesheet" href="../../bulk_b.css?v=20250310" />
+    <link rel="stylesheet" href="../../bulk_b.css?v=20250316" />
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.3825">
     <title>Custom Signs - B Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
@@ -317,7 +317,10 @@
             
             let retailPrice = document.querySelector('#retail-price-input').value;
             let salePrice = document.querySelector('#sale-price-input').value;
-            
+            salePrice = parseFloat(salePrice).toFixed(2);
+            if(salePrice == "NaN"){
+                salePrice = "1.99";
+            }
             // PRICE TYPE
             const priceType = document.querySelector("#price-type-sel").value;
             if(priceType === "XFORX"){
@@ -424,6 +427,12 @@
 
                 document.querySelector("#priceBeforeDecimal").style.width = "80%";
                 document.querySelector("#priceAfterDecimal").style.width = "20%";
+            }
+            else if (parseFloat(salePrice)%1==0){
+                    document.querySelector('#priceBeforeDecimal').innerHTML = '<span class="price-d-dollar">$</span>'+dollars
+                    document.querySelector('#priceAfterDecimal').innerHTML = ''
+                    document.querySelector("#priceBeforeDecimal").style.width = "95%";
+                    document.querySelector("#priceAfterDecimal").style.width = "25%";
             }
             else{
                 document.querySelector("#priceBeforeDecimal").style.width = "74%";
