@@ -4,7 +4,13 @@
     "1 2"
     "3 4"
     "5 6";
-    gap: 10px;
+    gap:15px;
+}
+@media print{
+    .d-grid{
+        margin-top:80px;
+        gap:40px 15px;
+    }
 }
 
 .d-sign{
@@ -30,21 +36,30 @@
         color: green;
         font-family: 'trade-gothic-next-condensed';
     }
+    @media screen{
+        .d-sign{
+            border-radius: .25em;
+        }
+        .d-grid .d-sign:hover{
+            cursor: pointer;
+            transform: scale(1.1);
+            z-index: 999;
+            border-radius: .25em;
+            outline: 4px #7BBA2F solid;
+            outline-offset: 4px;
+        }
 
-    .d-grid .d-sign:hover{
-        cursor: pointer;
-        transform: scale(1.1);
-        z-index: 999;
-        border-radius: .25em;
-        outline: 4px #7BBA2F solid;
-        outline-offset: 4px;
+        .d-grid:has(.d-sign:hover)  .d-sign:not(:hover){
+            opacity: 0.3;
+            filter:blur(5px)
+        }
     }
-
-     .d-grid:has(.d-sign:hover)  .d-sign:not(:hover){
-        opacity: 0.3;
-        filter:blur(5px)
+@media print {
+    .d-sign{
+        transform: scale(0.95);
+        padding:0px;
     }
-    
+}
 
 .item-name{
     font-family: Clarendon;
