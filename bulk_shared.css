@@ -12,6 +12,30 @@
     font-weight: bold;
     src: url("fonts/24325.otf");
 }
+@font-face {
+    font-family: "Rockwell";
+    src: url("fonts/ROCK.TTF");
+    font-weight: normal;
+}
+@font-face {
+    font-family: "Rockwell";
+    src: url("fonts/ROCKB.TTF");
+    font-weight: bold;
+}
+
+
+@font-face {
+    font-family: "n";
+    src: url("fonts/ROCC____.TTF");
+    font-weight: normal;
+}
+@font-face {
+    font-family: "RockwellCondensed";
+    src: url("fonts/ROCCB___.TTF");
+    font-weight: bold;
+}
+
+
 
 html {
     background-color: #24180D;

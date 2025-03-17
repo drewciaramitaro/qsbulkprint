@@ -3,10 +3,10 @@
 
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
-    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/BSize.css?v=3825" />
-    <link rel="stylesheet" href="../../bulk_shared.css?v=20250316" />
-    <link rel="stylesheet" href="../../bulk_b.css?v=20250316" />
+    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css?ch=GQ3k6">
+    <link rel="stylesheet" href="../../qs/BSize.css?ch=GQ3k6" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=GQ3k6" />
+    <link rel="stylesheet" href="../../bulk_b.css?ch=GQ3k6" />
     <title>Custom Signs - B Size W/ Points</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
     <style>
@@ -184,15 +184,15 @@
                                     </div>
                                     <div id="youSaveImg" style="grid-template-columns: 149px 69px 58px;background: none;border: 1px solid black;">
                                         <span id="bonus-pt" style="color:black;font-size: 58px;margin-right: 4px;margin-top: -2px;text-align: right;">1000</span>
-                                        <span style="color:black;font-family: 'trade-gothic-next-condensed';margin-top: 2px;font-size:25px">BONUS POINTS</span>
-                                        <div id="whenYouBuyPt" style="color: black;font-family: trade-gothic-next-condensed;">
-                                            <p style="margin-top: 6px;margin-bottom: 2px;">WHEN</p>
+                                        <span style="color:black;font-family: 'trade-gothic-next-compressed';margin-top: 2px;font-size:25px">BONUS POINTS</span>
+                                        <div id="whenYouBuyPt" style="color: black;font-family: trade-gothic-next-compressed;display: block;font-size: 17px;">
+                                            <p style="margin-top: 4px;margin-bottom: 2px;">WHEN</p>
                                             <p style="margin-top: -5px; margin-bottom: 1px;">YOU</p>
                                             <div style="margin-top: -4px;" id="spanWhenYouBuyPt">BUY 3</div>
                                         </div>
                                     </div>   
                                 </div>
-                                <input class="editable-input" id="mixMatch" autocomplete="off" style="font-family: trade-gothic-next-condensed;width: 100%;" placeholder="Click here to enter LIMIT # OF THIS BONUS POINT OFFER PER TRANSACTION">
+                                <input class="editable-input" id="mixMatch" autocomplete="off" style="font-family: trade-gothic-next-compressed;width: 100%;" placeholder="Click here to enter LIMIT # OF THIS BONUS POINT OFFER PER TRANSACTION">
                             </div>
                         </footer>
                     </div>
@@ -293,7 +293,10 @@
             
             let retailPrice = document.querySelector('#retail-price-input').value;
             let salePrice = document.querySelector('#sale-price-input').value;
-            
+            salePrice = parseFloat(salePrice).toFixed(2);
+            if(salePrice == "NaN"){
+                salePrice = "1.99";
+            }
             // PRICE TYPE
             const priceType = document.querySelector("#price-type-sel").value;
             if(priceType === "XFORX"){
@@ -422,7 +425,7 @@
                 
                 document.querySelector('#whenYouBuyPt').style.display = 'block'
                 document.querySelector('#youSaveImg').style.width = '261px'
-                document.querySelector('#youSaveImg').style.gridTemplateColumns = '149px 69px 58px';
+                document.querySelector('#youSaveImg').style.gridTemplateColumns = '138px 69px 58px';
                 document.querySelector('#spanWhenYouBuyPt').innerHTML = `BUY ${document.querySelector('#bonus-point-buy-input').value}`
             }
                         // unit price
@@ -443,6 +446,12 @@
                 document.querySelector("#unitType").style.display = "None";
                 document.querySelector("#unitPriceBox").style.fontSize = "19px";
                 document.querySelector("#unitPriceBox").style.fontFamily = "trade-gothic-next-condensed"
+            }
+            else if (parseFloat(salePrice)%1==0){
+                    document.querySelector('#priceBeforeDecimal').innerHTML = '<span class="price-d-dollar">$</span>'+dollars
+                    document.querySelector('#priceAfterDecimal').innerHTML = ''
+                    document.querySelector("#priceBeforeDecimal").style.width = "95%";
+                    document.querySelector("#priceAfterDecimal").style.width = "25%";
             }
             else {
                 unitString = `${calcUnitPrice(unitAmt, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)}`;
