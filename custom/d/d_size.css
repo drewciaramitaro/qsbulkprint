@@ -21,24 +21,28 @@
     grid-template-rows: 70px 15% 45% 1fr;
     padding:5px;
 }
-    .d-sign header{
-        background-color: black;
-        height: 60px;
-        color:white;
-        font-family: Clarendon;
-        text-align: center;
-        font-size: 30px;
-        padding: 2px;
-        font-weight: 100;
-    }
+
 
     .d-grid header span{
         color: green;
         font-family: 'trade-gothic-next-condensed';
     }
     @media screen{
+        .d-sign header{
+            background-color: black;
+            height: 60px;
+            color:white;
+            font-family: Clarendon;
+            text-align: center;
+            font-size: 30px;
+            padding: 2px;
+            font-weight: 100;
+            margin:-5px;
+            border-radius: .125em .125em 0 0;
+        }
         .d-sign{
             border-radius: .25em;
+            transition: .2s all;
         }
         .d-grid .d-sign:hover{
             cursor: pointer;
