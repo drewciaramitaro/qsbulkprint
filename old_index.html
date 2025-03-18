@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
+    <link rel="stylesheet" href="bulk_shared.css?ch=tcKmq" />
+    <title>Sign Builder - Home</title>
+    <link rel="icon" type="image/png" href="images/icon.png?v=01">
+    <link rel="manifest" href="manifest.json">
+
+</head>
+
+<body>
+    <div class="no-mobile tool">
+        <h1 class="head-txt" style="color: #7BBA2F;"></h1>
+        <fieldset id="bulk-size" style="display: none;justify-content: space-around;gap:10px;width: fit-content;color: #7BBA2F;">
+            <legend>Choose a size</legend>
+
+            <a id="go-to-b" class="action size-btn" href="bulk_b.html"><span></span><img width="200"
+                    src="images/b_size_preview.jpg" />B Size</a>
+            <a id="go-to-c" class="action size-btn" href="bulk_c.html"><span></span><img width="150"
+                    src="images/c_size_preview.jpg" />C Size</a>
+        </fieldset>
+        <fieldset id="success" style="display: none ;flex-direction: column;justify-content: space-around;gap:10px;width: fit-content;color: #7BBA2F;">
+            <legend>Successfully loaded</legend>
+            <h1 style="font-family: Clarendon;font-weight: 100;" id="b-count">x B Size Signs</h1>
+            <h1 style="font-family: Clarendon;font-weight: 100;" id="c-count">x C Size Signs</h1>
+        </fieldset> 
+        <fieldset
+            style="display: flex;justify-content: space-around;gap:10px;color: #7BBA2F;width: 400px;">
+            <legend>More Signs</legend>
+            <a class="action more-tool-btn" href="custom/customsigns.html"><span></span><img width="120px" src="images/spec_sign_icon.jpg">Custom Signs</a>
+            <a class="action more-tool-btn" href="ssl/ssl.html"><span></span><img width="120px" src="images/ssl_icon.jpg">Section Scan<span style="font-size:12px">(TESTING)</span></a>
+            <a class="action more-tool-btn" href="gallery/gallery.html"><span></span><img width="120px" src="images/gallery_icon.jpeg">Signage Gallery</a>
+        </fieldset>
+        <fieldset style="max-width: 800px;color: #7BBA2F;font-family: trade-gothic-next;text-align: justify;">
+            <legend style="font-size: 35px;">New!</legend>
+            <h1 class="head-txt" style="font-family: Clarendon;font-weight: 100;">Organize your signs during your section scan!</h1>
+            <p>During your section scan, you can now add headers to neatly organize signs directly from your dolphin!</p>
+            <p>While you're doing your section scan, just enter or scan one of the UPCs found <a href="sectionscanupcs.html" class="action">here</a>.</p>
+            <p>For example, you can add a label saying "Aisle 1" by entering 201 into the UPC box.</p>
+        </fieldset>
+        
+
+        <div style="display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;">
+
+            <fieldset style="max-width: 400px;color: #7BBA2F;font-family: trade-gothic-next;text-align: justify;display: none;">
+                <legend>Instructions for Section Scan Load w/ QuickSign</legend>
+                <p>After you complete your section scan load, press the "Go to Bulk Print" button at the bottom.</p>
+                <p>Then, select the size you want to print first.</p>
+
+                <p>You can organize your signs by pressing the Add Section Label button which will add a new sign with
+                    whatever label you want during the print process. These can also be added during the section scan using the codes found above.</p>
+                <p>You can delete signs by pressing the X button in the top right of each sign.</p>
+                <p>You can make some last minute changes to the item description and 'WHEN YOU BUY' texts just by clicking on them.</p>
+                <p>When you're ready, load up the printer, press print, then the signs will start printing!</p>
+                <p>When you're done with one size, you can press the Switch to (size) button to print the other size.</p>
+            </fieldset>
+            <div>
+                <fieldset 
+                    style="max-width: 400px;color: #7BBA2F;font-family: trade-gothic-next;text-align: justify;">
+                    <legend>Support</legend>
+                    <p>This tool is only possible due to the great work by Timothy on QuickSign.</p>
+
+                    <p>If you encounter any issues, please email me at <a href="mailto: Drewciaramitaro@pricechopper.com">DrewCiaramitaro@pricechopper.com</a>.</p>
+
+                    <!-- <a class="action" href="usage_guide.pdf">Click here to view the Usage Guide</a> -->
+                </fieldset>
+
+                <fieldset
+                    style="display: flex;justify-content: space-around;gap:10px;color: #7BBA2F;">
+                    <legend>Other Useful Tools</legend>
+                    <a class="action more-tool-btn" href="https://tdzie.github.io/QuickSign/"><span></span><img width="120px" src="images/quicksign_preview.jpg">QuickSign</a>
+                    <a class="action more-tool-btn" href="https://drewciaramitaro.github.io/barcodesheets/"><span></span><img width="120px" src="images/barcodesheet_preview.jpg">Barcodes Printout</a>
+                </fieldset>
+            </div>
+            
+
+        </div>
+    <template id="adv-edit-item">
+        <p id="name"></p>
+    </template>
+    <fieldset style="display: none;">
+        <details>
+            <summary>Advanced</summary>
+            <div id="adv-edit">
+
+            </div>
+        </details>
+    </fieldset>
+    </div>
+
+    <div class="mobile-flex">
+        <h1 class="head-txt" style="width: 80vw;color: #7BBA2F;">Mobile Sign Tools</h1>
+        <a class="action more-tool-btn" href="sectionscanupcs.html"><span></span><img width="120px" src="images/section_scan_header_qr.png">Section Scan UPC</a>
+        <a class="action more-tool-btn" href="https://tdzie.github.io/QuickSign/mobilecreate.html"><span></span><img width="120px" src="images/quicksign_preview.jpg">Mobile Create</a>
+    </div>
+    <div id="print-dialog">
+        <div class="error-popup">
+            <h3>Loading Signs...</h3>
+            <h4>Please press 'Allow' on the popup to allow this site to see text and images copied to the clipboard!</h4>
+        </div>
+    </div>
+    <script src="home.js?v=1002"></script>
+</body>
+
+</html>

@@ -1,112 +1,12 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css?ch=HaIhu">
-    <link rel="stylesheet" href="../bulk_shared.css?ch=HaIhu" />
-    <title>Sign Builder - Custom Signs</title>
-    <link rel="icon" type="image/png" href="../images/icon.png?ch=HaIhu">
-    <script type="speculationrules">
-        {
-            "prerender": [
-                {
-                    "urls": [
-                     "b/blank_b.html",
-                     "b/custom_b.html",
-                     "b/bonuspt_b.html",
-                     "c/custom_c.html",
-                     "c/bonuspt_c.html",
-                      "../index.html"]
-                }
-            ]
-        }
-    </script>
 </head>
-
 <body>
-    <header class="navbar">
-        <h1 style="color: #7BBA2F;font-family: trade-gothic-next-condensed;">Select Sign Type</h1>
-        <div></div>
-        <a class="action" href="../index.html" style="display: flex;gap: 10px;align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);"><path d="M5 22h14a2 2 0 0 0 2-2v-9a1 1 0 0 0-.29-.71l-8-8a1 1 0 0 0-1.41 0l-8 8A1 1 0 0 0 3 11v9a2 2 0 0 0 2 2zm5-2v-5h4v5zm-5-8.59 7-7 7 7V20h-3v-5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v5H5z"></path></svg>Home</a>
-    </header>
-    <div class="tool">
-        <div style="display: flex;gap:10px;flex-wrap: wrap;">
-            <fieldset style="justify-content: space-around;gap:10px;width: 600px;color: #7BBA2F;font-family: trade-gothic-next">
-                <legend style="font-size: 35px;">Information</legend>
-                <p>This tool was created by Drew Ciaramitaro - Store #240 Webster, MA</p>
-
-                <p>This tool is built upon the QuickSign templates by the lovely Timothy Dziedec with some of my own modifications.</p>
-                <p>This wouldn't be possible without his hard work!</p>
-
-                <p>If you encounter any issues, email me at <a href="mailto:drewciaramitaro@pricechopper.com" style="color:#7BBA2F">drewciaramitaro@pricechopper.com</a>. I try to respond as quick as possible.</p>
-    
-            </fieldset>
-            
-            <fieldset style="justify-content: space-around;gap:10px;width: 600px;color: #7BBA2F;font-family: trade-gothic-next">
-                <legend style="font-size: 35px;">Recent Updates</legend>
-                <h4>3/17/2025</h4>
-                <p>• Fixed price numeral font not working on certain computers, such as the new physical CBT computers.</p>
-                <p>• Fixed bonus points "WHEN YOU BUY X" text getting cut off on C-Size signs.</p>
-                <h4>3/16/2025</h4>
-                <p>• Whole number prices now display as $X instead of X.00 (Reminder that whole numbers should generally use X/$X prices instead. This should be used only in special circumstances.)</p>
-                <h4>3/10/2025</h4>
-                <p>• Added PER LB. options for items priced per-pound.</p>
-            </fieldset>
-        </div>
-
-        <div>
-            <h1 style="font-size: 35px;font-family: trade-gothic-next-compressed;margin: 10px 0">B-Size</h1>
-            <div class="sign-type-grid">
-                <a class="sign-type-btn" tooltip="A traditional B-Size sign." href="b/custom_b.html"><img width="76" src="../images/b_size_preview.jpg" /><span style="justify-self: left;">B-Size Regular</span></a>
-                <a class="sign-type-btn" tooltip="A traditional B-Size sign with the added ability to show Bonus Point deals." href="b/bonuspt_b.html"><img width="76" src="../images/spec_sign_bp_b.jpg" /><span style="justify-self: left;">B-Size w/ Bonus Points</span></a>
-                <a class="sign-type-btn" tooltip="Write any text to print out onto a B-Size sign. This template is automatically styled to be consistent with company signage as opposed to using a word document." href="b/blank_b.html"><img width="76" src="../images/spec_sign_blank_b.jpg" /><span style="justify-self: left;">B-Size Custom Text</span></a>
-            </div>
-        </div>
-        <hr style="margin: 30px;border-color:#7BBA2F"/>
-        <div>
-            <h1 style="font-size: 35px;font-family: trade-gothic-next-compressed;margin: 10px 0;">C-Size</h1>
-            <div class="sign-type-grid">
-                <a class="sign-type-btn" tooltip="A traditional C-Size sign." href="c/custom_c.html"><img width="56" src="../images/c_size_preview.jpg" /><span style="justify-self: left;">C-Size Regular</span></a>
-                <a class="sign-type-btn" tooltip="A traditional C-Size sign with the added ability to show Bonus Point deals." href="c/bonuspt_c.html"><img width="56" src="../images/spec_sign_bp_c.jpg" /><span style="justify-self: left;">C-Size w/ Bonus Points</span></a>
-                <a class="sign-type-btn" tooltip="A custom C-Size sign template to push products that are promoted to be 'Free With AdvantEdge points', such as the Simply Done container push." href="c/freewpoints.html"><img width="56" src="../images/spec_sign_fwp_c.jpg" /><span style="justify-self: left;">C-Size FREE w/ POINTS</span></a>
-            </div>
-        </div>
-        <hr style="margin: 30px;border-color:#7BBA2F"/>
-        <div>
-            <h1 style="font-size: 35px;font-family: trade-gothic-next-compressed;margin: 10px 0;">D-Size</h1>
-            <div class="sign-type-grid">
-                <a class="sign-type-btn"  tooltip="D-Size signs are coming (very) soon!" 
-                    onclick="alert('D-Size signs are coming soon!\nFor now, you will have to use the old document templates for D-Sized signs.\n\nPressing OK will bring you to the VCS page. D-Size downloads are at the bottom')" 
-                    href="https://thegolubcorporation.sharepoint.com/sites/NewGolub2015/Departments/Main%20Office/Visual/Pages/signtemplate.aspx">
-                    <img width="45" src="../images/c_size_preview.jpg" />
-                    <span style="justify-self: left;">D-Size Regular
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);"><path d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"></path><path d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"></path></svg>
-                    </span>
-                </a>
-            </div>
-        </div>
-
-<!--         <fieldset style="max-width: 800px;color: #7BBA2F;font-family: trade-gothic-next;display: flex;gap:5px">
-            <legend style="font-size: 35px;">B Size</legend>
-            <a class="action size-btn" href="b/custom_b.html"><span></span><img width="140" src="../images/b_size_preview.jpg" />B Size</a>
-            <a class="action size-btn" href="b/bonuspt_b.html"><span></span><img width="140" src="../images/spec_sign_bp_b.jpg" />B w/ Bonus Points</a>
-            <a class="action size-btn" href="b/blank_b.html"><span></span><img width="140" src="../images/spec_sign_blank_b.jpg" />Custom Text</a>
-
-        </fieldset>
-
-        <fieldset style="max-width: 800px;color: #7BBA2F;font-family: trade-gothic-next;display: flex;gap:5px">
-            <legend style="font-size: 35px;">C Size</legend>
-            <a class="action size-btn" href="c/custom_c.html"><span></span><img width="120" src="../images/c_size_preview.jpg" />C Size</a>
-            <a class="action size-btn" href="c/bonuspt_c.html"><span></span><img width="120" src="../images/spec_sign_bp_c.jpg" />C w/ Bonus Points</a>
-        </fieldset>
-
-        <fieldset style="max-width: 800px;color: #7BBA2F;font-family: trade-gothic-next;display: flex;gap:5px">
-            <legend style="font-size: 35px;">D Size</legend>
-            <a class="action size-btn" onclick="alert('D-Size signs are coming soon!\nFor now, you will have to use the old document templates for D-Sized signs.\n\nPressing OK will bring you to the VCS page. D-Size downloads are at the bottom')" href="https://thegolubcorporation.sharepoint.com/sites/NewGolub2015/Departments/Main%20Office/Visual/Pages/signtemplate.aspx"><span></span><img width="80" src="../images/c_size_preview.jpg" /><span>D Size<svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);"><path d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"></path><path d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"></path></svg></span></a>
-        </fieldset> -->
-        
-    </div>
+    <h1>This page has moved.</h1>
+    <h1><a href="../index.html">Click here to go to the new sign list page.</a></h1>
+    <script>window.location.replace('../index.html')</script>
 </body>
-
 </html>
