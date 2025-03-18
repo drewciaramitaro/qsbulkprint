@@ -3,10 +3,10 @@
 
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
-    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css?ch=GQ3k6">
-    <link rel="stylesheet" href="../../qs/BSize.css?ch=GQ3k6" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=GQ3k6" />
-    <link rel="stylesheet" href="../../bulk_b.css?ch=GQ3k6" />
+    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css?ch=gsjHo">
+    <link rel="stylesheet" href="../../qs/BSize.css?ch=gsjHo" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=gsjHo" />
+    <link rel="stylesheet" href="../../bulk_b.css?ch=gsjHo" />
     <title>Custom Signs - B Size W/ Points</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
     <style>
@@ -410,6 +410,12 @@
                 document.querySelector("#priceBeforeDecimal").style.width = "80%";
                 document.querySelector("#priceAfterDecimal").style.width = "20%";
             }
+            else if (parseFloat(salePrice)%1==0){
+                    document.querySelector('#priceBeforeDecimal').innerHTML = '<span class="price-d-dollar">$</span>'+dollars
+                    document.querySelector('#priceAfterDecimal').innerHTML = ''
+                    document.querySelector("#priceBeforeDecimal").style.width = "95%";
+                    document.querySelector("#priceAfterDecimal").style.width = "25%";
+            }
             else{
                 document.querySelector("#priceBeforeDecimal").style.width = "74%";
                 document.querySelector("#priceAfterDecimal").style.width = "25%";
@@ -446,12 +452,6 @@
                 document.querySelector("#unitType").style.display = "None";
                 document.querySelector("#unitPriceBox").style.fontSize = "19px";
                 document.querySelector("#unitPriceBox").style.fontFamily = "trade-gothic-next-condensed"
-            }
-            else if (parseFloat(salePrice)%1==0){
-                    document.querySelector('#priceBeforeDecimal').innerHTML = '<span class="price-d-dollar">$</span>'+dollars
-                    document.querySelector('#priceAfterDecimal').innerHTML = ''
-                    document.querySelector("#priceBeforeDecimal").style.width = "95%";
-                    document.querySelector("#priceAfterDecimal").style.width = "25%";
             }
             else {
                 unitString = `${calcUnitPrice(unitAmt, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)}`;
