@@ -54,11 +54,34 @@ html {
     color: #7BBA2F;
 }
 
-fieldset {
+fieldset, details {
     border: #7BBA2F 2px solid;
     border-radius: .4rem;
     margin: 15px auto;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+details{
+    padding:10px;
+    interpolate-size: allow-keywords;
+}
+
+details::details-content{
+    block-size: 0;
+    overflow: hidden;
+    transition: 
+        block-size .2s,
+        content-visibility .2s;
+    transition-behavior: allow-discrete;
+}
+
+details[open]::details-content{
+    block-size: auto;
+}
+summary{
+    font-family: 'trade-gothic-next-compressed';
+    font-weight: bold;
+    cursor: pointer;
 }
 
 legend {
