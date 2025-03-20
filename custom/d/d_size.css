@@ -215,7 +215,7 @@
 
 dialog:open{
     padding: 70px;
-    background-color: #24180ded;
+    background-color: #24180Ded;
     /* backdrop-filter: blur(10px); */
     width:80vw
 }

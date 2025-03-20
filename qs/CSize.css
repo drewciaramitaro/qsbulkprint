@@ -170,7 +170,7 @@ div#choosePriceType label:hover, div#onOff label:hover, div#chooseUnitType label
 }
 
 html {
-    background-color: #24180D;
+    background-color: var(--m32-brown);
         display: flex;
     justify-content: center;
 }

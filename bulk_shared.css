@@ -1,5 +1,9 @@
 /* I should ideally change all these to be one font-family but with different weights */
 
+:root{
+    --m32-brown: #24180D;
+    --m32-green: #7BBA2F;
+}
 
 @font-face {
     font-family: "Clarendon";
@@ -24,6 +28,8 @@
 }
 
 
+
+
 @font-face {
     font-family: "n";
     src: url("fonts/ROCC____.TTF");
@@ -38,7 +44,7 @@
 
 
 html {
-    background-color: #24180D;
+    background-color: var(--m32-brown);
 }
 
 .tool {
@@ -271,7 +277,7 @@ input{
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: #24180D;
+    background-color: var(--m32-brown);
     border-radius: 1rem;
     transition: .2s ease-out;
   }

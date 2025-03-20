@@ -34,7 +34,7 @@
 }
 
 html {
-    background-color: #24180D;
+    background-color: var(--m32-brown);
 }
 
 .tool {

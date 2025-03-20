@@ -202,7 +202,7 @@ div#choosePriceType label:hover,
 }
 
 html {
-    background-color: #24180D;
+    background-color: var(--m32-brown);
         display: flex;
     justify-content: center;
 }
