@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/CSize.css?ch=Em9FD" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=Em9FD" />
-    <link rel="stylesheet" href="../../bulk_c.css?ch=Em9FD" />
+    <link rel="stylesheet" href="../../qs/CSize.css?ch=vFAnD" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=vFAnD" />
+    <link rel="stylesheet" href="../../bulk_c.css?ch=vFAnD" />
     <title>Custom Signs - C Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
 </head>
@@ -75,7 +75,7 @@
                             <option value="BOGO">Buy One, Get One</option>
                             <option value="B1G2">Buy One, Get Two</option>
                             <option value="B2G1">Buy Two, Get One</option>
-                            <option value="B2G2">Buy Two, Get Two</option>>
+                            <option value="B2G2">Buy Two, Get Two</option>
                         </optgroup>
                     </select>
                 </div>
@@ -84,7 +84,7 @@
                 <legend>Item Pricing</legend>
                 <div id="sale-price-box">
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
-                    <input id="sale-price-input" inputmode="decimal" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="2.99"/>
+                    <input id="sale-price-input" pattern="^(?:\d+|\.\d{2})$|^\d+\.\d{2}$" inputmode="decimal" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="2.99"/>
                 </div>
                 <div id="sale-price-box-xforx">
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
@@ -95,7 +95,7 @@
                 
                 <div id="retail-price-box">
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Regular Retail</span>
-                    <input id="retail-price-input" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5.99"/>
+                    <input id="retail-price-input" pattern="^(?:\d+|\.\d{2})$|^\d+\.\d{2}$"  style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5.99"/>
                 </div>
             </fieldset>
             <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
@@ -116,7 +116,7 @@
                     </div>
                     <div id="unit-size-box">
                         <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Unit Size(s)</span>
-                        <input id="unit-sizes" style="width: 50px;" class="tool-input" autocomplete="off" value="16"/>
+                        <input id="unit-sizes" pattern="^\d*\.?\d+(?:\s*,\s*\d*\.?\d+)*$" style="width: 50px;" class="tool-input" autocomplete="off" value="16"/>
                         <span id="unit-size-suf" style="line-height: 35px;font-family: 'trade-gothic-next-condensed'">ea</span>
                     </div>
 

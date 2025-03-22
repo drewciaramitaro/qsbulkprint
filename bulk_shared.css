@@ -214,6 +214,11 @@ body {
     color:rgba(255, 255, 255, 0.5)
 }
 
+
+.tool-input:invalid{
+    
+    border-bottom: 1px #ba2f2f solid;
+}
 #MustBuyInner input{
     text-align: right;
     font-family: 'trade-gothic-next-condensed';
@@ -350,7 +355,7 @@ input{
     font-weight: 600;
     text-decoration: none;
     font-size: 24px;
-    border-radius: .2rem;
+    border-radius: .5rem;
     transition: background-color .2s;
     display: grid;
     align-items: center;
