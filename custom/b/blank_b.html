@@ -3,15 +3,14 @@
 
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
-    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css?ch=XGVlO">
-    <link rel="stylesheet" href="../../qs/BSize.css?ch=XGVlO" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=XGVlO" />
-    <link rel="stylesheet" href="../../bulk_b.css?ch=XGVlO" />
-    <link rel="stylesheet" href="blank_b.css?ch=XGVlO"/>
+    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css?ch=mCJ9J">
+    <link rel="stylesheet" href="../../qs/BSize.css?ch=mCJ9J" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=mCJ9J" />
+    <link rel="stylesheet" href="../../bulk_b.css?ch=mCJ9J" />
+    <link rel="stylesheet" href="blank_b.css?ch=mCJ9J"/>
     <title>Custom Signs - B Blank</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -25,13 +24,7 @@
         <legend>
             Edit
         </legend>
-
-        <textarea>
-**Up to**
-# **50% off**
------
-
-Priced as marked</textarea>
+        <h3 style="font-family: trade-gothic-next-compressed;">NEW! Edit the text directly on the sign itself.</h3>
     </fieldset>
     
     <div class="print">
@@ -39,11 +32,47 @@ Priced as marked</textarea>
             <div id="b-sign">
                 <div class="print-page">
                     <div id="outline">
-                        <header class="noPrint">
-                            Everyone <span>Loves to Save</span>
+                        <header class="noPrint" style="font-size: 25px;">
+                            Edit <span>The Text Below</span>
+                            <div id="toolbar" style="display: flex;gap:5px">
+                                <div style="display: flex;flex-direction: column;border: 1px solid var(--m32-green);padding:2px;border-radius: .25rem;">
+                                    <label style="float: left;color:black;font-family: trade-gothic-next-compressed;">Font</label>
+                                    <select class="ql-font" style="border: var(--m32-brown) 1px solid;border-radius: .25rem;width: 260px;">
+                                        <option selected>Trade Gothic</option>
+                                        <option value="tradegothicnextcondensed">Trade Gothic Condensed</option>
+                                        <option value="tradegothicnextcompressed">Trade Gothic Compressed</option>
+                                        <option value="Rockwell">Rockwell</option>
+                                        <option value="Clarendon">Clarendon</option>
+                                    </select>
+                                </div>
+                                <div style="display: flex;flex-direction: column;border: 1px solid var(--m32-green);padding:2px;border-radius: .25rem;">
+                                    <label style="float: left;color:black;font-family: trade-gothic-next-compressed;">Text Size</label>
+                                    <select class="ql-size" style="border: var(--m32-brown) 1px solid;border-radius: .25rem">
+                                        <option value="small"></option>
+                                        <option selected></option>
+                                        <option value="large"></option>
+                                        <option value="huge"></option>
+                                    </select>
+                                </div>
+                                <!-- Add a bold button -->
+                                <div style="display: flex;flex-direction: row;border: 1px solid var(--m32-green);padding:2px;align-items: center;border-radius: .25rem">
+                                    <button class="ql-bold"></button>
+                                    <button class="ql-italic"></button>
+                                    <button class="ql-underline"></button>
+                                </div>
+                            </div>
                         </header>
                         <div id="innerContent">
 
+                            <div id="editor" style="width: 100%;">
+                                <p>
+                                    <strong class="ql-size-huge ql-font-tradegothicnextcompressed">Up To</strong>
+                                </p>
+                                <h1><strong class="ql-size-huge ql-font-Clarendon">50</strong><strong class="ql-size-huge ql-font-Rockwell">% off</strong></h1>
+                                <p><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></p>
+                                <p><br></p>
+                                <p><span class="ql-font-tradegothicnextcompressed ql-size-large">Priced as Marked</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -103,44 +132,17 @@ Priced as marked</textarea>
             <button onclick="confirm_print()" class="action">Confirm</button>
         </div>
     </div>
-    <script>
-
-        var simplemde = new SimpleMDE({
-            toolbar: [
-                {
-                    name: "bold",
-                    action: SimpleMDE.toggleBold,
-                    className: "fa fa-bold",
-                    title: "Bold",
-                },
-                {
-                    name: "italic",
-                    action: SimpleMDE.toggleItalic,
-                    className: "fa fa-italic",
-                    title: "Italic",
-                },
-                {
-                    name: "heading-1",
-                    action: SimpleMDE.toggleHeading1,
-                    className: "fa fa-header",
-                    title: "Heading 1",
-                },
-                {
-                    name: "horizontal-rule",
-                    action: SimpleMDE.drawHorizontalRule,
-                    className: "fa fa-minus",
-                    title: "Horizontal Line",
-                }
-            ]
-        })
-
-
-        simplemde.codemirror.on("change", function(){
-            document.querySelector("#innerContent").innerHTML = simplemde.markdown(simplemde.value())
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script>// Add fonts to whitelist
+        const Font = Quill.import('formats/font');
+        Font.whitelist = ['tradegothicnextcompressed', 'tradegothicnextcondensed', 'Clarendon', 'tradegothicnext', 'Rockwell'];
+        Quill.register(Font, true);
+        const quill = new Quill('#editor', {
+            theme: 'snow',
+            modules: {
+                toolbar: '#toolbar'
+            }
         });
-        
-        // run it once to showcase the default value
-        document.querySelector("#innerContent").innerHTML = simplemde.markdown(simplemde.value())
     </script>
     <script src="../../bulk_shared.js?v=1002"></script>
     <script src="../../sign_builder.js?v=1001"></script>
