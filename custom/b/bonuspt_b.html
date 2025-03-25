@@ -3,10 +3,10 @@
 
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
-    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css?ch=TbRIE">
-    <link rel="stylesheet" href="../../qs/BSize.css?ch=TbRIE" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=TbRIE" />
-    <link rel="stylesheet" href="../../bulk_b.css?ch=TbRIE" />
+    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css?ch=eYiT6">
+    <link rel="stylesheet" href="../../qs/BSize.css?ch=eYiT6" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=eYiT6" />
+    <link rel="stylesheet" href="../../bulk_b.css?ch=eYiT6" />
     <title>Custom Signs - B Size W/ Points</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
     <style>
@@ -325,6 +325,7 @@
                 document.querySelector("#price[bogo]").style.display = 'block'
                 document.querySelector('#priceBeforeDecimal img').src = "../../images/bogo.svg"
                 document.querySelector("#MustBuyInner").style.display = 'none'
+                salePrice = retailPrice
                 setSavings(retailPrice, 2)
             }            
             else if (priceType == "B2G1"){
@@ -335,6 +336,7 @@
                 document.querySelector("#price[bogo]").style.display = 'block'
                 document.querySelector('#priceBeforeDecimal img').src = "../../images/b2g1.svg"
                 document.querySelector("#MustBuyInner").style.display = 'none'
+                salePrice = retailPrice
                 setSavings(retailPrice, 3)
             }            
             else if (priceType == "B2G2"){
@@ -345,6 +347,7 @@
                 document.querySelector("#price[bogo]").style.display = 'block'
                 document.querySelector('#priceBeforeDecimal img').src = "../../images/b2g2.svg"
                 document.querySelector("#MustBuyInner").style.display = 'none'
+                salePrice = retailPrice
                 setSavings(retailPrice*2, 4)
             }
             else if (priceType == "B1G2"){
@@ -355,6 +358,7 @@
                 document.querySelector("#price[bogo]").style.display = 'block'
                 document.querySelector('#priceBeforeDecimal img').src = "../../images/b1g2.svg"
                 document.querySelector("#MustBuyInner").style.display = 'none'
+                salePrice = retailPrice
                 setSavings(retailPrice*2, 3)
             }
             else{
@@ -443,18 +447,33 @@
             if(unitType == "EACH"){
                 unitAmt = "1"
             }
+            let unit_sale_price = salePrice;
+            switch (priceType){
+                case 'BOGO':
+                    unit_sale_price = salePrice/2;
+                    break;
+                case 'B1G2':
+                    unit_sale_price = salePrice /3;
+                    break;
+                case 'B2G1':
+                    unit_sale_price = (salePrice*2) /3;
+                    break;
+                case 'B2G2':
+                    unit_sale_price = salePrice/2;
+                    break;
+            }
             // If we have multiple unit sizes
             if (unitAmt.includes(',')) {
                 const sizes = unitAmt.split(',');
                 sizes.forEach(size => {
-                    unitString += `${size} ${unit}/${calcUnitPrice(size, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)} ${suffix}<br/>`
+                    unitString += `${size} ${unit}/${calcUnitPrice(size, unitType, parseFloat(unit_sale_price), parseFloat(retailPrice), null, 1)} ${suffix}<br/>`
                 });
                 document.querySelector("#unitType").style.display = "None";
                 document.querySelector("#unitPriceBox").style.fontSize = "19px";
                 document.querySelector("#unitPriceBox").style.fontFamily = "trade-gothic-next-condensed"
             }
             else {
-                unitString = `${calcUnitPrice(unitAmt, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)}`;
+                unitString = `${calcUnitPrice(unitAmt, unitType, parseFloat(unit_sale_price), parseFloat(retailPrice), null, 1)}`;
                 document.querySelector("#unitType").style.display = "block";
                 document.querySelector("#unitType").innerHTML = suffix;
                 document.querySelector("#unitPriceBox").style.fontSize = "60px";
