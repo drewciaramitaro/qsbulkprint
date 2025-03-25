@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/BSize.css?ch=0HpJ0" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=0HpJ0" />
-    <link rel="stylesheet" href="../../bulk_b.css?ch=0HpJ0" />
+    <link rel="stylesheet" href="../../qs/BSize.css?ch=hdZWl" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=hdZWl" />
+    <link rel="stylesheet" href="../../bulk_b.css?ch=hdZWl" />
     <title>Custom Signs - B Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
     <style>
@@ -26,8 +26,8 @@
     <div class="desktop tool">
         <legend>Edit Sign</legend>
         <div style="display: flex;gap:10px;">
-            <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
-                <legend>Left Price</legend>
+            <fieldset>
+                <legend>Overall</legend>
                 <div>
                     <input type="checkbox" id="on-sale-sel" checked style="display: none;" onchange="refresh()">
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sign Type</span>
@@ -72,16 +72,25 @@
                         >Per LB.</button>
                     </div>
                 </div>
+                
+                <div id="retail-price-box">
+                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Regular Retail</span>
+                    <input id="retail-price-input" pattern="^(?:\d+|\.\d{2})$|^\d+\.\d{2}$" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5.99"/>
+                </div>
+            </fieldset>
+            <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
+                <legend>Left Price</legend>
+
                 <div>
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Price Type</span>
-                    <select id="price-type-sel" onchange="refresh()">
+                    <select disabled id="price-type-sel" onchange="refresh()">
                         <optgroup label="Price Type">
                             <option value="NORMAL" selected>Dollars or Cents</option>
-                            <option value="XFORX" >X/$XX</option>
+                            <!-- <option value="XFORX" >X/$XX</option>
                             <option value="BOGO">Buy One, Get One</option>
                             <option value="B1G2">Buy One, Get Two</option>
                             <option value="B2G1">Buy Two, Get One</option>
-                            <option value="B2G2">Buy Two, Get Two</option>
+                            <option value="B2G2">Buy Two, Get Two</option> -->
                         </optgroup>
                     </select>
                 </div>
@@ -95,15 +104,41 @@
                     <span style="font-family: trade-gothic-next;font-weight: bold;">/$</span>
                     <input id="sale-price-input-xforx2" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5"/>
                 </div>
-                
-                <div id="retail-price-box">
-                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Regular Retail</span>
-                    <input id="retail-price-input" pattern="^(?:\d+|\.\d{2})$|^\d+\.\d{2}$" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5.99"/>
+                <div id="left-sign-edit">
+                    
+                    <input id="left-sign-cond" style="float: right;width: 95%;" class="tool-input" autocomplete="off" value="" placeholder="Left Side Condition"/>
                 </div>
             </fieldset>
             <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
                 <legend>Right Price</legend>
 
+                <div>
+                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Price Type</span>
+                    <select disabled id="price-type-sel" onchange="refresh()">
+                        <optgroup label="Price Type">
+                            <option value="NORMAL" selected>Dollars or Cents</option>
+                            <!-- <option value="XFORX" >X/$XX</option>
+                            <option value="BOGO">Buy One, Get One</option>
+                            <option value="B1G2">Buy One, Get Two</option>
+                            <option value="B2G1">Buy Two, Get One</option>
+                            <option value="B2G2">Buy Two, Get Two</option> -->
+                        </optgroup>
+                    </select>
+                </div>
+                <div id="sale-price-box">
+                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
+                    <input id="sale-price-input" inputmode="decimal" pattern="^(?:\d+|\.\d{2})$|^\d+\.\d{2}$" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="2.99"/>
+                </div>
+                <div id="sale-price-box-xforx">
+                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
+                    <input id="sale-price-input-xforx1" style="width: 50px;" class="tool-input" autocomplete="off" value="2"/>
+                    <span style="font-family: trade-gothic-next;font-weight: bold;">/$</span>
+                    <input id="sale-price-input-xforx2" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5"/>
+                </div>
+                <div id="left-sign-edit">
+                    
+                    <input id="left-sign-cond" style="float: right;width: 95%;" class="tool-input" autocomplete="off" value="WHEN YOU BUY 2" placeholder="Right Side Condition"/>
+                </div>
             </fieldset>
             <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
                 <legend>Unit Pricing</legend>

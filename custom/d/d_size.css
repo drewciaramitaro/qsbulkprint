@@ -9,7 +9,7 @@
 @media print{
     .d-grid{
         margin-top:90px;
-        gap:35px 25px;
+        gap:34px 25px;
         margin-left: -15px;
     }
 }
@@ -43,7 +43,6 @@
         }
         .d-sign{
             border-radius: .25em;
-            transition: .2s all;
         }
         .d-grid .d-sign:hover{
             cursor: pointer;
@@ -80,7 +79,8 @@
 .desc-area{
     display: flex;
     flex-direction: column;
-    gap:6px
+    gap:6px;
+    margin-left: 5px;
 }
 
 .price-area{
@@ -111,10 +111,19 @@
     letter-spacing: -5px;
 }
 
+.price-bogo img{
+    width: 350px;
+    margin-right: 20px;
+}
+
 .when-you-buy{
     font-family: trade-gothic-next-compressed;
     font-weight: 100;
 }
+
+.mam-txt{    
+    font-family: trade-gothic-next-compressed;
+    font-weight: 100;}
 
 .lb{
     font-family: trade-gothic-next-compressed;
@@ -127,7 +136,7 @@
 
 .sign-bottom{
     display: grid;
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 163px 1fr;
 }
 
 .unit-box{
@@ -158,7 +167,7 @@
 }
 
 .savings{
-    margin-left: 30px;
+    margin-left: 20px;
     display: grid;
     grid-template-rows: 20px 1fr 20px;
 }
@@ -170,7 +179,7 @@
     
     color:white;
     display: grid;
-    grid-template-columns: 55px 1fr;
+    grid-template-columns: 55px 1fr 39px;
     gap: 10px;
     width: fit-content;
     min-width: 190px
@@ -182,7 +191,17 @@
     font-size: 22px;
     text-align: right;
     padding-right: 10px;
-    
+    line-height: 1;
+    margin-top: 4px;
+}
+.savings .inner .ys-wyb{
+    font-family: trade-gothic-next-compressed;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: left;
+    padding-right: 10px;
+    line-height: 1;
+    margin-top: 4px;
 }
 
 .save-price{
@@ -197,7 +216,7 @@
     vertical-align: top;
 }
 .ys-small{
-    font-size: 30px;
+    font-size: 25px;
     margin-left: 0;
     vertical-align: top;
     line-height: 42px;
@@ -212,11 +231,13 @@
     text-align: center;
     border-bottom: 1px solid black;
 }
-
+dialog{
+    background-color: #24180d;
+}
 dialog:open{
     padding: 70px;
-    background-color: #24180Ded;
     /* backdrop-filter: blur(10px); */
+    background-color: #24180d;
     width:80vw
 }
 
