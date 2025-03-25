@@ -68,12 +68,12 @@
 .item-name{
     font-family: Clarendon;
     font-weight: 100;
-    font-size: 18px;
+    font-size: 20px;
 }
 .item-desc, .sale-date{
     font-family: trade-gothic-next-condensed;
     font-weight: 100;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .desc-area{
@@ -119,11 +119,14 @@
 .when-you-buy{
     font-family: trade-gothic-next-compressed;
     font-weight: 100;
+    font-size: 18px;
 }
 
 .mam-txt{    
     font-family: trade-gothic-next-compressed;
-    font-weight: 100;}
+    font-weight: 100;
+    font-size: 18px;
+}
 
 .lb{
     font-family: trade-gothic-next-compressed;
