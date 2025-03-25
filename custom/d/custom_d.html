@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/DSize.css?ch=m2LkK" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=m2LkK" />
-    <link rel="stylesheet" href="../../bulk_d.css?ch=m2LkK" />
+    <link rel="stylesheet" href="../../qs/DSize.css?ch=Dl6Il" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=Dl6Il" />
+    <link rel="stylesheet" href="../../bulk_d.css?ch=Dl6Il" />
     <link rel="stylesheet" href="d_size.css">
     <title>Custom Signs - D Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
@@ -146,10 +146,22 @@
                         </div>
 
                     </div>
+                </fieldset>                
+                <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
+                    <legend>Currently Editing:</legend>
+                    <div style="display: grid;grid-template-rows: 30px 30px 30px;grid-template-columns: 1fr 1fr;gap:4px">
+                            <button class="sg action" id="sg-sign1" onclick="edit('sign1')"></button>
+                            <button class="sg action" id="sg-sign2" onclick="edit('sign2')"></button>
+                            <button class="sg action" id="sg-sign3" onclick="edit('sign3')"></button>
+                            <button class="sg action" id="sg-sign4" onclick="edit('sign4')"></button>
+                            <button class="sg action" id="sg-sign5" onclick="edit('sign5')"></button>
+                            <button class="sg action" id="sg-sign6" onclick="edit('sign6')"></button>
+                    </div>
+                    <button class="action" style="margin: 10px auto;display: block;" onclick="document.querySelector('dialog').close()">Save & Close</button>
                 </fieldset>
             </div>
         </div>
-        <div class="d-sign" id="sign-editor">
+        <div class="d-sign" id="sign-editor" style="transform: scale(0.8);margin-top:-40px">
             <div>
                 <header class="hide-on-print">
                 Everyone <span>Loves to Save</span>
@@ -212,7 +224,6 @@
                 </div>
             </div>
         </div>
-        <button class="action" style="margin: 10px auto;display: block;" onclick="document.querySelector('dialog').close()">Save & Close</button>
     </dialog>
 
     <div class="print">
@@ -647,8 +658,8 @@
     </div>
 
 
-    <script src="../../bulk_shared.js?ch=m2LkK"></script>
-    <script src="../../sign_builder.js?ch=m2LkK"></script>
+    <script src="../../bulk_shared.js?ch=Dl6Il"></script>
+    <script src="../../sign_builder.js?ch=Dl6Il"></script>
     <script>
         
         const print_container = document.getElementById("print-container")
@@ -858,6 +869,9 @@
             // Open the editor for a sign
             document.querySelector('dialog').showModal()
             active_sign = document.querySelector('#'+sign);
+
+            document.querySelectorAll('.sg').forEach (e=>e.style.backgroundColor = '');
+            document.querySelector('#sg-'+sign).style.backgroundColor = 'green';
 
             let sale_price_input = document.querySelector('#sale-price-input');
             let sale_price_input_xforx1 = document.querySelector('#sale-price-input-xforx1');
