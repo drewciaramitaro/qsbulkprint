@@ -393,6 +393,10 @@ input{
         justify-content: center;
     }
   }
+#unitBox{
+    font-family: 'trade-gothic-next-compressed';
+    font-weight: 100;
+}
 
 @media screen {
     .print{

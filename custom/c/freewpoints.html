@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/CSize.css?ch=VyoK2" />
-    <link rel="stylesheet" href="../../bulk_c.css?ch=VyoK2" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=VyoK2" />
+    <link rel="stylesheet" href="../../qs/CSize.css?ch=QUBM4" />
+    <link rel="stylesheet" href="../../bulk_c.css?ch=QUBM4" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=QUBM4" />
     <title>Custom Signs - C Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
 </head>
@@ -131,7 +131,7 @@
                         </div>
                         <footer>
                             <div id="unitBox">
-                                <span style="font-family: 'trade-gothic-next-condensed';font-size:16px">UNIT PRICE</span>
+                                <span style="font-size:16px">UNIT PRICE</span>
                                 <div id="unitPriceBox">19.99</div>
                                 <div id="unitType">PER LB</div>
                             </div>
@@ -413,7 +413,8 @@
                 });
                 document.querySelector("#unitType").style.display = "None";
                 document.querySelector("#unitPriceBox").style.fontSize = "13px";
-                document.querySelector("#unitPriceBox").style.fontFamily = "trade-gothic-next-condensed"
+                document.querySelector("#unitPriceBox").style.fontFamily = "trade-gothic-next-compressed";
+                document.querySelector("#unitPriceBox").style.fontWeight = "100";
             }
             else {
                 unitString = `${calcUnitPrice(unitAmt, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)}`;
@@ -421,6 +422,7 @@
                 document.querySelector("#unitType").innerHTML = suffix;
                 document.querySelector("#unitPriceBox").style.fontSize = "30px";
                 document.querySelector("#unitPriceBox").style.fontFamily = "Rockwell";
+                document.querySelector("#unitPriceBox").style.fontWeight = "bold";
             }
 
             document.querySelector("#unitPriceBox").innerHTML = unitString;
