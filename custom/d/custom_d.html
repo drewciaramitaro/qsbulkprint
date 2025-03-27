@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/DSize.css?ch=3ecRQ" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=3ecRQ" />
-    <link rel="stylesheet" href="../../bulk_d.css?ch=3ecRQ" />
+    <link rel="stylesheet" href="../../qs/DSize.css?ch=D01T8" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=D01T8" />
+    <link rel="stylesheet" href="../../bulk_d.css?ch=D01T8" />
     <link rel="stylesheet" href="d_size.css">
     <title>Custom Signs - D Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
@@ -658,8 +658,8 @@
     </div>
 
 
-    <script src="../../bulk_shared.js?ch=3ecRQ"></script>
-    <script src="../../sign_builder.js?ch=3ecRQ"></script>
+    <script src="../../bulk_shared.js?ch=D01T8"></script>
+    <script src="../../sign_builder.js?ch=D01T8"></script>
     <script>
         
         const print_container = document.getElementById("print-container")
@@ -828,7 +828,7 @@
                     savings = (retail_price - sale_price).toFixed(2);
                     break;
                 case 'XFORX':
-                    savings = (retail_price - (sale_price_input_xforx2.value / sale_price_input_xforx1.value)).toFixed(2);
+                    savings = (retail_price*sale_price_input_xforx1.value - (sale_price_input_xforx2.value / sale_price_input_xforx1.value*sale_price_input_xforx1.value)).toFixed(2);
                     break;
                 case 'BOGO':
                     sign.querySelector('.ys-wyb').style.display = '';
