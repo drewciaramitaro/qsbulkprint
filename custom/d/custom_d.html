@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/DSize.css?ch=vKDZv" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=vKDZv" />
-    <link rel="stylesheet" href="../../bulk_d.css?ch=vKDZv" />
+    <link rel="stylesheet" href="../../qs/DSize.css?ch=m2NDe" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=m2NDe" />
+    <link rel="stylesheet" href="../../bulk_d.css?ch=m2NDe" />
     <link rel="stylesheet" href="d_size.css">
     <title>Custom Signs - D Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
@@ -658,8 +658,8 @@
     </div>
 
 
-    <script src="../../bulk_shared.js?ch=vKDZv"></script>
-    <script src="../../sign_builder.js?ch=vKDZv"></script>
+    <script src="../../bulk_shared.js?ch=m2NDe"></script>
+    <script src="../../sign_builder.js?ch=m2NDe"></script>
     <script>
         
         const print_container = document.getElementById("print-container")
@@ -788,6 +788,9 @@
                     break;
                 case 'B2G2':
                     unit_sale_price = sale_price/2;
+                    break;
+                case 'XFORX':
+                    unit_sale_price = sale_price_input_xforx2.value / sale_price_input_xforx1.value;
                     break;
             }
             // If we have multiple unit sizes
