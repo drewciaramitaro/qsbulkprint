@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/DSize.css?ch=D01T8" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=D01T8" />
-    <link rel="stylesheet" href="../../bulk_d.css?ch=D01T8" />
+    <link rel="stylesheet" href="../../qs/DSize.css?ch=CGiXa" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=CGiXa" />
+    <link rel="stylesheet" href="../../bulk_d.css?ch=CGiXa" />
     <link rel="stylesheet" href="d_size.css">
     <title>Custom Signs - D Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
@@ -72,17 +72,13 @@
                             <div>
                             <button id="_onSale" class="action" style="background-color: green;"
                                 onclick="{
-                                    document.querySelector('#_onSale').style.backgroundColor ='green';
-                                    document.querySelector('#_offSale').style.backgroundColor ='';
-                                    document.querySelector('#on-sale-sel').checked = true;
+                                    setIsOnSale(true);
                                     refresh_all();
                                 }"
                             >On Sale</button>
                             <button id="_offSale" class="action"
                             onclick="{
-                                document.querySelector('#_onSale').style.backgroundColor ='';
-                                document.querySelector('#_offSale').style.backgroundColor ='green';
-                                document.querySelector('#on-sale-sel').checked = false;
+                                setIsOnSale(false);
                                 refresh_all();
                             }"
                             >Off Sale</button>
@@ -122,6 +118,8 @@
                         <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Regular Retail</span>
                         <input id="retail-price-input" pattern="^(?:\d+|\.\d{2})$|^\d+\.\d{2}$" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5.99"/>
                     </div>
+                    
+                    <span id="price-error" style="color: red;font-family: trade-gothic-next;display: none;">Alert: Sale Price is greater than retail price.</span>
                 </fieldset>
                 <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
                     <legend>Unit Pricing</legend>
@@ -658,8 +656,8 @@
     </div>
 
 
-    <script src="../../bulk_shared.js?ch=D01T8"></script>
-    <script src="../../sign_builder.js?ch=D01T8"></script>
+    <script src="../../bulk_shared.js?ch=CGiXa"></script>
+    <script src="../../sign_builder.js?ch=CGiXa"></script>
     <script>
         
         const print_container = document.getElementById("print-container")
@@ -668,6 +666,7 @@
         let active_sign = null;
 
         function refresh(sign){
+            
             let sale_price_input = document.querySelector('#sale-price-input');
             let sale_price_input_xforx1 = document.querySelector('#sale-price-input-xforx1');
             let sale_price_input_xforx2 = document.querySelector('#sale-price-input-xforx2');
@@ -684,6 +683,9 @@
             sign.querySelector('.sale-date').innerHTML = saledate;
             sign.querySelector('.when-you-buy').innerHTML = wyb;
             sign.querySelector('.mam-txt').innerHTML = mam;
+
+            
+            document.querySelector('#price-error').style.display = 'none';
 
             let price_type = document.querySelector('#price-type-sel').value;
             let sale_price = parseFloat(sale_price_input.value).toFixed(2);
@@ -751,6 +753,8 @@
                     document.querySelector('#sale-price-box').style.display = 'none'
                     document.querySelector('#sale-price-box-xforx').style.display = 'none'
                     sale_price = retail_price;
+                    
+                    setIsOnSale(true);
                     break;
             
             
@@ -838,7 +842,6 @@
                 case 'B1G2':
                     sign.querySelector('.ys-wyb').style.display = '';
                     sign.querySelector('.ys-wyb').innerHTML = 'WHEN YOU BUY 3';
-                    
                     savings = (retail_price*2).toFixed(2);
                     break;
                 case 'B2G1':
@@ -865,8 +868,26 @@
                 sign.querySelector('.save-price span:nth-child(3)').innerHTML = '¢'
             }
 
-            
+            if (savings <= 0 && sign){
+                document.querySelector('#price-error').style.display = '';
+            }
             //#endregion
+        }
+
+        function setIsOnSale(flag){
+            if(flag){
+                document.querySelector('#_onSale').style.backgroundColor ='green';
+                document.querySelector('#_offSale').style.backgroundColor ='';
+                document.querySelector('#on-sale-sel').checked = true;
+                document.querySelector('#retail-price-box').style.display = '';
+                document.querySelector('#sale-price-box span').innerHTML = 'Sale Price'
+            }else{
+                document.querySelector('#_onSale').style.backgroundColor ='';
+                document.querySelector('#_offSale').style.backgroundColor ='green';
+                document.querySelector('#on-sale-sel').checked = false;
+                document.querySelector('#retail-price-box').style.display = 'none';
+                document.querySelector('#sale-price-box span').innerHTML = 'Item Price'
+            }
         }
 
         function edit(sign){
@@ -897,15 +918,7 @@
             
             document.querySelector(`option[value=${active_sign.getAttribute('s_u')}]`).selected = true;
 
-            if(active_sign.getAttribute('s_onsale') === 'true'){
-                document.querySelector('#_onSale').style.backgroundColor ='green';
-                document.querySelector('#_offSale').style.backgroundColor ='';
-                document.querySelector('#on-sale-sel').checked = true;
-            }else{
-                document.querySelector('#_onSale').style.backgroundColor ='';
-                document.querySelector('#_offSale').style.backgroundColor ='green';
-                document.querySelector('#on-sale-sel').checked = false;
-            }
+            setIsOnSale(active_sign.getAttribute('s_onsale') === 'true');
 
             switch (price_type) {
                 case 'NORMAL':
