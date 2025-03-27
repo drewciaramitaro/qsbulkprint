@@ -183,7 +183,7 @@
     
     color:white;
     display: grid;
-    grid-template-columns: 55px 1fr 39px;
+    grid-template-columns: 55px 1fr 44px;
     gap: 10px;
     width: fit-content;
     min-width: 190px
