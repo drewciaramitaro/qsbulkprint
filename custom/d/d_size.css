@@ -149,6 +149,7 @@
     grid-template-rows: 25px 1fr 23px;
     font-family: trade-gothic-next-compressed;
     text-align: center;
+    border-radius: .15rem;
 }
 
 .up-title{
@@ -239,12 +240,35 @@ dialog{
     background-color: #24180d;
 }
 dialog:open{
-    padding: 70px;
-    /* backdrop-filter: blur(10px); */
     background-color: #24180d;
     width:80vw
 }
 
 #sign-editor{
     margin: auto;
+}
+
+@media screen and (max-width: 1280px) {
+    .d-sign{
+        transform: scale(.8);
+    }
+    .d-grid{
+        display: grid;
+        grid-template-areas: 
+        "1 2"
+        "3 4"
+        "5 6";
+        grid-template-columns: 450px;
+        grid-template-rows:350px 350px 350px;
+        gap:0px;
+    }
+    .d-grid .d-sign:hover{
+        cursor: pointer;
+        transform: scale(.85);
+        z-index: 999;
+        border-radius: .25em;
+        outline: 4px #7BBA2F solid;
+        outline-offset: 4px;
+    }
+
 }
