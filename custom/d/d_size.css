@@ -63,6 +63,13 @@
         transform: scale(0.95);
         padding:0px;
     }
+    body{
+        margin:0;
+    }
+    @page {
+        margin: .4in;
+        margin-top:.5in;
+    }
 }
 
 .item-name{
@@ -270,5 +277,4 @@ dialog:open{
         outline: 4px #7BBA2F solid;
         outline-offset: 4px;
     }
-
 }
