@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/BSize.css?ch=KAsIB" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=KAsIB" />
-    <link rel="stylesheet" href="../../bulk_b.css?ch=KAsIB" />
+    <link rel="stylesheet" href="../../qs/BSize.css?ch=bEYC6" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=bEYC6" />
+    <link rel="stylesheet" href="../../bulk_b.css?ch=bEYC6" />
     <title>Custom Signs - B Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
     <style>
@@ -103,6 +103,8 @@
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Regular Retail</span>
                     <input id="retail-price-input" pattern="^(?:\d+|\.\d{2})$|^\d+\.\d{2}$" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5.99"/>
                 </div>
+                
+                <div id="price-suggestion" style="color: orange;font-family: trade-gothic-next">Suggestion: Use 4/$3 instead of 0.75 <button id="apply-suggested" class="action">Apply Suggestion</button></div>
             </fieldset>
             <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
                 <legend>Unit Pricing</legend>
@@ -487,6 +489,32 @@
             document.querySelector("#unitPriceBox").innerHTML = unitString;
 
             document.querySelector('#unit-size-suf').innerHTML = unit || '';
+            
+            document.querySelector('#price-suggestion').style.display = 'none';
+            let suggested_price = '';
+            if(priceType == 'NORMAL'){
+                if(salePrice % 0.25 == 0 && salePrice != 1.00){
+                    for (let i = 2; i <= 10; i++) {
+                            // A customer won't buy 4/33 instead of 8.25, dont do it that high
+                            if((salePrice * i) > 20){
+                                break;
+                            }
+                            // Only show the option if it would equal a whole number
+                            // e.g. if we have a price of 3.50, we don't want to have 3 as an option, that would appear as 3/$10.50 -- we don't want that
+                            if((salePrice * i) % 1.00 == 0){
+                                suggested_price = `${i}/$${salePrice*i}`;
+                                break;
+                            }
+                        }
+                }
+                if (salePrice == 1){
+                    suggested_price = "10/$10"
+                }
+            }
+            if(suggested_price){
+                document.querySelector('#price-suggestion').style.display = '';
+                document.querySelector('#price-suggestion').innerHTML = `Suggestion: Use ${suggested_price} instead of ${salePrice}`
+            }
         }
 
         document.querySelectorAll('.tool-input').forEach(e=>{
