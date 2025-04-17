@@ -4,14 +4,28 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/DSize.css?ch=mEitp" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=mEitp" />
-    <link rel="stylesheet" href="../../bulk_d.css?ch=mEitp" />
+    <link rel="stylesheet" href="../../qs/DSize.css?ch=8QdMZ" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=8QdMZ" />
+    <link rel="stylesheet" href="../../bulk_d.css?ch=8QdMZ" />
     <link rel="stylesheet" href="d_size.css">
     <title>Custom Signs - D Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
 </head>
-
+<style>
+    @media print {
+    .d-sign{
+        transform: scale(0.95);
+        padding:0px;
+    }
+    body{
+        margin:0;
+    }
+    @page {
+        margin: .4in;
+        margin-top:.5in;
+    }
+}
+</style>
 <body>
     <header class="navbar">
         <h1 style="color: #7BBA2F;font-family: trade-gothic-next-condensed;">D-Size: Regular</h1>
@@ -671,8 +685,8 @@
     </div>
 
 
-    <script src="../../bulk_shared.js?ch=mEitp"></script>
-    <script src="../../sign_builder.js?ch=mEitp"></script>
+    <script src="../../bulk_shared.js?ch=8QdMZ"></script>
+    <script src="../../sign_builder.js?ch=8QdMZ"></script>
     <script>
         
         const print_container = document.getElementById("print-container")
