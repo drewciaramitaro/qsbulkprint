@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/DSize.css?ch=TVCuu" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=TVCuu" />
-    <link rel="stylesheet" href="../../bulk_d.css?ch=TVCuu" />
+    <link rel="stylesheet" href="../../qs/DSize.css?ch=VPpGO" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=VPpGO" />
+    <link rel="stylesheet" href="../../bulk_d.css?ch=VPpGO" />
     <link rel="stylesheet" href="d_size.css">
     <title>Custom Signs - D Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
@@ -126,6 +126,8 @@
                                 <option value="B1G2">Buy One, Get Two</option>
                                 <option value="B2G1">Buy Two, Get One</option>
                                 <option value="B2G2">Buy Two, Get Two</option>
+                                <option value="B3G1">Buy Three, Get One</option>
+                                <option value="B3G1_15ormore">Buy Three, Get One (>$15)</option>
                             </optgroup>
                         </select>
                     </div>
@@ -685,8 +687,8 @@
     </div>
 
 
-    <script src="../../bulk_shared.js?ch=TVCuu"></script>
-    <script src="../../sign_builder.js?ch=TVCuu"></script>
+    <script src="../../bulk_shared.js?ch=VPpGO"></script>
+    <script src="../../sign_builder.js?ch=VPpGO"></script>
     <script>
         
         const print_container = document.getElementById("print-container")
@@ -775,6 +777,8 @@
                 case 'B1G2':
                 case 'B2G1':
                 case 'B2G2':
+                case 'B3G1':
+                case 'B3G1_15ormore':
                     sign.querySelector('.price-bogo img').src = `../../images/${price_type.toLowerCase()}.svg`
                     sign.querySelector('.price-dollar').style.display = 'none';
                     sign.querySelector('.price-xforx').style.display = 'none';
@@ -821,6 +825,10 @@
                     break;
                 case 'B2G2':
                     unit_sale_price = sale_price/2;
+                    break;
+                case 'B3G1':
+                case 'B3G1_15ormore':
+                    unit_sale_price = (sale_price*3) /4;
                     break;
                 case 'XFORX':
                     unit_sale_price = sale_price_input_xforx2.value / sale_price_input_xforx1.value;
@@ -912,6 +920,12 @@
                     sign.querySelector('.ys-wyb').innerHTML = 'WHEN YOU BUY 4';
                     savings = (retail_price*2).toFixed(2);
                     break;
+                case 'B3G1':
+                case 'B3G1_15ormore':
+                    sign.querySelector('.ys-wyb').style.display = '';
+                    sign.querySelector('.ys-wyb').innerHTML = 'WHEN YOU BUY 4';
+                    savings = retail_price;
+                    break;
             }
             if(parseFloat(savings) % 1 === 0){
                 sign.querySelector('.save-price span:nth-child(2)').innerHTML = '<span class="ys-small">$</span>'+parseFloat(savings)
@@ -997,6 +1011,8 @@
                 case 'B1G2':
                 case 'B2G1':
                 case 'B2G2':
+                case 'B3G1':
+                case 'B3G1_15ormore':
                     document.querySelector('#sale-price-box').style.display = 'none'
                     document.querySelector('#sale-price-box-xforx').style.display = 'none'
                     break;

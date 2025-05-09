@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/CSize.css?ch=n1oew" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=n1oew" />
-    <link rel="stylesheet" href="../../bulk_c.css?ch=n1oew" />
+    <link rel="stylesheet" href="../../qs/CSize.css?ch=8fmvK" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=8fmvK" />
+    <link rel="stylesheet" href="../../bulk_c.css?ch=8fmvK" />
     <title>Custom Signs - C Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
 </head>
@@ -76,6 +76,8 @@
                             <option value="B1G2">Buy One, Get Two</option>
                             <option value="B2G1">Buy Two, Get One</option>
                             <option value="B2G2">Buy Two, Get Two</option>
+                            <option value="B3G1">Buy Three, Get One</option>
+                            <option value="B3G1_15">Buy Three, Get One (>$15)</option>
                         </optgroup>
                     </select>
                 </div>
@@ -384,6 +386,29 @@
                 salePrice = retailPrice
                 setSavings(retailPrice*2, 3)
             }
+
+            else if (priceType == "B3G1"){
+                document.querySelector('#sale-price-box').style.display = 'none'
+                document.querySelector('#sale-price-box-xforx').style.display = 'none'
+                document.querySelector("#price[dollar]").style.display = 'none'
+                document.querySelector("#price[xforx]").style.display = 'none'
+                document.querySelector("#price[bogo]").style.display = 'block'
+                document.querySelector('#priceBeforeDecimal img').src = "../../images/b3g1.svg"
+                document.querySelector("#MustBuyInner").style.display = 'none'
+                salePrice = retailPrice
+                setSavings(retailPrice, 4)
+            }      
+            else if (priceType == "B3G1_15"){
+                document.querySelector('#sale-price-box').style.display = 'none'
+                document.querySelector('#sale-price-box-xforx').style.display = 'none'
+                document.querySelector("#price[dollar]").style.display = 'none'
+                document.querySelector("#price[xforx]").style.display = 'none'
+                document.querySelector("#price[bogo]").style.display = 'block'
+                document.querySelector('#priceBeforeDecimal img').src = "../../images/b3g1_15ormore.svg"
+                document.querySelector("#MustBuyInner").style.display = 'none'
+                salePrice = retailPrice
+                setSavings(retailPrice, 4)
+            }      
             else{
                 document.querySelector('#sale-price-box').style.display = 'block'
                 document.querySelector('#sale-price-box-xforx').style.display = 'none'
@@ -459,6 +484,10 @@
                     break;
                 case 'B2G2':
                     unit_sale_price = salePrice/2;
+                    break;
+                case 'B3G1':
+                case 'B3G1_15':
+                    unit_sale_price = (salePrice*3) /4;
                     break;
             }
             if (unitAmt.includes(',')) {
