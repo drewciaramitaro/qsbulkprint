@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../bulk_shared.css?ch=FY8Id" />
+    <link rel="stylesheet" href="../bulk_shared.css?ch=a8a8q" />
     <title>Sign Builder - Offline SSL</title>
     <link rel="icon" type="image/png" href="../images/icon.png?v=01">
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/barcodes/JsBarcode.ean-upc.min.js"></script>
@@ -370,7 +370,7 @@
             else{
 
                 const new_row = item_template.content.cloneNode(true);
-                const find_url = `https://shop.pricechopper.com/search?search_term=${parseInt(upc)}&search_is_autocomplete=false`
+                const find_url = `https://shop.pricechopper.com/store/price-chopper-ny/s?k=${parseInt(upc)}`
 
                 const _r = new_row.querySelector('tr')
                 _r.setAttribute('sd_upc', parseInt(upc))
