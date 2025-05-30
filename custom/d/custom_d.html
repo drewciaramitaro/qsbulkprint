@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/DSize.css?ch=VPpGO" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=VPpGO" />
-    <link rel="stylesheet" href="../../bulk_d.css?ch=VPpGO" />
+    <link rel="stylesheet" href="../../qs/DSize.css?ch=nVsRf" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=nVsRf" />
+    <link rel="stylesheet" href="../../bulk_d.css?ch=nVsRf" />
     <link rel="stylesheet" href="d_size.css">
     <title>Custom Signs - D Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
@@ -36,7 +36,7 @@
         <h1 style="font-family: Clarendon;font-weight: 200;">Click on a sign to edit it</h1>
         <hr/>
         <h2 style="font-family: trade-gothic-next-condensed;font-weight: 200;">D-Size signs are currently in testing - please email any feedback or issues.</h2>
-        <h3 style="font-family: trade-gothic-next-condensed;font-weight: 200;">Some stores have previously reported some alignment issues - As of 4/18, some changes have been implemented to hopefully aliviate these issues. Please report any further alignment issues.</h3>
+        <h3 style="font-family: trade-gothic-next-condensed;font-weight: 200;">You can now choose to make a sign blank to not waste paper. This can be done by changing the "Print this sign?" option.</h3>
     </div>
 
     <dialog id="copy-dialog" style="width: fit-content;">
@@ -130,6 +130,24 @@
                                 <option value="B3G1_15ormore">Buy Three, Get One (>$15)</option>
                             </optgroup>
                         </select>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="sign-visible-sel" checked style="display: none;" onchange="refresh_all()">
+                        <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Print this Sign?</span>
+                            <div>
+                            <button id="_signOn" class="action" style="background-color: green;"
+                                onclick="{
+                                    setSignVisible(true);
+                                    refresh_all();
+                                }"
+                            >Yes</button>
+                            <button id="_signOff" class="action"
+                            onclick="{
+                                setSignVisible(false);
+                                refresh_all();
+                            }"
+                            >No</button>
+                        </div>
                     </div>
                 </fieldset>
                 <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
@@ -257,7 +275,7 @@
 
     <div class="print">
         <div class="d-grid">
-            <div class="d-sign" id="sign1" tooltip="Click to edit" s_name="Market 32 Example Item" s_desc="" s_sale="ON SALE NOW" s_pricetype="NORMAL" s_price="12.49" s_retail="13.99" s_wyb="" s_onsale=true s_mam="" s_u="POUND" s_us="16" s_isLb=false
+            <div class="d-sign" id="sign1" s_visible="true" tooltip="Click to edit" s_name="Market 32 Example Item" s_desc="" s_sale="ON SALE NOW" s_pricetype="NORMAL" s_price="12.49" s_retail="13.99" s_wyb="" s_onsale=true s_mam="" s_u="POUND" s_us="16" s_isLb=false
                 onclick="edit('sign1')">
                 <div>
                     <header class="hide-on-print">
@@ -319,7 +337,7 @@
                     </div>
                 </div>
             </div>
-            <div class="d-sign" id="sign2" tooltip="Click to edit" s_name="Market 32 Example Item" s_desc="" s_sale="ON SALE NOW" s_pricetype="NORMAL" s_price="12.49" s_retail="13.99" s_wyb="" s_onsale=true s_mam="" s_u="POUND" s_us="16" s_isLb=false
+            <div class="d-sign" id="sign2" s_visible="true" tooltip="Click to edit" s_name="Market 32 Example Item" s_desc="" s_sale="ON SALE NOW" s_pricetype="NORMAL" s_price="12.49" s_retail="13.99" s_wyb="" s_onsale=true s_mam="" s_u="POUND" s_us="16" s_isLb=false
                 onclick="edit('sign2')">
                 <div>
                     <header class="hide-on-print">
@@ -381,7 +399,7 @@
                     </div>
                 </div>
             </div>
-            <div class="d-sign" id="sign3" tooltip="Click to edit" s_name="Market 32 Example Item" s_desc="" s_sale="ON SALE NOW" s_pricetype="NORMAL" s_price="12.49" s_retail="13.99" s_wyb="" s_onsale=true s_mam="" s_u="POUND" s_us="16" s_isLb=false
+            <div class="d-sign" id="sign3" s_visible="true" tooltip="Click to edit" s_name="Market 32 Example Item" s_desc="" s_sale="ON SALE NOW" s_pricetype="NORMAL" s_price="12.49" s_retail="13.99" s_wyb="" s_onsale=true s_mam="" s_u="POUND" s_us="16" s_isLb=false
                 onclick="edit('sign3')">
                 <div>
                     <header class="hide-on-print">
@@ -443,7 +461,7 @@
                     </div>
                 </div>
             </div>
-            <div class="d-sign" id="sign4" tooltip="Click to edit" s_name="Market 32 Example Item" s_desc="" s_sale="ON SALE NOW" s_pricetype="NORMAL" s_price="12.49" s_retail="13.99" s_wyb="" s_onsale=true s_mam="" s_u="POUND" s_us="16" s_isLb=false
+            <div class="d-sign" id="sign4" s_visible="true" tooltip="Click to edit" s_name="Market 32 Example Item" s_desc="" s_sale="ON SALE NOW" s_pricetype="NORMAL" s_price="12.49" s_retail="13.99" s_wyb="" s_onsale=true s_mam="" s_u="POUND" s_us="16" s_isLb=false
                 onclick="edit('sign4')">
                 <div>
                     <header class="hide-on-print">
@@ -505,7 +523,7 @@
                     </div>
                 </div>
             </div>
-            <div class="d-sign" id="sign5" tooltip="Click to edit" s_name="Market 32 Example Item" s_desc="" s_sale="ON SALE NOW" s_pricetype="NORMAL" s_price="12.49" s_retail="13.99" s_wyb="" s_onsale=true s_mam="" s_u="POUND" s_us="16" s_isLb=false
+            <div class="d-sign" id="sign5" s_visible="true" tooltip="Click to edit" s_name="Market 32 Example Item" s_desc="" s_sale="ON SALE NOW" s_pricetype="NORMAL" s_price="12.49" s_retail="13.99" s_wyb="" s_onsale=true s_mam="" s_u="POUND" s_us="16" s_isLb=false
                 onclick="edit('sign5')">
                 <div>
                     <header class="hide-on-print">
@@ -567,7 +585,7 @@
                     </div>
                 </div>
             </div>
-            <div class="d-sign" id="sign6" tooltip="Click to edit" s_name="Market 32 Example Item" s_desc="" s_sale="ON SALE NOW" s_pricetype="NORMAL" s_price="12.49" s_retail="13.99" s_wyb="" s_onsale=true s_mam="" s_u="POUND" s_us="16" s_isLb=false
+            <div class="d-sign" id="sign6" s_visible="true" tooltip="Click to edit" s_name="Market 32 Example Item" s_desc="" s_sale="ON SALE NOW" s_pricetype="NORMAL" s_price="12.49" s_retail="13.99" s_wyb="" s_onsale=true s_mam="" s_u="POUND" s_us="16" s_isLb=false
                 onclick="edit('sign6')">
                 <div>
                     <header class="hide-on-print">
@@ -687,8 +705,8 @@
     </div>
 
 
-    <script src="../../bulk_shared.js?ch=VPpGO"></script>
-    <script src="../../sign_builder.js?ch=VPpGO"></script>
+    <script src="../../bulk_shared.js?ch=nVsRf"></script>
+    <script src="../../sign_builder.js?ch=nVsRf"></script>
     <script>
         
         const print_container = document.getElementById("print-container")
@@ -737,7 +755,16 @@
             sign.setAttribute('s_wyb', wyb);
             sign.setAttribute('s_mam', mam);
             let on_sale = document.querySelector('#on-sale-sel').checked;
-            sign.setAttribute('s_onsale', on_sale)
+            let sign_visible = document.querySelector('#sign-visible-sel').checked;
+            sign.setAttribute('s_visible', sign_visible);
+            if (sign_visible){
+                sign.classList.remove('hidden')
+            }
+            else{
+                sign.classList.add('hidden')
+            }
+
+            sign.setAttribute('s_onsale', on_sale);
 
             switch (price_type) {
                 case 'NORMAL':
@@ -963,6 +990,18 @@
             }
         }
 
+        function setSignVisible(flag){
+            if(flag){
+                document.querySelector('#_signOn').style.backgroundColor ='green';
+                document.querySelector('#_signOff').style.backgroundColor ='';
+                document.querySelector('#sign-visible-sel').checked = true;
+            }else{
+                document.querySelector('#_signOn').style.backgroundColor ='';
+                document.querySelector('#_signOff').style.backgroundColor ='green';
+                document.querySelector('#sign-visible-sel').checked = false;
+            }
+        }
+
         function edit(sign){
             // Open the editor for a sign
             document.querySelector('dialog#edit-dialog').showModal()
@@ -993,6 +1032,8 @@
             document.querySelector(`option[value=${active_sign.getAttribute('s_u')}]`).selected = true;
 
             setIsOnSale(active_sign.getAttribute('s_onsale') === 'true');
+            
+            setSignVisible(active_sign.getAttribute('s_visible') === 'true');
 
             switch (price_type) {
                 case 'NORMAL':

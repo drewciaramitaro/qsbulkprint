@@ -29,6 +29,10 @@
         font-family: 'trade-gothic-next-condensed';
     }
     @media screen{
+        
+    .hidden{
+        opacity: 0.2;
+    }
         .d-sign header{
             background-color: black;
             height: 60px;
@@ -51,12 +55,14 @@
             border-radius: .25em;
             outline: 4px #7BBA2F solid;
             outline-offset: 4px;
+            opacity: 1;
         }
 
         .d-grid:has(.d-sign:hover)  .d-sign:not(:hover){
             opacity: 0.3;
             filter:blur(5px)
         }
+        
     }
 @media print {
     .d-sign{
@@ -69,6 +75,10 @@
     @page {
         margin: .4in;
         margin-top:.5in;
+    }
+
+    .hidden{
+        visibility: hidden;
     }
 }
 
