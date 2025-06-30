@@ -55,10 +55,10 @@ div#outline>footer>#rightBox {
 #retail {
     display: inline-block;
     text-align: center;
-    font-size: 16px;
+    font-size: 13px;
     position: absolute;
-    left: 281px;
-    top: -2px;
+    left: 278px;
+    top: 2px;
     font-family: "trade-gothic-next-condensed";
     border-bottom: 1px solid black;
     width: 55px;

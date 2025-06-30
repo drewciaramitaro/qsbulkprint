@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/BSize.css?ch=xnIHt" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=xnIHt" />
-    <link rel="stylesheet" href="../../bulk_b.css?ch=xnIHt" />
+    <link rel="stylesheet" href="../../qs/BSize.css?ch=fHHjV" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=fHHjV" />
+    <link rel="stylesheet" href="../../bulk_b.css?ch=fHHjV" />
     <title>Custom Signs - B Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
     <style>
@@ -101,7 +101,7 @@
                     <input id="sale-price-input-xforx2" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5"/>
                 </div>
                 
-                <div id="retail-price-box">
+                <div id="retail-price-box" tooltip="Enter the regular retail price. If there are multiple regular retails, enter a range (e.g. 4.99-6.99)">
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Regular Retail</span>
                     <input id="retail-price-input" pattern="^(?:\d+|\.\d{2})$|^\d+\.\d{2}$" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5.99"/>
                 </div>
@@ -322,6 +322,18 @@
             }
             
             let retailPrice = document.querySelector('#retail-price-input').value;
+            document.querySelector('#retail').innerHTML = retailPrice;
+            if(retailPrice.includes('-')){
+                retailPrice = retailPrice.split('-')[0];
+                document.querySelector('.yousave').innerHTML = 'SAVE AT LEAST';
+                document.querySelector('.yousave').style.fontSize = '24px';
+                document.querySelector('.yousave').style.fontFamily = 'trade-gothic-next-compressed';
+            }
+            else{
+                document.querySelector('.yousave').innerHTML = 'YOU SAVE';
+                document.querySelector('.yousave').style.fontSize = '';
+                document.querySelector('.yousave').style.fontFamily = '';
+            }
             let salePrice = document.querySelector('#sale-price-input').value;
             salePrice = parseFloat(salePrice).toFixed(2);
             if(salePrice == "NaN"){
@@ -443,7 +455,6 @@
             }
             
 
-            document.querySelector('#retail').innerHTML = retailPrice;
 
             const [dollars, cents] = salePrice.toString().split('.')
             document.querySelector("#priceBeforeDecimal").innerHTML = dollars

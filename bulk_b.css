@@ -162,17 +162,7 @@ div#outline > header {
     line-height: 300px;
     letter-spacing: -5px;
 }
-.or-symbol{
-    position: relative;
-    top: -300px;
-    left: 45%;
-    font-family: trade-gothic-next-compressed;
-    font-size: 30px;
-    background: black;
-    color: white;
-    width: fit-content;
-    padding: 5px;
-}
+
 
 #priceBeforeDecimal[dbl_price]{
     transform: scale(0.8, 0.85);
