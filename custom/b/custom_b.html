@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/BSize.css?ch=fHHjV" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=fHHjV" />
-    <link rel="stylesheet" href="../../bulk_b.css?ch=fHHjV" />
+    <link rel="stylesheet" href="../../qs/BSize.css?ch=aUtMJ" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=aUtMJ" />
+    <link rel="stylesheet" href="../../bulk_b.css?ch=aUtMJ" />
     <title>Custom Signs - B Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
     <style>
@@ -17,9 +17,11 @@
 </head>
 
 <body>
-    <header class="navbar">
+    <header class="navbar" style="grid-template-columns: 540px 250px 250px 150px;">
         <h1 style="color: #7BBA2F;font-family: trade-gothic-next-condensed;">B-Size: Regular</h1>
+        
         <a class="action" href="../../index.html" style="display: flex;gap: 10px;align-items: center;"><img width="45" src="../../images/spec_sign_icon.jpg" />Back to Sign List</a>
+        <a class="action" href="../recent.html" style="display: flex;gap: 10px;align-items: center;" target="_blank"><img width="45" src="../../images/spec_sign_icon.jpg" />Recent Signs</a>
         <button class="action"  onclick="show_print_dialog()" style="display: flex;gap: 10px;align-items: center;"><img width="45" src="../../images/b.svg" />Print</button>
     </header>
 
@@ -135,7 +137,6 @@
         </div>
         <span style="font-family: trade-gothic-next-condensed;">Hint: Press the * key to add the '•' symbol in the text boxes</span>
     </div>
-
 
     <div class="print">
         <div id="print-container">
@@ -607,6 +608,8 @@
         /* END LOAD FROM SSL */
 
         refresh();
+
+       
     </script>
 </body>
 

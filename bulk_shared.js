@@ -87,14 +87,7 @@ window.addEventListener('load', async () => {
     const today = new Date();
     const saturday = new Date(today.setDate(today.getDate() - today.getDay() + 6));
     onSaleThru = `ON SALE THRU ${saturday.toLocaleDateString("en-US")}`;
-    document.querySelector('#date-txt').value = onSaleThru;
-
-    document.querySelector('#date-txt').addEventListener('input', function(e){
-        const dateString = e.target.value;
-        document.querySelectorAll("#saleDate").forEach(element =>
-            element.value = dateString
-        );
-    })
+    document.querySelector('#saleDate').value = onSaleThru;
 })
 
 function show_error_popup(msg) {
@@ -120,6 +113,8 @@ function show_print_dialog(){
         return;
     }
     
+    save();
+    
     document.getElementById("print-dialog").querySelectorAll('#print-count').forEach(element => element.innerHTML = actualPagesCount);
 }
 
@@ -131,3 +126,27 @@ function confirm_print(){
 function cancel_print(){
     document.getElementById("print-dialog").classList.remove("showing");
 }
+
+ function save() {
+            let signinfo = {
+                "name": document.querySelector('#mainDescription').value,
+                "description": document.querySelector('#altDescription input').value,
+                "retail": document.querySelector('#retail-price-input').value,
+                "sale": document.querySelector('#sale-price-input').value,
+                "onsale": document.querySelector('#on-sale-sel').checked,
+                "xforx0": document.querySelector('#sale-price-input-xforx1').value,
+                "xforx1": document.querySelector('#sale-price-input-xforx2').value,
+                "bogo": document.querySelector('#price-type-sel').value,    
+                "unit": document.querySelector('#unit-type-sel').value,
+                "unitsizes": document.querySelector('#unit-sizes').value,
+                "wyb": document.querySelector('#MustBuyInner input').value,
+                "mam": document.querySelector('#mixMatch').value,
+                "timestamp": new Date().toISOString()
+            }
+            if (signinfo.name.trim() === '') {
+                return;
+            }
+            localStorage.getItem('savedSigns') ? 
+                localStorage.setItem('savedSigns', JSON.stringify([...JSON.parse(localStorage.getItem('savedSigns')), signinfo])) :
+                localStorage.setItem('savedSigns', JSON.stringify([signinfo]));
+        }

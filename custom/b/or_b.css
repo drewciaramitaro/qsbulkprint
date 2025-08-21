@@ -36,3 +36,26 @@ display: grid;
     line-height: 110px;
     letter-spacing: -5px;
 }
+#outline {
+    background-color: yellow;
+    height: 650px;
+    width: 750px;
+    display: grid;
+    grid-template-areas:
+        "a"
+        "b"
+        "c"
+        "e"
+        "d";
+    grid-template-rows: 17% 23% 35% 4% 21%;
+}
+
+#condition-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#condition-row {
+    text-align: center;
+    font-family: 'trade-gothic-next-compressed';
+}

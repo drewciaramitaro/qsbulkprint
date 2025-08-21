@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/BSize.css?ch=KpUTP" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=KpUTP" />
-    <link rel="stylesheet" href="../../bulk_b.css?ch=KpUTP" />
+    <link rel="stylesheet" href="../../qs/BSize.css?ch=YQUdD" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=YQUdD" />
+    <link rel="stylesheet" href="../../bulk_b.css?ch=YQUdD" />
     <link rel="stylesheet" href="or_b.css">
     <title>Custom Signs - B Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
@@ -29,7 +29,7 @@
         <div style="display: flex;gap:10px;">
             <fieldset>
                 <legend>Overall</legend>
-                <div>
+                <div style="display: none;">
                     <input type="checkbox" id="on-sale-sel" checked style="display: none;" onchange="refresh()">
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sign Type</span>
                         <div>
@@ -197,8 +197,12 @@
                                 <span class="price-d-0"id="price-d-0b">12</span>
                                 <span class="price-d-1"id="price-d-1b">49</span>
                             </div>
+                        </div>                        
+                        <div id="condition-row">
+                            <span>condition 1</span>
+                            <span>condition 2</span>
                         </div>
-                        
+
 
                         <footer style="overflow: visible;">
                             <div id="unitBox">
@@ -206,8 +210,8 @@
                                 <div id="unitPriceBox" style="font-weight: 900;">19.99</div>
                                 <div id="unitType">PER LB</div>
                             </div>
-                            <div id="rightBox" style="bottom: 4px">
-                                <div id="mustBuy" style="height: 20px">
+                            <div id="rightBox" style="top: 47px;">
+                                <div id="mustBuy" style="height: 20px;display: none;">
                                     <div id="MustBuyInner">
                                         <input class="editable-input" placeholder="CLICK TO ENTER MUST BUY / OTHER INFO"/>
                                     </div>
