@@ -1,138 +1,63 @@
-/*
-    todo: clean this up
-    this contains a bunch of stuff
-    from my lineup generator, alot of stuff just placed 
-    randomly
-*/
- 
-table {
-    border-collapse: collapse;
-}
 
-*{
+body {
+    background: #24180D;
+    width: fit-content;
+    margin: auto;
     font-family: 'trade-gothic-next-condensed', sans-serif;
 }
 
-@media screen {
-    body{
-        background: #24180D;
-    }
-    .error-popup-wrapper {
-        background: rgb(0,0,0);
-        background: linear-gradient(0deg, rgba(0,0,0,0.4) 53%, rgba(85,6,6,0.4) 100%);
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        display: none;
-        z-index: 999;
-    }
-
-    .error-popup-wrapper.showing {
-        display: flex;
-    }
-
-
-    .error-popup {
-        background-color: rgb(255, 255, 255);
-        border-left:3px red solid;
-        border-right:3px red solid;
-        width: 700px;
-        margin: auto;
-        padding: 10px;
-    }
-
-    .error-popup h3 {
-        margin-top: 4px;
-        text-align: center;
-        font-size:30px;
-        color: rgb(255, 0, 0);
-        font-family: 'Clarendon';
-    }
-
-    .error-popup #error-msg {
-        margin: auto;
-        text-align: center;
-        color: rgb(58, 58, 58);
-        font-size:20px;
-        margin-bottom:10px;
-        font-family: 'trade-gothic-next-condensed', sans-serif;
-    }
-
-    .error-popup #close-error {
-        margin: auto;
-        float:right;
-        font-size:20px;
-        width:120px;
-    }
-
-    body {
-        width: fit-content;
-        margin: auto;
-    }
-
-    #content {
-        width: 880px;
-        background-color: white;
-    }
-
-    #content-barcodegen {
-        width: 700px;
-        margin-bottom: 50px;
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.089);
-        border: 1px solid rgba(0, 0, 0, 0.144);
-        background-color: white;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    form {
-        border-radius: 10px;
-        padding: 20px;
-    }
-
-    .tool {
-        width: fit-content;
-        border-radius: 10px;
-        padding: 20px;
-        margin: 15px auto;
-    }
-
-    .subtool{
-        
-        width: fit-content;
-        border-radius: 10px;
-        padding: 20px;
-        margin: 15px auto;
-
-    }
-
-    .tool input,
-    .tool button {
-        font-size: 25px;
-    }
-
-    input {
-        border: .5px solid rgba(0, 0, 0, 0.048);
-        border-bottom: 1px solid green;
-    }
-
-    .mbarcode .delete{
-        display:none;
-    }
-
-    .mbarcode:hover .delete{
-        display:block;
-    }
-
-
+.error-popup-wrapper {
+    background: linear-gradient(0deg, rgba(0,0,0,0.4) 53%, rgba(85,6,6,0.4) 100%);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: none;
+    z-index: 999;
+}
+.error-popup-wrapper.showing {
+    display: flex;
+}
+.error-popup {
+    background-color: #fff;
+    border-left: 3px red solid;
+    border-right: 3px red solid;
+    width: 700px;
+    margin: auto;
+    padding: 10px;
+}
+.error-popup h3 {
+    margin-top: 4px;
+    text-align: center;
+    font-size: 30px;
+    color: #f00;
+    font-family: 'Clarendon';
+}
+.error-popup #error-msg {
+    margin: auto;
+    text-align: center;
+    color: #3a3a3a;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-family: 'trade-gothic-next-condensed', sans-serif;
+}
+.error-popup #close-error {
+    margin: auto;
+    float: right;
+    font-size: 20px;
+    width: 120px;
 }
 
-input:focus-visible{
-    outline: 1px solid rgba(0, 0, 0, 0.299);
+.tool {
+    width: fit-content;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px auto;
+}
+.tool input,
+.tool button {
+    font-size: 25px;
 }
 
 .input-grp {
@@ -143,128 +68,22 @@ input:focus-visible{
     border-radius: .4rem;
 }
 
+#content-barcodegen {
+    width: 700px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.089);
+    border: 1px solid rgba(0, 0, 0, 0.144);
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .header {
     text-align: center;
     padding-bottom: 20px;
 }
-
-.date-input {
-    border: 1px solid black;
-    font-family: 'Clarendon';
-    font-size: 20px;
-    padding: 10px;
-    font-weight: bold;
-    width: min-content;
-    float: right;
-    text-align: right;
-    flex-grow: 1;
-}
-
-.day {
-    font-family: 'Clarendon';
-    font-size: 20px;
-    font-weight: 300;
-    padding: 10px;
-    text-align: right;
-}
-
-.head {
-    display: flex;
-}
-
-.mbarcode {
-    width: 220px;
-    display: flex;
-    flex-direction: column;
-    border: 1px rgba(0, 0, 0, 0.21) solid;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.mbarcode .day {
-    padding-top: 0px;
-}
-
-.barcode {
-    width: 200px;
-}
-
-#barcodes {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    align-items: flex-start;
-}
-
-th {
-    font-family: 'TITLE';
-    border: 1.5px solid black;
-}
-
-td {
-    font-family: 'BODY';
-    border: 1px solid black;
-}
-
-table input {
-    border: none;
-    width: 100%;
-    padding: 0;
-    font-family: 'BODY';
-}
-
-td:nth-child(1) {
-    width: 20%
-}
-
-td:nth-child(2) {
-    width: 9%
-}
-
-td:nth-child(3) {
-    width: 9%
-}
-
-td:nth-child(4) {
-    width: 9%
-}
-
-td:nth-child(n+5) {
-    font-weight: bolder;
-    width: 8%;
-}
-
-td:nth-child(8) {
-    width: 35% !important;
-}
-
-.del-row {
-    float: right;
-    cursor: pointer;
-    border: 1px solid;
-    font-weight: normal;
-    padding: 0px 4px;
-    transition: all .2s;
-    display: block;
-    width: 8px;
-    overflow: hidden;
-    text-overflow: clip;
-    white-space: nowrap;
-    height: 18px;
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
-    text-shadow: none;
-
-}
-
-.del-row:hover {
-    width: 95px;
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
-}
-
-.del-row:after {
-    content: " Delete Row";
-}
-
 .header-input {
     font-family: 'Clarendon';
     font-size: 20px;
@@ -275,99 +94,55 @@ td:nth-child(8) {
     flex-grow: 1;
 }
 
-text{
-    font-family: 'trade-gothic-next-compressed' !important;
+.mbarcode {
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    border: 1px rgba(0, 0, 0, 0.21) solid;
+    align-items: center;
+    margin-top: 10px;
+    position: relative;
+}
+.mbarcode .day {
+    padding-top: 0px;
+}
+.barcode {
+    width: 200px;
+}
+#barcodes {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+.mbarcode .delete {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.mbarcode:hover .delete {
+    display: block;
+}
+
+input:focus-visible {
+    outline: 1px solid rgba(0, 0, 0, 0.299);
+}
+
+.day{
+    font-family: 'Clarendon';
 }
 
 @media print {
-
-    .delete{
-        display: none;
+    .delete {
+        display: none !important;
     }
-
-    .error-popup{
-        display: None;
+    .error-popup {
+        display: none !important;
     }
-    th {
-        font-size: 10px;
-        font-family: 'Clarendon';
-        border: 1.5px solid black;
-    }
-
-    td {
-        font-size: 14px;
-        padding: 0px 2px;
-        font-family: 'trade-gothic-next-condensed';
-        border: 1px solid black;
-    }
-
-
-    table {
-        page-break-after: always;
-        margin-top: 30px;
-    
-    }
-
-    table input {
-        font-size: 14px;
-        border: none;
-        width: 100%;
-        padding: 0;
-        font-family: 'trade-gothic-next-condensed';
-    }
-
-    td:nth-child(1) {
-        width: 20%
-    }
-
-
-    td:nth-child(2) {
-        width: 10%
-    }
-
-    td:nth-child(3) {
-        width: 10%
-    }
-
-    td:nth-child(4) {
-        width: 10%
-    }
-
-    td:nth-child(n+5) {
-        font-weight: bolder;
-        width: 8%;
-    }
-
-    td:nth-child(8) {
-        width: 35% !important;
-    }
-
-    .date-input {
-        border: none;
-        font-family: 'Clarendon';
-        font-size: large;
-        padding: 0px 10px;
-    }
-
-    .day {
-        font-size: large;
-        margin: 0px;
-        padding: 0px 10px;
-    }
-
     .tool {
         display: none !important;
     }
-
-    .del-row {
-        display: none !important;
-    }
-
-    .head {
-        position: relative;
-        top: 950px;
-    }
-
     .header-input {
         margin-top: 15px;
         border: none;
@@ -376,4 +151,11 @@ text{
         padding: 0px 10px;
     }
 
+    #content-barcodegen {
+        box-shadow: none;
+        border: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
 }
