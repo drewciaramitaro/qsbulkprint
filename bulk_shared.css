@@ -501,7 +501,7 @@ input{
         width: 120px;
     }
 
-    #print-dialog {
+    #print-dialog, #printer-select-dialog {
         background: rgb(0, 0, 0);
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 53%, rgba(11, 44, 3, 0.4) 100%);
         position: fixed;
@@ -525,23 +525,23 @@ input{
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 53%, rgba(11, 44, 3, 0.4) 100%);
     }
 
-    #print-dialog .error-popup{
+    #print-dialog .error-popup, #printer-select-dialog .error-popup{
         width:800px;
     }
 
-    #print-dialog.showing {
+    #print-dialog.showing, #printer-select-dialog.showing {
         display: flex;
     }
 
-    #print-dialog .error-popup >div{
+    #print-dialog .error-popup >div, #printer-select-dialog .error-popup >div{
         display: flex;
     }
 
-    #print-dialog .error-popup{
+    #print-dialog .error-popup, #printer-select-dialog .error-popup{
         border-left: 3px #7BBA2F solid;
         border-right: 3px #7BBA2F solid;
     }
-    #print-dialog .error-popup h3{
+    #print-dialog .error-popup h3, #printer-select-dialog .error-popup h3 {
         color: #7BBA2F;
         text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.164);
     }
