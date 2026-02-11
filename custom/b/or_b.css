@@ -11,6 +11,8 @@ display: grid;
     color: white;
     width: fit-content;
     padding: 5px;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
 }
 
 .price-d-0{
@@ -36,6 +38,9 @@ display: grid;
     line-height: 110px;
     letter-spacing: -5px;
 }
+.yousave{
+    font-size:20px;
+}
 #outline {
     background-color: yellow;
     height: 650px;
@@ -47,15 +52,25 @@ display: grid;
         "c"
         "e"
         "d";
-    grid-template-rows: 17% 23% 35% 4% 21%;
+    grid-template-rows: 17% 23% 32% 7% 21%;
 }
 
 #condition-row{
     display: grid;
+    font-size:20px;
     grid-template-columns: 1fr 1fr;
 }
 
 #condition-row {
     text-align: center;
     font-family: 'trade-gothic-next-compressed';
+}
+@media print {
+    div#outline > header {
+        display: block;
+        visibility: hidden;
+    }
+}
+#youSavePriceLb{
+    display: none;
 }

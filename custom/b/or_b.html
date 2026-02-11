@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/BSize.css?ch=YQUdD" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=YQUdD" />
-    <link rel="stylesheet" href="../../bulk_b.css?ch=YQUdD" />
+    <link rel="stylesheet" href="../../qs/BSize.css?ch=AkLhK" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=AkLhK" />
+    <link rel="stylesheet" href="../../bulk_b.css?ch=AkLhK" />
     <link rel="stylesheet" href="or_b.css">
     <title>Custom Signs - B Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
@@ -19,13 +19,14 @@
 
 <body>
     <header class="navbar">
-        <h1 style="color: #7BBA2F;font-family: trade-gothic-next-condensed;">B-Size: Regular</h1>
+        <h1 style="color: #7BBA2F;font-family: trade-gothic-next-condensed;">B-Size: X or Y</h1>
         <a class="action" href="../../index.html" style="display: flex;gap: 10px;align-items: center;"><img width="45" src="../../images/spec_sign_icon.jpg" />Back to Sign List</a>
         <button class="action"  onclick="show_print_dialog()" style="display: flex;gap: 10px;align-items: center;"><img width="45" src="../../images/b.svg" />Print</button>
     </header>
 
     <div class="desktop tool">
         <legend>Edit Sign</legend>
+        <p style="font-family: trade-gothic-next;">This is still a work-in-progress. Other pricing types are coming in the future.</p>
         <div style="display: flex;gap:10px;">
             <fieldset>
                 <legend>Overall</legend>
@@ -126,19 +127,18 @@
                         </optgroup>
                     </select>
                 </div>
-                <div id="sale-price-box">
+                <div id="sale-price2-box">
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
-                    <input id="sale-price-input-r" inputmode="decimal" pattern="^(?:\d+|\.\d{2})$|^\d+\.\d{2}$" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="2.99"/>
+                    <input id="sale-price-input-r" inputmode="decimal" pattern="^(?:\d+|\.\d{2})$|^\d+\.\d{2}$" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="1"/>
                 </div>
-                <div id="sale-price-box-xforx">
+                <div id="sale-price2-box-xforx">
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
                     <input id="sale-price-input-xforx1" style="width: 50px;" class="tool-input" autocomplete="off" value="2"/>
                     <span style="font-family: trade-gothic-next;font-weight: bold;">/$</span>
                     <input id="sale-price-input-xforx2" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5"/>
                 </div>
-                <div id="left-sign-edit">
-                    
-                    <input id="left-sign-cond" style="float: right;width: 95%;" class="tool-input" autocomplete="off" value="WHEN YOU BUY 2" placeholder="Right Side Condition"/>
+                <div id="right-sign-edit">
+                    <input id="right-sign-cond" style="float: right;width: 95%;" class="tool-input" autocomplete="off" value="WHEN YOU BUY 8 OR MORE" placeholder="Right Side Condition"/>
                 </div>
             </fieldset>
             <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
@@ -199,15 +199,15 @@
                             </div>
                         </div>                        
                         <div id="condition-row">
-                            <span>condition 1</span>
-                            <span>condition 2</span>
+                            <span id="cond-1"></span>
+                            <span id="cond-2"></span>
                         </div>
 
 
                         <footer style="overflow: visible;">
                             <div id="unitBox">
                                 <span style="font-family: 'trade-gothic-next-compressed';font-size:22px">UNIT PRICE</span>
-                                <div id="unitPriceBox" style="font-weight: 900;">19.99</div>
+                                <div id="unitPriceBox">19.99</div>
                                 <div id="unitType">PER LB</div>
                             </div>
                             <div id="rightBox" style="top: 47px;">
@@ -225,7 +225,7 @@
                                 </div>
                                 <div id="youSaveBoxDiv" style="display: flex;">           
                                     <div style="display: grid;grid-template-columns:80px 120px 48px;background-color: black;">             
-                                        <span style="padding-left:6px" class="yousave">YOU SAVE</span>
+                                        <span style="padding-left:6px" class="yousave">SAVE AT LEAST</span>
                                         <div style="display: flex;">
                                             <div id="youSavePriceMain" style="padding-left: 10px;">3</div>
                                             <div id="youSavePriceAlt">99</div>
@@ -354,6 +354,9 @@
             if(priceType === "XFORX"){
                 document.querySelector('#sale-price-box').style.display = 'none'
                 document.querySelector('#sale-price-box-xforx').style.display = 'block'
+                
+                document.querySelector('#sale-price2-box').style.display = 'none'
+                document.querySelector('#sale-price2-box-xforx').style.display = 'block'
                 document.querySelector("#price[dollar]").style.display = 'none'
                 document.querySelector("#price[xforx]").style.display = 'unset'
                 document.querySelector("#price[bogo]").style.display = 'none'
@@ -372,6 +375,7 @@
             else if (priceType == "BOGO"){
                 document.querySelector('#sale-price-box').style.display = 'none'
                 document.querySelector('#sale-price-box-xforx').style.display = 'none'
+                
                 document.querySelector("#price[dollar]").style.display = 'none'
                 document.querySelector("#price[xforx]").style.display = 'none'
                 document.querySelector("#price[bogo]").style.display = 'block'
@@ -417,6 +421,9 @@
                 document.querySelector('#sale-price-box').style.display = 'block'
                 document.querySelector('#sale-price-box-xforx').style.display = 'none'
                 
+                document.querySelector('#sale-price2-box').style.display = 'block'
+                document.querySelector('#sale-price2-box-xforx').style.display = 'none'
+                
                 document.querySelector("#MustBuyInner").style.display = 'block'
                 
                 setSavings(parseFloat(retailPrice) - parseFloat(salePrice));
@@ -433,7 +440,6 @@
             else{
                 document.querySelector('#advCardDiv').style.display='inline-block';
                 document.querySelector('#youSaveBoxDiv').style.display='flex';
-                document.querySelector('#saleDate').value = 'ON SALE NOW';
                 document.querySelector("#retail-price-box").style.display = 'block';
                 document.querySelector("#sale-price-box span").innerHTML = "Sale Price";
                 document.querySelector("#sale-price-box-xforx span").innerHTML = "Sale Price";
@@ -482,25 +488,31 @@
             if (unitAmt.includes(',')) {
                 const sizes = unitAmt.split(',');
                 sizes.forEach(size => {
-                    unitString += `${size} ${unit}/${calcUnitPrice(size, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)} ${suffix}<br/>`
+                    unitString += `${size} ${unit}@$${salePrice}ea./${calcUnitPrice(size, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)} ${suffix}<br/>`
+                    unitString += `${size} ${unit}@$${salePriceb}ea./${calcUnitPrice(size, unitType, parseFloat(salePriceb), parseFloat(retailPrice), null, 1)} ${suffix}<br/>`
                 });
                 document.querySelector("#unitType").style.display = "None";
                 document.querySelector("#unitPriceBox").style.fontSize = "19px";
                 document.querySelector("#unitPriceBox").style.fontFamily = "trade-gothic-next-condensed"
             }
             else {
-                unitString = `${calcUnitPrice(unitAmt, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)}`;
-                document.querySelector("#unitType").style.display = "block";
-                document.querySelector("#unitType").innerHTML = suffix;
-                document.querySelector("#unitPriceBox").style.fontSize = "60px";
-                document.querySelector("#unitPriceBox").style.fontFamily = "Rockwell";
+                unitString = `$${salePrice}ea./${calcUnitPrice(unitAmt, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)}  ${suffix}<br/>`;
+                
+
+                unitString += `$${salePriceb}ea./${calcUnitPrice(unitAmt, unitType, parseFloat(salePriceb), parseFloat(retailPrice), null, 1)}  ${suffix}`;
+                document.querySelector("#unitType").style.display = "None";
+                document.querySelector("#unitPriceBox").style.fontSize = "19px";
+                document.querySelector("#unitPriceBox").style.fontFamily = "trade-gothic-next-condensed"
             }
 
             document.querySelector("#unitPriceBox").innerHTML = unitString;
 
             document.querySelector('#unit-size-suf').innerHTML = unit || '';
-        }
 
+            document.querySelector('#cond-1').innerHTML = document.querySelector('#left-sign-cond').value;
+            document.querySelector('#cond-2').innerHTML = document.querySelector('#right-sign-cond').value;
+
+        }
         document.querySelectorAll('.tool-input').forEach(e=>{
             e.addEventListener('input', function() {
                 refresh();

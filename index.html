@@ -3,10 +3,10 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css?ch=pnc48">
-    <link rel="stylesheet" href="bulk_shared.css?ch=pnc48" />
+    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css?ch=UnCEV">
+    <link rel="stylesheet" href="bulk_shared.css?ch=UnCEV" />
     <title>Sign Builder - Home</title>
-    <link rel="icon" type="image/png" href="images/icon.png?ch=pnc48">
+    <link rel="icon" type="image/png" href="images/icon.png?ch=UnCEV">
     <link rel="manifest" href="manifest.json">
 
 </head>
@@ -29,8 +29,15 @@
             </fieldset>
             <fieldset style="justify-content: space-around;gap:10px;width: 600px;color: #7BBA2F;font-family: trade-gothic-next">
                 <legend style="font-size: 35px;">Recent Updates</legend>
-                
+                                
                 <details open>
+                    <summary>2/11/2026</summary>
+                    <ul>
+                        <li>Added a new B-Size template: X or Y. This lets you specify two different prices with different conditions. Usually used for Stock-Up Savings deals, but can be used for other purposes such as two different sizes of items. This template is still in progress so you can only use the regular dollars and cents price type for now.</li>
+                        <li>Added an early version of a Blank C size template. This is still in testing so may not be aligned properly just yet.</li>
+                    </ul>
+                </details>
+                <details>
                     <summary>8/21/2025</summary>
                     <ul>
                         <li>Added a Recent Signs button. Your signs will now be saved to this menu once you hit the Print button on the page. (You don't have to actually print it for it to save)</li>
@@ -42,25 +49,15 @@
                         <li>You can now change the YOU SAVE text to say SAVE AT LEAST by specifying a range of prices (such as 4.99-6.99) (Only on B and C regular signs currently)</li>
                     </ul>
                 </details>
-                <details>
-                    <summary>5/30/2025</summary>
-                    <ul>
-                        <li>You can now choose to not print some signs on the D-Size template to reuse the sheet for later</li>
-                    </ul>
-                </details>
             </fieldset>
         </div>
-
-            
-            <h1 style="font-family: Clarendon;">Important! Stores are now getting the new Lexmark printers.</h1>
-            <p style="font-family: Clarendon;">If you have them, you will have to select the right printer when printing a C-size sign.</p>
-            <p style="font-family: Clarendon;">You will get a popup when hitting Print on C-Size Regular which will let you select which printer you're using.</p>
-            <p style="font-family: Clarendon;">Lexmark support is still in testing, please let me know if there is an issue.</p>
         <div>
             <h1 style="font-size: 35px;font-family: trade-gothic-next-compressed;margin: 10px 0">B-Size</h1>
             <div class="sign-type-grid">
                 <a class="sign-type-btn" tooltip="A traditional B-Size sign." href="custom/b/custom_b.html"><img width="76" src="images/b_size_preview.jpg" /><span style="justify-self: left;">B-Size Regular</span></a>
                 <a class="sign-type-btn" tooltip="A traditional B-Size sign with the added ability to show Bonus Point deals." href="custom/b/bonuspt_b.html"><img width="76" src="images/spec_sign_bp_b.jpg" /><span style="justify-self: left;">B-Size w/ Bonus Points</span></a>
+                <a class="sign-type-btn" tooltip="*WORK IN PROGRESS* A B-Size sign to indicate two prices. Usually for stock-up savings" href="custom/b/or_b.html"><img width="76" src="images/spec_sign_b_or.jpg" /><span style="justify-self: left;">B-Size X or Y (Stock Up Savings)</span></a>
+
                 <a class="sign-type-btn" tooltip="Write any text to print out onto a B-Size sign. This template is automatically styled to be consistent with company signage as opposed to using a word document." href="custom/b/blank_b.html"><img width="76" src="images/spec_sign_blank_b.jpg" /><span style="justify-self: left;">B-Size Custom Text</span></a>
             </div>
         </div>
@@ -73,6 +70,8 @@
 
                 <a class="sign-type-btn" tooltip="A traditional C-Size sign with the added ability to show Bonus Point deals." href="custom/c/bonuspt_c.html"><img width="56" src="images/spec_sign_bp_c.jpg" /><span style="justify-self: left;">C-Size w/ Bonus Points</span></a>
                 <a class="sign-type-btn" tooltip="A custom C-Size sign template to push products that are promoted to be 'Free With AdvantEdge points', such as the Simply Done container push." href="custom/c/freewpoints.html"><img width="56" src="images/spec_sign_fwp_c.jpg" /><span style="justify-self: left;">C-Size FREE w/ POINTS</span></a>
+                <a class="sign-type-btn" tooltip="*WORK IN PROGRESS* Write any text to print out onto a C-Size sign. This template is automatically styled to be consistent with company signage as opposed to using a word document." href="custom/c/blank_c.html"><img width="56" src="images/c_size_preview.jpg" /><span style="justify-self: left;">C-Size Custom Text</span></a>
+
             </div>
         </div>
         <hr style="margin: 30px;border-color:#7BBA2F"/>
