@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/BSize.css?ch=AkLhK" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=AkLhK" />
-    <link rel="stylesheet" href="../../bulk_b.css?ch=AkLhK" />
+    <link rel="stylesheet" href="../../qs/BSize.css?ch=IlVcX" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=IlVcX" />
+    <link rel="stylesheet" href="../../bulk_b.css?ch=IlVcX" />
     <link rel="stylesheet" href="or_b.css">
     <title>Custom Signs - B Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
@@ -370,7 +370,7 @@
 
                 salePrice = buyForAmt / buyAmt
 
-                setSavings((parseFloat(retailPrice)*buyAmt) - (parseFloat(salePrice)*buyAmt), buyAmt);
+                setSavings((parseFloat(retailPrice)*buyAmt) - (parseFloat(Math.max(salePrice, salePriceb))*buyAmt), buyAmt);
             }
             else if (priceType == "BOGO"){
                 document.querySelector('#sale-price-box').style.display = 'none'
@@ -426,7 +426,7 @@
                 
                 document.querySelector("#MustBuyInner").style.display = 'block'
                 
-                setSavings(parseFloat(retailPrice) - parseFloat(salePrice));
+                setSavings(parseFloat(retailPrice) - parseFloat(Math.max(salePrice, salePriceb)));
             }
 
             if(!document.querySelector("#on-sale-sel").checked){
