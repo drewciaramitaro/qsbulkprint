@@ -4,27 +4,28 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/CSize.css?ch=LXkyq" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=LXkyq" />
-    <link rel="stylesheet" href="../../bulk_c.css?ch=LXkyq" />
+    <link rel="stylesheet" href="../../qs/CSize.css?ch=eH4zc" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=eH4zc" />
+    <link rel="stylesheet" href="../../bulk_c.css?ch=eH4zc" />
+    <link rel="stylesheet" href="or_c.css">
     <title>Custom Signs - C Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
 </head>
 
 <body>
-    <header class="navbar" style="grid-template-columns: 540px 250px 250px 150px;">
-        <h1 style="color: #7BBA2F;font-family: trade-gothic-next-condensed;">C-Size: Regular</h1>
+    <header class="navbar">
+        <h1 style="color: #7BBA2F;font-family: trade-gothic-next-condensed;">C-Size: X or Y</h1>
         <a class="action" href="../../index.html" style="display: flex;gap: 10px;align-items: center;"><img width="45" src="../../images/spec_sign_icon.jpg" />Back to Sign List</a>
-        <a class="action" href="../recent.html" style="display: flex;gap: 10px;align-items: center;" target="_blank"><img width="45" src="../../images/spec_sign_icon.jpg" />Recent Signs</a>
         <button class="action"  onclick="show_printer_select_dialog()" style="display: flex;gap: 10px;align-items: center;"><img width="45" src="../../images/c.svg" />Print</button>
     </header>
 
     <div class="desktop tool">
         <legend>Edit Sign</legend>
+        <p style="font-family: trade-gothic-next;">This is still a work-in-progress. Other pricing types are coming in the future.</p>
         <div style="display: flex;gap:10px;">
-            <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
-                <legend>Choose your Sign Type</legend>
-                <div>
+            <fieldset>
+                <legend>Overall</legend>
+                <div style="display: none;">
                     <input type="checkbox" id="on-sale-sel" checked style="display: none;" onchange="refresh()">
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sign Type</span>
                         <div>
@@ -46,7 +47,7 @@
                         >Off Sale</button>
                     </div>
                 </div>
-                <div>
+                <!-- <div>
                     <input type="checkbox" id="per-lb-sel" style="cursor:pointer;display:none;" onchange="refresh()">
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Per LB.</span>
                         <div>
@@ -67,27 +68,32 @@
                         }"
                         >Per LB.</button>
                     </div>
-                <div>
-                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Price Type</span>
-                    <select id="price-type-sel" onchange="refresh()">
-                        <optgroup label="Price Type">
-                            <option value="NORMAL" selected>Dollars or Cents</option>
-                            <option value="XFORX" >X/$XX</option>
-                            <option value="BOGO">Buy One, Get One</option>
-                            <option value="B1G2">Buy One, Get Two</option>
-                            <option value="B2G1">Buy Two, Get One</option>
-                            <option value="B2G2">Buy Two, Get Two</option>
-                            <option value="B3G1">Buy Three, Get One</option>
-                            <option value="B3G1_15">Buy Three, Get One (>$15)</option>
-                        </optgroup>
-                    </select>
+                </div> -->
+                
+                <div id="retail-price-box">
+                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Regular Retail</span>
+                    <input id="retail-price-input" pattern="^(?:\d+|\.\d{2})$|^\d+\.\d{2}$" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5.99"/>
                 </div>
             </fieldset>
             <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
-                <legend>Item Pricing</legend>
+                <legend>Left Price</legend>
+
+                <div>
+                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Price Type</span>
+                    <select disabled id="price-type-sel" onchange="refresh()">
+                        <optgroup label="Price Type">
+                            <option value="NORMAL" selected>Dollars or Cents</option>
+                            <!-- <option value="XFORX" >X/$XX</option>
+                            <option value="BOGO">Buy One, Get One</option>
+                            <option value="B1G2">Buy One, Get Two</option>
+                            <option value="B2G1">Buy Two, Get One</option>
+                            <option value="B2G2">Buy Two, Get Two</option> -->
+                        </optgroup>
+                    </select>
+                </div>
                 <div id="sale-price-box">
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
-                    <input id="sale-price-input" pattern="^(?:\d+|\.\d{2})$|^\d+\.\d{2}$" inputmode="decimal" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="2.99"/>
+                    <input id="sale-price-input-l" inputmode="decimal" pattern="^(?:\d+|\.\d{2})$|^\d+\.\d{2}$" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="2.99"/>
                 </div>
                 <div id="sale-price-box-xforx">
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
@@ -95,13 +101,40 @@
                     <span style="font-family: trade-gothic-next;font-weight: bold;">/$</span>
                     <input id="sale-price-input-xforx2" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5"/>
                 </div>
-                
-                <div id="retail-price-box" tooltip="Enter the regular retail price. If there are multiple regular retails, enter a range (e.g. 4.99-6.99)">
-                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Regular Retail</span>
-                    <input id="retail-price-input" pattern="^(?:\d+|\.\d{2})$|^\d+\.\d{2}$"  style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5.99"/>
+                <div id="left-sign-edit">
+                    
+                    <input id="left-sign-cond" style="float: right;width: 95%;" class="tool-input" autocomplete="off" value="" placeholder="Left Side Condition"/>
                 </div>
-                
-                <div id="price-suggestion" style="color: orange;font-family: trade-gothic-next">Suggestion: Use 4/$3 instead of 0.75 <button id="apply-suggested" class="action">Apply Suggestion</button></div>
+            </fieldset>
+            <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
+                <legend>Right Price</legend>
+
+                <div>
+                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Price Type</span>
+                    <select disabled id="price-type-sel" onchange="refresh()">
+                        <optgroup label="Price Type">
+                            <option value="NORMAL" selected>Dollars or Cents</option>
+                            <!-- <option value="XFORX" >X/$XX</option>
+                            <option value="BOGO">Buy One, Get One</option>
+                            <option value="B1G2">Buy One, Get Two</option>
+                            <option value="B2G1">Buy Two, Get One</option>
+                            <option value="B2G2">Buy Two, Get Two</option> -->
+                        </optgroup>
+                    </select>
+                </div>
+                <div id="sale-price2-box">
+                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
+                    <input id="sale-price-input-r" inputmode="decimal" pattern="^(?:\d+|\.\d{2})$|^\d+\.\d{2}$" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="1"/>
+                </div>
+                <div id="sale-price2-box-xforx">
+                    <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
+                    <input id="sale-price-input-xforx1" style="width: 50px;" class="tool-input" autocomplete="off" value="2"/>
+                    <span style="font-family: trade-gothic-next;font-weight: bold;">/$</span>
+                    <input id="sale-price-input-xforx2" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5"/>
+                </div>
+                <div id="right-sign-edit">
+                    <input id="right-sign-cond" style="float: right;width: 95%;" class="tool-input" autocomplete="off" value="WHEN YOU BUY 8 OR MORE" placeholder="Right Side Condition"/>
+                </div>
             </fieldset>
             <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
                 <legend>Unit Pricing</legend>
@@ -148,32 +181,33 @@
                             </div>
                             <input id="saleDate" class="editable-input" autocomplete="off" value="ON SALE NOW" placeholder="Click to enter a sale date"/>
                         </div>
-                        <div id="price" dollar>
-                            <div id="pLeft" width="auto"></div>
-                            <div id="priceBeforeDecimal" style="width: 74%;">2</div>
-                            <div id="priceAfterDecimal" style="width: 25%">99</div>
-                            <div id="pRight"></div>
-                            <div id="lb-lbl" style="font-family: trade-gothic-next-compressed;font-weight: 200;letter-spacing: normal;top: 0px;left: 89%;position: relative;font-size: 23px;width:20px">lb.</div>
-
-                        </div>
-                        <div id="price" xforx style="display: none;">
-                            <div id="pLeft" width="auto"></div>
-                            <div id="priceBeforeDecimal" style="width:95%">
-                                <span style="font-size:90px;vertical-align: super;position:relative;top: 8px;" id="xforxval">2/$</span><span id="xforxprice" style="letter-spacing: -8px;">4</span>
+                        <div id="price-row">
+                            <div class="price-dollar">
+                                <span class="price-d-0" id="price-d-0a">12</span>
+                                <span class="price-d-1" id="price-d-1a">49</span>
                             </div>
-                            <div id="pRight"></div>
+                            <div class="or-symbol">
+                                OR
+                            </div>
+                            <div class="price-dollar">
+                                <span class="price-d-0"id="price-d-0b">12</span>
+                                <span class="price-d-1"id="price-d-1b">49</span>
+                            </div>
+                        </div>                        
+                        <div id="condition-row">
+                            <span id="cond-1"></span>
+                            <span id="cond-2"></span>
                         </div>
-                        <div id="price" bogo style="display: none;">
-                            <div id="priceBeforeDecimal" style="width: 95%;"><img src="../../images/bogo.svg" height="160" style="margin-top: 15px;"></div>
-                        </div>
-                        <footer>
+
+
+                        <footer style="overflow: visible;">
                             <div id="unitBox">
-                                <span style="font-size:16px">UNIT PRICE</span>
+                                <span style="font-family: 'trade-gothic-next-compressed';font-size:22px">UNIT PRICE</span>
                                 <div id="unitPriceBox">19.99</div>
                                 <div id="unitType">PER LB</div>
                             </div>
-                            <div id="rightBox" style="bottom: 40px;height: 50px;">
-                                <div id="mustBuy" style="height: 20px">
+                            <div id="rightBox" style="top: -4px;">
+                                <div id="mustBuy" style="height: 20px;display: none;">
                                     <div id="MustBuyInner">
                                         <input class="editable-input" placeholder="CLICK TO ENTER MUST BUY / OTHER INFO"/>
                                     </div>
@@ -186,8 +220,8 @@
                                     <div id="retail">5.99</div>
                                 </div>
                                 <div id="youSaveBoxDiv" style="display: flex;">           
-                                    <div style="display: grid;grid-template-columns:50px 91px 40px;background-color: black;">             
-                                        <span style="padding-left:6px" class="yousave">YOU SAVE</span>
+                                    <div style="display: grid;grid-template-columns: 56px 71px 49px;background-color: black;">             
+                                        <span style="padding-left:6px" class="yousave">SAVE AT LEAST</span>
                                         <div style="display: flex;">
                                             <div id="youSavePriceMain" style="padding-left: 10px;">3</div>
                                             <div id="youSavePriceAlt">99</div>
@@ -200,7 +234,7 @@
                                         </div>
                                     </div>   
                                 </div>
-                                <input class="editable-input" id="mixMatch" autocomplete="off" style="font-family: trade-gothic-next-compressed;font-weight: 200;width: 100%;" placeholder="Click here to enter MIX & MATCH / other info">
+                                <input class="editable-input" autocomplete="off" id="mixMatch" style="font-family: trade-gothic-next-compressed;font-weight: 200;width: 100%;" placeholder="Click here to enter MIX & MATCH / other info">
                             </div>
                         </footer>
                     </div>
@@ -323,7 +357,6 @@
     </div>
 
     <script>
-        
         const print_container = document.getElementById("print-container")
         const sign_template = document.getElementById("c-sign")
 
@@ -358,40 +391,16 @@
                 document.querySelector('#unit-size-box').style.display = 'block'
             }
 
-                        
-            if(document.querySelector('#per-lb-sel').checked){
-                document.querySelector('#lb-lbl').style.display = '';
-                document.querySelector('#youSavePriceLb').style.display = '';
-                document.querySelector('#price-type-sel').disabled = true;
-                document.querySelector('option[value=NORMAL]').selected = true;
-                document.querySelector("#unit-type-sel").disabled = true;
-                document.querySelector("#unit-sizes").value = '16'
-                document.querySelector("#unit-sizes").disabled = true;
-                
-                document.querySelector("#unit-type-sel").value = 'POUND'
-            }
-            else{
-                document.querySelector('#lb-lbl').style.display = 'none';
-                document.querySelector('#youSavePriceLb').style.display = 'none';
-                document.querySelector('#price-type-sel').disabled = false;
+                // // document.querySelector('#lb-lbl').style.display = 'none';
+                // document.querySelector('#youSavePriceLb').style.display = 'none';
+                // document.querySelector('#price-type-sel').disabled = false;
                 document.querySelector("#unit-type-sel").disabled = false;
                 document.querySelector("#unit-sizes").disabled = false;
-            }
-
+            
+            
             let retailPrice = document.querySelector('#retail-price-input').value;
-            document.querySelector('#retail').innerHTML = retailPrice;
-            if(retailPrice.includes('-')){
-                retailPrice = retailPrice.split('-')[0];
-                document.querySelector('.yousave').innerHTML = 'SAVE AT LEAST';
-                document.querySelector('.yousave').style.fontSize = '16px';
-                document.querySelector('.yousave').style.fontFamily = 'trade-gothic-next-compressed';
-            }
-            else{
-                document.querySelector('.yousave').innerHTML = 'YOU SAVE';
-                document.querySelector('.yousave').style.fontSize = '';
-                document.querySelector('.yousave').style.fontFamily = '';
-            }
-            let salePrice = document.querySelector('#sale-price-input').value;
+            let salePrice = document.querySelector('#sale-price-input-l').value;
+            let salePriceb = document.querySelector('#sale-price-input-r').value;
             salePrice = parseFloat(salePrice).toFixed(2);
             if(salePrice == "NaN"){
                 salePrice = "1.99";
@@ -401,6 +410,9 @@
             if(priceType === "XFORX"){
                 document.querySelector('#sale-price-box').style.display = 'none'
                 document.querySelector('#sale-price-box-xforx').style.display = 'block'
+                
+                document.querySelector('#sale-price2-box').style.display = 'none'
+                document.querySelector('#sale-price2-box-xforx').style.display = 'block'
                 document.querySelector("#price[dollar]").style.display = 'none'
                 document.querySelector("#price[xforx]").style.display = 'unset'
                 document.querySelector("#price[bogo]").style.display = 'none'
@@ -414,11 +426,12 @@
 
                 salePrice = buyForAmt / buyAmt
 
-                setSavings((parseFloat(retailPrice)*buyAmt) - (parseFloat(salePrice)*buyAmt), buyAmt);
+                setSavings((parseFloat(retailPrice)*buyAmt) - (parseFloat(Math.max(salePrice, salePriceb))*buyAmt), buyAmt);
             }
             else if (priceType == "BOGO"){
                 document.querySelector('#sale-price-box').style.display = 'none'
                 document.querySelector('#sale-price-box-xforx').style.display = 'none'
+                
                 document.querySelector("#price[dollar]").style.display = 'none'
                 document.querySelector("#price[xforx]").style.display = 'none'
                 document.querySelector("#price[bogo]").style.display = 'block'
@@ -460,41 +473,17 @@
                 salePrice = retailPrice
                 setSavings(retailPrice*2, 3)
             }
-
-            else if (priceType == "B3G1"){
-                document.querySelector('#sale-price-box').style.display = 'none'
-                document.querySelector('#sale-price-box-xforx').style.display = 'none'
-                document.querySelector("#price[dollar]").style.display = 'none'
-                document.querySelector("#price[xforx]").style.display = 'none'
-                document.querySelector("#price[bogo]").style.display = 'block'
-                document.querySelector('#priceBeforeDecimal img').src = "../../images/b3g1.svg"
-                document.querySelector("#MustBuyInner").style.display = 'none'
-                salePrice = retailPrice
-                setSavings(retailPrice, 4)
-            }      
-            else if (priceType == "B3G1_15"){
-                document.querySelector('#sale-price-box').style.display = 'none'
-                document.querySelector('#sale-price-box-xforx').style.display = 'none'
-                document.querySelector("#price[dollar]").style.display = 'none'
-                document.querySelector("#price[xforx]").style.display = 'none'
-                document.querySelector("#price[bogo]").style.display = 'block'
-                document.querySelector('#priceBeforeDecimal img').src = "../../images/b3g1_15ormore.svg"
-                document.querySelector("#MustBuyInner").style.display = 'none'
-                salePrice = retailPrice
-                setSavings(retailPrice, 4)
-            }      
             else{
                 document.querySelector('#sale-price-box').style.display = 'block'
                 document.querySelector('#sale-price-box-xforx').style.display = 'none'
                 
-                document.querySelector("#price[dollar]").style.display = 'unset'
-                document.querySelector("#price[xforx]").style.display = 'none'
-                document.querySelector("#price[bogo]").style.display = 'none'
+                document.querySelector('#sale-price2-box').style.display = 'block'
+                document.querySelector('#sale-price2-box-xforx').style.display = 'none'
+                
                 document.querySelector("#MustBuyInner").style.display = 'block'
                 
-                setSavings(parseFloat(retailPrice) - parseFloat(salePrice));
+                setSavings(parseFloat(retailPrice) - parseFloat(Math.max(salePrice, salePriceb)));
             }
-
 
             if(!document.querySelector("#on-sale-sel").checked){
                 document.querySelector('#advCardDiv').style.display='none';
@@ -507,33 +496,41 @@
             else{
                 document.querySelector('#advCardDiv').style.display='inline-block';
                 document.querySelector('#youSaveBoxDiv').style.display='flex';
-                document.querySelector('#saleDate').value = 'ON SALE NOW';
                 document.querySelector("#retail-price-box").style.display = 'block';
                 document.querySelector("#sale-price-box span").innerHTML = "Sale Price";
                 document.querySelector("#sale-price-box-xforx span").innerHTML = "Sale Price";
             }
-        
+            
+
+            document.querySelector('#retail').innerHTML = retailPrice;
 
             const [dollars, cents] = salePrice.toString().split('.')
-            document.querySelector("#priceBeforeDecimal").innerHTML = dollars
-            document.querySelector("#priceAfterDecimal").innerHTML = cents
-            if (parseFloat(salePrice) < 1){  
-                document.querySelector("#priceBeforeDecimal").innerHTML = cents;
-                document.querySelector("#priceAfterDecimal").innerHTML = "¢";
+            document.querySelector("#price-d-0a").innerHTML = dollars
+            document.querySelector("#price-d-1a").innerHTML = cents
 
-                document.querySelector("#priceBeforeDecimal").style.width = "80%";
-                document.querySelector("#priceAfterDecimal").style.width = "20%";
+            if (parseFloat(salePrice) < 1){  
+                document.querySelector("#price-d-0a").innerHTML = cents;
+                document.querySelector("#price-d-1a").innerHTML = "¢";
             }
             else if (parseFloat(salePrice)%1==0){
-                    document.querySelector('#priceBeforeDecimal').innerHTML = '<span class="price-d-dollar">$</span>'+dollars
-                    document.querySelector('#priceAfterDecimal').innerHTML = ''
-                    document.querySelector("#priceBeforeDecimal").style.width = "95%";
-                    document.querySelector("#priceAfterDecimal").style.width = "25%";
+                    document.querySelector('#price-d-0a').innerHTML = '<span class="price-d-dollar">$</span>'+dollars
+                    document.querySelector('#price-d-1a').innerHTML = ''
             }
-            else{
-                document.querySelector("#priceBeforeDecimal").style.width = "74%";
-                document.querySelector("#priceAfterDecimal").style.width = "25%";
+            const [dollarsb, centsb] = salePriceb.toString().split('.')
+            document.querySelector("#price-d-0b").innerHTML = dollarsb
+            document.querySelector("#price-d-1b").innerHTML = centsb
+
+            if (parseFloat(salePriceb) < 1){  
+                document.querySelector("#price-d-0b").innerHTML = centsb;
+                document.querySelector("#price-d-1b").innerHTML = "¢";
             }
+            else if (parseFloat(salePriceb)%1==0){
+                    document.querySelector('#price-d-0b').innerHTML = '<span class="price-d-dollar">$</span>'+dollarsb
+                    document.querySelector('#price-d-1b').innerHTML = ''
+            }
+
+
+
                         // unit price
             let unitType = document.querySelector('#unit-type-sel').value;
             let unitString = "";
@@ -543,75 +540,35 @@
             if(unitType == "EACH"){
                 unitAmt = "1"
             }
-            let unit_sale_price = salePrice;
-            switch (priceType){
-                case 'BOGO':
-                    unit_sale_price = salePrice/2;
-                    break;
-                case 'B1G2':
-                    unit_sale_price = salePrice /3;
-                    break;
-                case 'B2G1':
-                    unit_sale_price = (salePrice*2) /3;
-                    break;
-                case 'B2G2':
-                    unit_sale_price = salePrice/2;
-                    break;
-                case 'B3G1':
-                case 'B3G1_15':
-                    unit_sale_price = (salePrice*3) /4;
-                    break;
-            }
+            // If we have multiple unit sizes
             if (unitAmt.includes(',')) {
                 const sizes = unitAmt.split(',');
                 sizes.forEach(size => {
-                    unitString += `${size} ${unit}/${calcUnitPrice(size, unitType, parseFloat(unit_sale_price), parseFloat(retailPrice), null, 1)} ${suffix}<br/>`
+                    unitString += `${size} ${unit}@$${salePrice}ea./${calcUnitPrice(size, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)} ${suffix}<br/>`
+                    unitString += `${size} ${unit}@$${salePriceb}ea./${calcUnitPrice(size, unitType, parseFloat(salePriceb), parseFloat(retailPrice), null, 1)} ${suffix}<br/>`
                 });
                 document.querySelector("#unitType").style.display = "None";
-                document.querySelector("#unitPriceBox").style.fontSize = "13px";
-                document.querySelector("#unitPriceBox").style.fontFamily = "trade-gothic-next-compressed";
-                document.querySelector("#unitPriceBox").style.fontWeight = "100";
+                document.querySelector("#unitPriceBox").style.fontSize = "12px";
+                document.querySelector("#unitPriceBox").style.fontFamily = "trade-gothic-next-condensed"
             }
             else {
-                unitString = `${calcUnitPrice(unitAmt, unitType, parseFloat(unit_sale_price), parseFloat(retailPrice), null, 1)}`;
-                document.querySelector("#unitType").style.display = "block";
-                document.querySelector("#unitType").innerHTML = suffix;
-                document.querySelector("#unitPriceBox").style.fontSize = "30px";
-                document.querySelector("#unitPriceBox").style.fontFamily = "Rockwell";
-                document.querySelector("#unitPriceBox").style.fontWeight = "bold";
+                unitString = `$${salePrice}ea./${calcUnitPrice(unitAmt, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)}  ${suffix}<br/>`;
+                
+
+                unitString += `$${salePriceb}ea./${calcUnitPrice(unitAmt, unitType, parseFloat(salePriceb), parseFloat(retailPrice), null, 1)}  ${suffix}`;
+                document.querySelector("#unitType").style.display = "None";
+                document.querySelector("#unitPriceBox").style.fontSize = "12px";
+                document.querySelector("#unitPriceBox").style.fontFamily = "trade-gothic-next-condensed"
             }
 
             document.querySelector("#unitPriceBox").innerHTML = unitString;
 
             document.querySelector('#unit-size-suf').innerHTML = unit || '';
 
-            document.querySelector('#price-suggestion').style.display = 'none';
-            let suggested_price = '';
-            if(priceType == 'NORMAL'){
-                if(salePrice % 0.25 == 0 && salePrice != 1.00){
-                    for (let i = 2; i <= 10; i++) {
-                            // A customer won't buy 4/33 instead of 8.25, dont do it that high
-                            if((salePrice * i) > 20){
-                                break;
-                            }
-                            // Only show the option if it would equal a whole number
-                            // e.g. if we have a price of 3.50, we don't want to have 3 as an option, that would appear as 3/$10.50 -- we don't want that
-                            if((salePrice * i) % 1.00 == 0){
-                                suggested_price = `${i}/$${salePrice*i}`;
-                                break;
-                            }
-                        }
-                }
-                if (salePrice == 1){
-                    suggested_price = "10/$10"
-                }
-            }
-            if(suggested_price){
-                document.querySelector('#price-suggestion').style.display = '';
-                document.querySelector('#price-suggestion').innerHTML = `Suggestion: Use ${suggested_price} instead of ${salePrice}`
-            }
-        }
+            document.querySelector('#cond-1').innerHTML = document.querySelector('#left-sign-cond').value;
+            document.querySelector('#cond-2').innerHTML = document.querySelector('#right-sign-cond').value;
 
+        }
         document.querySelectorAll('.tool-input').forEach(e=>{
             e.addEventListener('input', function() {
                 refresh();
