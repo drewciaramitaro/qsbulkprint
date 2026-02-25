@@ -16,6 +16,8 @@ function getUnitSuffix(unitType) {
         case "OUNCE":
             suffix = "per oz.";
             break;
+        case "DOZEN":
+            suffix = "per dozen"
     }
     return suffix;
 }
@@ -32,6 +34,8 @@ function getUnit(unitType){
             return "ct.";
         case "OUNCE":
             return "oz.";
+        case "DOZEN":
+            return "ct."
     }
 }
 
@@ -74,6 +78,9 @@ function calcUnitPrice(unitSize, unitType, salePrice, retailPrice, priceType, xF
             break;
         case "OUNCE":
             modifier = 1;
+            break;
+        case "DOZEN":
+            modifier = 12;
             break;
         default:
             break;
