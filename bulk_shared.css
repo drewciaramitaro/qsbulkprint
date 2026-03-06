@@ -226,6 +226,12 @@ body {
     width: 100%;
 }
 
+#mainDescription {
+    font-family: "trade-gothic-next-compressed", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
 #altDescription input{
     font-family: 'trade-gothic-next-condensed';
     font-weight: lighter;

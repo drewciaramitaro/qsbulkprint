@@ -98,8 +98,9 @@ html{
 }
 
 .item-name{
-    font-family: Clarendon;
-    font-weight: 100;
+    font-family: "trade-gothic-next-compressed", sans-serif;
+    font-weight: 700;
+    font-style: normal;
     font-size: 20px;
 }
 .item-desc, .sale-date{

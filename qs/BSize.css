@@ -79,12 +79,10 @@ div#outline > header {
 }
 
 #mainDescription {
-    font-size: 28px;
+    font-size: 30px;
     padding-left: 10px;
     padding-top: 30px;
-    font-family: Clarendon, serif;
     width: 98%;
-    font-weight: lighter;
 }
 
 #altDescription {

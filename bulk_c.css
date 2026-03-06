@@ -41,6 +41,13 @@ div#outline>footer>#rightBox {
 }
 
 
+#mainDescription {
+    font-size: 21px;
+    padding-left: 15px;
+    padding-top: 10px;
+    width: 96%;
+}
+
 #youSavePriceLb {
     color: white;
     font-size: 15px;
