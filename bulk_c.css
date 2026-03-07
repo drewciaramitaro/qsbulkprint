@@ -311,10 +311,12 @@ html{
     margin-right: 20px;
 }
 
-.when-you-buy{
+#when-you-buy{
     font-family: trade-gothic-next-compressed;
     font-weight: 100;
     font-size: 18px;
+    pointer-events: all;
+    width: 300px;
 }
 
 #mam-txt{    
@@ -326,10 +328,10 @@ html{
 .lb{
     font-family: trade-gothic-next-compressed;
     position: relative;
-    font-size: 20px;
+    font-size: 29px;
     line-height: 0px;
-    top: -50px;
-    left:40px;
+    top: -26px;
+    left: -25px;
 }
 
 .sign-bottom{

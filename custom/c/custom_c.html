@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/CSize.css?ch=FBNEC" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=FBNEC" />
-    <link rel="stylesheet" href="../../bulk_c.css?ch=FBNEC" />
+    <link rel="stylesheet" href="../../qs/CSize.css?ch=ZKYP8" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=ZKYP8" />
+    <link rel="stylesheet" href="../../bulk_c.css?ch=ZKYP8" />
     <title>Custom Signs - C Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
 </head>
@@ -175,8 +175,8 @@
                         <img src="../../images/bogo.svg">
                     </div>
                     <div>
-                        <span class="lb" style="display: none;">lb.</span>
-                        <span class="when-you-buy"></span>
+                        <span class="lb">lb.</span>
+                        <input id="when-you-buy" class="editable-input" autocomplete="off" placeholder="Click here to enter WHEN YOU BUY X"/>
                     </div>
                 </div>
                 <div class="sign-bottom">
@@ -361,6 +361,12 @@
                     document.querySelector('.price-dollar').style.display = '';
                     document.querySelector('.price-xforx').style.display = 'none';
                     document.querySelector('.price-bogo').style.display = 'none';
+                    if (document.querySelector('#per-lb-sel').checked){
+                        document.querySelector('.lb').style.display = 'block';
+                    }else{
+                        
+                        document.querySelector('.lb').style.display = 'none';
+                    }
                     if(parseFloat(sale_price) % 1 === 0){
                         document.querySelector('.price-d-0').innerHTML = '<span class="price-d-dollar">$</span>'+parseFloat(sale_price)
                         document.querySelector('.price-d-1').innerHTML = ''
