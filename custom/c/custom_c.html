@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/CSize.css?ch=guqF6" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=guqF6" />
-    <link rel="stylesheet" href="../../bulk_c.css?ch=guqF6" />
+    <link rel="stylesheet" href="../../qs/CSize.css?ch=FBNEC" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=FBNEC" />
+    <link rel="stylesheet" href="../../bulk_c.css?ch=FBNEC" />
     <title>Custom Signs - C Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
 </head>
@@ -127,6 +127,19 @@
                     </div>
 
                 </div>
+            </fieldset>
+            <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
+                <legend>Additional Components</legend>
+                    <div>
+                        <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Bonus Savings</span>
+                        <select id="unit-type-sel" onchange="refresh()">
+                            <optgroup label="Unit Price Type">
+                                <option value="NONE">None</option>
+                                <option value="BONUS_PT">Bonus Points</option>
+                                <option value="E_COUPON">Save w/ eCoupon</option>
+                            </optgroup>
+                        </select>
+                    </div>
             </fieldset>
         </div>
         <span style="font-family: trade-gothic-next-condensed;">Hint: Press the * key to add the '•' symbol in the text boxes</span>
