@@ -247,8 +247,10 @@ html{
         margin:0;
     }
     @page {
-        margin: .4in;
-        margin-top:.5in;
+        margin-left:50%;
+        margin-right:0;
+        margin-top: 1.54in;
+        size: letter landscape;
     }
 
     .hidden{
@@ -256,16 +258,16 @@ html{
     }
 }
 
-.item-name{
+#item-name{
     font-family: "trade-gothic-next-compressed", sans-serif;
     font-weight: 700;
     font-style: normal;
-    font-size: 20px;
+    font-size: 24px;
 }
-.item-desc, .sale-date{
+#item-desc, #sale-date{
     font-family: trade-gothic-next-condensed;
     font-weight: 100;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .desc-area{
@@ -315,7 +317,7 @@ html{
     font-size: 18px;
 }
 
-.mam-txt{    
+#mam-txt{    
     font-family: trade-gothic-next-compressed;
     font-weight: 100;
     font-size: 18px;
@@ -332,7 +334,7 @@ html{
 
 .sign-bottom{
     display: grid;
-    grid-template-columns: 163px 1fr;
+    grid-template-columns: 155px 1fr;
 }
 
 .unit-box{
@@ -443,26 +445,3 @@ dialog:open{
     margin: auto;
 }
 
-@media screen and (max-width: 1280px) {
-    .d-sign{
-        transform: scale(.8);
-    }
-    .d-grid{
-        display: grid;
-        grid-template-areas: 
-        "1 2"
-        "3 4"
-        "5 6";
-        grid-template-columns: 450px;
-        grid-template-rows:350px 350px 350px;
-        gap:0px;
-    }
-    .d-grid .d-sign:hover{
-        cursor: pointer;
-        transform: scale(.85);
-        z-index: 999;
-        border-radius: .25em;
-        outline: 4px #7BBA2F solid;
-        outline-offset: 4px;
-    }
-}

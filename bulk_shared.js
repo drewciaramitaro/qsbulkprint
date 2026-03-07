@@ -87,7 +87,7 @@ window.addEventListener('load', async () => {
     const today = new Date();
     const saturday = new Date(today.setDate(today.getDate() - today.getDay() + 6));
     onSaleThru = `ON SALE THRU ${saturday.toLocaleDateString("en-US")}`;
-    document.querySelector('#saleDate').value = onSaleThru;
+    document.querySelector('#sale-date').value = onSaleThru;
 })
 
 function show_error_popup(msg) {
