@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
+    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=7uTT1" />
+    <link rel="stylesheet" href="floral_card.css">
+    <title>Custom Signs - Floral Cardettes</title>
+    <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
+</head>
+<style>
+    @media print {
+    .d-sign{
+        transform: scale(0.95);
+        padding:0px;
+    }
+    body{
+        margin:0;
+    }
+    @page {
+        margin: .4in;
+        margin-top:.5in;
+    }
+}
+</style>
+<body>
+    <header class="navbar">
+        <h1 style="color: #7BBA2F;font-family: trade-gothic-next-condensed;">Floral Cardettes</h1>
+        <a class="action" href="../../index.html" style="display: flex;gap: 10px;align-items: center;"><img width="45" src="../../images/spec_sign_icon.jpg" />Back to Sign List</a>
+        <button class="action"  onclick="show_print_dialog()" style="display: flex;gap: 10px;align-items: center;"><img width="45" src="../../images/d.svg" />Print</button>
+    </header>
+    <div class="desktop tool">
+        <h1 style="font-family: Clarendon;font-weight: 200;">Click on a sign to edit it</h1>
+    </div>
+
+    <dialog id="copy-dialog" style="width: fit-content;">
+        <h1 style="color: #7BBA2F;font-family: trade-gothic-next-condensed;">Select a destination sign</h1>
+        <p style="color: #7BBA2F;font-family: trade-gothic-next-condensed;">This will copy the sign highlighted in green to the sign you click.</p>
+        <button class="action" style="margin: 10px auto;display: block;" onclick="document.querySelector('dialog#copy-dialog').close()">Done</button>
+        <div style="display: grid;grid-template-rows: 70px 70px 70px;grid-template-columns: 80px 80px 80px 80px 80px;gap:4px;justify-content: center;">
+            <button class="sg action" id="sgc-sign1" onclick="{refresh(document.querySelector('#sign1'));document.querySelector('#copy-success').innerHTML = 'Successfully copied to Sign 1'}">1</button>
+            <button class="sg action" id="sgc-sign2" onclick="{refresh(document.querySelector('#sign2'));document.querySelector('#copy-success').innerHTML = 'Successfully copied to Sign 2'}">2</button>
+            <button class="sg action" id="sgc-sign3" onclick="{refresh(document.querySelector('#sign3'));document.querySelector('#copy-success').innerHTML = 'Successfully copied to Sign 3'}">3</button>
+            <button class="sg action" id="sgc-sign4" onclick="{refresh(document.querySelector('#sign4'));document.querySelector('#copy-success').innerHTML = 'Successfully copied to Sign 4'}">4</button>
+            <button class="sg action" id="sgc-sign5" onclick="{refresh(document.querySelector('#sign5'));document.querySelector('#copy-success').innerHTML = 'Successfully copied to Sign 5'}">5</button>
+            <button class="sg action" id="sgc-sign6" onclick="{refresh(document.querySelector('#sign6'));document.querySelector('#copy-success').innerHTML = 'Successfully copied to Sign 6'}">6</button>
+            <button class="sg action" id="sgc-sign7" onclick="{refresh(document.querySelector('#sign7'));document.querySelector('#copy-success').innerHTML = 'Successfully copied to Sign 7'}">7</button>
+            <button class="sg action" id="sgc-sign8" onclick="{refresh(document.querySelector('#sign8'));document.querySelector('#copy-success').innerHTML = 'Successfully copied to Sign 8'}">8</button>
+            <button class="sg action" id="sgc-sign9" onclick="{refresh(document.querySelector('#sign9'));document.querySelector('#copy-success').innerHTML = 'Successfully copied to Sign 9'}">9</button>
+            <button class="sg action" id="sgc-sign10" onclick="{refresh(document.querySelector('#sign10'));document.querySelector('#copy-success').innerHTML = 'Successfully copied to Sign 10'}">10</button>
+            <button class="sg action" id="sgc-sign11" onclick="{refresh(document.querySelector('#sign11'));document.querySelector('#copy-success').innerHTML = 'Successfully copied to Sign 11'}">11</button>
+            <button class="sg action" id="sgc-sign12" onclick="{refresh(document.querySelector('#sign12'));document.querySelector('#copy-success').innerHTML = 'Successfully copied to Sign 12'}">12</button>
+            <button class="sg action" id="sgc-sign13" onclick="{refresh(document.querySelector('#sign13'));document.querySelector('#copy-success').innerHTML = 'Successfully copied to Sign 13'}">13</button>
+            <button class="sg action" id="sgc-sign14" onclick="{refresh(document.querySelector('#sign14'));document.querySelector('#copy-success').innerHTML = 'Successfully copied to Sign 14'}">14</button>
+            <button class="sg action" id="sgc-sign15" onclick="{refresh(document.querySelector('#sign15'));document.querySelector('#copy-success').innerHTML = 'Successfully copied to Sign 15'}">15</button>
+        </div>
+        <h4 style="color: var(--m32-green);font-family: trade-gothic-next-compressed;text-align: center;" id="copy-success"></h4>
+    </dialog>
+    <dialog id="edit-dialog">
+        <div class="desktop tool">
+            <legend>Edit Sign</legend>
+            <div style="display: flex;gap:10px;flex-wrap: wrap;">
+                <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
+                    <legend>Item Info</legend>
+                    <div id="sale-price-box">
+                        <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
+                        <input id="sale-price-input" pattern="^(?:\d+|\.\d{2})$|^\d+\.\d{2}$" inputmode="decimal" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="12.49"/>
+
+                    </div>
+                    <div id="plu-box">
+                                                
+                        <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">PLU</span>
+                        <input id="plu-input" pattern="^\d{1,5}$" inputmode="numeric" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="4174"/>
+                    </div>
+                </fieldset>
+             
+                <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
+                    <legend>Currently Editing</legend>
+                    <div style="display: grid;grid-template-rows: 30px 30px 30px;grid-template-columns: 1fr 1fr 1fr 1fr 1fr;gap:4px">
+                            <button class="sg action" id="sg-sign1" onclick="edit('sign1')"></button>
+                            <button class="sg action" id="sg-sign2" onclick="edit('sign2')"></button>
+                            <button class="sg action" id="sg-sign3" onclick="edit('sign3')"></button>
+                            <button class="sg action" id="sg-sign4" onclick="edit('sign4')"></button>
+                            <button class="sg action" id="sg-sign5" onclick="edit('sign5')"></button>
+                            <button class="sg action" id="sg-sign6" onclick="edit('sign6')"></button>
+                            <button class="sg action" id="sg-sign7" onclick="edit('sign7')"></button>
+                            <button class="sg action" id="sg-sign8" onclick="edit('sign8')"></button>
+                            <button class="sg action" id="sg-sign9" onclick="edit('sign9')"></button>
+                            <button class="sg action" id="sg-sign10" onclick="edit('sign10')"></button>
+                            <button class="sg action" id="sg-sign11" onclick="edit('sign11')"></button>
+                            <button class="sg action" id="sg-sign12" onclick="edit('sign12')"></button>
+                            <button class="sg action" id="sg-sign13" onclick="edit('sign13')"></button>
+                            <button class="sg action" id="sg-sign14" onclick="edit('sign14')"></button>
+                            <button class="sg action" id="sg-sign15" onclick="edit('sign15')"></button>
+                    </div>
+                    <button class="action" style="margin: 10px auto;display: block;" onclick="{document.querySelector('dialog#copy-dialog').showModal();document.querySelector('#copy-success').innerHTML = ''}">Copy Sign...</button>
+                    <button class="action" style="margin: 10px auto;display: block;" onclick="document.querySelector('dialog#edit-dialog').close()">Save & Close</button>
+                </fieldset>
+            </div>
+        </div>
+        <div class="cardette" id="sign-editor" style="transform: scale(0.8); display:grid;">
+            <div class="price-area">
+                <div class="price-dollar">
+                    <span class="price-d-0">12</span>
+                    <span class="price-d-1">49</span>
+                    
+                </div>
+            </div>
+            <div class="plu-area">4174</div>
+        </div>
+    </dialog>
+
+    <div class="print">
+        <div class="d-grid">
+            <div id="sign1" class="cardette" s_price="12.49" s_plu="4174"
+                onclick="edit('sign1')">
+                <div class="price-area">
+                    <div class="price-dollar">
+                        <span class="price-d-0">12</span>
+                        <span class="price-d-1">49</span>
+                    </div>
+                </div>
+                <div class="plu-area">4174</div>
+            </div>
+            <div id="sign2" class="cardette" s_price="12.49" s_plu="4174"
+                onclick="edit('sign2')">
+                <div class="price-area">
+                    <div class="price-dollar">
+                        <span class="price-d-0">12</span>
+                        <span class="price-d-1">49</span>
+                    </div>
+                </div>
+                <div class="plu-area">4174</div>
+            
+            </div>
+
+            <div id="sign3" class="cardette" s_price="12.49" s_plu="4174"
+                onclick="edit('sign3')">
+                <div class="price-area">
+                    <div class="price-dollar">
+                        <span class="price-d-0">12</span>
+                        <span class="price-d-1">49</span>
+                    </div>
+                </div>
+                <div class="plu-area">4174</div>
+            
+            </div>
+            <div id="sign4" class="cardette" s_price="12.49" s_plu="4174"
+                onclick="edit('sign4')">
+                <div class="price-area">
+                    <div class="price-dollar">
+                        <span class="price-d-0">12</span>
+                        <span class="price-d-1">49</span>
+                    </div>
+                </div>
+                <div class="plu-area">4174</div>
+            
+            </div>
+
+            <div id="sign5" class="cardette" s_price="12.49" s_plu="4174"
+                onclick="edit('sign5')">
+                <div class="price-area">
+                    <div class="price-dollar">
+                        <span class="price-d-0">12</span>
+                        <span class="price-d-1">49</span>
+                    </div>
+                </div>
+                <div class="plu-area">4174</div>
+            
+            </div>
+
+            <div id="sign6" class="cardette" s_price="12.49" s_plu="4174"
+                onclick="edit('sign6')">
+                <div class="price-area">
+                    <div class="price-dollar">
+                        <span class="price-d-0">12</span>
+                        <span class="price-d-1">49</span>
+                    </div>
+                </div>
+                <div class="plu-area">4174</div>
+            
+            </div>
+
+            <div id="sign7" class="cardette" s_price="12.49" s_plu="4174"
+                onclick="edit('sign7')">
+                <div class="price-area">
+                    <div class="price-dollar">
+                        <span class="price-d-0">12</span>
+                        <span class="price-d-1">49</span>
+                    </div>
+                </div>
+                <div class="plu-area">4174</div>
+
+            </div>
+            <div id="sign8" class="cardette" s_price="12.49" s_plu="4174"
+                onclick="edit('sign8')">
+                <div class="price-area">
+                    <div class="price-dollar">
+                        <span class="price-d-0">12</span>
+                        <span class="price-d-1">49</span>
+                    </div>
+                </div>
+                <div class="plu-area">4174</div>
+            
+            </div>
+            <div id="sign9" class="cardette" s_price="12.49" s_plu="4174"
+                onclick="edit('sign9')">
+                <div class="price-area">
+                    <div class="price-dollar">
+                        <span class="price-d-0">12</span>
+                        <span class="price-d-1">49</span>
+                    </div>
+                </div>
+                <div class="plu-area">4174</div>
+            
+            </div>
+
+            <div id="sign10" class="cardette" s_price="12.49" s_plu="4174"
+                onclick="edit('sign10')">
+                <div class="price-area">
+                    <div class="price-dollar">
+                        <span class="price-d-0">12</span>
+                        <span class="price-d-1">49</span>
+                    </div>
+                </div>
+                <div class="plu-area">4174</div>
+            
+            </div>
+            <div id="sign11" class="cardette" s_price="12.49" s_plu="4174"
+                onclick="edit('sign11')">
+                <div class="price-area">
+                    <div class="price-dollar">
+                        <span class="price-d-0">12</span>
+                        <span class="price-d-1">49</span>
+                    </div>
+                </div>
+                <div class="plu-area">4174</div>
+            
+            </div>
+
+            <div id="sign12" class="cardette" s_price="12.49" s_plu="4174"
+                onclick="edit('sign12')">
+                <div class="price-area">
+                    <div class="price-dollar">
+                        <span class="price-d-0">12</span>
+                        <span class="price-d-1">49</span>
+                    </div>
+                </div>
+                <div class="plu-area">4174</div>
+            </div>
+
+            <div id="sign13" class="cardette" s_price="12.49" s_plu="4174"
+                onclick="edit('sign13')">
+                <div class="price-area">
+                    <div class="price-dollar">
+                        <span class="price-d-0">12</span>
+                        <span class="price-d-1">49</span>
+                    </div>
+                </div>
+                <div class="plu-area">4174</div>
+            
+            </div>
+
+            <div id="sign14" class="cardette" s_price="12.49" s_plu="4174"
+                onclick="edit('sign14')">
+                <div class="price-area">
+                    <div class="price-dollar">
+                        <span class="price-d-0">12</span>
+                        <span class="price-d-1">49</span>
+                    </div>
+                </div>
+                <div class="plu-area">4174</div>
+            
+            </div>
+
+            <div id="sign15" class="cardette" s_price="12.49" s_plu="4174"
+                onclick="edit('sign15')">
+                <div class="price-area">
+                    <div class="price-dollar">
+                        <span class="price-d-0">12</span>
+                        <span class="price-d-1">49</span>
+                    </div>
+                </div>
+                <div class="plu-area">4174</div>
+            
+            </div>
+                
+       
+        </div>
+    </div>
+
+    <div id="error-popup-wrap" class="error-popup-wrapper">
+        <div class="error-popup">
+            <h3>Error</h3>
+            <p id="error-msg">Error Message.</p>
+
+            <button onclick="hide_error_popup()" class="action" id="close-error">OK</button>
+        </div>
+    </div>
+
+    <div id="print-dialog">
+        <div class="error-popup">
+            <h3>Confirm Print</h3>
+            <p>You are about to print <span id="print-count">1</span> sign sheets.</p>
+            <p>Make sure you load at least <span id="print-count">1</span> sign sheet before confirming.</p>
+
+            <h3>Important!</h3>
+            <h4>The following options MUST be set or your signs will not print correctly.</h4>
+            <div>
+                <div>
+                    <ul>
+                        <li>
+                            <p>Layout: <span>Landscape</span></p>
+                        </li>
+                        <p style="text-align: left;"><span>More Settings <svg width="20" height="20" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg" class="c0183">
+                                    <path
+                                        d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 01-.78 0L4.15 8.35a.5.5 0 01.7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0z">
+                                    </path>
+                                </svg></span></p>
+                        <li>
+                            <p>Paper Size: <span>Letter</span></p>
+                        </li>
+                        <li>
+                            <p>Scale (%): <span>Actual size</span></p>
+                        </li>
+                        <li>
+                            <p>Margins: <span>Default</span></p>
+                        </li>
+                        <li>
+                            <p>Options: Headers and Footers: <span>UNCHECKED</span></p>
+                        </li>
+                        <li>
+                            <p>Options: Background Graphics: <span>UNCHECKED</span></p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- <img id="printer-instructions-img" src="../../images/d.svg"> -->
+            </div>
+            <button onclick="cancel_print()" class="action">Cancel</button>
+            <button onclick="confirm_print()" class="action">Confirm</button>
+        </div>
+    </div>
+
+
+    <script src="../../bulk_shared.js?ch=7uTT1"></script>
+    <script src="../../sign_builder.js?ch=7uTT1"></script>
+    <script>
+        
+        const print_container = document.getElementById("print-container")
+        const sign_template = document.getElementById("c-sign")
+
+        let active_sign = null;
+
+        function refresh(sign){
+            
+            let sale_price_input = document.querySelector('#sale-price-input');
+            let plu_price_input = document.querySelector('#plu-input');
+
+            let sale_price = parseFloat(sale_price_input.value).toFixed(2);
+            if(sale_price == "NaN"){
+                sale_price = "1.99";
+            }
+            sign.setAttribute('s_price', sale_price);
+            sign.setAttribute('s_plu', plu_price_input.value);
+            sign.querySelector('.plu-area').innerHTML = plu_price_input.value;
+
+            if(parseFloat(sale_price) % 1 === 0){
+                sign.querySelector('.price-d-0').innerHTML = '<span class="price-d-dollar">$</span>'+parseFloat(sale_price)
+                sign.querySelector('.price-d-1').innerHTML = ''
+            }
+            else if(parseFloat(sale_price) >= 1.00){
+                sign.querySelector('.price-d-0').innerHTML = sale_price.split('.')[0]
+                sign.querySelector('.price-d-1').innerHTML = sale_price.split('.')[1]
+            }
+            else{
+                sign.querySelector('.price-d-0').innerHTML = sale_price.split('.')[1]
+                sign.querySelector('.price-d-1').innerHTML = '¢'
+            }
+            
+        }
+
+        function setIsOnSale(flag){
+            if(flag){
+                document.querySelector('#_onSale').style.backgroundColor ='green';
+                document.querySelector('#_offSale').style.backgroundColor ='';
+                document.querySelector('#on-sale-sel').checked = true;
+                document.querySelector('#retail-price-box').style.display = '';
+                document.querySelector('#sale-price-box span').innerHTML = 'Sale Price'
+            }else{
+                document.querySelector('#_onSale').style.backgroundColor ='';
+                document.querySelector('#_offSale').style.backgroundColor ='green';
+                document.querySelector('#on-sale-sel').checked = false;
+                document.querySelector('#retail-price-box').style.display = 'none';
+                document.querySelector('#sale-price-box span').innerHTML = 'Item Price'
+            }
+        }
+
+        function setSignVisible(flag){
+            if(flag){
+                document.querySelector('#_signOn').style.backgroundColor ='green';
+                document.querySelector('#_signOff').style.backgroundColor ='';
+                document.querySelector('#sign-visible-sel').checked = true;
+            }else{
+                document.querySelector('#_signOn').style.backgroundColor ='';
+                document.querySelector('#_signOff').style.backgroundColor ='green';
+                document.querySelector('#sign-visible-sel').checked = false;
+            }
+        }
+
+        function edit(sign){
+            // Open the editor for a sign
+            document.querySelector('dialog#edit-dialog').showModal()
+            active_sign = document.querySelector('#'+sign);
+
+            document.querySelectorAll('.sg').forEach (e=>e.style.backgroundColor = '');
+            document.querySelector('#sg-'+sign).style.backgroundColor = 'green';
+            document.querySelector('#sgc-'+sign).style.backgroundColor = 'green';
+
+            let sale_price_input = document.querySelector('#sale-price-input');
+            let plu_price_input = document.querySelector('#plu-input');
+
+            sale_price_input.value = active_sign.getAttribute('s_price');
+            plu_price_input.value = active_sign.getAttribute('s_plu');
+
+            refresh(document.querySelector('#sign-editor'))
+        }
+
+        document.querySelectorAll('.tool-input').forEach(e=>{
+                e.addEventListener('input', function() {
+                    console.log(active_sign);
+                    refresh(active_sign);
+                    refresh(document.querySelector('#sign-editor'))
+                })
+            });
+
+        function refresh_all(){
+            refresh(active_sign);
+            refresh(document.querySelector('#sign-editor'))
+        }
+
+        function show_print_dialog(){
+            document.getElementById("print-dialog").classList.add("showing");
+        }
+
+   </script>
+</body>
+
+</html>
