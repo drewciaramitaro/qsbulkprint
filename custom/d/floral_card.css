@@ -23,7 +23,7 @@ html{
 }
 @media print{
     @page{
-        margin: 0;
+        margin: none;
         size: 11in 8.5in;
     }
 }

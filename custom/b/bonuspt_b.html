@@ -3,10 +3,10 @@
 
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
-    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css?ch=M4l5i">
-    <link rel="stylesheet" href="../../qs/BSize.css?ch=M4l5i" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=M4l5i" />
-    <link rel="stylesheet" href="../../bulk_b.css?ch=M4l5i" />
+    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css?ch=lpFmn">
+    <link rel="stylesheet" href="../../qs/BSize.css?ch=lpFmn" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=lpFmn" />
+    <link rel="stylesheet" href="../../bulk_b.css?ch=lpFmn" />
     <title>Custom Signs - B Size W/ Points</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
     <style>
@@ -132,7 +132,7 @@
                             <div id="altDescription">
                                 <input class="editable-input" autocomplete="off" placeholder="CLICK TO ENTER DESCRIPTION"/>
                             </div>
-                            <input id="saleDate" class="editable-input" autocomplete="off" value="ON SALE NOW" placeholder="Click to enter a sale date"/>
+                            <input id="saleDate" class="editable-input" autocomplete="off" placeholder="Click to enter a sale date"/>
                         </div>
                         <div id="price" dollar>
                             <div id="pLeft" width="auto"></div>
@@ -391,7 +391,6 @@
             if(!document.querySelector("#on-sale-sel").checked){
                 document.querySelector('#advCardDiv').style.display='none';
                 document.querySelector('#youSaveBoxDiv').style.display='none';
-                document.querySelector('#saleDate').value = '';
                 document.querySelector("#retail-price-box").style.display = 'none';
                 document.querySelector("#sale-price-box span").innerHTML = "Item Price";
                 document.querySelector("#sale-price-box-xforx span").innerHTML = "Item Price";
@@ -399,7 +398,6 @@
             else{
                 document.querySelector('#advCardDiv').style.display='inline-block';
                 document.querySelector('#youSaveBoxDiv').style.display='flex';
-                document.querySelector('#saleDate').value = '';
                 document.querySelector("#retail-price-box").style.display = 'block';
                 document.querySelector("#sale-price-box span").innerHTML = "Sale Price";
                 document.querySelector("#sale-price-box-xforx span").innerHTML = "Sale Price";
