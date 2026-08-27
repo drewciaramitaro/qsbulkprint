@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/CSize.css?ch=M2Zad" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=M2Zad" />
-    <link rel="stylesheet" href="../../bulk_c.css?ch=M2Zad" />
+    <link rel="stylesheet" href="../../qs/CSize.css?ch=SmgWe" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=SmgWe" />
+    <link rel="stylesheet" href="../../bulk_c.css?ch=SmgWe" />
     <link rel="stylesheet" href="or_c.css">
     <title>Custom Signs - C Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
@@ -135,6 +135,10 @@
                 <div id="right-sign-edit">
                     <input id="right-sign-cond" style="float: right;width: 95%;" class="tool-input" autocomplete="off" value="WHEN YOU BUY 8 OR MORE" placeholder="Right Side Condition"/>
                 </div>
+                <div>
+                    <input type="checkbox" id="show-ea-right" onchange="refresh()" checked>
+                    <label for="show-ea-right">Show EA. Label</label>
+                </div>
             </fieldset>
             <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
                 <legend>Unit Pricing</legend>
@@ -192,6 +196,8 @@
                             <div class="price-dollar">
                                 <span class="price-d-0"id="price-d-0b">12</span>
                                 <span class="price-d-1"id="price-d-1b">49</span>
+                                <span class="ea-lbl" style="font-family: trade-gothic-next-compressed; font-weight: 200; letter-spacing: normal; top: 80px; position: relative; font-size: 30px; width: 20px;">ea.</span>
+
                             </div>
                         </div>                        
                         <div id="condition-row">
@@ -394,6 +400,12 @@
                 // // document.querySelector('#lb-lbl').style.display = 'none';
                 // document.querySelector('#youSavePriceLb').style.display = 'none';
                 // document.querySelector('#price-type-sel').disabled = false;
+            if(document.querySelector('#show-ea-right').checked){
+                document.querySelector('.ea-lbl').style.display = 'block';
+            }
+            else{
+                document.querySelector('.ea-lbl').style.display = 'none';
+            }
                 document.querySelector("#unit-type-sel").disabled = false;
                 document.querySelector("#unit-sizes").disabled = false;
             

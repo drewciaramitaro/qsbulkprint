@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/BSize.css?ch=DGg2M" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=DGg2M" />
-    <link rel="stylesheet" href="../../bulk_b.css?ch=DGg2M" />
+    <link rel="stylesheet" href="../../qs/BSize.css?ch=ej1o0" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=ej1o0" />
+    <link rel="stylesheet" href="../../bulk_b.css?ch=ej1o0" />
     <link rel="stylesheet" href="or_b.css">
     <title>Custom Signs - B Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
@@ -85,7 +85,7 @@
 
                 <div>
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Price Type</span>
-                    <select disabled id="price-type-sel" onchange="refresh()">
+                    <select disabled id="price-type-sel-1" onchange="refresh()">
                         <optgroup label="Price Type">
                             <option value="NORMAL" selected>Dollars or Cents</option>
                             <!-- <option value="XFORX" >X/$XX</option>
@@ -102,9 +102,9 @@
                 </div>
                 <div id="sale-price-box-xforx">
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
-                    <input id="sale-price-input-xforx1" style="width: 50px;" class="tool-input" autocomplete="off" value="2"/>
+                    <input id="sale-price-input-1-xforx1" style="width: 50px;" class="tool-input" autocomplete="off" value="2"/>
                     <span style="font-family: trade-gothic-next;font-weight: bold;">/$</span>
-                    <input id="sale-price-input-xforx2" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5"/>
+                    <input id="sale-price-input-1-xforx2" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5"/>
                 </div>
                 <div id="left-sign-edit">
                     
@@ -116,14 +116,10 @@
 
                 <div>
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Price Type</span>
-                    <select disabled id="price-type-sel" onchange="refresh()">
+                    <select id="price-type-sel-2" onchange="refresh()">
                         <optgroup label="Price Type">
                             <option value="NORMAL" selected>Dollars or Cents</option>
-                            <!-- <option value="XFORX" >X/$XX</option>
-                            <option value="BOGO">Buy One, Get One</option>
-                            <option value="B1G2">Buy One, Get Two</option>
-                            <option value="B2G1">Buy Two, Get One</option>
-                            <option value="B2G2">Buy Two, Get Two</option> -->
+                            <option value="XFORX" >X/$XX</option>
                         </optgroup>
                     </select>
                 </div>
@@ -133,13 +129,18 @@
                 </div>
                 <div id="sale-price2-box-xforx">
                     <span style="line-height: 35px;font-family: 'trade-gothic-next-condensed';">Sale Price</span>
-                    <input id="sale-price-input-xforx1" style="width: 50px;" class="tool-input" autocomplete="off" value="2"/>
+                    <input id="sale-price-input-2-xforx1" style="width: 50px;" class="tool-input" autocomplete="off" value="2"/>
                     <span style="font-family: trade-gothic-next;font-weight: bold;">/$</span>
-                    <input id="sale-price-input-xforx2" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5"/>
+                    <input id="sale-price-input-2-xforx2" style="float: right;width: 50px;" class="tool-input" autocomplete="off" value="5"/>
                 </div>
                 <div id="right-sign-edit">
                     <input id="right-sign-cond" style="float: right;width: 95%;" class="tool-input" autocomplete="off" value="WHEN YOU BUY 8 OR MORE" placeholder="Right Side Condition"/>
                 </div>
+                <div>
+                    <input type="checkbox" id="show-ea-right" onchange="refresh()" checked>
+                    <label for="show-ea-right">Show EA. Label</label>
+                </div>
+
             </fieldset>
             <fieldset style="display: flex;flex-direction: column;gap:10px;width:200px">
                 <legend>Unit Pricing</legend>
@@ -194,9 +195,14 @@
                             <div class="or-symbol">
                                 OR
                             </div>
-                            <div class="price-dollar">
-                                <span class="price-d-0"id="price-d-0b">12</span>
-                                <span class="price-d-1"id="price-d-1b">49</span>
+                            <div class="price-dollar" id="price-2-dollar">
+                                <span class="price-d-0" id="price-d-0b">12</span>
+                                <span class="price-d-1" id="price-d-1b">49</span>
+                                <span class="ea-lbl" style="font-family: trade-gothic-next-compressed; font-weight: 200; letter-spacing: normal; font-size: 30px; width: 20px;">ea.</span>
+                            </div>
+                            <div class="price-xforx" id="price-2-xforx" style="display: none;">
+                                <span class="price-d-1">2/$</span>
+                                <span class="price-d-0">5</span>
                             </div>
                         </div>                        
                         <div id="condition-row">
@@ -342,6 +348,12 @@
                 document.querySelector("#unit-type-sel").disabled = false;
                 document.querySelector("#unit-sizes").disabled = false;
             
+            if(document.querySelector('#show-ea-right').checked){
+                document.querySelector('.ea-lbl').style.display = 'unset';
+            }
+            else{
+                document.querySelector('.ea-lbl').style.display = 'none';
+            }
             
             let retailPrice = document.querySelector('#retail-price-input').value;
             let salePrice = document.querySelector('#sale-price-input-l').value;
@@ -351,81 +363,30 @@
                 salePrice = "1.99";
             }
             // PRICE TYPE
-            const priceType = document.querySelector("#price-type-sel").value;
-            if(priceType === "XFORX"){
-                document.querySelector('#sale-price-box').style.display = 'none'
-                document.querySelector('#sale-price-box-xforx').style.display = 'block'
-                
+            const priceType = document.querySelector("#price-type-sel-2").value;
+            if(priceType === "XFORX"){                
                 document.querySelector('#sale-price2-box').style.display = 'none'
                 document.querySelector('#sale-price2-box-xforx').style.display = 'block'
-                document.querySelector("#price[dollar]").style.display = 'none'
-                document.querySelector("#price[xforx]").style.display = 'unset'
-                document.querySelector("#price[bogo]").style.display = 'none'
-                document.querySelector("#MustBuyInner").style.display = 'block'
+                document.querySelector("#price-2-dollar").style.display = 'none'
+                document.querySelector("#price-2-xforx").style.display = 'unset'
 
-                document.querySelector("#price[xforx] #xforxval").innerHTML = document.querySelector("#sale-price-input-xforx1").value + '/$'
-                document.querySelector("#price[xforx] #xforxprice").innerHTML = document.querySelector("#sale-price-input-xforx2").value
+                document.querySelector("#price-2-xforx > span.price-d-1").innerHTML = document.querySelector("#sale-price-input-2-xforx1").value + '/$'
+                document.querySelector("#price-2-xforx > span.price-d-0").innerHTML = document.querySelector("#sale-price-input-2-xforx2").value
                 
-                const buyAmt = parseInt(document.querySelector("#sale-price-input-xforx1").value)
-                const buyForAmt = parseInt(document.querySelector("#sale-price-input-xforx2").value)
+                const buyAmt = parseInt(document.querySelector("#sale-price-input-2-xforx1").value)
+                const buyForAmt = parseInt(document.querySelector("#sale-price-input-2-xforx2").value)
 
-                salePrice = buyForAmt / buyAmt
+                salePriceb = buyForAmt / buyAmt
 
-                setSavings((parseFloat(retailPrice)*buyAmt) - (parseFloat(Math.max(salePrice, salePriceb))*buyAmt), buyAmt);
-            }
-            else if (priceType == "BOGO"){
-                document.querySelector('#sale-price-box').style.display = 'none'
-                document.querySelector('#sale-price-box-xforx').style.display = 'none'
-                
-                document.querySelector("#price[dollar]").style.display = 'none'
-                document.querySelector("#price[xforx]").style.display = 'none'
-                document.querySelector("#price[bogo]").style.display = 'block'
-                document.querySelector('#priceBeforeDecimal img').src = "../../images/newbogo/bogo.svg"
-                document.querySelector("#MustBuyInner").style.display = 'none'
-                salePrice = retailPrice
-                setSavings(retailPrice, 2)
-            }            
-            else if (priceType == "B2G1"){
-                document.querySelector('#sale-price-box').style.display = 'none'
-                document.querySelector('#sale-price-box-xforx').style.display = 'none'
-                document.querySelector("#price[dollar]").style.display = 'none'
-                document.querySelector("#price[xforx]").style.display = 'none'
-                document.querySelector("#price[bogo]").style.display = 'block'
-                document.querySelector('#priceBeforeDecimal img').src = "../../images/newbogo/b2g1.svg"
-                document.querySelector("#MustBuyInner").style.display = 'none'
-                salePrice = retailPrice
-                setSavings(retailPrice, 3)
-            }            
-            else if (priceType == "B2G2"){
-                document.querySelector('#sale-price-box').style.display = 'none'
-                document.querySelector('#sale-price-box-xforx').style.display = 'none'
-                document.querySelector("#price[dollar]").style.display = 'none'
-                document.querySelector("#price[xforx]").style.display = 'none'
-                document.querySelector("#price[bogo]").style.display = 'block'
-                document.querySelector('#priceBeforeDecimal img').src = "../../images/newbogo/b2g2.svg"
-                document.querySelector("#MustBuyInner").style.display = 'none'
-                salePrice = retailPrice
-                setSavings(retailPrice*2, 4)
-            }
-            else if (priceType == "B1G2"){
-                document.querySelector('#sale-price-box').style.display = 'none'
-                document.querySelector('#sale-price-box-xforx').style.display = 'none'
-                document.querySelector("#price[dollar]").style.display = 'none'
-                document.querySelector("#price[xforx]").style.display = 'none'
-                document.querySelector("#price[bogo]").style.display = 'block'
-                document.querySelector('#priceBeforeDecimal img').src = "../../images/newbogo/b1g2.svg"
-                document.querySelector("#MustBuyInner").style.display = 'none'
-                salePrice = retailPrice
-                setSavings(retailPrice*2, 3)
+
+                setSavings(parseFloat(retailPrice) - parseFloat(Math.max(salePrice, salePriceb)));
             }
             else{
-                document.querySelector('#sale-price-box').style.display = 'block'
-                document.querySelector('#sale-price-box-xforx').style.display = 'none'
-                
                 document.querySelector('#sale-price2-box').style.display = 'block'
                 document.querySelector('#sale-price2-box-xforx').style.display = 'none'
-                
-                document.querySelector("#MustBuyInner").style.display = 'block'
+            
+                document.querySelector("#price-2-dollar").style.display = 'unset'
+                document.querySelector("#price-2-xforx").style.display = 'none'
                 
                 setSavings(parseFloat(retailPrice) - parseFloat(Math.max(salePrice, salePriceb)));
             }
@@ -544,8 +505,8 @@
 
             if(queryParams.get('xforx0') != 'null'){
                 document.querySelector('option[value=XFORX]').selected = true
-                document.querySelector('#sale-price-input-xforx1').value = queryParams.get('xforx0')
-                document.querySelector('#sale-price-input-xforx2').value = queryParams.get('xforx1')
+                document.querySelector('#sale-price-input-2-xforx1').value = queryParams.get('xforx0')
+                document.querySelector('#sale-price-input-2-xforx2').value = queryParams.get('xforx1')
             }
 
             if(queryParams.get('bogo') != 'null')

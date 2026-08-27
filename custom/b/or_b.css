@@ -31,6 +31,28 @@ display: grid;
     font-weight: 999;
     display: flex;
 }
+
+.price-xforx{
+    font-family: 'Rockwell';
+    font-weight: 999;
+    display: flex;
+    letter-spacing: -8px;
+    width:max-content;
+    
+
+    & .price-d-0{
+        font-size: 220px;
+        line-height: 190px;
+        letter-spacing: -25px;
+        margin-left: -5px;
+    }
+    & .price-d-1{
+        font-size: 70px;
+        vertical-align: top;
+        letter-spacing: -6px;
+    }
+}
+
 .price-d-dollar{
     font-size: 80px;
     font-weight: bold;
@@ -57,7 +79,7 @@ display: grid;
 
 #condition-row{
     display: grid;
-    font-size:20px;
+    font-size:26px;
     grid-template-columns: 1fr 1fr;
 }
 
