@@ -3,11 +3,11 @@
 
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
-    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css?ch=tAC2l">
-    <link rel="stylesheet" href="../../qs/BSize.css?ch=tAC2l" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=tAC2l" />
-    <link rel="stylesheet" href="../../bulk_b.css?ch=tAC2l" />
-    <link rel="stylesheet" href="blank_b.css?ch=tAC2l"/>
+    <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css?ch=IIgOP">
+    <link rel="stylesheet" href="../../qs/BSize.css?ch=IIgOP" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=IIgOP" />
+    <link rel="stylesheet" href="../../bulk_b.css?ch=IIgOP" />
+    <link rel="stylesheet" href="blank_b.css?ch=IIgOP"/>
     <title>Custom Signs - B Blank</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
@@ -38,20 +38,29 @@
                                 <div style="display: flex;flex-direction: column;border: 1px solid var(--m32-green);padding:2px;border-radius: .25rem;">
                                     <label style="float: left;color:black;font-family: trade-gothic-next-compressed;">Font</label>
                                     <select class="ql-font" style="border: var(--m32-brown) 1px solid;border-radius: .25rem;width: 260px;">
-                                        <option selected>Trade Gothic</option>
+                                        <option>Trade Gothic</option>
                                         <option value="tradegothicnextcondensed">Trade Gothic Condensed</option>
                                         <option value="tradegothicnextcompressed">Trade Gothic Compressed</option>
                                         <option value="Rockwell">Rockwell</option>
                                         <option value="Clarendon">Clarendon</option>
+                                        <option value="AltGothic1">Alternate Gothic No. 1</option>
+                                        <option value="AltGothic2">Alternate Gothic No. 2</option>
+                                        <option selected value="AltGothic3">Alternate Gothic No. 3</option>
                                     </select>
                                 </div>
                                 <div style="display: flex;flex-direction: column;border: 1px solid var(--m32-green);padding:2px;border-radius: .25rem;">
                                     <label style="float: left;color:black;font-family: trade-gothic-next-compressed;">Text Size</label>
                                     <select class="ql-size" style="border: var(--m32-brown) 1px solid;border-radius: .25rem">
-                                        <option value="small"></option>
-                                        <option selected></option>
-                                        <option value="large"></option>
-                                        <option value="huge"></option>
+                                        <option value="24px">24pt</option>
+                                        <option value="32px">32pt</option>
+                                        <option value="48px">48pt</option>
+                                        <option value="64px">64pt</option>
+                                        <option value="80px">80pt</option>
+                                        <option value="96px">96pt</option>
+                                        <option value="120px">120pt</option>
+                                        <option value="144px">144pt</option>
+
+                                        
                                     </select>
                                 </div>
                                 <!-- Add a bold button -->
@@ -65,13 +74,9 @@
                         <div id="innerContent">
 
                             <div id="editor" style="width: 100%;">
-                                <p>
-                                    <strong class="ql-size-huge ql-font-tradegothicnextcompressed">Up To</strong>
-                                </p>
-                                <h1><strong class="ql-size-huge ql-font-Clarendon">50</strong><strong class="ql-size-huge ql-font-Rockwell">% off</strong></h1>
-                                <p><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></p>
-                                <p><br></p>
-                                <p><span class="ql-font-tradegothicnextcompressed ql-size-large">Priced as Marked</span></p>
+                                <p><strong class="ql-font-AltGothic3" style="font-size: 48px;">Up To</strong></p>
+                                <h1><strong class="ql-font-AltGothic3" style="font-size: 120px;"><u>&nbsp;&nbsp;50% off&nbsp;&nbsp;</u></strong></h1>
+                                <p><span class="ql-font-AltGothic2" style="font-size: 48px;">Priced as Marked</span></p>
                             </div>
                         </div>
                     </div>
@@ -135,8 +140,12 @@
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
     <script>// Add fonts to whitelist
         const Font = Quill.import('formats/font');
-        Font.whitelist = ['tradegothicnextcompressed', 'tradegothicnextcondensed', 'Clarendon', 'tradegothicnext', 'Rockwell'];
+        Font.whitelist = ['tradegothicnextcompressed', 'tradegothicnextcondensed', 'Clarendon', 'tradegothicnext', 'Rockwell', 'AltGothic1', 'AltGothic2', 'AltGothic3'];
+        const Size = Quill.import('attributors/style/size');
+        Size.whitelist = ['24px', '32px', '48px', '64px', '80px', '96px', '120px', '144px'];
+
         Quill.register(Font, true);
+        Quill.register(Size, true);
         const quill = new Quill('#editor', {
             theme: 'snow',
             modules: {

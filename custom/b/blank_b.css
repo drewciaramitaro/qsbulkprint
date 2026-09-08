@@ -74,16 +74,19 @@
     font-family: 'Clarendon';
     font-weight: 100;
 }
+.ql-font-AltGothic1, #toolbar .ql-font span[data-label='Alternate Gothic No. 1']::before{
+    font-family: 'alternate-gothic-no-1-d';
+    font-weight: 100;
+}
+.ql-font-AltGothic2, #toolbar .ql-font span[data-label='Alternate Gothic No. 2']::before{
+    font-family: 'alternate-gothic-no-2-d';
+    font-weight: 100;
+}
+.ql-font-AltGothic3, #toolbar .ql-font span[data-label='Alternate Gothic No. 3']::before{
+    font-family: 'alternate-gothic-no-3-d';
+    font-weight: 100;
+}
 
-.ql-size-small{
-font-size: 1em
-}
-.ql-size-large{
-font-size: 2em
-}
-.ql-size-huge{
-font-size: 3em
-}
 
 strong{
     font-weight: bolder !important;
