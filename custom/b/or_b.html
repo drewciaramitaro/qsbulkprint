@@ -4,9 +4,9 @@
 <head>
     <!-- increment the v= if theres a css change, that way browsers will refresh their cache -->
     <link rel="stylesheet" href="https://use.typekit.net/ryp8bab.css">
-    <link rel="stylesheet" href="../../qs/BSize.css?ch=ej1o0" />
-    <link rel="stylesheet" href="../../bulk_shared.css?ch=ej1o0" />
-    <link rel="stylesheet" href="../../bulk_b.css?ch=ej1o0" />
+    <link rel="stylesheet" href="../../qs/BSize.css?ch=fv0i6" />
+    <link rel="stylesheet" href="../../bulk_shared.css?ch=fv0i6" />
+    <link rel="stylesheet" href="../../bulk_b.css?ch=fv0i6" />
     <link rel="stylesheet" href="or_b.css">
     <title>Custom Signs - B Size</title>
     <link rel="icon" type="image/png" href="../../images/icon.png?v=01">
@@ -449,18 +449,14 @@
             if (unitAmt.includes(',')) {
                 const sizes = unitAmt.split(',');
                 sizes.forEach(size => {
-                    unitString += `${size} ${unit}@$${salePrice}ea./${calcUnitPrice(size, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)} ${suffix}<br/>`
-                    unitString += `${size} ${unit}@$${salePriceb}ea./${calcUnitPrice(size, unitType, parseFloat(salePriceb), parseFloat(retailPrice), null, 1)} ${suffix}<br/>`
+                    unitString += `${size} ${unit}/${calcUnitPrice(size, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)} ${suffix}<br/>`
                 });
                 document.querySelector("#unitType").style.display = "None";
                 document.querySelector("#unitPriceBox").style.fontSize = "19px";
                 document.querySelector("#unitPriceBox").style.fontFamily = "trade-gothic-next-condensed"
             }
             else {
-                unitString = `$${salePrice}ea./${calcUnitPrice(unitAmt, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)}  ${suffix}<br/>`;
-                
-
-                unitString += `$${salePriceb}ea./${calcUnitPrice(unitAmt, unitType, parseFloat(salePriceb), parseFloat(retailPrice), null, 1)}  ${suffix}`;
+                unitString = `${calcUnitPrice(unitAmt, unitType, parseFloat(salePrice), parseFloat(retailPrice), null, 1)}  ${suffix}<br/>`;
                 document.querySelector("#unitType").style.display = "None";
                 document.querySelector("#unitPriceBox").style.fontSize = "19px";
                 document.querySelector("#unitPriceBox").style.fontFamily = "trade-gothic-next-condensed"
